@@ -19,25 +19,25 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16
-        cache: 'yarn'
+        cache: 'npm'
     
     - name: Install dependencies
       run: |
-        yarn install
-        cd backend && yarn install
-        cd ../frontend && yarn install
+        npm install
+        cd backend && npm install
+        cd ../frontend && npm install
     
     - name: Lint
       run: |
-        cd backend && yarn lint
-        cd ../frontend && yarn lint
+        cd backend && npm run lint
+        cd ../frontend && npm run lint
       continue-on-error: true
     
     - name: Build backend
-      run: cd backend && yarn build
+      run: cd backend && npm run build
       
     - name: Build frontend
-      run: cd frontend && yarn build
+      run: cd frontend && npm run build
       
   docker-build:
     runs-on: ubuntu-latest
