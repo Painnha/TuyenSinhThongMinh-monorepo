@@ -1,0 +1,105 @@
+.university-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.university-detail h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.admission-method {
+    margin-bottom: 30px;
+}
+
+.admission-method h2 {
+    color: black;
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: orange;
+    border-radius: 4px;
+    text-align: start;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 60%;
+    border-collapse: collapse; /* Gộp các đường viền */
+    min-width: 600px; /* Chiều rộng tối thiểu */
+}
+
+th, td {
+    padding: 8px 10px; /* Giảm padding để bảng nhỏ lại */
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Đường viền mờ cho hàng */
+}
+
+th {
+    background-color: rgb(0, 183, 255);
+    font-weight: 600;
+    color: black;
+    white-space: nowrap;
+}
+
+td {
+    color: #444;
+}
+
+tr:hover {
+    background-color: #f5f5f5; /* Hiệu ứng hover cho hàng */
+}
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.error {
+    text-align: center;
+    padding: 20px;
+    color: #d32f2f;
+    background-color: #ffebee;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.not-found {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .university-detail {
+        padding: 15px;
+    }
+
+    .university-detail h1 {
+        font-size: 20px;
+    }
+
+    .admission-method h2 {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+} 

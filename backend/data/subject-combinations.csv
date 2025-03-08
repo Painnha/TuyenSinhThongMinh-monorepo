@@ -1,0 +1,121 @@
+STT,SubjectGroup,Môn chi tiết,Trường,Ngành,Ghi chú
+1,A00,"Toán, Vật lí, Hóa học",254 trường,1342 ngành,Xem chi tiết
+2,A01,"Toán, Vật lí, Tiếng Anh",237 trường,1441 ngành,Xem chi tiết
+3,B00,"Toán, Hóa học, Sinh học",148 trường,285 ngành,Xem chi tiết
+4,C00,"Ngữ văn, Lịch sử, Địa lí",145 trường,256 ngành,Xem chi tiết
+5,D01,"Ngữ văn, Toán, Tiếng Anh",230 trường,1385 ngành,Xem chi tiết
+6,D02,"Ngữ văn, Toán, Tiếng Nga",15 trường,85 ngành,Xem chi tiết
+7,D03,"Ngữ văn, Toán, Tiếng Pháp",31 trường,134 ngành,Xem chi tiết
+8,D04,"Ngữ văn, Toán, Tiếng Trung",44 trường,121 ngành,Xem chi tiết
+9,D05,"Ngữ văn, Toán, Tiếng Đức",10 trường,83 ngành,Xem chi tiết
+10,D06,"Ngữ văn, Toán, Tiếng Nhật",32 trường,127 ngành,Xem chi tiết
+11,A02,"Toán, Vật lí, Sinh học",65 trường,109 ngành,Xem chi tiết
+12,A03,"Toán, Vật lí, Lịch sử",6 trường,10 ngành,Xem chi tiết
+13,A04,"Toán, Vật lí, Địa lí",11 trường,29 ngành,Xem chi tiết
+14,A05,"Toán, Hóa học, Lịch sử",2 trường,13 ngành,Xem chi tiết
+15,A06,"Toán, Hóa học, Địa lí",7 trường,12 ngành,Xem chi tiết
+16,A07,"Toán, Lịch sử, Địa lí",22 trường,44 ngành,Xem chi tiết
+17,A08,"Toán, Lịch sử, GDKTPL",7 trường,11 ngành,Xem chi tiết
+18,A09,"Toán, Địa lý, GDKTPL",21 trường,41 ngành,Xem chi tiết
+19,A10,"Toán, Vật lí, GDKTPL",9 trường,19 ngành,Xem chi tiết
+20,A11,"Toán, Hóa học, GDKTPL",5 trường,8 ngành,Xem chi tiết
+21,B02,"Toán, Sinh học, Địa lí",7 trường,9 ngành,Xem chi tiết
+22,B03,"Toán, Sinh học, Ngữ văn",36 trường,51 ngành,Xem chi tiết
+23,B04,"Toán, Sinh học, GDKTPL",11 trường,21 ngành,Xem chi tiết
+24,B08,"Toán, Sinh học, Tiếng Anh",44 trường,94 ngành,Xem chi tiết
+25,C01,"Ngữ văn, Toán, Vật lí",79 trường,320 ngành,Xem chi tiết
+26,C02,"Ngữ văn, Toán, Hóa học",35 trường,123 ngành,Xem chi tiết
+27,C03,"Ngữ văn, Toán, Lịch sử",45 trường,112 ngành,Xem chi tiết
+28,C04,"Ngữ văn, Toán, Địa lí",56 trường,162 ngành,Xem chi tiết
+29,C05,"Ngữ văn, Vật lí, Hóa học",5 trường,27 ngành,Xem chi tiết
+30,C08,"Ngữ văn, Hóa học, Sinh học",17 trường,19 ngành,Xem chi tiết
+31,C12,"Ngữ văn, Lịch sử, Sinh học",1 trường,1 ngành,Xem chi tiết
+32,C13,"Ngữ văn, Sinh học, Địa lí",2 trường,3 ngành,Xem chi tiết
+33,C14,"Ngữ văn, Toán, GDKTPL",44 trường,113 ngành,Xem chi tiết
+34,C19,"Ngữ văn, Lịch sử, GDKTPL",44 trường,70 ngành,Xem chi tiết
+35,C20,"Ngữ văn, Địa lí, GDKTPL",46 trường,69 ngành,Xem chi tiết
+36,D07,"Toán, Hóa học, Tiếng Anh",144 trường,807 ngành,Xem chi tiết
+37,D08,"Toán, Sinh học, Tiếng Anh",55 trường,83 ngành,Xem chi tiết
+38,D09,"Toán, Lịch sử, Tiếng Anh",45 trường,156 ngành,Xem chi tiết
+39,D10,"Toán, Địa lí, Tiếng Anh",60 trường,101 ngành,Xem chi tiết
+40,D11,"Ngữ văn, Vật lí, Tiếng Anh",11 trường,36 ngành,Xem chi tiết
+41,D12,"Ngữ văn, Hóa học, Tiếng Anh",7 trường,27 ngành,Xem chi tiết
+42,D13,"Ngữ văn, Sinh học, Tiếng Anh",7 trường,11 ngành,Xem chi tiết
+43,D14,"Ngữ văn, Lịch sử, Tiếng Anh",111 trường,170 ngành,Xem chi tiết
+44,D15,"Ngữ văn, Địa lí, Tiếng Anh",100 trường,150 ngành,Xem chi tiết
+45,D20,"Toán, Địa lí, Tiếng Trung",1 trường,2 ngành,Xem chi tiết
+46,D21,"Toán, Hóa học, Tiếng Đức",2 trường,62 ngành,Xem chi tiết
+47,D22,"Toán, Hóa học, Tiếng Nga",2 trường,62 ngành,Xem chi tiết
+48,D23,"Toán, Hóa học, Tiếng Nhật",6 trường,76 ngành,Xem chi tiết
+49,D24,"Toán, Hóa học, Tiếng Pháp",5 trường,70 ngành,Xem chi tiết
+50,D25,"Toán, Hóa học, Tiếng Trung",2 trường,62 ngành,Xem chi tiết
+51,D26,"Toán, Vật lí, Tiếng Đức",5 trường,76 ngành,Xem chi tiết
+52,D27,"Toán, Vật lí, Tiếng Nga",3 trường,70 ngành,Xem chi tiết
+53,D28,"Toán, Vật lí, Tiếng Nhật",10 trường,86 ngành,Xem chi tiết
+54,D29,"Toán, Vật lí, Tiếng Pháp",6 trường,76 ngành,Xem chi tiết
+55,D30,"Toán, Vật lí, Tiếng Trung",3 trường,70 ngành,Xem chi tiết
+56,D31,"Toán, Sinh học, Tiếng Đức",1 trường,1 ngành,Xem chi tiết
+57,D32,"Toán, Sinh học, Tiếng Nga",1 trường,1 ngành,Xem chi tiết
+58,D33,"Toán, Sinh học, Tiếng Nhật",3 trường,6 ngành,Xem chi tiết
+59,D34,"Toán, Sinh học, Tiếng Pháp",1 trường,1 ngành,Xem chi tiết
+60,D35,"Toán, Sinh học, Tiếng Trung",1 trường,1 ngành,Xem chi tiết
+61,D42,"Ngữ văn, Địa lí, Tiếng Nga",1 trường,1 ngành,Xem chi tiết
+62,D43,"Ngữ văn, Địa lí, Tiếng Nhật",1 trường,1 ngành,Xem chi tiết
+63,D44,"Ngữ văn, Địa lí, Tiếng Pháp",3 trường,4 ngành,Xem chi tiết
+64,D45,"Ngữ văn, Địa lí, Tiếng Trung",4 trường,2 ngành,Xem chi tiết
+65,D55,"Ngữ văn, Vật lí, Tiếng Trung",1 trường,1 ngành,Xem chi tiết
+66,D63,"Ngữ văn, Lịch sử, Tiếng Nhật",3 trường,3 ngành,Xem chi tiết
+67,D64,"Ngữ văn, Lịch sử, Tiếng Pháp",2 trường,4 ngành,Xem chi tiết
+68,D65,"Ngữ văn, Lịch sử, Tiếng Trung",1 trường,1 ngành,Xem chi tiết
+69,D66,"Ngữ văn, GDKTPL, Tiếng Anh",47 trường,75 ngành,Xem chi tiết
+70,D68,"Ngữ văn, GDKTPL, Tiếng Nga",1 trường,1 ngành,Xem chi tiết
+71,D70,"Ngữ Văn, GDKTPL, Tiếng Pháp",1 trường,1 ngành,Xem chi tiết
+72,D71,"Ngữ văn, GDKTPL, Tiếng Trung",2 trường,2 ngành,Xem chi tiết
+73,D84,"Toán, Tiếng Anh; GDKTPL",21 trường,49 ngành,Xem chi tiết
+74,H00,"Ngữ văn, Năng khiếu vẽ Nghệ thuật 1, Năng khiếu vẽ Nghệ thuật 2",22 trường,18 ngành,Xem chi tiết
+75,H01,"Toán, Ngữ văn, Vẽ Mỹ thuật",17 trường,16 ngành,Xem chi tiết
+76,H02,"Toán, Vẽ Hình họa mỹ thuật, Vẽ trang trí màu",6 trường,10 ngành,Xem chi tiết
+77,H04,"Toán, Tiếng Anh, Vẽ Năng khiếu",4 trường,9 ngành,Xem chi tiết
+78,H06,"Ngữ văn, Tiếng Anh,Vẽ mỹ thuật",8 trường,13 ngành,Xem chi tiết
+79,H07,"Toán, Hình họa, Trang trí",3 trường,8 ngành,Xem chi tiết
+80,H08,"Ngữ văn, Lịch sử, Vẽ mỹ thuật",3 trường,6 ngành,Xem chi tiết
+81,K01,"Toán, Tiếng Anh, Tin học",8 trường,105 ngành,Xem chi tiết
+82,M00,"Ngữ văn, Toán, Đọc diễn cảm, Hát",15 trường,3 ngành,Xem chi tiết
+83,M01,"Ngữ văn, Lịch sử, Năng khiếu",17 trường,4 ngành,Xem chi tiết
+84,M02,"Toán, Năng khiếu 1, Năng khiếu 2",7 trường,5 ngành,Xem chi tiết
+85,M03,"Văn, Năng khiếu 1, Năng khiếu 2",5 trường,5 ngành,Xem chi tiết
+86,M04,"Toán, Đọc kể diễn cảm, Hát - Múa",2 trường,2 ngành,Xem chi tiết
+87,M09,"Toán, NK Mầm non 1( kể chuyện, đọc, diễn cảm), NK Mầm non 2 (Hát)",7 trường,1 ngành,Xem chi tiết
+88,M10,"Toán, Tiếng Anh, NK1",3 trường,2 ngành,Xem chi tiết
+89,M11,"Ngữ Văn, năng kiếu báo chí, Tiếng Anh",3 trường,1 ngành,Xem chi tiết
+90,M13,"Toán, Sinh học, Năng khiếu",4 trường,2 ngành,Xem chi tiết
+91,M14,"Ngữ văn, Năng khiếu báo chí, Toán",1 trường,1 ngành,Xem chi tiết
+92,N00,"Ngữ văn, Năng khiếu Âm nhạc 1, Năng khiếu Âm nhạc 2",14 trường,9 ngành,Xem chi tiết
+93,N01,"Ngữ văn, xướng âm, biểu diễn nghệ thuật",6 trường,1 ngành,Xem chi tiết
+94,N02,"Ngữ văn, Ký xướng âm, Hát hoặc biểu diễn nhạc cụ",1 trường,1 ngành,Xem chi tiết
+95,N05,"Ngữ Văn, Xây dựng kịch bản sự kiện, Năng khiếu",2 trường,2 ngành,Xem chi tiết
+96,S00,"Ngữ văn, Năng khiếu SKĐA 1, Năng khiếu SKĐA 2",3 trường,10 ngành,Xem chi tiết
+97,T00,"Toán, Sinh học, Năng khiếu TDTT",21 trường,5 ngành,Xem chi tiết
+98,T01,"Toán, Ngữ văn, Năng khiếu TDTT",11 trường,6 ngành,Xem chi tiết
+99,T02,"Ngữ văn, Sinh, Năng khiếu TDTT",12 trường,4 ngành,Xem chi tiết
+100,T03,"Ngữ văn, Địa, Năng khiếu TDTT",8 trường,3 ngành,Xem chi tiết
+101,T04,"Toán, Lý, Năng khiếu TDTT",2 trường,4 ngành,Xem chi tiết
+102,T05,"Ngữ văn, GDKTPL, Năng khiếu thể dục thể thao",19 trường,4 ngành,Xem chi tiết
+103,V00,"Toán, Vật lí, Vẽ Hình họa mỹ thuật",33 trường,25 ngành,Xem chi tiết
+104,V01,"Toán, Ngữ văn, Vẽ Hình họa mỹ thuật",30 trường,23 ngành,Xem chi tiết
+105,V02,"Vẽ mỹ thuật, Toán, Tiếng Anh",11 trường,15 ngành,Xem chi tiết
+106,V03,"Vẽ mỹ thuật, Toán, Hóa",2 trường,3 ngành,Xem chi tiết
+107,V05,"Văn, Vật lí, Vẽ mỹ thuật",1 trường,1 ngành,Xem chi tiết
+108,V06,"Toán, Địa lí, Vẽ mỹ thuật",1 trường,1 ngành,Xem chi tiết
+109,V10,"Toán, tiếng Pháp, Vẽ mỹ thuật",1 trường,3 ngành,Xem chi tiết
+110,V11,"Toán, Tiếng Trung, Vẽ mỹ thuật",1 trường,3 ngành,Xem chi tiết
+111,C17,"Ngữ văn, Hóa học, GDKTPL",1 trường,2 ngành,Xem chi tiết
+112,K00,"Toán, Đọc hiểu, Tư duy Khoa học Giải quyết vấn đề",3 trường,17 ngành,Xem chi tiết
+113,"(Toán, Anh, Tin)","Toán, Anh, Tin",6 trường,40 ngành,Xem chi tiết
+114,"(Toán, Văn, Tin)","Toán, Văn, Tin",7 trường,57 ngành,Xem chi tiết
+115,"(Toán, Lí, Tin)","Toán, Lí, Tin",9 trường,60 ngành,Xem chi tiết
+116,"(Toán, Lí, Công nghệ)","Toán, Lí, Công nghệ",7 trường,60 ngành,Xem chi tiết
+117,"(Toán, Hóa, Công nghệ)","Toán, Hóa, Công nghệ",4 trường,32 ngành,Xem chi tiết
+118,"(Toán, Anh, Công nghệ)","Toán, Anh, Công nghệ",3 trường,24 ngành,Xem chi tiết
+119,"(Toán, Sinh, Công nghệ)","Toán, Sinh, Công nghệ",2 trường,8 ngành,Xem chi tiết
+120,"(Toán, Sinh, Tin)","Toán, Sinh, Tin",2 trường,9 ngành,Xem chi tiết

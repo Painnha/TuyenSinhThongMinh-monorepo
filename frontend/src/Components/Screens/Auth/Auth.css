@@ -1,0 +1,178 @@
+/* Định kiểu tổng thể cho login-screen */
+.login-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #e0e0e0, #a3bffa); /* Gradient giống mô tả hình ảnh */
+}
+
+/* Định kiểu cho form-container */
+.form-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Giới hạn chiều rộng phù hợp với thiết kế */
+}
+
+/* Định kiểu cho hình minh họa */
+.form-illustration {
+  width: 100%;
+  max-width: 200px; /* Thu nhỏ hình minh họa để không chiếm quá nhiều không gian */
+  display: block;
+  margin: 0 auto 20px; /* Căn giữa và thêm khoảng cách dưới */
+}
+
+/* Định kiểu cho tabs */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;  
+  text-decoration: none;
+}
+
+.tab.active {
+  color: #007bff; /* Màu xanh cho tab đang hoạt động */
+  font-weight: bold;
+}
+
+/* Định kiểu cho form */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.forgot-password {
+  text-align: right;
+  font-size: 12px;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.login-button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Định kiểu cho phần đăng nhập thay thế */
+.alternative-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.alternative-login span {
+  font-size: 12px;
+  color: #666;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Thông báo lỗi */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Trạng thái loading */
+.login-screen p { /* Sửa đổi từ login-screen để áp dụng cho thẻ <p> trong trạng thái loading */
+  text-align: center;
+  color: red;
+  font-size: 14px;
+}
+
+/* Nút disabled */
+.login-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Liên kết quên mật khẩu */
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Tiêu đề quên mật khẩu */
+.forgot-password-title {
+  text-align: center;
+  font-size: 20px;
+  color: #007bff;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Thêm kiểu cho bộ đếm thời gian và nút gửi lại mã OTP */
+.otp-timer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.otp-timer p {
+  font-size: 14px;
+  color: #666;
+}
+
+.resend-otp {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.resend-otp:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Style cho liên kết quay lại trang đăng nhập */
+.return-to-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.return-to-login a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.return-to-login a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,174 @@
+.benchmark-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.benchmark-container h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.benchmark-container h2 {
+    color: #2196F3;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.university-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px; /* Chiều cao tối đa của khung */
+    overflow-y: auto; /* Cho phép cuộn dọc */
+    border: 1px solid #ddd; /* Đường viền cho khung */
+    border-radius: 8px; /* Bo góc */
+    padding: 10px; /* Padding cho khung */
+    background-color: white; /* Màu nền cho khung */
+
+    /* margin: auto; Đặt khung vào giữa */
+}
+
+.benchmark-description {
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.benchmark-description p {
+    margin: 0;
+    line-height: 1.6;
+    color: #444;
+    text-align: left;
+}
+
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-section h3 {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.search-box button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #1976D2;
+}
+
+.university-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.university-item {
+    display: flex;
+    align-items: center;
+
+    background-color: white;
+    /* border: 1px solid #ddd; */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.university-item:hover {
+    border-color: #2196F3;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+    transform: translateY(-1px);
+}
+
+.university-code {
+    color: #2196F3;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    min-width: 60px;
+
+
+}
+
+.university-name {
+
+    color: #333;
+    font-size: 14px;
+}
+
+.university-arrow {
+    color: #2196F3;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .benchmark-container {
+        padding: 15px;
+    }
+
+    .benchmark-container h1 {
+        font-size: 20px;
+    }
+
+    .benchmark-container h2 {
+        font-size: 18px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .university-item {
+        padding: 12px;
+    }
+
+    .university-code {
+        min-width: 50px;
+        padding: 6px 8px;
+    }
+} 
