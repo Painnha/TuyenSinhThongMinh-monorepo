@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../Header/Header';
+import Header from '../../layout/Header';
 import News from '../../News/News';
 import './NewsListScreen.css';
 

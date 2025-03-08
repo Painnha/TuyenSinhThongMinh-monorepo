@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Header from '../../Header/Header';
+import Header from '../../layout/Header';
 import './NewsDetailScreen.css';
 import tintuc1 from '../../Image/tintuc1.png';
 

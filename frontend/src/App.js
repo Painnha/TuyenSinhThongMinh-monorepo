@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Header from './components/layout/Header/Header';
-import Home from './pages/home/Home';
-import NewsListScreen from './pages/news/NewsListScreen';
-import NewsDetailScreen from './pages/news/NewsDetailScreen';
-import LoginScreen from './pages/auth/LoginScreen';
-import Profile from './pages/profile/Profile';
-import RegisterScreen from './pages/auth/RegisterScreen';
-import ForgotPasswordScreen from './pages/auth/ForgotPasswordScreen';
-import ConsultationPage from './pages/consultation/ConsultationPage';
-import TranscriptCalculator from './pages/calculator/TranscriptCalculator';
-import BenchmarkSearch from './pages/benchmark/BenchmarkSearch';
-import UniversityDetail from './pages/university/UniversityDetail';
+import Header from './Components/layout/Header';
+import Home from './Components/Screens/Home/Home';
+import NewsListScreen from './Components/Screens/NewsListScreen/NewsListScreen';
+import NewsDetailScreen from './Components/Screens/NewsDetailScreen/NewsDetailScreen';
+import LoginScreen from './Components/Screens/Auth/LoginScreen';
+import Profile from './Components/Screens/Profile/Profile';
+import RegisterScreen from './Components/Screens/Auth/RegisterScreen';
+import ForgotPasswordScreen from './Components/Screens/Auth/ForgotPasswordScreen';
+import ConsultationPage from './Components/ConsultationPage/ConsultationPage';
+import TranscriptCalculator from './Components/TranscriptCalculator/TranscriptCalculator';
+import BenchmarkSearch from './Components/BenchmarkSearch/BenchmarkSearch';
+import UniversityDetail from './Components/UniversityDetail/UniversityDetail';
 import './App.css';
 
 // Component để kiểm tra và render Header
@@ -39,7 +39,6 @@ const AppContent = () => {
         <Route path="/tinh-diem" element={<TranscriptCalculator />} />
         <Route path="/diem-chuan" element={<BenchmarkSearch />} />
         <Route path="/university/:code" element={<UniversityDetail />} />
-        {/* Add more routes here */}
       </Routes>
     </div>
   );
