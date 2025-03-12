@@ -7,20 +7,28 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const User = require('../models/User');
 
-// Hàm format số điện thoại
+// Hàm chuẩn hóa số điện thoại thành 84xxxxxxxxx
 const formatPhoneNumber = (phone) => {
+  if (!phone) return phone;
+  
   // Loại bỏ các ký tự không phải số
   let cleaned = phone.replace(/\D/g, '');
   
-  // Nếu số điện thoại bắt đầu bằng 0, thay thế bằng +84
+  // Nếu số điện thoại bắt đầu bằng 0, thay thế bằng 84
   if (cleaned.startsWith('0')) {
-    cleaned = '+84' + cleaned.substring(1);
+    return '84' + cleaned.substring(1);
   }
-  // Nếu số điện thoại chưa có mã quốc gia, thêm +84
-  else if (!cleaned.startsWith('+84')) {
-    cleaned = '+84' + cleaned;
+  // Nếu số điện thoại đã bắt đầu bằng 84, giữ nguyên
+  else if (cleaned.startsWith('84')) {
+    return cleaned;
+  }
+  // Trường hợp khác (có thể đã bỏ dấu + từ +84), kiểm tra độ dài
+  else if (cleaned.length === 9) {
+    // Nếu chỉ có 9 số (thiếu mã quốc gia), thêm 84 vào đầu
+    return '84' + cleaned;
   }
   
+  // Trả về số sau khi đã làm sạch
   return cleaned;
 };
 

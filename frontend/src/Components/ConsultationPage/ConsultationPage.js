@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { subjectCombinationService } from '../../services/api';
 import './ConsultationPage.css';
+import axios from 'axios';
 
 const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,10 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    useEffect(() => {
+        setSelectedValues(value || []);
+    }, [value]);
 
     const handleSelect = (optionValue) => {
         const newValues = selectedValues.includes(optionValue)
@@ -51,7 +56,7 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
                             const option = options.find(opt => opt.value === value);
                             return (
                                 <div key={value} className="tag">
-                                    {option?.label}
+                                    {option?.label || value}
                                     <span 
                                         className="tag-remove"
                                         onClick={(e) => removeTag(value, e)}
@@ -64,9 +69,10 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
                     </div>
                 )}
             </div>
-            {isOpen && !loading && (
+            
+            {isOpen && (
                 <div className="options-container">
-                    {options.map(option => (
+                    {options.length > 0 ? options.map(option => (
                         <div
                             key={option.value}
                             className={`option ${selectedValues.includes(option.value) ? 'selected' : ''}`}
@@ -74,7 +80,11 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
                         >
                             {option.label}
                         </div>
-                    ))}
+                    )) : (
+                        <div className="option no-options">
+                            Không có dữ liệu
+                        </div>
+                    )}
                 </div>
             )}
         </div>
@@ -176,9 +186,9 @@ const ConsultationPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    // Fetch provinces
     useEffect(() => {
         const fetchProvinces = async () => {
-            setLoading(true);
             try {
                 const response = await fetch('https://provinces.open-api.vn/api/p/');
                 if (!response.ok) {
@@ -189,9 +199,7 @@ const ConsultationPage = () => {
             } catch (err) {
                 setError('Không thể tải danh sách tỉnh thành phố');
                 console.error('Error fetching provinces:', err);
-            } finally {
-                setLoading(false);
-            }
+            } 
         };
 
         fetchProvinces();
@@ -201,9 +209,12 @@ const ConsultationPage = () => {
     useEffect(() => {
         const fetchSubjectCombinations = async () => {
             setLoading(true);
+            setError(null);
             try {
+            
                 const response = await subjectCombinationService.getAllCombinations();
-                if (response.success && Array.isArray(response.data)) {
+  
+                if (response && response.success && Array.isArray(response.data)) {
                     // Transform data for MultiSelect component
                     const options = response.data.map(combo => ({
                         value: combo.code,
@@ -212,13 +223,19 @@ const ConsultationPage = () => {
                             subjects: combo.subjects
                         }
                     }));
+                    
+                    // Sắp xếp tổ hợp môn theo mã (A00, A01, B00, v.v.)
+                    options.sort((a, b) => a.value.localeCompare(b.value));
+                    
                     setExamBlockOptions(options);
+                  
                 } else {
-                    throw new Error('Invalid data format received from API');
+                    console.error('Data không đúng định dạng:', response);
+                    throw new Error('Dữ liệu không hợp lệ từ API');
                 }
             } catch (err) {
-                setError('Không thể tải danh sách tổ hợp môn');
-                console.error('Error:', err);
+                console.error('Lỗi khi lấy tổ hợp môn:', err);
+                setError('Không thể tải danh sách tổ hợp môn: ' + err.message);
             } finally {
                 setLoading(false);
             }
@@ -337,7 +354,7 @@ const ConsultationPage = () => {
                    trường Đại học trên cả nước giúp học sinh chuẩn bị tốt cho kỳ thi tốt nghiệp THPT và xét tuyển vào Đại học.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="consultation-form">
+            <form onSubmit={handleSubmit} className="consultation-form" style={{ overflow: 'visible' }}>
                 <div className="form-step">
                     <h3>Bước 1. Em hãy chọn phương thức xét tuyển</h3>
                     <select 
@@ -499,40 +516,128 @@ const ConsultationPage = () => {
                     )}
                 </div>
 
-                <div className="form-step">
+                <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
                     <h3>Bước 5. Chọn tổ hợp thi bạn mong muốn</h3>
-                    {error ? (
-                        <div className="error-message">{error}</div>
+                    {loading ? (
+                        <div className="loading-message">Đang tải danh sách tổ hợp thi...</div>
+                    ) : error ? (
+                        <div className="error-message">
+                            {error}
+                            <button 
+                                onClick={() => window.location.reload()} 
+                                style={{
+                                    marginLeft: '10px', 
+                                    padding: '5px 10px', 
+                                    background: '#f44336', 
+                                    color: 'white', 
+                                    border: 'none', 
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Thử lại
+                            </button>
+                        </div>
                     ) : (
-                        <MultiSelect
-                            options={examBlockOptions}
-                            value={formData.examBlocks}
-                            onChange={(values) => handleMultiSelectChange('examBlocks', values)}
-                            placeholder="Chọn tổ hợp môn"
-                            loading={loading}
-                        />
+                        <>
+                            {examBlockOptions.length === 0 ? (
+                                <div className="error-message">
+                                    Không có dữ liệu tổ hợp thi. Vui lòng thử lại sau.
+                                    <button 
+                                        onClick={() => window.location.reload()} 
+                                        style={{
+                                            marginLeft: '10px', 
+                                            padding: '5px 10px', 
+                                            background: '#f44336', 
+                                            color: 'white', 
+                                            border: 'none', 
+                                            borderRadius: '4px',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        Thử lại
+                                    </button>
+                                </div>
+                            ) : (
+                                <div style={{ position: 'relative', overflow: 'visible' }}>
+                                    <MultiSelect
+                                        options={examBlockOptions}
+                                        value={formData.examBlocks}
+                                        onChange={(values) => handleMultiSelectChange('examBlocks', values)}
+                                        placeholder="Chọn tổ hợp môn"
+                                        loading={loading}
+                                    />
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
 
-                <div className="form-step">
+                <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
                     <h3>Bước 6. Chọn sở thích</h3>
-                    <MultiSelect
-                        options={interestOptions}
-                        value={formData.interests}
-                        onChange={(values) => handleMultiSelectChange('interests', values)}
-                        placeholder="Chọn lĩnh vực bạn yêu thích"
-                    />
+                    {interestOptions && interestOptions.length > 0 ? (
+                        <div style={{ position: 'relative', overflow: 'visible' }}>
+                            <MultiSelect
+                                options={interestOptions}
+                                value={formData.interests}
+                                onChange={(values) => handleMultiSelectChange('interests', values)}
+                                placeholder="Chọn lĩnh vực bạn yêu thích"
+                            />
+                        </div>
+                    ) : (
+                        <div className="error-message">
+                            Không thể tải danh sách sở thích. Vui lòng thử lại sau.
+                        </div>
+                    )}
                 </div>
 
-                <div className="form-step">
+                <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
                     <h3>Bước 7. Nhập trường, ngành hoặc tỉnh/thành mong muốn (nếu có)</h3>
-                    <div className="location-inputs">
-                        <MultiSelect
-                            options={provinces.map(p => ({ value: p.name, label: p.name }))}
-                            value={formData.locations}
-                            onChange={(values) => handleMultiSelectChange('locations', values)}
-                            placeholder="Chọn Tỉnh/Thành phố"
-                        />
+                    <div className="location-inputs" style={{ position: 'relative', overflow: 'visible' }}>
+                        {provinces && provinces.length > 0 ? (
+                            <div style={{ position: 'relative', overflow: 'visible' }}>
+                                <MultiSelect
+                                    options={provinces.map(p => ({ value: p.name, label: p.name }))}
+                                    value={formData.locations}
+                                    onChange={(values) => handleMultiSelectChange('locations', values)}
+                                    placeholder="Chọn Tỉnh/Thành phố"
+                                />
+                            </div>
+                        ) : (
+                            <div className="custom-input-tags" style={{ position: 'relative', zIndex: 1 }}>
+                                <input
+                                    type="text"
+                                    placeholder="Nhập tên tỉnh/thành phố và nhấn Enter"
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' && e.target.value.trim()) {
+                                            e.preventDefault();
+                                            handleMultiSelectChange('locations', [
+                                                ...formData.locations,
+                                                e.target.value.trim()
+                                            ]);
+                                            e.target.value = '';
+                                        }
+                                    }}
+                                />
+                                <div className="tags-container">
+                                    {formData.locations.map((location, index) => (
+                                        <div key={index} className="tag">
+                                            {location}
+                                            <span 
+                                                className="tag-remove"
+                                                onClick={() => {
+                                                    const newLocations = formData.locations.filter((_, i) => i !== index);
+                                                    handleMultiSelectChange('locations', newLocations);
+                                                }}
+                                            >
+                                                ×
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         <div className="custom-input-tags">
                             <input
                                 type="text"

@@ -31,6 +31,7 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: visible;
 }
 
 .form-step {
@@ -39,6 +40,9 @@
     background-color: #f8f9fa;
     border-radius: 8px;
     text-align: left;
+    overflow: visible !important;
+    position: relative;
+    z-index: auto;
 }
 
 .form-step h3 {
@@ -130,6 +134,7 @@ select:focus {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
+    width: 100%;
 }
 
 .location-inputs input,
@@ -181,6 +186,11 @@ select:focus {
     position: relative;
     width: 100%;
     max-width: 500px;
+    background-color: white;
+    border-radius: 5px;
+    min-height: 42px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
 }
 
 .multi-select-input {
@@ -194,6 +204,11 @@ select:focus {
     flex-wrap: wrap;
     align-items: center;
     gap: 5px;
+    width: 100%;
+}
+
+.multi-select-input:hover {
+    border-color: #bbb;
 }
 
 .multi-select-input:focus-within {
@@ -204,6 +219,8 @@ select:focus {
 .placeholder {
     color: #999;
     padding: 5px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .options-container {
@@ -215,10 +232,11 @@ select:focus {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-top: 5px;
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .option {
@@ -236,6 +254,13 @@ select:focus {
     color: #2196F3;
 }
 
+.option.no-options {
+    color: #888;
+    font-style: italic;
+    cursor: default;
+    text-align: center;
+}
+
 /* Tags styles */
 .tags-container {
     display: flex;
@@ -247,29 +272,37 @@ select:focus {
 .tag {
     background-color: #e3f2fd;
     color: #2196F3;
-    padding: 2px 8px;
-    border-radius: 4px;
-    display: flex;
+    padding: 4px 10px;
+    border-radius: 16px;
+    display: inline-flex;
     align-items: center;
     font-size: 14px;
+    margin: 2px;
+    cursor: default;
 }
 
 .tag-remove {
-    margin-left: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
-    color: #666;
-    padding: 0 2px;
+    margin-left: 6px;
+    cursor: pointer !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: #2196F3;
+    border-radius: 50%;
 }
 
 .tag-remove:hover {
-    color: #f44336;
+    background-color: rgba(33, 150, 243, 0.1);
 }
 
 /* Custom input with tags */
 .custom-input-tags {
     width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .custom-input-tags input {
@@ -279,6 +312,7 @@ select:focus {
     border-radius: 5px;
     font-size: 14px;
     margin-bottom: 5px;
+    background-color: white;
 }
 
 .custom-input-tags input:focus {
@@ -318,31 +352,43 @@ select:focus {
     }
 
     .options-container {
-        position: fixed;
-        top: auto;
-        bottom: 0;
+        position: absolute;
+        top: 100%;
+        bottom: auto;
         left: 0;
         right: 0;
-        max-height: 50vh;
-        border-radius: 12px 12px 0 0;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        max-height: 300px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 }
 
 .error-message {
-    color: #dc3545;
     padding: 10px;
+    color: #f44336;
+    background-color: #ffebee;
+    border-radius: 5px;
     margin: 10px 0;
-    border: 1px solid #dc3545;
-    border-radius: 4px;
-    background-color: #f8d7da;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .loading-message {
-    color: #0056b3;
     padding: 10px;
-    margin: 10px 0;
+    color: #2196F3;
+    font-style: italic;
     text-align: center;
+    background-color: #e3f2fd;
+    border-radius: 5px;
+    margin: 10px 0;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
 }
 
 .transcript-method {
@@ -354,4 +400,53 @@ select:focus {
     margin-bottom: 10px;
     font-size: 14px;
     font-weight: 500;
+}
+
+/* CSS cho các component bên trong bước 6 và 7 */
+.form-step:nth-child(6) .multi-select-container,
+.form-step:nth-child(7) .multi-select-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: visible;
+    position: relative;
+}
+
+/* Đảm bảo options hiển thị đúng */
+.form-step:nth-child(5) .options-container,
+.form-step:nth-child(6) .options-container,
+.form-step:nth-child(7) .options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Cải thiện hiển thị các MultiSelect trong form-step */
+.form-step .multi-select-container {
+    z-index: 5;
+}
+
+/* Bước 5 */
+.form-step:nth-child(5) {
+    z-index: 30;
+}
+
+/* Bước 6 */
+.form-step:nth-child(6) {
+    z-index: 20;
+}
+
+/* Bước 7 */
+.form-step:nth-child(7) {
+    z-index: 10;
 } 

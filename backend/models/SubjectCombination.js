@@ -36,7 +36,10 @@ const subjectCombinationSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     }
-}, { timestamps: true });
+}, { 
+    timestamps: true,
+    collection: 'subjectcombinations'
+});
 
 // Tạo index cho tìm kiếm
 subjectCombinationSchema.index({ code: 1 });

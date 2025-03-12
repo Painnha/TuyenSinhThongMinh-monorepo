@@ -6,7 +6,8 @@ const SubjectCombination = require('../models/SubjectCombination');
 exports.getAllCombinations = async (req, res) => {
   try {
     const { search, page, limit } = req.query;
-    let query = { isActive: true };
+    // Bỏ điều kiện isActive, lấy tất cả records
+    let query = {};
 
     // Xử lý tìm kiếm
     if (search && search.trim()) {
@@ -20,6 +21,8 @@ exports.getAllCombinations = async (req, res) => {
       };
     }
 
+    console.log('MongoDB query:', JSON.stringify(query));
+
     // Nếu có yêu cầu phân trang
     if (page && limit) {
       const skip = (parseInt(page) - 1) * parseInt(limit);
@@ -29,6 +32,8 @@ exports.getAllCombinations = async (req, res) => {
         .limit(parseInt(limit));
 
       const total = await SubjectCombination.countDocuments(query);
+
+      console.log(`Tìm thấy ${combinations.length} tổ hợp môn với phân trang`);
 
       return res.json({
         success: true,
@@ -43,6 +48,8 @@ exports.getAllCombinations = async (req, res) => {
 
     // Nếu không có phân trang, lấy tất cả
     const combinations = await SubjectCombination.find(query).sort({ code: 1 });
+    
+    console.log(`Tìm thấy ${combinations.length} tổ hợp môn`);
     
     res.json({
       success: true,
@@ -68,9 +75,9 @@ exports.getAllCombinations = async (req, res) => {
  */
 exports.getCombinationByCode = async (req, res) => {
   try {
+    // Bỏ điều kiện isActive ở đây
     const combination = await SubjectCombination.findOne({
-      code: req.params.code.toUpperCase(),
-      isActive: true
+      code: req.params.code.toUpperCase()
     });
 
     if (!combination) {

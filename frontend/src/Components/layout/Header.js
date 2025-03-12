@@ -106,9 +106,7 @@ const Header = () => {
           )}
         </div>
       </div>
-      <div className="admin-link" style={{ textAlign: 'center', padding: '5px', backgroundColor: '#f0f0f0', fontSize: '12px' }}>
-        <Link to="/login-admin" style={{ color: '#666', textDecoration: 'none' }}>Đăng nhập quản trị</Link>
-      </div>
+
     </header>
   );
 };

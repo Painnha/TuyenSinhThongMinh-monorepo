@@ -45,6 +45,22 @@ const UserManagement = () => {
     fetchUsers();
   }, []);
 
+  // Hiển thị số điện thoại cho người dùng (thêm số 0 ở đầu)
+  const formatPhoneForDisplay = (phoneNumber) => {
+    if (!phoneNumber) return phoneNumber;
+    
+    // Nếu bắt đầu bằng +84, đổi thành 0
+    if (phoneNumber.startsWith('+84')) {
+      return '0' + phoneNumber.substring(3);
+    }
+    // Nếu bắt đầu bằng 84, đổi thành 0
+    else if (phoneNumber.startsWith('84')) {
+      return '0' + phoneNumber.substring(2);
+    }
+    
+    return phoneNumber;
+  };
+
   // Kiểm tra định dạng số điện thoại hợp lệ
   const isValidPhone = (phoneNumber) => {
     // Loại bỏ các ký tự không phải số
@@ -87,15 +103,9 @@ const UserManagement = () => {
   const handleEditClick = (user) => {
     setCurrentUser(user);
     
-    // Xử lý số điện thoại để hiển thị đúng định dạng
-    let phoneDisplay = user.phone;
-    if (phoneDisplay.startsWith('+84')) {
-      phoneDisplay = '0' + phoneDisplay.substring(3); // Chuyển +84 thành 0
-    }
-    
-    // Cập nhật form data
+    // Xử lý số điện thoại để hiển thị đúng định dạng cho người dùng
     setUserName(user.userName);
-    setPhone(phoneDisplay);
+    setPhone(formatPhoneForDisplay(user.phone));
     setPassword('');
     setRole(user.role);
     
@@ -127,7 +137,7 @@ const UserManagement = () => {
       // Form data
       const userData = {
         userName,
-        phone,
+        phone, // Số điện thoại sẽ được chuẩn hóa trong service
         password,
         role
       };
@@ -167,7 +177,7 @@ const UserManagement = () => {
       // Form data
       const userData = {
         userName,
-        phone,
+        phone, // Số điện thoại sẽ được chuẩn hóa trong service
         role
       };
       
@@ -389,7 +399,7 @@ const UserManagement = () => {
             {users.map(user => (
               <tr key={user._id}>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>{user.userName}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{user.phone}</td>
+                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{formatPhoneForDisplay(user.phone)}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>{user.role}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>
                   <span style={{

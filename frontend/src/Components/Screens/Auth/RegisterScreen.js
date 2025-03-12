@@ -29,12 +29,29 @@ const RegisterScreen = () => {
     return () => clearInterval(interval); // Dọn dẹp interval khi component unmount
   }, [step, timer]);
 
-  // Hàm chuyển đổi định dạng số điện thoại từ 0xxxx sang 84xxxx
+  // Hàm chuyển đổi định dạng số điện thoại thành 84xxxxxxxxx
   const formatPhoneNumber = (phoneNumber) => {
-    if (phoneNumber.startsWith('0')) {
-      return '84' + phoneNumber.substring(1);
+    if (!phoneNumber) return phoneNumber;
+    
+    // Loại bỏ các ký tự không phải số
+    let cleaned = phoneNumber.replace(/\D/g, '');
+    
+    // Nếu số điện thoại bắt đầu bằng 0, thay thế bằng 84
+    if (cleaned.startsWith('0')) {
+      return '84' + cleaned.substring(1);
     }
-    return phoneNumber;
+    // Nếu số điện thoại đã bắt đầu bằng 84, giữ nguyên
+    else if (cleaned.startsWith('84')) {
+      return cleaned;
+    }
+    // Trường hợp khác (có thể đã bỏ dấu + từ +84), kiểm tra độ dài
+    else if (cleaned.length === 9) {
+      // Nếu chỉ có 9 số (thiếu mã quốc gia), thêm 84 vào đầu
+      return '84' + cleaned;
+    }
+    
+    // Trả về số sau khi đã làm sạch
+    return cleaned;
   };
 
   // Kiểm tra định dạng số điện thoại hợp lệ

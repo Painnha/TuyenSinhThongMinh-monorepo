@@ -13,6 +13,31 @@ const authAxios = () => {
   });
 };
 
+// Hàm chuẩn hóa số điện thoại
+const normalizePhoneNumber = (phoneNumber) => {
+  if (!phoneNumber) return phoneNumber;
+  
+  // Loại bỏ các ký tự không phải số
+  let cleaned = phoneNumber.replace(/\D/g, '');
+  
+  // Nếu số điện thoại bắt đầu bằng 0, thay thế bằng 84
+  if (cleaned.startsWith('0')) {
+    return '84' + cleaned.substring(1);
+  }
+  // Nếu số điện thoại đã bắt đầu bằng 84, giữ nguyên
+  else if (cleaned.startsWith('84')) {
+    return cleaned;
+  }
+  // Trường hợp khác (có thể đã bỏ dấu + từ +84), kiểm tra độ dài
+  else if (cleaned.length === 9) {
+    // Nếu chỉ có 9 số (thiếu mã quốc gia), thêm 84 vào đầu
+    return '84' + cleaned;
+  }
+  
+  // Trả về số sau khi đã làm sạch
+  return cleaned;
+};
+
 // Lấy danh sách tất cả người dùng
 export const getAllUsers = async () => {
   try {
@@ -41,21 +66,7 @@ export const createUser = async (userData) => {
   try {
     // Đảm bảo định dạng số điện thoại đúng
     if (userData.phone) {
-      // Loại bỏ các ký tự không phải số
-      let cleaned = userData.phone.replace(/\D/g, '');
-      
-      // Nếu số điện thoại bắt đầu bằng 0, thay thế bằng 84
-      if (cleaned.startsWith('0')) {
-        userData.phone = '84' + cleaned.substring(1);
-      }
-      // Nếu số điện thoại đã bắt đầu bằng 84, giữ nguyên
-      else if (cleaned.startsWith('84')) {
-        userData.phone = cleaned;
-      }
-      // Trường hợp khác, thêm 84 vào đầu
-      else {
-        userData.phone = '84' + cleaned;
-      }
+      userData.phone = normalizePhoneNumber(userData.phone);
     }
 
     const response = await authAxios().post('/api/users', userData);
@@ -71,21 +82,7 @@ export const updateUser = async (userId, userData) => {
   try {
     // Đảm bảo định dạng số điện thoại đúng
     if (userData.phone) {
-      // Loại bỏ các ký tự không phải số
-      let cleaned = userData.phone.replace(/\D/g, '');
-      
-      // Nếu số điện thoại bắt đầu bằng 0, thay thế bằng 84
-      if (cleaned.startsWith('0')) {
-        userData.phone = '84' + cleaned.substring(1);
-      }
-      // Nếu số điện thoại đã bắt đầu bằng 84, giữ nguyên
-      else if (cleaned.startsWith('84')) {
-        userData.phone = cleaned;
-      }
-      // Trường hợp khác, thêm 84 vào đầu
-      else {
-        userData.phone = '84' + cleaned;
-      }
+      userData.phone = normalizePhoneNumber(userData.phone);
     }
 
     const response = await authAxios().put(`/api/users/${userId}`, userData);
