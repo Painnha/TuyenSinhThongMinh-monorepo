@@ -6,7 +6,7 @@ const app = express();
 // Cấu hình CORS
 app.use(cors({
   origin: ['http://localhost:3000', 'http://localhost:3001'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   credentials: true
 }));
 
@@ -25,11 +25,13 @@ const startServer = async () => {
     const authRoutes = require('./routes/authRoutes');
     const subjectCombinationsRouter = require('./routes/subjectCombinations');
     const universityRoutes = require('./routes/universityRoutes');
+    const userRoutes = require('./routes/userRoutes');
 
     // Sử dụng routes
     app.use('/api/auth', authRoutes);
     app.use('/api/subject-combinations', subjectCombinationsRouter);
     app.use('/api/universities', universityRoutes);
+    app.use('/api/users', userRoutes);
 
     // Error handling middleware
     app.use((err, req, res, next) => {

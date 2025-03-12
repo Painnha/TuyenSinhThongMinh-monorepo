@@ -5,7 +5,7 @@ const University = require('../models/University');
  */
 exports.getAllUniversities = async (req, res) => {
   try {
-    const { search, page = 1, limit = 10 } = req.query;
+    const { search, page, limit } = req.query;
     let query = {};
 
     // Xử lý tìm kiếm
@@ -19,25 +19,37 @@ exports.getAllUniversities = async (req, res) => {
       };
     }
 
-    // Tính toán skip cho phân trang
-    const skip = (page - 1) * limit;
+    // Nếu có yêu cầu phân trang
+    if (page && limit) {
+      const skip = (parseInt(page) - 1) * parseInt(limit);
+      const universities = await University.find(query)
+        .sort({ name: 1 })
+        .skip(skip)
+        .limit(parseInt(limit));
 
-    // Thực hiện query với phân trang
-    const universities = await University.find(query)
-      .sort({ name: 1 })
-      .skip(skip)
-      .limit(parseInt(limit));
+      const total = await University.countDocuments(query);
 
-    // Đếm tổng số kết quả
-    const total = await University.countDocuments(query);
+      return res.json({
+        success: true,
+        data: universities,
+        pagination: {
+          total,
+          page: parseInt(page),
+          totalPages: Math.ceil(total / parseInt(limit))
+        }
+      });
+    }
 
+    // Nếu không có phân trang, lấy tất cả
+    const universities = await University.find(query).sort({ name: 1 });
+    
     res.json({
       success: true,
       data: universities,
       pagination: {
-        total,
-        page: parseInt(page),
-        totalPages: Math.ceil(total / limit)
+        total: universities.length,
+        page: 1,
+        totalPages: 1
       }
     });
   } catch (error) {

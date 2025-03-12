@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from '../Image/LOGO.png';
 
-const Header = () => {
+const AdminHeader = () => {
   const [user, setUser] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -52,65 +52,49 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('isAdminLogin');
     setUser(null);
     setIsDropdownOpen(false);
-    navigate('/login');
+    navigate('/login-admin');
   };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleProfileClick = () => {
-    setIsDropdownOpen(false);
-    navigate('/profile'); // Thêm route này sau
-  };
-
   return (
-    <header className="header">
+    <header className="header" style={{ backgroundColor: '#001529', color: 'white' }}>
       <div className="header-container">
         <div className="logo">
-          <Link to="/">
-            <img src={logo} alt="TuyenSinh" className="logo-image" />
+          <Link to="/admin">
+            <img src={logo} alt="TuyenSinh Admin" className="logo-image" />
           </Link>
         </div>
-        <nav className="nav-menu">
-          <ul>
-            <li><Link to="/diem-chuan">Điểm chuẩn đại học</Link></li>
-            <li><Link to="/tinh-diem">Tính điểm học bạ THPT</Link></li>
-            <li><Link to="/tu-van">Tư vấn chọn ngành</Link></li>
-          </ul>
-        </nav>
+        <div style={{ flex: 1, textAlign: 'center', fontSize: '1.5rem', fontWeight: 'bold' }}>
+          Hệ thống quản trị
+        </div>
         <div className="auth-button">
           {user ? (
             <div className="user-menu" ref={dropdownRef}>
-              <span className="user-name" onClick={toggleDropdown}>
-                {user.userName}
+              <span className="user-name" onClick={toggleDropdown} style={{ color: 'white' }}>
+                {user.userName} (Admin)
               </span>
               <div className={`dropdown-menu ${isDropdownOpen ? 'active' : ''}`}>
-                <div className="dropdown-item" onClick={handleProfileClick}>
-                  Thông tin cá nhân
-                </div>
-                {user.role === 'admin' && (
-                  <Link to="/login-admin" className="dropdown-item">
-                    Quản trị hệ thống
-                  </Link>
-                )}
+                <Link to="/" className="dropdown-item">
+                  Trang người dùng
+                </Link>
                 <div className="dropdown-item logout" onClick={handleLogout}>
                   Đăng xuất
                 </div>
               </div>
             </div>
           ) : (
-            <Link to="/login" className="login-button">Đăng nhập</Link>
+            <Link to="/login-admin" className="login-button">Đăng nhập</Link>
           )}
         </div>
-      </div>
-      <div className="admin-link" style={{ textAlign: 'center', padding: '5px', backgroundColor: '#f0f0f0', fontSize: '12px' }}>
-        <Link to="/login-admin" style={{ color: '#666', textDecoration: 'none' }}>Đăng nhập quản trị</Link>
       </div>
     </header>
   );
 };
 
-export default Header; 
+export default AdminHeader; 

@@ -8,10 +8,13 @@ import LoginScreen from './Components/Screens/Auth/LoginScreen';
 import Profile from './Components/Screens/Profile/Profile';
 import RegisterScreen from './Components/Screens/Auth/RegisterScreen';
 import ForgotPasswordScreen from './Components/Screens/Auth/ForgotPasswordScreen';
+import AdminLoginScreen from './Components/Screens/Auth/AdminLoginScreen';
 import ConsultationPage from './Components/ConsultationPage/ConsultationPage';
 import TranscriptCalculator from './Components/TranscriptCalculator/TranscriptCalculator';
 import BenchmarkSearch from './Components/BenchmarkSearch/BenchmarkSearch';
 import UniversityDetail from './Components/UniversityDetail/UniversityDetail';
+import AdminDashboard from './Components/Screens/Admin/AdminDashboard';
+import ProtectedRoute from './Components/utils/ProtectedRoute';
 import './App.css';
 
 // Component để kiểm tra và render Header
@@ -19,10 +22,12 @@ const AppContent = () => {
   const location = useLocation();
   
   // Danh sách các đường dẫn không hiển thị header
-  const authPaths = ['/login', '/register', '/forgot-password'];
+  const authPaths = ['/login', '/register', '/forgot-password', '/login-admin'];
+  const adminPaths = ['/admin', '/admin/*'];
   
   // Kiểm tra xem có nên hiển thị header không
-  const shouldShowHeader = !authPaths.includes(location.pathname);
+  const shouldShowHeader = !authPaths.includes(location.pathname) && 
+                          !adminPaths.some(path => location.pathname.startsWith('/admin'));
 
   return (
     <div className={`App ${shouldShowHeader ? 'with-header' : ''}`}>
@@ -34,11 +39,21 @@ const AppContent = () => {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/login-admin" element={<AdminLoginScreen />} />
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        } />
         <Route path="/tu-van" element={<ConsultationPage />} />
         <Route path="/tinh-diem" element={<TranscriptCalculator />} />
         <Route path="/diem-chuan" element={<BenchmarkSearch />} />
         <Route path="/university/:code" element={<UniversityDetail />} />
+        <Route path="/admin/*" element={
+          <ProtectedRoute allowedRoles={['admin']} requireAdminLogin={true}>
+            <AdminDashboard />
+          </ProtectedRoute>
+        } />
       </Routes>
     </div>
   );

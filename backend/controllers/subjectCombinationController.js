@@ -5,7 +5,7 @@ const SubjectCombination = require('../models/SubjectCombination');
  */
 exports.getAllCombinations = async (req, res) => {
   try {
-    const { search, page = 1, limit = 10 } = req.query;
+    const { search, page, limit } = req.query;
     let query = { isActive: true };
 
     // Xử lý tìm kiếm
@@ -20,25 +20,37 @@ exports.getAllCombinations = async (req, res) => {
       };
     }
 
-    // Tính toán skip cho phân trang
-    const skip = (page - 1) * limit;
+    // Nếu có yêu cầu phân trang
+    if (page && limit) {
+      const skip = (parseInt(page) - 1) * parseInt(limit);
+      const combinations = await SubjectCombination.find(query)
+        .sort({ code: 1 })
+        .skip(skip)
+        .limit(parseInt(limit));
 
-    // Thực hiện query với phân trang
-    const combinations = await SubjectCombination.find(query)
-      .sort({ code: 1 })
-      .skip(skip)
-      .limit(parseInt(limit));
+      const total = await SubjectCombination.countDocuments(query);
 
-    // Đếm tổng số kết quả
-    const total = await SubjectCombination.countDocuments(query);
+      return res.json({
+        success: true,
+        data: combinations,
+        pagination: {
+          total,
+          page: parseInt(page),
+          totalPages: Math.ceil(total / parseInt(limit))
+        }
+      });
+    }
 
+    // Nếu không có phân trang, lấy tất cả
+    const combinations = await SubjectCombination.find(query).sort({ code: 1 });
+    
     res.json({
       success: true,
       data: combinations,
       pagination: {
-        total,
-        page: parseInt(page),
-        totalPages: Math.ceil(total / limit)
+        total: combinations.length,
+        page: 1,
+        totalPages: 1
       }
     });
   } catch (error) {

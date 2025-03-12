@@ -202,16 +202,20 @@ const ConsultationPage = () => {
         const fetchSubjectCombinations = async () => {
             setLoading(true);
             try {
-                const data = await subjectCombinationService.getAllCombinations();
-                // Transform data for MultiSelect component
-                const options = data.map(combo => ({
-                    value: combo.code,
-                    label: `${combo.code} - ${combo.subjects}`,
-                    details: {
-                        subjects: combo.subjects
-                    }
-                }));
-                setExamBlockOptions(options);
+                const response = await subjectCombinationService.getAllCombinations();
+                if (response.success && Array.isArray(response.data)) {
+                    // Transform data for MultiSelect component
+                    const options = response.data.map(combo => ({
+                        value: combo.code,
+                        label: `${combo.code} - ${combo.subjects}`,
+                        details: {
+                            subjects: combo.subjects
+                        }
+                    }));
+                    setExamBlockOptions(options);
+                } else {
+                    throw new Error('Invalid data format received from API');
+                }
             } catch (err) {
                 setError('Không thể tải danh sách tổ hợp môn');
                 console.error('Error:', err);

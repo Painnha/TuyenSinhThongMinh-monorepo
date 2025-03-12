@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Auth.css';
 import LoginImg from '../../Image/LOGO.png';
-import GoogleIcon from '../../Image/GoogleIcon.png';
-import FaceIcon from '../../Image/FaceIcon.png';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
-const LoginScreen = () => {
+const AdminLoginScreen = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -92,10 +90,17 @@ const LoginScreen = () => {
       
       const { token, user } = response.data;
       
+      // Kiểm tra xem người dùng có quyền admin không
+      if (user.role !== 'admin') {
+        setError('Liên hệ người quản trị để tìm hiểu thêm');
+        setLoading(false);
+        return;
+      }
+      
       // Lưu token và thông tin user vào localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      localStorage.removeItem('isAdminLogin'); // Đảm bảo xóa flag đăng nhập admin nếu có
+      localStorage.setItem('isAdminLogin', 'true'); // Đánh dấu đăng nhập từ trang admin
 
       // Trigger storage event để Header component cập nhật
       window.dispatchEvent(new Event('storage'));
@@ -105,14 +110,8 @@ const LoginScreen = () => {
       console.log('Đăng nhập thành công, user:', user);
       console.log('Token decoded:', decodedToken);
 
-      // Chuyển hướng đến trang trước đó hoặc trang chủ
-      // Nếu trang trước đó là /admin thì chuyển về trang chủ
-      const from = location.state?.from?.pathname;
-      if (from && from.startsWith('/admin')) {
-        navigate('/');
-      } else {
-        navigate(from || '/');
-      }
+      // Chuyển hướng đến trang admin
+      navigate('/admin');
     } catch (error) {
       console.error('Login error:', error);
       if (error.response) {
@@ -137,8 +136,7 @@ const LoginScreen = () => {
         <img src={LoginImg} alt="Hình minh họa đăng nhập" className="form-illustration" />
         
         <div className="tabs">
-          <span className="tab active">Đăng nhập</span>
-          <Link to="/register" className="tab">Đăng ký</Link>
+          <span className="tab active">Đăng nhập Admin</span>
         </div>
 
         {error && (
@@ -165,22 +163,17 @@ const LoginScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <Link to="/forgot-password" className="forgot-password">Bạn quên mật khẩu?</Link>
           <button type="submit" className="login-button" disabled={loading}>
             Đăng nhập
           </button>
         </form>
 
-        <div className="alternative-login">
-          <span>Hoặc đăng nhập bằng</span>
-          <div className="social-icons">
-            <img src={GoogleIcon} alt="Google" />
-            <img src={FaceIcon} alt="Facebook" />
-          </div>
+        <div className="mt-3 text-center">
+          <Link to="/" className="btn btn-link">Quay lại trang chủ</Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default LoginScreen;
+export default AdminLoginScreen; 
