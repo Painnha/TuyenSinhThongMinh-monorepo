@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UserManagement from './UserManagement';
 import AdminHeader from '../../layout/AdminHeader';
+import GenerateData from './GenerateData';
 
 // Đơn giản hóa component để tránh lỗi hooks
 const AdminDashboard = () => {
@@ -24,6 +25,8 @@ const AdminDashboard = () => {
             <p>Chức năng đang được phát triển...</p>
           </div>
         );
+      case 'generate-data':
+        return <GenerateData />;
       default:
         return <UserManagement />;
     }
@@ -73,7 +76,24 @@ const AdminDashboard = () => {
                     Thống kê
                   </button>
                 </li>
-                <li>
+                <li style={{ marginBottom: '10px' }}>
+                  <button 
+                    onClick={() => setActiveTab('generate-data')}
+                    style={{ 
+                      padding: '10px', 
+                      width: '100%', 
+                      textAlign: 'left',
+                      backgroundColor: activeTab === 'generate-data' ? '#007bff' : '#f8f9fa',
+                      color: activeTab === 'generate-data' ? 'white' : 'black',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Tạo dữ liệu giả định
+                  </button>
+                </li>
+                <li style={{ marginBottom: '10px' }}>
                   <button 
                     onClick={() => setActiveTab('settings')}
                     style={{ 

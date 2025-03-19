@@ -1,0 +1,74 @@
+major_name,category,interests,market_trend
+"Công nghệ thông tin","Công nghệ thông tin - Tin học","Lập trình,Máy tính,Công nghệ,Trò chơi điện tử,Phân tích dữ liệu",0.95
+"Kỹ thuật phần mềm","Công nghệ thông tin - Tin học","Lập trình,Máy tính,Công nghệ,Phân tích dữ liệu,Sáng tạo",0.93
+"An toàn thông tin","Công nghệ thông tin - Tin học","Bảo mật thông tin,Máy tính,Công nghệ,Phân tích dữ liệu,Nghiên cứu",0.92
+"Trí tuệ nhân tạo","Công nghệ thông tin - Tin học","Lập trình,Phân tích dữ liệu,Công nghệ,Toán học,Tự động hóa",0.98
+"Khoa học dữ liệu và Trí tuệ nhân tạo","Công nghệ thông tin - Tin học","Phân tích dữ liệu,Toán học,Thống kê,Công nghệ,Nghiên cứu",0.97
+"Quản trị kinh doanh","Kinh tế - Quản trị kinh doanh - Thương Mại","Kinh doanh,Lãnh đạo,Quản lý,Giao tiếp,Phân tích dữ liệu",0.85
+"Marketing","Báo chí - Marketing - Quảng cáo - PR","Sáng tạo,Truyền thông,Kinh doanh,Quảng cáo,Giao tiếp",0.88
+"Tài chính - Ngân hàng","Tài chính - Ngân hàng - Bảo hiểm","Tài chính,Toán học,Phân tích dữ liệu,Kinh doanh,Kinh tế",0.86
+"Kế toán","Kế toán - Kiểm toán","Tài chính,Thống kê,Quản lý,Kinh tế,Phân tích dữ liệu",0.80
+"Kiểm toán","Kế toán - Kiểm toán","Phân tích dữ liệu,Tài chính,Kinh tế,Thống kê,Nghiên cứu",0.82
+"Y khoa","Y - Dược","Y học,Khoa học,Chăm sóc sức khỏe,Giúp đỡ người khác,Nghiên cứu",0.90
+"Dược học","Y - Dược","Hóa học,Y học,Nghiên cứu,Chăm sóc sức khỏe,Khoa học",0.87
+"Điều dưỡng","Y - Dược","Chăm sóc sức khỏe,Y học,Giúp đỡ người khác,Giao tiếp,Y tế",0.85
+"Kỹ thuật điện - điện tử","Điện lạnh - Điện tử - Điện - Tự động hóa","Kỹ thuật,Thiết kế,Điện tử,Công nghệ,Toán học",0.83
+"Công nghệ kỹ thuật ô tô","Ô tô - Cơ khí - Chế tạo","Cơ khí,Kỹ thuật,Công nghệ,Thiết kế,Tự động hóa",0.84
+"Tự động hóa","Điện lạnh - Điện tử - Điện - Tự động hóa","Cơ khí,Điện tử,Lập trình,Công nghệ,Tự động hóa",0.87
+"Kiến trúc","Xây dựng - Kiến trúc - Giao thông","Thiết kế,Nghệ thuật,Xây dựng,Sáng tạo,Toán học",0.81
+"Kỹ thuật xây dựng","Xây dựng - Kiến trúc - Giao thông","Xây dựng,Thiết kế,Kỹ thuật,Công nghệ,Toán học",0.82
+"Ngôn ngữ Anh","Ngoại giao - Ngoại ngữ","Ngoại ngữ,Giao tiếp,Văn hóa,Du lịch,Đọc sách",0.79
+"Ngôn ngữ Trung Quốc","Ngoại giao - Ngoại ngữ","Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Nghiên cứu",0.78
+"Ngôn ngữ Nhật","Ngoại giao - Ngoại ngữ","Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Đọc sách",0.77
+"Ngôn ngữ Hàn Quốc","Ngoại giao - Ngoại ngữ","Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Truyền thông",0.75
+"Giáo dục Tiểu học","Sư phạm - Giáo dục","Dạy học,Giúp đỡ người khác,Sáng tạo,Giáo dục,Giao tiếp",0.76
+"Sư phạm Toán","Sư phạm - Giáo dục","Toán học,Dạy học,Giáo dục,Giao tiếp,Nghiên cứu",0.75
+"Sư phạm Ngữ văn","Sư phạm - Giáo dục","Văn học,Dạy học,Ngoại ngữ,Giáo dục,Sáng tạo",0.74
+"Sư phạm Tiếng Anh","Sư phạm - Giáo dục","Ngoại ngữ,Dạy học,Giao tiếp,Văn hóa,Giáo dục",0.77
+"Luật kinh tế","Luật - Tòa án","Luật pháp,Kinh tế,Phân tích dữ liệu,Kinh doanh,Nghiên cứu",0.85
+"Luật quốc tế","Luật - Tòa án","Luật pháp,Ngoại ngữ,Giao tiếp,Chính trị,Nghiên cứu",0.83
+"Luật","Luật - Tòa án","Luật pháp,Chính trị,Giao tiếp,Nghiên cứu,Phân tích dữ liệu",0.84
+"Thiết kế đồ họa","Thiết kế đồ họa - Game - Đa phương tiện","Nghệ thuật,Thiết kế,Sáng tạo,Công nghệ,Máy tính",0.86
+"Thiết kế thời trang","Thời trang - May mặc","Thiết kế,Sáng tạo,Nghệ thuật,Thể thao,Văn hóa",0.80
+"Công nghệ sinh học","Công nghệ sinh - Hóa","Sinh học,Nghiên cứu,Khoa học,Môi trường,Hóa học",0.87
+"Hóa học","Công nghệ sinh - Hóa","Hóa học,Khoa học,Nghiên cứu,Phân tích dữ liệu,Môi trường",0.76
+"Quản trị khách sạn","Du lịch-Khách sạn","Du lịch,Dịch vụ khách hàng,Quản lý,Giao tiếp,Ngoại ngữ",0.79
+"Quản trị dịch vụ du lịch và lữ hành","Du lịch-Khách sạn","Du lịch,Quản lý,Văn hóa,Dịch vụ khách hàng,Ngoại ngữ",0.78
+"Quản lý tài nguyên và môi trường","Tài nguyên - Môi trường","Môi trường,Thiên nhiên,Quản lý,Nghiên cứu,Khoa học",0.82
+"Nông nghiệp","Thủy sản - Lâm Nghiệp - Nông nghiệp","Nông nghiệp,Thiên nhiên,Môi trường,Nghiên cứu,Khoa học",0.76
+"Nuôi trồng thủy sản","Thủy sản - Lâm Nghiệp - Nông nghiệp","Nông nghiệp,Thiên nhiên,Nghiên cứu,Môi trường,Khoa học",0.75
+"Thú y","Bác sĩ thú y","Động vật,Y học,Chăm sóc sức khỏe,Khoa học,Nghiên cứu",0.80
+"Logistics và Quản lý chuỗi cung ứng","Ngoại thương - Xuất nhập khẩu - Kinh Tế quốc tế","Quản lý,Kinh doanh,Phân tích dữ liệu,Giao tiếp,Công nghệ",0.88
+"Quản trị kinh doanh quốc tế","Ngoại thương - Xuất nhập khẩu - Kinh Tế quốc tế","Kinh doanh,Ngoại ngữ,Quản lý,Giao tiếp,Văn hóa",0.86
+"Digital Marketing","Báo chí - Marketing - Quảng cáo - PR","Truyền thông,Quảng cáo,Công nghệ,Sáng tạo,Phân tích dữ liệu",0.92
+"Quan hệ công chúng","Báo chí - Marketing - Quảng cáo - PR","Truyền thông,Giao tiếp,Quảng cáo,Sáng tạo,Kinh doanh",0.84
+"Công nghệ thực phẩm","Công nghệ chế biến thực phẩm","Ẩm thực,Hóa học,Nghiên cứu,Khoa học,Sáng tạo",0.79
+"Mạng máy tính & truyền thông dữ liệu","Công nghệ thông tin - Tin học","Máy tính,Công nghệ,Bảo mật thông tin,Phân tích dữ liệu,Kỹ thuật",0.89
+"Toán Kinh tế","Toán học và thống kê","Toán học,Kinh tế,Thống kê,Phân tích dữ liệu,Nghiên cứu",0.82
+"Thống kê","Toán học và thống kê","Phân tích dữ liệu,Thống kê,Toán học,Nghiên cứu,Máy tính",0.85
+"Quản trị nhân lực","Nhân sự - Hành chính","Quản lý,Giao tiếp,Kinh doanh,Phân tích dữ liệu,Giúp đỡ người khác",0.83
+"Tâm lý học","Tâm lý","Giúp đỡ người khác,Phân tích dữ liệu,Nghiên cứu,Giao tiếp,Khoa học",0.81
+"Báo chí","Báo chí - Marketing - Quảng cáo - PR","Truyền thông,Giao tiếp,Văn học,Đọc sách,Sáng tạo",0.76
+"Nghệ thuật","Mỹ thuật - Âm nhạc - Nghệ thuật","Sáng tạo,Nghệ thuật,Thiết kế,Văn hóa,Truyền thông",0.75
+"Quan hệ quốc tế","Ngoại giao - Ngoại ngữ","Chính trị,Ngoại ngữ,Văn hóa,Giao tiếp,Nghiên cứu",0.80
+"Vật lý học","Khoa học tự nhiên khác","Vật lý,Nghiên cứu,Khoa học,Toán học,Phân tích dữ liệu",0.77
+"Kinh tế học","Kinh tế - Quản trị kinh doanh - Thương Mại","Kinh tế,Phân tích dữ liệu,Thống kê,Nghiên cứu,Chính trị",0.84
+"Xã hội học","Xã hội - Nhân văn","Nghiên cứu,Giúp đỡ người khác,Phân tích dữ liệu,Thống kê,Giao tiếp",0.73
+"Công nghệ vật liệu","Công nghệ - Kỹ thuật","Nghiên cứu,Kỹ thuật,Khoa học,Công nghệ,Thiết kế",0.78
+"Quản lý giáo dục","Sư phạm - Giáo dục","Giáo dục,Quản lý,Lãnh đạo,Giao tiếp,Nghiên cứu",0.78
+"Răng - Hàm - Mặt","Y - Dược","Y học,Chăm sóc sức khỏe,Thiết kế,Nghiên cứu,Sáng tạo",0.88
+"Kỹ thuật môi trường","Tài nguyên - Môi trường","Môi trường,Kỹ thuật,Thiên nhiên,Nghiên cứu,Khoa học",0.81
+"Khoa học máy tính","Công nghệ thông tin - Tin học","Toán học,Lập trình,Máy tính,Công nghệ,Nghiên cứu",0.94
+"Thiết kế nội thất","Xây dựng - Kiến trúc - Giao thông","Thiết kế,Nghệ thuật,Sáng tạo,Xây dựng,Mỹ thuật",0.83
+"Quản lý đất đai","Tài nguyên - Môi trường","Thiên nhiên,Môi trường,Quản lý,Nghiên cứu,Xây dựng",0.77
+"Ngôn ngữ Pháp","Ngoại giao - Ngoại ngữ","Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Văn học",0.74
+"Quản lý bệnh viện","Y - Dược","Y học,Quản lý,Chăm sóc sức khỏe,Lãnh đạo,Giao tiếp",0.84
+"Công nghệ sau thu hoạch","Thủy sản - Lâm Nghiệp - Nông nghiệp","Nông nghiệp,Công nghệ,Ẩm thực,Nghiên cứu,Khoa học",0.78
+"Sư phạm Vật lý","Sư phạm - Giáo dục","Vật lý,Dạy học,Giáo dục,Khoa học,Nghiên cứu",0.73
+"Sư phạm Hóa học","Sư phạm - Giáo dục","Hóa học,Dạy học,Giáo dục,Khoa học,Nghiên cứu",0.72
+"Bảo hiểm","Tài chính - Ngân hàng - Bảo hiểm","Tài chính,Thống kê,Kinh doanh,Phân tích dữ liệu,Dịch vụ khách hàng",0.79
+"Khoa học dữ liệu","Công nghệ thông tin - Tin học","Phân tích dữ liệu,Thống kê,Máy học,Nghiên cứu,Toán học",0.96
+"Âm nhạc","Mỹ thuật - Âm nhạc - Nghệ thuật","Nghệ thuật,Sáng tạo,Văn hóa,Thể thao,Giải trí",0.76
+"Nhân học","Xã hội - Nhân văn","Văn hóa,Nghiên cứu,Xã hội,Giúp đỡ người khác,Giao tiếp",0.71
+"Kinh doanh quốc tế","Ngoại thương - Xuất nhập khẩu - Kinh Tế quốc tế","Kinh doanh,Ngoại ngữ,Quản lý,Giao tiếp,Văn hóa",0.87
+"Robot và Trí tuệ nhân tạo","Công nghệ thông tin - Tin học","Công nghệ,Tự động hóa,Lập trình,Kỹ thuật,Phân tích dữ liệu",0.95 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Auth.css';
-import LoginImg from '../../Image/RegisterImg.png';
+import LoginImg from '../../Image/LOGO.png';
 import axios from 'axios';
 
 const RegisterScreen = () => {
