@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
-const subjectCombinationSchema = new mongoose.Schema({
-    code: {
+const interestSchema = new mongoose.Schema({
+    id: {
+        type: Number
+    },
+    name: {
         type: String,
         required: true
     },
-    subjects: {
-        type: [String],
-        required: true
-    },
-    description: {
+    group: {
         type: String,
         required: true
     },
@@ -24,9 +23,9 @@ const subjectCombinationSchema = new mongoose.Schema({
 });
 
 // Cập nhật thời gian khi document được update
-subjectCombinationSchema.pre('save', function(next) {
+interestSchema.pre('save', function(next) {
     this.updatedAt = Date.now();
     next();
 });
 
-module.exports = mongoose.model('SubjectCombination', subjectCombinationSchema, 'subject_combinations'); 
+module.exports = mongoose.model('Interest', interestSchema, 'interests'); 

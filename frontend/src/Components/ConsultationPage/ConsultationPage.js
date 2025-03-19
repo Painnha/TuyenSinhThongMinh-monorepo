@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { subjectCombinationService } from '../../services/api';
+import { subjectCombinationService, interestService } from '../../services/api';
 import './ConsultationPage.css';
 import axios from 'axios';
 
@@ -169,22 +169,17 @@ const ConsultationPage = () => {
         technology: 'Công nghệ'
     };
 
-    // Định nghĩa các options cho sở thích
-    const interestOptions = [
-        { value: 'technology', label: 'Công nghệ thông tin' },
-        { value: 'business', label: 'Kinh tế - Kinh doanh' },
-        { value: 'engineering', label: 'Kỹ thuật - Công nghệ' },
-        { value: 'medical', label: 'Y - Dược' },
-        { value: 'education', label: 'Sư phạm - Giáo dục' },
-        { value: 'art', label: 'Nghệ thuật - Thiết kế' },
-        { value: 'social', label: 'Khoa học xã hội' },
-        { value: 'natural', label: 'Khoa học tự nhiên' }
-    ];
-
     const [provinces, setProvinces] = useState([]);
     const [examBlockOptions, setExamBlockOptions] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [interestOptions, setInterestOptions] = useState([]);
+    const [loading, setLoading] = useState({ 
+        examBlocks: false,
+        interests: false 
+    });
+    const [error, setError] = useState({ 
+        examBlocks: null,
+        interests: null 
+    });
 
     // Fetch provinces
     useEffect(() => {
@@ -208,40 +203,69 @@ const ConsultationPage = () => {
     // Fetch subject combinations when component mounts
     useEffect(() => {
         const fetchSubjectCombinations = async () => {
-            setLoading(true);
-            setError(null);
+            setLoading(prev => ({ ...prev, examBlocks: true }));
+            setError(prev => ({ ...prev, examBlocks: null }));
             try {
-            
                 const response = await subjectCombinationService.getAllCombinations();
-  
+                // console.log('Subject combinations response:', response);
+
                 if (response && response.success && Array.isArray(response.data)) {
-                    // Transform data for MultiSelect component
-                    const options = response.data.map(combo => ({
-                        value: combo.code,
-                        label: `${combo.code} - ${combo.subjects}`,
-                        details: {
-                            subjects: combo.subjects
-                        }
-                    }));
+                    // Dữ liệu đã được format đúng từ API, không cần transform lại
+                    const options = response.data;
+                    // console.log('Subject combinations options:', options);
                     
-                    // Sắp xếp tổ hợp môn theo mã (A00, A01, B00, v.v.)
-                    options.sort((a, b) => a.value.localeCompare(b.value));
+                    // Sắp xếp tổ hợp môn theo mã
+                    options.sort((a, b) => {
+                        if (!a.value || !b.value) return 0;
+                        return a.value.localeCompare(b.value);
+                    });
                     
                     setExamBlockOptions(options);
-                  
                 } else {
-                    console.error('Data không đúng định dạng:', response);
                     throw new Error('Dữ liệu không hợp lệ từ API');
                 }
             } catch (err) {
                 console.error('Lỗi khi lấy tổ hợp môn:', err);
-                setError('Không thể tải danh sách tổ hợp môn: ' + err.message);
+                setError(prev => ({
+                    ...prev,
+                    examBlocks: 'Không thể tải danh sách tổ hợp môn: ' + err.message
+                }));
             } finally {
-                setLoading(false);
+                setLoading(prev => ({ ...prev, examBlocks: false }));
             }
         };
 
         fetchSubjectCombinations();
+    }, []);
+
+    // Fetch interests when component mounts
+    useEffect(() => {
+        const fetchInterests = async () => {
+            setLoading(prev => ({ ...prev, interests: true }));
+            setError(prev => ({ ...prev, interests: null }));
+            try {
+                const response = await interestService.getAllInterests();
+                if (response.success && Array.isArray(response.data)) {
+                    const options = response.data.map(interest => ({
+                        value: interest.value,
+                        label: interest.value,
+                    }));
+                    setInterestOptions(options);
+                } else {
+                    throw new Error('Không thể tải danh sách sở thích');
+                }
+            } catch (err) {
+                console.error('Lỗi khi lấy danh sách sở thích:', err);
+                setError(prev => ({
+                    ...prev,
+                    interests: 'Không thể tải danh sách sở thích'
+                }));
+            } finally {
+                setLoading(prev => ({ ...prev, interests: false }));
+            }
+        };
+
+        fetchInterests();
     }, []);
 
     // Xác định các trường điểm cần hiển thị dựa trên phương thức xét học bạ
@@ -518,11 +542,11 @@ const ConsultationPage = () => {
 
                 <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
                     <h3>Bước 5. Chọn tổ hợp thi bạn mong muốn</h3>
-                    {loading ? (
+                    {loading.examBlocks ? (
                         <div className="loading-message">Đang tải danh sách tổ hợp thi...</div>
-                    ) : error ? (
+                    ) : error.examBlocks ? (
                         <div className="error-message">
-                            {error}
+                            {error.examBlocks}
                             <button 
                                 onClick={() => window.location.reload()} 
                                 style={{
@@ -565,7 +589,7 @@ const ConsultationPage = () => {
                                         value={formData.examBlocks}
                                         onChange={(values) => handleMultiSelectChange('examBlocks', values)}
                                         placeholder="Chọn tổ hợp môn"
-                                        loading={loading}
+                                        loading={loading.examBlocks}
                                     />
                                 </div>
                             )}
@@ -575,19 +599,58 @@ const ConsultationPage = () => {
 
                 <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
                     <h3>Bước 6. Chọn sở thích</h3>
-                    {interestOptions && interestOptions.length > 0 ? (
-                        <div style={{ position: 'relative', overflow: 'visible' }}>
-                            <MultiSelect
-                                options={interestOptions}
-                                value={formData.interests}
-                                onChange={(values) => handleMultiSelectChange('interests', values)}
-                                placeholder="Chọn lĩnh vực bạn yêu thích"
-                            />
+                    {loading.interests ? (
+                        <div className="loading-message">Đang tải danh sách sở thích...</div>
+                    ) : error.interests ? (
+                        <div className="error-message">
+                            {error.interests}
+                            <button 
+                                onClick={() => window.location.reload()} 
+                                style={{
+                                    marginLeft: '10px', 
+                                    padding: '5px 10px', 
+                                    background: '#f44336', 
+                                    color: 'white', 
+                                    border: 'none', 
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Thử lại
+                            </button>
                         </div>
                     ) : (
-                        <div className="error-message">
-                            Không thể tải danh sách sở thích. Vui lòng thử lại sau.
-                        </div>
+                        <>
+                            {interestOptions.length === 0 ? (
+                                <div className="error-message">
+                                    Không có dữ liệu sở thích. Vui lòng thử lại sau.
+                                    <button 
+                                        onClick={() => window.location.reload()} 
+                                        style={{
+                                            marginLeft: '10px', 
+                                            padding: '5px 10px', 
+                                            background: '#f44336', 
+                                            color: 'white', 
+                                            border: 'none', 
+                                            borderRadius: '4px',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        Thử lại
+                                    </button>
+                                </div>
+                            ) : (
+                                <div style={{ position: 'relative', overflow: 'visible' }}>
+                                    <MultiSelect
+                                        options={interestOptions}
+                                        value={formData.interests}
+                                        onChange={(values) => handleMultiSelectChange('interests', values)}
+                                        placeholder="Chọn lĩnh vực bạn yêu thích"
+                                        loading={loading.interests}
+                                    />
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
 

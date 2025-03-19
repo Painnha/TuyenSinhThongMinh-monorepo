@@ -1,56 +1,47 @@
 require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
+
+// Import routes
+const interestsRouter = require('./routes/interests');
+const subjectCombinationsRouter = require('./routes/subjectCombinations');
+const universitiesRouter = require('./routes/universities');
+
 const app = express();
 
-// Cấu hình CORS
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  credentials: true
-}));
-
+// Middleware
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Import connectDB từ app.js
-const connectDB = require('./app');
+// Routes
+app.use('/api/interests', interestsRouter);
+app.use('/api/subject-combinations', subjectCombinationsRouter);
+app.use('/api/universities', universitiesRouter);
 
-// Khởi động server sau khi kết nối DB thành công
+// MongoDB connection
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log('MongoDB connected successfully');
+    } catch (error) {
+        console.error('MongoDB connection error:', error);
+        process.exit(1);
+    }
+};
+
+// Start server
 const startServer = async () => {
-  try {
-    // Kết nối đến MongoDB với retry logic
     await connectDB();
     
-    // Import routes
-    const authRoutes = require('./routes/authRoutes');
-    const subjectCombinationsRouter = require('./routes/subjectCombinations');
-    const universityRoutes = require('./routes/universityRoutes');
-    const userRoutes = require('./routes/userRoutes');
-
-    // Sử dụng routes
-    app.use('/api/auth', authRoutes);
-    app.use('/api/subject-combinations', subjectCombinationsRouter);
-    app.use('/api/universities', universityRoutes);
-    app.use('/api/users', userRoutes);
-
-    // Error handling middleware
-    app.use((err, req, res, next) => {
-      console.error(err.stack);
-      res.status(500).json({
-        success: false,
-        error: 'Something went wrong!'
-      });
-    });
-
-    // Khởi động server
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
-      console.log(`Server chạy trên cổng ${PORT}`);
+        console.log(`Server is running on port ${PORT}`);
     });
-  } catch (error) {
-    console.error('Lỗi kết nối MongoDB:', error);
-    process.exit(1);
-  }
 };
 
 startServer();

@@ -65,53 +65,56 @@ export const universityService = {
     }
 };
 
+// Interest service
+export const interestService = {
+    getAllInterests: async () => {
+        try {
+            console.log('Calling interests API...'); // Debug log
+            const response = await fetch(`${API_URL}/interests`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            // console.log('Interests API response:', data); // Debug log
+            return data;
+        } catch (error) {
+            console.error('Error fetching interests:', error);
+            throw error;
+        }
+    }
+};
+
+// Subject combination service
 export const subjectCombinationService = {
     getAllCombinations: async () => {
         try {
-         
-            
-            const response = await fetch(`${API_URL}/subject-combinations`);
-            
-       
-            
+            console.log('Calling subject combinations API...'); // Debug log
+            const response = await fetch(`${API_URL}/subject-combinations`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+            });
+
             if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
+
             const data = await response.json();
-     
-            
-            // Nếu API chưa hoạt động, trả về dữ liệu mẫu để UI không bị lỗi
-            if (!data || !data.success) {
-                console.log('API chưa sẵn sàng, sử dụng dữ liệu mẫu');
-                return {
-                    success: true,
-                    data: [
-                        { code: 'A00', subjects: 'Toán, Lý, Hóa' },
-                        { code: 'A01', subjects: 'Toán, Lý, Anh' },
-                        { code: 'B00', subjects: 'Toán, Hóa, Sinh' },
-                        { code: 'C00', subjects: 'Văn, Sử, Địa' },
-                        { code: 'D01', subjects: 'Toán, Văn, Anh' }
-                    ]
-                };
-            }
-            
+            // console.log('Subject combinations API response:', data); // Debug log
             return data;
         } catch (error) {
             console.error('Error fetching subject combinations:', error);
-            
-            // Trả về dữ liệu mẫu nếu có lỗi
-            console.log('Lỗi khi gọi API, sử dụng dữ liệu mẫu');
-            return {
-                success: true,
-                data: [
-                    { code: 'A00', subjects: 'Toán, Lý, Hóa' },
-                    { code: 'A01', subjects: 'Toán, Lý, Anh' },
-                    { code: 'B00', subjects: 'Toán, Hóa, Sinh' },
-                    { code: 'C00', subjects: 'Văn, Sử, Địa' },
-                    { code: 'D01', subjects: 'Toán, Văn, Anh' }
-                ]
-            };
+            throw error;
         }
     }
 }; 
