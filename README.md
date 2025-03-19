@@ -102,3 +102,106 @@ yarn dev
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+# Hệ thống gợi ý ngành học
+
+Hướng dẫn sử dụng hệ thống gợi ý ngành học trong dự án Tuyển Sinh Thông Minh.
+
+## Cài đặt và chạy hệ thống
+
+### Backend (Python)
+
+1. Cài đặt các thư viện Python cần thiết:
+```bash
+cd backend/python/data
+pip install -r requirements.txt
+```
+
+2. Chạy Flask server:
+```bash
+cd backend/python/data
+python -m flask run
+```
+
+### Frontend (React)
+
+1. Cài đặt các thư viện Node.js:
+```bash
+cd frontend
+npm install
+```
+
+2. Chạy React app:
+```bash
+cd frontend
+npm start
+```
+
+## Sử dụng hệ thống
+
+### 1. Trang tư vấn ngành học
+
+Truy cập trang tư vấn ngành học trong ứng dụng. Tại đây, bạn cần:
+
+1. Chọn phương thức xét tuyển
+2. Chọn đối tượng ưu tiên
+3. Chọn khu vực ưu tiên
+4. Nhập điểm số cho các môn học
+5. Chọn tổ hợp môn thi
+6. Chọn sở thích
+7. Nhấn nút "Gửi" để nhận gợi ý ngành học
+
+### 2. Kết quả
+
+Sau khi gửi thông tin, hệ thống sẽ hiển thị danh sách các ngành học phù hợp nhất, bao gồm:
+
+- Tên ngành học
+- Điểm phù hợp (trên thang 100)
+- Các thành phần điểm:
+  - Điểm tổ hợp môn (60%)
+  - Điểm khớp sở thích (30%) 
+  - Xu hướng thị trường (8%)
+  - Điểm ưu tiên (2%)
+
+## API Endpoints
+
+### 1. Gợi ý ngành học
+- **URL**: `/api/recommend`
+- **Method**: POST
+- **Body**:
+```json
+{
+  "TOA": 8.5,
+  "VAN": 7.0,
+  "ANH": 8.0,
+  "LY": 7.5,
+  "HOA": 8.0,
+  "SU": 6.5,
+  "DIA": 7.0,
+  "SINH": 6.5,
+  "GDCD": 7.5,
+  "TIN": 8.0,
+  "CN": 7.5,
+  "priority_area": "KV2",
+  "priority_subject": "05",
+  "interests": ["Lập trình", "Công nghệ"],
+  "subject_groups": ["A00", "A01"]
+}
+```
+
+### 2. Tạo dữ liệu mẫu
+- **URL**: `/api/generate-data`
+- **Method**: POST
+- **Body**:
+```json
+{
+  "num_samples": 100,
+  "method": "bayesian"
+}
+```
+
+## Chú ý
+
+1. Đảm bảo các file CSV (interests.csv, major_data.csv, subject_combinations.csv) đã được đặt đúng vị trí trong thư mục `backend/python/data/`
+2. Nếu frontend và backend chạy ở các port khác nhau, cần bật CORS trong backend
+3. Kiểm tra biến môi trường `REACT_APP_API_URL` trong file `.env` của frontend đã trỏ đúng đến URL của backend

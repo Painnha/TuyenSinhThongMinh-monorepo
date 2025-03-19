@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { subjectCombinationService, interestService } from '../../services/api';
+import { recommendationService } from '../../services/recommendationService';
 import './ConsultationPage.css';
 import axios from 'axios';
+import RecommendationResult from './RecommendationResult';
 
 const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -136,6 +138,7 @@ const ConsultationPage = () => {
         universities: [],
         majors: []
     });
+    const [recommendations, setRecommendations] = useState(null);
 
     // Khởi tạo điểm các môn với giá trị 0
     function initializeSubjectScores() {
@@ -366,8 +369,46 @@ const ConsultationPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+        
+        // Chuẩn bị dữ liệu để gửi đến API
+        const studentData = {
+            TOA: formData.scores.thpt.math || 0,
+            VAN: formData.scores.thpt.literature || 0,
+            ANH: formData.scores.thpt.foreignLanguage || 0,
+            LY: formData.scores.thpt.physics || 0,
+            HOA: formData.scores.thpt.chemistry || 0,
+            SU: formData.scores.thpt.history || 0,
+            DIA: formData.scores.thpt.geography || 0,
+            SINH: formData.scores.thpt.biology || 0,
+            GDCD: formData.scores.thpt.civics || 0,
+            TIN: formData.scores.thpt.informatics || 0,
+            CN: formData.scores.thpt.technology || 0,
+            priority_area: formData.priorityArea || 'KV3',
+            priority_subject: formData.priorityObject || '05',
+            interests: formData.interests,
+            subject_groups: formData.examBlocks
+        };
+
+        // Gọi API recommendation
+        recommendationService.getRecommendations(studentData)
+            .then(response => {
+                if (response.success) {
+                    setRecommendations(response.data);
+                } else {
+                    console.error('Error:', response.error);
+                    alert('Có lỗi xảy ra: ' + response.error);
+                }
+            })
+            .catch(error => {
+                console.error('API Error:', error);
+                alert('Không thể kết nối đến server. Vui lòng thử lại sau.');
+            });
     };
+
+    // Nếu có recommendations, hiển thị kết quả
+    if (recommendations) {
+        return <RecommendationResult recommendations={recommendations} />;
+    }
 
     return (
         <div className="consultation-container">
@@ -654,7 +695,7 @@ const ConsultationPage = () => {
                     )}
                 </div>
 
-                <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
+                {/* <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
                     <h3>Bước 7. Nhập trường, ngành hoặc tỉnh/thành mong muốn (nếu có)</h3>
                     <div className="location-inputs" style={{ position: 'relative', overflow: 'visible' }}>
                         {provinces && provinces.length > 0 ? (
@@ -766,10 +807,10 @@ const ConsultationPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="form-step">
-                    <h3>Bước 8. Nhấn nút Xem kết quả</h3>
+                    <h3>Bước 7. Nhấn nút Xem kết quả</h3>
                     <button type="submit" className="submit-button">Xem kết quả</button>
                 </div>
             </form>

@@ -1,0 +1,74 @@
+major_name,category,interests,primary_subject_groups,secondary_subject_groups,subjects_weight,market_trend
+Thú y,Bác sĩ thú y,"Động vật,Y học,Chăm sóc sức khỏe,Khoa học,Nghiên cứu",A02;B00;D08,A00;B03;D07,Sinh học:2.0;Hóa học:1.5;Toán:1.5;Tiếng Anh:1.0,0.75
+Báo chí,Báo chí - Marketing - Quảng cáo - PR,"Truyền thông,Giao tiếp,Văn học,Đọc sách,Sáng tạo",C00;D01;D14,C03;C04;D15,Ngữ văn:2.0;Lịch sử:1.5;Tiếng Anh:1.5;Địa lý:1.0,0.7
+Quan hệ công chúng,Báo chí - Marketing - Quảng cáo - PR,"Truyền thông,Giao tiếp,Quảng cáo,Sáng tạo,Kinh doanh",D01;D14;D66,C00;D15;D09,Ngữ văn:1.8;Tiếng Anh:1.8;Lịch sử:1.2;GDKT & PL:1.0,0.8
+Digital Marketing,Báo chí - Marketing - Quảng cáo - PR,"Truyền thông,Quảng cáo,Công nghệ,Sáng tạo,Phân tích dữ liệu",A01;D01;K01,D07;D09;E-TIN,Tiếng Anh:1.8;Tin học:1.5;Toán:1.2;Ngữ văn:1.0,0.9
+Marketing,Báo chí - Marketing - Quảng cáo - PR,"Sáng tạo,Truyền thông,Kinh doanh,Quảng cáo,Giao tiếp",A01;D01;D07,D09;D10;D84,Toán:1.5;Tiếng Anh:1.5;Ngữ văn:1.0;GDKT & PL:1.0,0.92
+Công nghệ vật liệu,Công nghệ - Kỹ thuật,"Nghiên cứu,Kỹ thuật,Khoa học,Công nghệ,Thiết kế",A00;A01;D-TIN,B00;C-TIN;D07,Toán:1.5;Vật lý:1.5;Hóa học:1.5;Công nghệ:1.5,0.7
+Công nghệ thực phẩm,Công nghệ chế biến thực phẩm,"Ẩm thực,Hóa học,Nghiên cứu,Khoa học,Sáng tạo",A00;B00;D-TIN,A02;D07;F-TIN,Hóa học:1.8;Sinh học:1.5;Công nghệ:1.5;Toán:1.2,0.75
+Công nghệ sinh học,Công nghệ sinh - Hóa,"Sinh học,Nghiên cứu,Khoa học,Môi trường,Hóa học",A00;B00;F-TIN,A02;D07;G-TIN,Sinh học:2.0;Hóa học:1.5;Công nghệ:1.5;Toán:1.5,0.85
+Hóa học,Công nghệ sinh - Hóa,"Hóa học,Khoa học,Nghiên cứu,Phân tích dữ liệu,Môi trường",A00;B00;D-TIN,D07;D08;F-TIN,Hóa học:2.0;Toán:1.5;Công nghệ:1.5;Vật lý:1.0,0.68
+Khoa học máy tính,Công nghệ thông tin - Tin học,"Toán học,Lập trình,Máy tính,Công nghệ,Nghiên cứu",A01;K01;B-TIN,A00;D01;G-TIN,Toán:2.0;Tin học:2.0;Tiếng Anh:1.5;Vật lý:1.2,0.96
+Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin - Tin học,"Phân tích dữ liệu,Toán học,Thống kê,Công nghệ,Nghiên cứu",A01;K01;G-TIN,A00;D01;D08,Toán:2.0;Tin học:1.8;Tiếng Anh:1.5;Sinh học:1.0,0.98
+Khoa học dữ liệu,Công nghệ thông tin - Tin học,"Phân tích dữ liệu,Thống kê,Máy học,Nghiên cứu,Toán học",A01;K01;G-TIN,A00;D01;D07,Toán:2.0;Tin học:2.0;Tiếng Anh:1.5;Sinh học:1.0,0.97
+An toàn thông tin,Công nghệ thông tin - Tin học,"Bảo mật thông tin,Máy tính,Công nghệ,Phân tích dữ liệu,Nghiên cứu",A01;K01;B-TIN,A00;D01;D07,Toán:2.0;Tin học:1.8;Tiếng Anh:1.5;Vật lý:1.2,0.95
+Công nghệ thông tin,Công nghệ thông tin - Tin học,"Lập trình,Máy tính,Công nghệ,Trò chơi điện tử,Phân tích dữ liệu",A00;A01;D01;K01,B-TIN;C-TIN;E-TIN,Toán:2.0;Vật lý:1.5;Tin học:1.5;Tiếng Anh:1.5,0.98
+Trí tuệ nhân tạo,Công nghệ thông tin - Tin học,"Lập trình,Phân tích dữ liệu,Công nghệ,Toán học,Tự động hóa",A01;K01;B-TIN,A00;D01;G-TIN,Toán:2.0;Tin học:1.8;Tiếng Anh:1.5;Vật lý:1.2,0.98
+Mạng máy tính & truyền thông dữ liệu,Công nghệ thông tin - Tin học,"Máy tính,Công nghệ,Bảo mật thông tin,Phân tích dữ liệu,Kỹ thuật",A01;K01;B-TIN,A00;B-TIN;E-TIN,Tin học:2.0;Toán:1.8;Tiếng Anh:1.5;Vật lý:1.2,0.9
+Robot và Trí tuệ nhân tạo,Công nghệ thông tin - Tin học,"Công nghệ,Tự động hóa,Lập trình,Kỹ thuật,Phân tích dữ liệu",A01;K01;C-TIN,A00;B-TIN;E-TIN,Toán:2.0;Tin học:1.8;Công nghệ:1.8;Tiếng Anh:1.5 ,0.96
+Kỹ thuật phần mềm,Công nghệ thông tin - Tin học,"Lập trình,Máy tính,Công nghệ,Phân tích dữ liệu,Sáng tạo",A01;K01;B-TIN,A00;D01;E-TIN,Toán:2.0;Tin học:1.8;Tiếng Anh:1.5;Vật lý:1.2,0.95
+Quản trị khách sạn,Du lịch-Khách sạn,"Du lịch,Dịch vụ khách hàng,Quản lý,Giao tiếp,Ngoại ngữ",A01;D01;D15,D07;D09;D10,Tiếng Anh:1.8;Toán:1.5;Ngữ văn:1.2;Địa lý:1.2,0.82
+Quản trị dịch vụ du lịch và lữ hành,Du lịch-Khách sạn,"Du lịch,Quản lý,Văn hóa,Dịch vụ khách hàng,Ngoại ngữ",D01;D15;D10,A01;D07;D09,Tiếng Anh:1.8;Địa lý:1.5;Ngữ văn:1.2;Toán:1.0,0.8
+Vật lý học,Khoa học tự nhiên khác,"Vật lý,Nghiên cứu,Khoa học,Toán học,Phân tích dữ liệu",A00;A01;A02,A03;A04;B00,Vật lý:2.0;Toán:2.0;Hóa học:1.0;Sinh học:1.0,0.7
+Kinh tế học,Kinh tế - Quản trị kinh doanh - Thương Mại,"Kinh tế,Phân tích dữ liệu,Thống kê,Nghiên cứu,Chính trị",A00;A01;D01,D07;D09;D84,Toán:1.8;Tiếng Anh:1.5;GDKT & PL:1.2;Vật lý:1.0,0.8
+Quản trị kinh doanh,Kinh tế - Quản trị kinh doanh - Thương Mại,"Kinh doanh,Lãnh đạo,Quản lý,Giao tiếp,Phân tích dữ liệu",A00;A01;D01;D07,D09;D10;D84,Toán:1.5;Tiếng Anh:1.5;Ngữ văn:1.0;GDKT & PL:1.0,0.88
+Kiểm toán,Kế toán - Kiểm toán,"Phân tích dữ liệu,Tài chính,Kinh tế,Thống kê,Nghiên cứu",A00;A01;D01;D07,D09;D10;D84,Toán:2.0;Tiếng Anh:1.5;Ngữ văn:1.0;GDKT & PL:1.0,0.78
+Kế toán,Kế toán - Kiểm toán,"Tài chính,Thống kê,Quản lý,Kinh tế,Phân tích dữ liệu",A00;A01;D01;D07,D09;D10;D84,Toán:2.0;Tiếng Anh:1.5;Ngữ văn:1.0;GDKT & PL:1.0,0.8
+Luật,Luật - Tòa án,"Luật pháp,Chính trị,Giao tiếp,Nghiên cứu,Phân tích dữ liệu",C00;C19;D01,A08;C14;D66,Ngữ văn:1.5;Lịch sử:1.5;GDKT & PL:1.5;Tiếng Anh:1.5,0.85
+Luật kinh tế,Luật - Tòa án,"Luật pháp,Kinh tế,Phân tích dữ liệu,Kinh doanh,Nghiên cứu",A00;C00;D01,C14;C19;C20,Ngữ văn:1.5;Lịch sử:1.5;GDKT & PL:1.5;Tiếng Anh:1.5,0.86
+Luật quốc tế,Luật - Tòa án,"Luật pháp,Ngoại ngữ,Giao tiếp,Chính trị,Nghiên cứu",D01;D14;D66,C14;C19;D84,Tiếng Anh:1.8;Ngữ văn:1.5;Lịch sử:1.5;GDKT & PL:1.5,0.8
+Nghệ thuật,Mỹ thuật - Âm nhạc - Nghệ thuật,"Sáng tạo,Nghệ thuật,Thiết kế,Văn hóa,Truyền thông",A-TIN;D01;D11,C00;D12;D13,Ngữ văn:1.8;Tiếng Anh:1.5;Tin học:1.5;Toán:1.0,0.7
+Âm nhạc,Mỹ thuật - Âm nhạc - Nghệ thuật,"Nghệ thuật,Sáng tạo,Văn hóa,Thể thao,Giải trí",D01;D11;D12,A-TIN;C05;C08,Ngữ văn:1.8;Tiếng Anh:1.5;Tin học:1.2;Toán:1.0,0.7
+Quan hệ quốc tế,Ngoại giao - Ngoại ngữ,"Chính trị,Ngoại ngữ,Văn hóa,Giao tiếp,Nghiên cứu",D01;D09;D14,C00;C19;D66,Tiếng Anh:2.0;Ngữ văn:1.5;Lịch sử:1.5;GDKT & PL:1.2,0.78
+Ngôn ngữ Pháp,Ngoại giao - Ngoại ngữ,"Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Văn học",D01;D14;D15,D09;D10;D66,Tiếng Anh:1.5;Ngữ văn:1.5;Toán:1.0;Lịch sử:1.0,0.72
+Ngôn ngữ Nhật,Ngoại giao - Ngoại ngữ,"Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Đọc sách",D01;D14;D15,D09;D10;D66,Tiếng Anh:1.5;Ngữ văn:1.5;Toán:1.0;Lịch sử:1.0,0.82
+Ngôn ngữ Trung Quốc,Ngoại giao - Ngoại ngữ,"Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Nghiên cứu",D01;D14;D15,D09;D10;D66,Tiếng Anh:1.5;Ngữ văn:1.5;Toán:1.0;Lịch sử:1.0,0.83
+Ngôn ngữ Anh,Ngoại giao - Ngoại ngữ,"Ngoại ngữ,Giao tiếp,Văn hóa,Du lịch,Đọc sách",D01;D14;D15,D09;D10;D66,Tiếng Anh:2.0;Ngữ văn:1.5;Toán:1.0;Lịch sử:1.0,0.85
+Ngôn ngữ Hàn Quốc,Ngoại giao - Ngoại ngữ,"Ngoại ngữ,Văn hóa,Giao tiếp,Du lịch,Truyền thông",D01;D14;D15,D09;D10;D66,Tiếng Anh:1.5;Ngữ văn:1.5;Toán:1.0;Lịch sử:1.0,0.8
+Logistics và Quản lý chuỗi cung ứng,Ngoại thương - Xuất nhập khẩu - Kinh Tế quốc tế,"Quản lý,Kinh doanh,Phân tích dữ liệu,Giao tiếp,Công nghệ",A01;D01;D10,A00;D07;E-TIN,Toán:1.5;Tiếng Anh:1.5;Địa lý:1.2;Công nghệ:1.0,0.9
+Quản trị kinh doanh quốc tế,Ngoại thương - Xuất nhập khẩu - Kinh Tế quốc tế,"Kinh doanh,Ngoại ngữ,Quản lý,Giao tiếp,Văn hóa",A01;D01;D09,A00;D07;D10,Tiếng Anh:1.8;Toán:1.5;Lịch sử:1.2;Địa lý:1.0,0.9
+Kinh doanh quốc tế,Ngoại thương - Xuất nhập khẩu - Kinh Tế quốc tế,"Kinh doanh,Ngoại ngữ,Quản lý,Giao tiếp,Văn hóa",A01;D01;D09,A00;D07;D10,Tiếng Anh:1.8;Toán:1.5;Lịch sử:1.2;Địa lý:1.0,0.88
+Quản trị nhân lực,Nhân sự - Hành chính,"Quản lý,Giao tiếp,Kinh doanh,Phân tích dữ liệu,Giúp đỡ người khác",A01;D01;D09,D07;D66;D84,Tiếng Anh:1.5;Toán:1.5;Ngữ văn:1.2;GDKT & PL:1.2,0.85
+Sư phạm Vật lý,Sư phạm - Giáo dục,"Vật lý,Dạy học,Giáo dục,Khoa học,Nghiên cứu",A00;A01;A02,A03;C01;C05,Vật lý:2.0;Toán:2.0;Hóa học:1.0;Tiếng Anh:1.0,0.75
+Sư phạm Toán,Sư phạm - Giáo dục,"Toán học,Dạy học,Giáo dục,Giao tiếp,Nghiên cứu",A00;A01;D01,A03;C01;C03,Toán:2.0;Vật lý:1.5;Tiếng Anh:1.0;Ngữ văn:1.0,0.78
+Sư phạm Tiếng Anh,Sư phạm - Giáo dục,"Ngoại ngữ,Dạy học,Giao tiếp,Văn hóa,Giáo dục",D01;D14;D15,A01;D09;D10,Tiếng Anh:2.0;Ngữ văn:1.5;Lịch sử:1.0;Địa lý:1.0,0.8
+Sư phạm Ngữ văn,Sư phạm - Giáo dục,"Văn học,Dạy học,Ngoại ngữ,Giáo dục,Sáng tạo",C00;C03;C04,C19;C20;D01,Ngữ văn:2.0;Lịch sử:1.5;Địa lý:1.5;Toán:1.0,0.7
+Giáo dục Tiểu học,Sư phạm - Giáo dục,"Dạy học,Giúp đỡ người khác,Sáng tạo,Giáo dục,Giao tiếp",A00;C00;D01,C03;C04;C14,Toán:1.5;Ngữ văn:1.5;Lịch sử:1.0;Địa lý:1.0,0.78
+Sư phạm Hóa học,Sư phạm - Giáo dục,"Hóa học,Dạy học,Giáo dục,Khoa học,Nghiên cứu",A00;B00;C02,A05;C05;D07,Hóa học:2.0;Toán:1.5;Sinh học:1.0;Vật lý:1.0,0.7
+Quản lý giáo dục,Sư phạm - Giáo dục,"Giáo dục,Quản lý,Lãnh đạo,Giao tiếp,Nghiên cứu",C00;C14;D01,C03;C04;C19,Ngữ văn:1.5;Toán:1.5;GDKT & PL:1.5;Lịch sử:1.0,0.75
+Thiết kế đồ họa,Thiết kế đồ họa - Game - Đa phương tiện,"Nghệ thuật,Thiết kế,Sáng tạo,Công nghệ,Máy tính",A-TIN;D01;K01,A01;B-TIN;E-TIN,Tin học:1.8;Toán:1.5;Tiếng Anh:1.5;Ngữ văn:1.2,0.9
+Thiết kế thời trang,Thời trang - May mặc,"Thiết kế,Sáng tạo,Nghệ thuật,Thể thao,Văn hóa",A-TIN;D01;K01,A01;B-TIN;E-TIN,Tin học:1.8;Toán:1.5;Tiếng Anh:1.5;Ngữ văn:1.2,0.78
+Nông nghiệp,Thủy sản - Lâm Nghiệp - Nông nghiệp,"Nông nghiệp,Thiên nhiên,Môi trường,Nghiên cứu,Khoa học",A00;B00;F-TIN,A02;B02;D07,Sinh học:2.0;Hóa học:1.5;Toán:1.5;Công nghệ:1.2,0.72
+Nuôi trồng thủy sản,Thủy sản - Lâm Nghiệp - Nông nghiệp,"Nông nghiệp,Thiên nhiên,Nghiên cứu,Môi trường,Khoa học",B00;B02;F-TIN,A02;B03;D07,Sinh học:2.0;Hóa học:1.5;Địa lý:1.5;Công nghệ:1.2,0.7
+Công nghệ sau thu hoạch,Thủy sản - Lâm Nghiệp - Nông nghiệp,"Nông nghiệp,Công nghệ,Ẩm thực,Nghiên cứu,Khoa học",A00;B00;F-TIN,A02;D07;D-TIN,Sinh học:1.5;Hóa học:1.5;Công nghệ:1.5;Toán:1.5,0.65
+Toán Kinh tế,Toán học và thống kê,"Toán học,Kinh tế,Thống kê,Phân tích dữ liệu,Nghiên cứu",A00;A01;D01,A07;D07;D84,Toán:2.0;Tiếng Anh:1.5;GDKT & PL:1.2;Địa lý:1.0,0.8
+Thống kê,Toán học và thống kê,"Phân tích dữ liệu,Thống kê,Toán học,Nghiên cứu,Máy tính",A00;A01;D01,B00;D07;K01,Toán:2.0;Tiếng Anh:1.5;Tin học:1.2;Vật lý:1.0,0.82
+Bảo hiểm,Tài chính - Ngân hàng - Bảo hiểm,"Tài chính,Thống kê,Kinh doanh,Phân tích dữ liệu,Dịch vụ khách hàng",A00;A01;D01,D07;D09;D84,Toán:2.0;Tiếng Anh:1.5;GDKT & PL:1.2;Ngữ văn:1.0,0.75
+Tài chính - Ngân hàng,Tài chính - Ngân hàng - Bảo hiểm,"Tài chính,Toán học,Phân tích dữ liệu,Kinh doanh,Kinh tế",A00;A01;D01;D07,D09;D10;D84,Toán:2.0;Tiếng Anh:1.5;Ngữ văn:1.0;GDKT & PL:1.0,0.88
+Quản lý tài nguyên và môi trường,Tài nguyên - Môi trường,"Môi trường,Thiên nhiên,Quản lý,Nghiên cứu,Khoa học",A06;B02;C13,A04;B00;D10,Địa lý:1.8;Sinh học:1.5;Hóa học:1.5;Toán:1.2,0.78
+Kỹ thuật môi trường,Tài nguyên - Môi trường,"Môi trường,Kỹ thuật,Thiên nhiên,Nghiên cứu,Khoa học",A00;B00;D-TIN,A02;A06;F-TIN,Hóa học:1.8;Sinh học:1.5;Công nghệ:1.5;Toán:1.2,0.75
+Quản lý đất đai,Tài nguyên - Môi trường,"Thiên nhiên,Môi trường,Quản lý,Nghiên cứu,Xây dựng",A00;A04;B02,A06;A09;B00,Địa lý:1.8;Toán:1.5;Sinh học:1.2;GDKT & PL:1.0,0.75
+Tâm lý học,Tâm lý,"Giúp đỡ người khác,Phân tích dữ liệu,Nghiên cứu,Giao tiếp,Khoa học",B00;B03;D01,A00;C00;D13,Sinh học:1.8;Ngữ văn:1.5;Toán:1.5;Tiếng Anh:1.2,0.85
+Kiến trúc,Xây dựng - Kiến trúc - Giao thông,"Thiết kế,Nghệ thuật,Xây dựng,Sáng tạo,Toán học",A00;A01;A04,C01;D01;D07,Toán:1.5;Vật lý:1.5;Địa lý:1.0;Tiếng Anh:1.0,0.82
+Kỹ thuật xây dựng,Xây dựng - Kiến trúc - Giao thông,"Xây dựng,Thiết kế,Kỹ thuật,Công nghệ,Toán học",A00;A01;A04,C01;D01;D07,Toán:2.0;Vật lý:1.5;Hóa học:1.0;Tiếng Anh:1.0,0.85
+Thiết kế nội thất,Xây dựng - Kiến trúc - Giao thông,"Thiết kế,Nghệ thuật,Sáng tạo,Xây dựng,Mỹ thuật",A00;A01;A04,C01;D01;D10,Toán:1.5;Vật lý:1.5;Địa lý:1.2;Tiếng Anh:1.0,0.8
+Nhân học,Xã hội - Nhân văn,"Văn hóa,Nghiên cứu,Xã hội,Giúp đỡ người khác,Giao tiếp",C00;C03;C04,C12;C13;D14,Ngữ văn:1.8;Lịch sử:1.5;Địa lý:1.5;Sinh học:1.0,0.65
+Xã hội học,Xã hội - Nhân văn,"Nghiên cứu,Giúp đỡ người khác,Phân tích dữ liệu,Thống kê,Giao tiếp",C00;C03;C19,C04;C20;D14,Ngữ văn:1.8;Lịch sử:1.5;GDKT & PL:1.5;Địa lý:1.2,0.65
+Răng - Hàm - Mặt,Y - Dược,"Y học,Chăm sóc sức khỏe,Thiết kế,Nghiên cứu,Sáng tạo",A00;B00;D07,A02;D08;B03,Sinh học:2.0;Hóa học:2.0;Toán:1.5;Tiếng Anh:1.0,0.9
+Dược học,Y - Dược,"Hóa học,Y học,Nghiên cứu,Chăm sóc sức khỏe,Khoa học",A00;B00;D07,A02;D08,Hóa học:2.0;Sinh học:1.5;Toán:1.5;Tiếng Anh:1.0,0.88
+Quản lý bệnh viện,Y - Dược,"Y học,Quản lý,Chăm sóc sức khỏe,Lãnh đạo,Giao tiếp",A00;B00;D01,D07;D08;D84,Toán:1.5;Sinh học:1.5;Hóa học:1.5;Tiếng Anh:1.5,0.85
+Y khoa,Y - Dược,"Y học,Khoa học,Chăm sóc sức khỏe,Giúp đỡ người khác,Nghiên cứu",A00;B00;D07,A02;D08,Sinh học:2.0;Hóa học:2.0;Toán:1.5;Vật lý:1.0,0.95
+Điều dưỡng,Y - Dược,"Chăm sóc sức khỏe,Y học,Giúp đỡ người khác,Giao tiếp,Y tế",A00;B00;D07,A02;D08;D13,Sinh học:1.5;Hóa học:1.5;Toán:1.5;Tiếng Anh:1.0,0.9
+Công nghệ kỹ thuật ô tô,Ô tô - Cơ khí - Chế tạo,"Cơ khí,Kỹ thuật,Công nghệ,Thiết kế,Tự động hóa",A00;A01;C-TIN,C01;D01;D07,Toán:2.0;Vật lý:2.0;Công nghệ:1.5;Tiếng Anh:1.0,0.8
+Kỹ thuật điện - điện tử,Điện lạnh - Điện tử - Điện - Tự động hóa,"Kỹ thuật,Thiết kế,Điện tử,Công nghệ,Toán học",A00;A01;C-TIN,C01;D01;D07,Toán:2.0;Vật lý:2.0;Công nghệ:1.5;Tiếng Anh:1.0,0.82
+Tự động hóa,Điện lạnh - Điện tử - Điện - Tự động hóa,"Cơ khí,Điện tử,Lập trình,Công nghệ,Tự động hóa",A00;A01;C-TIN,C01;D01;E-TIN,Toán:2.0;Vật lý:2.0;Công nghệ:1.5;Tiếng Anh:1.0,0.9

@@ -1,0 +1,1001 @@
+Student_ID,Major1,Major2,Major3,Subject_groups,Priority_Area,Priority_Subject,Interests,TOA,VAN,ANH,LY,HOA,SU,DIA,SINH,GDCD,TIN,CN
+ST0001,Nhân học,Xã hội học,Marketing,B04,KV1,06,"Giúp đỡ người khác,Động vật,Truyền thông",6.7,5.4,0.0,3.8,0.0,3.5,0.0,0.0,0.0,0.0,0.0
+ST0002,Công nghệ sinh học,Tâm lý học,Nông nghiệp,"B04,A05",KV2,05,Nghiên cứu,6.9,6.1,0.0,0.0,0.0,0.0,0.0,5.0,0.0,0.0,6.6
+ST0003,Thiết kế thời trang,Âm nhạc,Marketing,"D13,D07",KV2,05,"Sáng tạo,Thể thao",5.6,6.2,3.4,0.0,0.0,0.0,0.0,5.9,0.0,0.0,0.0
+ST0004,Luật,Kinh tế học,Luật quốc tế,"C17,C00",KV2,05,Chính trị,7.3,5.8,4.9,0.0,0.0,1.9,0.0,0.0,0.0,0.0,0.0
+ST0005,Tâm lý học,Công nghệ thông tin,Thiết kế đồ họa,D66,KV1,07,"Nghệ thuật,Lập trình",9.3,8.1,0.0,0.0,0.0,0.0,0.0,6.2,0.0,0.0,3.8
+ST0006,Robot và Trí tuệ nhân tạo,Tự động hóa,Công nghệ sinh học,"C08,A01",KV2,05,"Thống kê,Khoa học,Tự động hóa",5.5,3.5,0.0,0.0,0.0,0.0,0.0,0.0,4.3,0.0,7.5
+ST0007,Quản lý bệnh viện,Y khoa,Răng - Hàm - Mặt,"A08,C05",KV2,05,Chăm sóc sức khỏe,6.4,8.5,6.1,0.0,4.9,0.0,0.0,0.0,0.0,0.0,0.0
+ST0008,Quản lý tài nguyên và môi trường,Sư phạm Ngữ văn,Ngôn ngữ Trung Quốc,"D-TIN,D84",KV2,05,"Nghiên cứu,Ngoại ngữ,Tự động hóa",9.3,3.4,0.0,0.0,3.2,0.0,4.1,0.0,0.0,0.0,0.0
+ST0009,Khoa học dữ liệu và Trí tuệ nhân tạo,Quản lý tài nguyên và môi trường,Quản lý đất đai,D15,KV3,07,Công nghệ,8.7,3.1,0.0,0.0,0.0,0.0,4.2,7.0,0.0,0.0,0.0
+ST0010,Luật,Luật quốc tế,Quản lý giáo dục,D-TIN,KV2,05,"Chính trị,Luật pháp,Xây dựng",7.6,5.0,0.0,0.0,0.0,0.0,0.0,0.0,6.3,0.0,4.1
+ST0011,Nhân học,Công nghệ thông tin,Digital Marketing,"D84,C02",KV2,05,"Văn hóa,Công nghệ",7.5,6.3,0.0,0.0,0.0,0.0,5.3,0.0,0.0,0.0,3.0
+ST0012,Marketing,Điều dưỡng,Quản trị kinh doanh,B03,KV2,03,"Chính trị,Giao tiếp,Nông nghiệp",5.9,4.8,0.0,0.0,8.5,0.0,0.0,0.0,0.0,3.9,0.0
+ST0013,Quản lý giáo dục,Logistics và Quản lý chuỗi cung ứng,Quản trị dịch vụ du lịch và lữ hành,"D13,A01",KV2,05,Quản lý,6.3,4.5,0.0,0.0,0.0,0.0,5.6,0.0,5.0,0.0,0.0
+ST0014,Tâm lý học,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,"A10,A07",KV2,05,"Tài chính,Kỹ thuật,Khoa học",7.5,6.0,0.0,0.0,0.0,0.0,0.0,7.4,0.0,6.0,0.0
+ST0015,Sư phạm Ngữ văn,Tài chính - Ngân hàng,Kế toán,B00,KV2,05,"Dạy học,Thể thao,Tài chính",8.7,4.7,0.0,5.2,0.0,0.0,2.5,0.0,0.0,0.0,0.0
+ST0016,Công nghệ thông tin,Quản lý giáo dục,Sư phạm Ngữ văn,A11,KV2,05,"Công nghệ,Cơ khí,Văn học",6.8,6.8,0.0,0.0,0.0,0.0,1.9,0.0,6.6,0.0,0.0
+ST0017,Ngôn ngữ Anh,Ngôn ngữ Nhật,Báo chí,"A05,A03",KV2,05,Đọc sách,8.3,6.7,4.0,0.0,0.0,0.0,0.0,2.6,0.0,0.0,0.0
+ST0018,Công nghệ thông tin,Marketing,Digital Marketing,"A05,C14",KV2,05,Trò chơi điện tử,8.4,6.0,5.1,0.0,0.0,0.0,0.0,3.4,0.0,0.0,0.0
+ST0019,Trí tuệ nhân tạo,Thiết kế thời trang,Thiết kế đồ họa,A02,KV2,05,"Thể thao,Tự động hóa",3.1,5.8,0.0,4.9,0.0,0.0,0.0,0.0,0.0,5.3,0.0
+ST0020,Xã hội học,Thống kê,Kinh tế học,A-TIN,KV3,02,"Phân tích dữ liệu,Thống kê",8.9,7.9,0.0,0.0,0.0,4.4,0.0,0.0,0.0,5.0,0.0
+ST0021,Quản lý tài nguyên và môi trường,Quản lý đất đai,Tâm lý học,D12,KV2,06,"Dạy học,Luật pháp,Nghiên cứu",5.0,5.2,0.0,0.0,0.0,0.0,6.3,6.6,0.0,0.0,0.0
+ST0022,Thiết kế thời trang,Quản lý giáo dục,Âm nhạc,A07,KV2,05,"Thiên nhiên,Thể thao,Động vật",8.6,5.5,0.0,3.1,0.0,0.0,0.0,0.0,4.7,0.0,0.0
+ST0023,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,"A02,B04",KV2,05,"Xây dựng,Phân tích dữ liệu",8.9,6.1,0.0,0.0,0.0,0.0,2.1,0.0,0.0,2.7,0.0
+ST0024,Công nghệ thông tin,Khoa học máy tính,An toàn thông tin,"C05,C-TIN",KV2,05,"Đọc sách,Thể thao,Máy tính",6.5,7.2,0.0,8.4,0.0,3.3,0.0,0.0,0.0,0.0,0.0
+ST0025,Công nghệ thông tin,Marketing,Digital Marketing,"C00,D07",KV2,05,Lập trình,6.4,8.3,5.2,0.0,0.0,0.0,6.4,0.0,0.0,0.0,0.0
+ST0026,Công nghệ thông tin,Marketing,Digital Marketing,A02,KV2,05,"Trò chơi điện tử,Nghiên cứu,Quảng cáo",8.0,6.2,4.4,0.0,0.0,0.0,5.1,0.0,0.0,0.0,0.0
+ST0027,Quản lý đất đai,Sư phạm Ngữ văn,Nhân học,"C19,A-TIN",KV2,05,Môi trường,8.8,6.9,0.0,3.5,0.0,0.0,7.3,0.0,0.0,0.0,0.0
+ST0028,Luật kinh tế,Luật,Luật quốc tế,"A09,A-TIN",KV2,05,Luật pháp,8.0,5.9,0.0,7.7,0.0,4.1,0.0,0.0,0.0,0.0,0.0
+ST0029,Quản lý đất đai,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"D10,G-TIN",KV1,01,Quản lý,6.9,4.9,0.0,7.3,0.0,0.0,5.3,0.0,0.0,0.0,0.0
+ST0030,Quản lý tài nguyên và môi trường,Quản trị kinh doanh,Quản lý bệnh viện,"A04,D07",KV2,05,"Ẩm thực,Lãnh đạo,Bảo mật thông tin",6.7,5.4,0.0,0.0,7.1,0.0,6.4,0.0,0.0,0.0,0.0
+ST0031,Sư phạm Ngữ văn,Nhân học,Xã hội học,C05,KV2,05,"Văn học,Toán học,Giúp đỡ người khác",6.0,2.5,0.0,0.0,0.0,5.5,0.0,0.0,0.0,2.7,0.0
+ST0032,Luật,Kinh tế học,Luật quốc tế,C08,KV2,05,"Xây dựng,Chính trị",5.5,5.4,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,7.0
+ST0033,Thiết kế thời trang,Thiết kế đồ họa,Nghệ thuật,"D84,B00",KV3,03,"Thể thao,Nghệ thuật",8.2,7.2,0.0,0.0,0.0,0.0,0.0,0.0,2.5,5.1,0.0
+ST0034,Quản lý bệnh viện,Công nghệ thông tin,Marketing,C00,KV2,05,Chăm sóc sức khỏe,6.2,6.5,4.3,0.0,0.0,0.0,0.0,0.0,0.0,3.8,0.0
+ST0035,Công nghệ thông tin,Trí tuệ nhân tạo,Khoa học máy tính,"D-TIN,A03",KV2,05,"Y học,Lập trình",5.2,3.4,0.0,0.0,0.0,0.0,4.1,0.0,0.0,3.3,0.0
+ST0036,Nhân học,Thiết kế đồ họa,Thiết kế thời trang,D01,KV2,05,Giúp đỡ người khác,7.6,7.0,0.0,0.0,0.0,0.0,3.6,0.0,0.0,6.0,0.0
+ST0037,Thiết kế thời trang,Âm nhạc,Công nghệ thông tin,"A04,A02",KV2,05,Thể thao,9.2,5.2,6.6,0.0,0.0,0.0,0.0,0.0,7.9,0.0,0.0
+ST0038,Luật,Tài chính - Ngân hàng,Thống kê,"C00,D10",KV2,05,Toán học,4.3,5.7,0.0,0.0,0.0,5.5,0.0,0.0,4.2,0.0,0.0
+ST0039,Tài chính - Ngân hàng,Luật kinh tế,Luật,"C05,A-TIN",KV2,05,"Luật pháp,Tài chính,Hóa học",8.0,3.6,5.9,0.0,0.0,0.0,0.0,5.1,0.0,0.0,0.0
+ST0040,Sư phạm Ngữ văn,Nhân học,Xã hội học,"C14,D11",KV2,06,Thiên nhiên,8.1,4.5,0.0,0.0,0.0,5.4,3.1,0.0,0.0,0.0,0.0
+ST0041,Marketing,Digital Marketing,Quan hệ công chúng,D84,KV2,05,"Truyền thông,Ẩm thực",7.2,5.4,4.3,0.0,0.0,0.0,0.0,0.0,3.6,0.0,0.0
+ST0042,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A02,KV2,05,"Nghệ thuật,Cơ khí",5.9,3.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.3,4.4
+ST0043,Sư phạm Ngữ văn,Tâm lý học,Nhân học,K01,KV2,05,"Giúp đỡ người khác,Dạy học,Dịch vụ khách hàng",9.0,6.3,0.0,0.0,0.0,4.6,0.0,3.0,0.0,0.0,0.0
+ST0044,Quản lý bệnh viện,Công nghệ thông tin,Logistics và Quản lý chuỗi cung ứng,B03,KV2,05,"Quản lý,Máy tính,Y học",8.4,8.4,0.0,4.9,0.0,1.4,0.0,0.0,0.0,0.0,0.0
+ST0045,Luật kinh tế,Luật,Luật quốc tế,"A08,A05",KV2,05,"Văn học,Luật pháp,Cơ khí",5.4,4.6,6.4,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0
+ST0046,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Tâm lý học,"D84,B04",KV2,05,"Tự động hóa,Dịch vụ khách hàng",7.5,6.4,0.0,0.0,0.0,0.0,0.0,6.4,0.0,5.4,0.0
+ST0047,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"A07,A05",KV1,02,"Giao tiếp,Lập trình,Kinh doanh",4.6,6.8,0.0,0.0,0.0,0.0,3.0,0.0,3.3,0.0,0.0
+ST0048,Tự động hóa,Công nghệ thông tin,Kỹ thuật điện - điện tử,C03,KV1,05,"Văn hóa,Điện tử,Công nghệ",8.1,6.8,0.0,0.0,5.4,0.0,0.0,0.0,5.4,0.0,0.0
+ST0049,Thiết kế đồ họa,Sư phạm Ngữ văn,Thiết kế thời trang,"A01,C08",KV2,02,Môi trường,8.1,6.5,0.0,0.0,0.0,0.0,6.7,0.0,0.0,5.9,0.0
+ST0050,Tài chính - Ngân hàng,Kế toán,Kiểm toán,A03,KV2,05,Tài chính,6.7,7.2,5.4,0.0,0.0,0.0,4.1,0.0,0.0,0.0,0.0
+ST0051,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Quản trị khách sạn,A05,KV2,05,Ngoại ngữ,7.0,5.7,2.7,6.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0052,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,D84,KV2,05,Kinh doanh,6.5,9.1,3.3,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+ST0053,Thiết kế đồ họa,Sư phạm Ngữ văn,Thiết kế thời trang,D15,KV2,05,"Quảng cáo,Sáng tạo",8.4,7.8,0.0,0.0,0.0,0.0,5.4,0.0,0.0,4.1,0.0
+ST0054,Nhân học,Xã hội học,Marketing,"G-TIN,D84",KV2,05,Giao tiếp,7.8,5.8,0.0,0.0,0.0,4.0,3.1,0.0,0.0,0.0,0.0
+ST0055,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,A00,KV2,05,"Nông nghiệp,Điện tử",5.3,3.8,0.0,4.6,0.0,0.0,0.0,0.0,0.0,7.0,0.0
+ST0056,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A-TIN,KV2,05,Xây dựng,7.6,6.1,0.0,0.0,0.0,0.0,0.0,1.2,0.0,7.7,0.0
+ST0057,Quản trị nhân lực,Tâm lý học,Giáo dục Tiểu học,C03,KV2,05,Giúp đỡ người khác,7.0,6.0,5.5,0.0,0.0,0.0,0.0,4.0,0.0,0.0,0.0
+ST0058,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,C19,KV2,05,"Nông nghiệp,Phân tích dữ liệu",3.8,6.6,5.1,0.0,4.8,0.0,0.0,0.0,0.0,0.0,0.0
+ST0059,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"C08,D15",KV2,05,"Kinh doanh,Chính trị",6.4,3.8,0.0,2.6,0.0,3.0,0.0,0.0,0.0,0.0,0.0
+ST0060,Quản lý giáo dục,Quản trị kinh doanh,Quản lý bệnh viện,"A02,G-TIN",KV2,05,Lãnh đạo,9.5,8.0,0.0,0.0,0.0,0.0,4.4,0.0,3.6,0.0,0.0
+ST0061,Thiết kế đồ họa,Tâm lý học,Thiết kế thời trang,A02,KV2,02,"Nghệ thuật,Khoa học",8.5,8.2,4.4,0.0,0.0,0.0,0.0,0.0,4.5,0.0,0.0
+ST0062,Kỹ thuật xây dựng,Kiến trúc,Thiết kế nội thất,A11,KV2,05,Nông nghiệp,5.0,3.9,0.0,6.9,0.0,0.0,7.0,0.0,0.0,0.0,0.0
+ST0063,Tâm lý học,Công nghệ thông tin,Digital Marketing,C17,KV2,05,Phân tích dữ liệu,7.7,6.8,0.0,0.0,0.0,0.0,0.0,5.1,0.0,0.0,3.5
+ST0064,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,"A02,B03",KV1,03,"Thống kê,Y học",3.7,4.7,0.0,6.2,0.0,0.0,0.0,0.0,0.0,6.2,0.0
+ST0065,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,B02,KV2,05,Nghệ thuật,8.6,4.6,8.5,0.0,0.0,0.0,4.1,0.0,0.0,0.0,0.0
+ST0066,Sư phạm Ngữ văn,Nhân học,Xã hội học,A05,KV2,05,"Bảo mật thông tin,Lập trình",7.9,7.1,0.0,0.0,0.0,8.1,0.0,0.0,0.0,0.0,5.5
+ST0067,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,C01,KV2,05,"Thiết kế,Nghệ thuật,Y học",8.2,6.6,0.0,3.2,0.0,4.9,0.0,0.0,0.0,0.0,0.0
+ST0068,Khoa học dữ liệu và Trí tuệ nhân tạo,Trí tuệ nhân tạo,Khoa học dữ liệu,"D15,A07",KV2,05,"Toán học,Y học,Khoa học",8.7,4.8,4.7,0.0,0.0,0.0,0.0,0.0,0.0,8.2,0.0
+ST0069,Marketing,Nhân học,Xã hội học,D13,KV2,05,"Quảng cáo,Truyền thông,Giao tiếp",6.8,6.9,0.0,0.0,3.5,7.2,0.0,0.0,0.0,0.0,0.0
+ST0070,Sư phạm Ngữ văn,Nhân học,Xã hội học,"A08,C01",KV2,05,Kỹ thuật,5.7,6.8,0.0,0.0,4.7,5.6,0.0,0.0,0.0,0.0,0.0
+ST0071,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Tài chính - Ngân hàng,C19,KV3,06,"Ngoại ngữ,Tài chính",8.9,7.2,0.0,0.0,4.7,0.0,0.0,0.0,4.0,0.0,0.0
+ST0072,Tâm lý học,Quản lý tài nguyên và môi trường,Y khoa,"C-TIN,C02",KV2,05,"Quản lý,Văn học,Khoa học",7.9,2.7,0.0,0.0,0.0,0.0,0.0,8.5,6.0,0.0,0.0
+ST0073,Thiết kế thời trang,Nghệ thuật,Thiết kế đồ họa,C13,KV2,05,"Thể thao,Giúp đỡ người khác,Truyền thông",9.0,6.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.8,3.2
+ST0074,Công nghệ thông tin,Thiết kế đồ họa,Thống kê,"C20,D11",KV2,05,Máy tính,6.0,6.4,6.0,0.0,0.0,0.0,0.0,0.0,7.7,0.0,0.0
+ST0075,Luật,Quản lý giáo dục,Tài chính - Ngân hàng,"A09,C17",KV1,06,Toán học,5.1,7.4,0.0,0.0,0.0,5.2,0.0,0.0,6.9,0.0,0.0
+ST0076,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,B00,KV2,04,Nghệ thuật,8.0,4.0,0.0,0.0,7.1,0.0,0.0,0.0,0.0,5.5,0.0
+ST0077,Xã hội học,Nhân học,Tâm lý học,"D15,C-TIN",KV2,05,"Thống kê,Nghiên cứu,Giúp đỡ người khác",8.0,7.1,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,3.4
+ST0078,Nhân học,Quản trị dịch vụ du lịch và lữ hành,An toàn thông tin,"B03,C19",KV2,05,"Văn hóa,Bảo mật thông tin",5.3,3.7,0.0,3.7,0.0,0.0,5.3,0.0,0.0,0.0,0.0
+ST0079,Thiết kế đồ họa,Công nghệ thông tin,Logistics và Quản lý chuỗi cung ứng,A07,KV2,05,"Máy tính,Kinh doanh,Công nghệ",7.9,6.5,0.0,0.0,0.0,0.0,0.0,0.0,3.3,3.7,0.0
+ST0080,Thiết kế đồ họa,Thiết kế thời trang,Khoa học dữ liệu và Trí tuệ nhân tạo,"A03,A09",KV2,05,Cơ khí,8.0,4.4,2.3,0.0,0.0,0.0,0.0,0.0,0.0,6.7,0.0
+ST0081,Sư phạm Hóa học,Công nghệ sinh học,Quản lý tài nguyên và môi trường,"D12,A11",KV3,07,"Môi trường,Lập trình,Khoa học",8.9,6.9,0.0,0.0,6.2,7.0,0.0,0.0,0.0,0.0,0.0
+ST0082,Sư phạm Ngữ văn,Nhân học,Xã hội học,"A-TIN,C12",KV3,04,Môi trường,5.2,8.7,0.0,0.0,4.6,6.8,0.0,0.0,0.0,0.0,0.0
+ST0083,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"D09,D-TIN",KV2,05,"Nghệ thuật,Thiết kế,Lãnh đạo",7.9,7.6,5.4,0.0,0.0,0.0,0.0,5.2,0.0,0.0,0.0
+ST0084,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Quản trị nhân lực,C12,KV2,05,Kinh doanh,8.0,3.4,0.0,0.0,0.0,6.5,0.0,0.0,4.6,0.0,0.0
+ST0085,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,A09,KV2,05,Quản lý,6.1,7.7,2.9,0.0,0.0,0.0,0.0,0.0,0.0,2.6,0.0
+ST0086,Tâm lý học,Y khoa,Ngôn ngữ Anh,D84,KV2,05,"Khoa học,Xây dựng,Đọc sách",6.4,6.8,0.0,0.0,0.0,0.0,0.0,6.2,4.8,0.0,0.0
+ST0087,Sư phạm Ngữ văn,Thiết kế đồ họa,Giáo dục Tiểu học,"D-TIN,D11",KV2,05,"Bảo mật thông tin,Sáng tạo,Công nghệ",4.3,6.2,0.0,0.0,0.0,0.0,8.2,0.0,0.0,2.1,0.0
+ST0088,Digital Marketing,Nghệ thuật,Công nghệ thông tin,A02,KV2,05,"Phân tích dữ liệu,Nông nghiệp,Truyền thông",9.1,7.7,0.0,0.0,6.3,0.0,0.0,0.0,0.0,3.5,0.0
+ST0089,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A08,KV1,05,"Sáng tạo,Máy tính",9.0,6.8,1.9,0.0,0.0,0.0,0.0,0.0,0.0,5.6,0.0
+ST0090,Nghệ thuật,Thiết kế đồ họa,Thiết kế thời trang,"C02,C08",KV2,05,"Truyền thông,Dạy học,Nghệ thuật",7.3,4.6,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.2,5.0
+ST0091,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D09,KV2,05,"Kinh doanh,Nghệ thuật",9.4,3.2,0.0,0.0,5.2,0.0,0.0,0.0,0.0,4.1,0.0
+ST0092,Luật,Quan hệ quốc tế,Xã hội học,"D08,D84",KV2,05,"Chính trị,Nghệ thuật",4.1,2.4,0.0,0.0,0.0,7.3,0.0,0.0,7.8,0.0,0.0
+ST0093,Robot và Trí tuệ nhân tạo,Quản lý giáo dục,Kỹ thuật điện - điện tử,C01,KV2,05,"Ẩm thực,Kỹ thuật",8.9,6.8,0.0,0.0,0.0,0.0,0.0,0.0,5.1,0.0,5.7
+ST0094,Công nghệ thông tin,Sư phạm Ngữ văn,Nhân học,C08,KV2,05,"Tự động hóa,Máy tính",3.9,7.9,0.0,0.0,0.0,0.0,7.5,0.0,4.7,0.0,0.0
+ST0095,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Thiết kế thời trang,"A02,A07",KV2,05,"Văn hóa,Kinh doanh,Nghệ thuật",6.6,5.1,4.7,0.0,0.0,0.0,0.0,0.0,0.0,4.3,0.0
+ST0096,Công nghệ thông tin,Marketing,Digital Marketing,C08,KV2,05,Môi trường,5.3,6.3,5.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.5
+ST0097,Sư phạm Ngữ văn,Luật kinh tế,Luật,A06,KV2,05,"Luật pháp,Kỹ thuật",8.9,5.3,0.0,0.0,0.0,6.6,0.0,3.0,0.0,0.0,0.0
+ST0098,Công nghệ thông tin,Ngôn ngữ Anh,Quản lý giáo dục,"A00,A02",KV2,05,"Du lịch,Lập trình",8.1,7.5,0.0,3.9,0.0,0.0,0.0,0.0,5.9,0.0,0.0
+ST0099,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ sau thu hoạch,Công nghệ thực phẩm,B04,KV1,05,"Ẩm thực,Đọc sách,Công nghệ",8.0,3.1,0.0,0.0,0.0,0.0,3.5,7.2,0.0,0.0,0.0
+ST0100,Sư phạm Ngữ văn,Tự động hóa,Kỹ thuật điện - điện tử,B-TIN,KV2,05,"Điện tử,Sáng tạo",7.7,3.6,0.0,0.0,0.0,0.0,5.5,0.0,0.0,0.0,6.1
+ST0101,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh,Tài chính - Ngân hàng,C05,KV2,05,"Phân tích dữ liệu,Môi trường,Kinh doanh",5.5,6.9,0.0,0.0,4.6,0.0,0.0,1.4,0.0,0.0,0.0
+ST0102,Quản lý tài nguyên và môi trường,Quản lý đất đai,Nuôi trồng thủy sản,"A09,D12",KV2,05,Thiên nhiên,6.7,5.2,0.0,0.0,0.0,0.0,2.5,8.1,0.0,0.0,0.0
+ST0103,Luật kinh tế,Luật,Luật quốc tế,C20,KV2,05,Luật pháp,5.3,4.7,0.0,0.0,0.0,0.0,0.0,0.0,3.4,2.3,0.0
+ST0104,Thiết kế đồ họa,Quản lý giáo dục,Răng - Hàm - Mặt,E-TIN,KV2,05,"Dịch vụ khách hàng,Văn học,Thiết kế",8.1,4.1,0.0,0.0,0.0,0.0,0.0,3.4,6.3,0.0,0.0
+ST0105,Nhân học,Xã hội học,Quản lý giáo dục,"C00,B04",KV2,05,"Kinh doanh,Nghiên cứu,Kỹ thuật",8.6,6.8,0.0,0.0,0.0,6.7,0.0,0.0,5.1,0.0,0.0
+ST0106,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,A02,KV2,05,"Công nghệ,Khoa học",7.7,6.3,0.0,3.1,0.0,0.0,0.0,0.0,3.0,0.0,0.0
+ST0107,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D01,KV2,05,"Động vật,Sáng tạo",7.6,7.3,2.0,0.0,0.0,0.0,0.0,0.0,0.0,6.9,0.0
+ST0108,Tài chính - Ngân hàng,Quản lý bệnh viện,Thống kê,C19,KV2,05,"Thể thao,Toán học,Chăm sóc sức khỏe",8.0,4.4,7.5,0.0,0.0,0.0,0.0,0.0,4.0,0.0,0.0
+ST0109,Quản trị khách sạn,Bảo hiểm,Quản trị dịch vụ du lịch và lữ hành,"F-TIN,E-TIN",KV2,05,Dịch vụ khách hàng,8.2,3.4,0.0,0.0,3.9,5.8,0.0,0.0,0.0,0.0,0.0
+ST0110,Marketing,Digital Marketing,Quan hệ công chúng,C12,KV1,06,Truyền thông,7.9,6.8,0.0,0.0,0.0,0.0,3.8,0.0,4.2,0.0,0.0
+ST0111,Quản lý giáo dục,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,C17,KV2,05,Quản lý,6.3,5.9,0.0,5.2,0.0,0.0,0.0,0.0,4.0,0.0,0.0
+ST0112,Công nghệ thực phẩm,Công nghệ sau thu hoạch,Công nghệ thông tin,D14,KV2,05,Ẩm thực,5.7,5.5,0.0,0.0,2.3,0.0,0.0,0.0,0.0,0.0,4.2
+ST0113,Sư phạm Ngữ văn,Xã hội học,Ngôn ngữ Pháp,"A03,A08",KV2,05,"Du lịch,Văn học,Thống kê",4.6,7.1,0.0,3.0,0.0,4.8,0.0,0.0,0.0,0.0,0.0
+ST0114,Sư phạm Hóa học,Công nghệ thực phẩm,Kỹ thuật môi trường,"A-TIN,A03",KV2,05,"Dạy học,Quảng cáo,Nông nghiệp",5.4,4.6,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,8.2
+ST0115,Quản lý bệnh viện,Công nghệ thông tin,Marketing,D09,KV2,05,"Xây dựng,Chăm sóc sức khỏe",6.9,6.4,4.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.2
+ST0116,Digital Marketing,Khoa học dữ liệu và Trí tuệ nhân tạo,Trí tuệ nhân tạo,A08,KV2,05,"Công nghệ,Toán học,Truyền thông",6.4,7.9,1.7,6.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0117,Sư phạm Ngữ văn,Công nghệ thông tin,Nhân học,"F-TIN,A02",KV2,05,"Tài chính,Trò chơi điện tử",8.5,5.5,0.0,0.0,2.9,7.6,0.0,0.0,0.0,0.0,0.0
+ST0118,Quản lý đất đai,Dược học,Công nghệ sinh học,B00,KV2,05,"Hóa học,Thiên nhiên",6.6,4.9,0.0,7.2,0.0,0.0,4.7,0.0,0.0,0.0,0.0
+ST0119,Luật quốc tế,Quản lý giáo dục,Quản trị kinh doanh quốc tế,"B02,B04",KV2,05,"Luật pháp,Ngoại ngữ",8.0,4.6,0.0,4.0,0.0,0.0,0.0,0.0,6.9,0.0,0.0
+ST0120,Robot và Trí tuệ nhân tạo,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,A01,KV2,05,"Kỹ thuật,Chăm sóc sức khỏe,Dịch vụ khách hàng",8.9,7.5,0.0,3.8,0.0,0.0,0.0,0.0,0.0,0.0,5.8
+ST0121,Luật kinh tế,Quản lý giáo dục,Marketing,A06,KV2,05,"Kinh doanh,Nghiên cứu,Bảo mật thông tin",9.1,3.8,3.9,0.0,0.0,0.0,0.0,0.0,6.7,0.0,0.0
+ST0122,Thiết kế thời trang,Nghệ thuật,Sư phạm Tiếng Anh,"B03,A09",KV2,05,"Giáo dục,Văn hóa,Thống kê",6.7,5.3,0.0,0.0,0.0,0.0,2.4,0.0,0.0,4.9,0.0
+ST0123,Tài chính - Ngân hàng,Kế toán,Kiểm toán,C14,KV1,06,Tài chính,6.4,6.9,0.0,0.0,0.0,4.3,0.0,0.0,0.0,3.9,0.0
+ST0124,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A05,KV2,05,"Kỹ thuật,Máy tính,Nghệ thuật",8.5,7.2,0.0,0.0,0.0,0.0,0.0,2.8,0.0,5.0,0.0
+ST0125,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D-TIN,KV2,05,Thiết kế,7.5,6.1,0.0,0.0,0.0,0.0,0.0,4.3,0.0,4.9,0.0
+ST0126,Tâm lý học,Quản trị kinh doanh quốc tế,Khoa học dữ liệu và Trí tuệ nhân tạo,D12,KV2,05,"Kỹ thuật,Ngoại ngữ",5.8,6.3,0.0,0.0,0.0,0.0,0.0,5.8,0.0,4.7,0.0
+ST0127,Quản trị dịch vụ du lịch và lữ hành,Sư phạm Ngữ văn,Ngôn ngữ Anh,A01,KV2,05,"Lập trình,Ngoại ngữ",6.5,5.0,5.1,0.0,0.0,0.0,8.0,0.0,0.0,0.0,0.0
+ST0128,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,G-TIN,KV2,05,"Kinh doanh,Giao tiếp",8.4,7.0,0.0,0.0,0.0,4.1,0.0,0.0,0.0,5.3,0.0
+ST0129,Marketing,Digital Marketing,Thiết kế đồ họa,C12,KV2,05,Sáng tạo,5.1,6.7,6.4,0.0,0.0,0.0,0.0,0.0,0.0,5.1,0.0
+ST0130,Quản lý bệnh viện,Sư phạm Ngữ văn,Nhân học,"D66,D84",KV2,05,Y học,7.8,7.1,0.0,0.0,0.0,6.2,2.9,0.0,0.0,0.0,0.0
+ST0131,Luật,Kinh tế học,Luật quốc tế,C05,KV2,04,Chính trị,7.0,6.4,3.7,0.0,0.0,3.9,0.0,0.0,0.0,0.0,0.0
+ST0132,Quản lý giáo dục,Công nghệ thông tin,Marketing,"D10,A02",KV2,05,Nông nghiệp,8.4,5.9,3.3,0.0,0.0,0.0,0.0,0.0,6.0,0.0,0.0
+ST0133,Thiết kế đồ họa,Công nghệ thông tin,Khoa học dữ liệu và Trí tuệ nhân tạo,"C04,G-TIN",KV2,05,Công nghệ,8.3,6.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.8,4.8
+ST0134,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,C19,KV2,05,"Công nghệ,Ngoại ngữ",7.2,8.1,0.0,0.0,3.5,0.0,0.0,0.0,2.7,0.0,0.0
+ST0135,Công nghệ vật liệu,Kỹ thuật xây dựng,Kỹ thuật điện - điện tử,"B02,A02",KV2,05,"Khoa học,Thiết kế,Kỹ thuật",6.6,7.0,0.0,6.5,0.0,4.3,0.0,0.0,0.0,0.0,0.0
+ST0136,Quản trị kinh doanh,Luật kinh tế,Quản lý bệnh viện,"C-TIN,C05",KV2,05,"Luật pháp,Nông nghiệp,Quản lý",3.7,5.3,0.0,4.1,5.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0137,Quản trị kinh doanh,Tài chính - Ngân hàng,Luật kinh tế,D07,KV2,05,Kinh doanh,6.7,4.7,0.0,6.4,3.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0138,Công nghệ thông tin,Quản trị kinh doanh quốc tế,Thiết kế đồ họa,A10,KV2,05,"Máy tính,Văn hóa",7.7,6.1,0.0,0.0,0.0,0.0,0.0,4.2,4.1,0.0,0.0
+ST0139,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,D66,KV2,05,"Dạy học,Ẩm thực,Công nghệ",7.6,5.9,6.9,0.0,6.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0140,Robot và Trí tuệ nhân tạo,Tự động hóa,Công nghệ kỹ thuật ô tô,"A01,B02",KV1,03,Tự động hóa,7.8,6.0,0.0,0.0,0.0,5.4,0.0,0.0,0.0,0.0,6.2
+ST0141,Thiết kế đồ họa,Sư phạm Ngữ văn,Nhân học,"A08,E-TIN",KV2,05,"Ẩm thực,Thiên nhiên",8.4,5.0,0.0,0.0,0.0,5.6,0.0,0.0,0.0,3.9,0.0
+ST0142,Luật kinh tế,Sư phạm Hóa học,Y khoa,"A02,C00",KV2,05,"Nghiên cứu,Luật pháp",5.8,5.7,0.0,2.7,5.4,0.0,0.0,0.0,0.0,0.0,0.0
+ST0143,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Marketing,"B02,C19",KV1,01,"Ngoại ngữ,Nông nghiệp,Kinh doanh",9.1,4.7,0.0,0.0,0.0,0.0,0.0,0.0,4.5,0.0,3.8
+ST0144,Sư phạm Ngữ văn,Nhân học,Xã hội học,D08,KV2,05,Hóa học,8.6,7.4,0.0,0.0,0.0,7.2,0.0,0.0,0.0,0.0,6.2
+ST0145,Công nghệ thông tin,Marketing,Digital Marketing,"A02,C12",KV2,05,Ẩm thực,6.9,6.5,3.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.7
+ST0146,Công nghệ thông tin,Thiết kế đồ họa,Thống kê,"A07,D01",KV1,07,Máy tính,5.3,7.5,0.0,0.0,0.0,0.0,0.0,0.0,4.8,0.0,3.8
+ST0147,Nhân học,Xã hội học,Quản trị kinh doanh quốc tế,C12,KV2,05,"Toán học,Giao tiếp,Văn hóa",7.7,7.3,0.0,6.4,0.0,5.7,0.0,0.0,0.0,0.0,0.0
+ST0148,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Thiết kế đồ họa,"A06,E-TIN",KV2,05,Chăm sóc sức khỏe,7.3,4.4,0.0,0.0,0.0,0.0,0.0,4.8,0.0,6.7,0.0
+ST0149,Báo chí,Ngôn ngữ Anh,Ngôn ngữ Nhật,"D12,C12",KV2,05,"Sáng tạo,Đọc sách,Bảo mật thông tin",4.5,8.3,5.2,0.0,0.0,6.9,0.0,0.0,0.0,0.0,0.0
+ST0150,Logistics và Quản lý chuỗi cung ứng,Kỹ thuật điện - điện tử,Kỹ thuật xây dựng,C04,KV2,05,"Điện tử,Toán học,Kinh doanh",7.4,4.1,0.0,0.0,0.0,0.0,7.6,0.0,0.0,0.0,5.6
+ST0151,Tự động hóa,Robot và Trí tuệ nhân tạo,Công nghệ kỹ thuật ô tô,"C08,D01",KV2,05,"Dịch vụ khách hàng,Tự động hóa,Văn học",8.8,5.3,0.0,0.0,6.0,0.0,0.0,0.0,0.0,0.0,4.9
+ST0152,Marketing,Digital Marketing,Công nghệ thông tin,"A00,D12",KV2,05,Quảng cáo,5.6,7.3,0.0,5.6,5.9,0.0,0.0,0.0,0.0,0.0,0.0
+ST0153,Marketing,Công nghệ sau thu hoạch,Digital Marketing,A02,KV2,05,"Ẩm thực,Truyền thông",3.3,6.8,0.0,0.0,0.0,0.0,0.0,3.1,0.0,0.0,6.1
+ST0154,Tài chính - Ngân hàng,Kế toán,Kiểm toán,C02,KV2,01,Tài chính,9.1,5.4,0.0,0.0,0.0,0.0,4.5,0.0,0.0,0.0,4.1
+ST0155,Công nghệ thông tin,Thiết kế đồ họa,Thống kê,"C12,D-TIN",KV2,05,"Máy tính,Kỹ thuật,Thiên nhiên",6.6,7.9,4.2,0.0,0.0,3.3,0.0,0.0,0.0,0.0,0.0
+ST0156,Quản lý giáo dục,Sư phạm Ngữ văn,Sư phạm Hóa học,"D15,C03",KV3,02,"Giáo dục,Văn học,Sáng tạo",4.8,8.1,0.0,0.0,4.3,0.0,0.0,0.0,5.9,0.0,0.0
+ST0157,Công nghệ thông tin,Marketing,Digital Marketing,"A11,A01",KV2,05,Hóa học,8.2,7.9,4.7,0.0,0.0,0.0,4.4,0.0,0.0,0.0,0.0
+ST0158,Sư phạm Hóa học,Y khoa,Răng - Hàm - Mặt,C04,KV2,05,"Giáo dục,Y học",7.2,6.3,3.9,0.0,7.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0159,Thiết kế đồ họa,Khoa học máy tính,An toàn thông tin,"C02,C12",KV2,05,Máy tính,6.8,7.5,0.0,6.9,0.0,0.0,0.0,0.0,0.0,7.6,0.0
+ST0160,Marketing,Digital Marketing,Ngôn ngữ Anh,A01,KV2,05,"Đọc sách,Giáo dục,Quảng cáo",7.5,6.6,7.8,0.0,0.0,0.0,0.0,0.0,0.0,5.8,0.0
+ST0161,Marketing,Digital Marketing,Thiết kế đồ họa,C14,KV2,05,"Sáng tạo,Môi trường,Lãnh đạo",6.7,7.1,6.6,0.0,0.0,0.0,4.9,0.0,0.0,0.0,0.0
+ST0162,Nhân học,Quản trị dịch vụ du lịch và lữ hành,Quản trị kinh doanh quốc tế,A01,KV2,05,Văn hóa,7.0,1.9,0.0,0.0,0.0,0.0,5.1,0.0,0.0,0.0,4.7
+ST0163,Tâm lý học,Xã hội học,Thống kê,"B00,A09",KV2,05,"Phân tích dữ liệu,Thống kê,Kỹ thuật",6.4,6.8,0.0,0.0,0.0,2.8,0.0,3.7,0.0,0.0,0.0
+ST0164,Công nghệ sinh học,Kỹ thuật môi trường,Quản lý đất đai,D09,KV2,05,Môi trường,9.5,5.7,0.0,6.0,0.0,2.7,0.0,0.0,0.0,0.0,0.0
+ST0165,Quản lý giáo dục,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,"D10,B04",KV2,05,"Tự động hóa,Dạy học,Văn học",6.1,5.7,0.0,0.0,0.0,0.0,0.0,0.0,8.6,3.4,0.0
+ST0166,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,D13,KV2,05,"Dạy học,Quản lý,Luật pháp",6.3,6.7,8.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.6
+ST0167,Kỹ thuật điện - điện tử,Thiết kế đồ họa,Tài chính - Ngân hàng,"C04,D12",KV2,05,"Toán học,Động vật,Nghệ thuật",6.0,8.6,0.0,5.7,0.0,0.0,0.0,0.0,0.0,0.0,6.0
+ST0168,Nhân học,Luật kinh tế,Luật,"A04,B02",KV2,05,Nghiên cứu,7.4,4.9,0.0,0.0,0.0,5.1,5.8,0.0,0.0,0.0,0.0
+ST0169,Ngôn ngữ Anh,Ngôn ngữ Nhật,Sư phạm Hóa học,D12,KV2,05,"Đọc sách,Tự động hóa,Xây dựng",3.7,7.8,0.0,0.0,5.4,0.0,3.8,0.0,0.0,0.0,0.0
+ST0170,Quản trị kinh doanh,Ngôn ngữ Anh,Quản lý bệnh viện,B00,KV2,05,"Lãnh đạo,Du lịch",7.4,6.5,0.0,0.0,0.0,6.1,0.0,0.0,0.0,0.0,4.7
+ST0171,Nhân học,Xã hội học,Quản trị nhân lực,C02,KV2,05,"Giúp đỡ người khác,Quản lý,Khoa học",8.4,8.0,0.0,0.0,0.0,4.4,0.0,0.0,0.0,0.0,4.0
+ST0172,Quản lý bệnh viện,Công nghệ thông tin,Marketing,B03,KV1,05,"Chăm sóc sức khỏe,Tự động hóa",6.3,6.5,5.6,0.0,0.0,0.0,0.0,0.0,3.1,0.0,0.0
+ST0173,Kỹ thuật môi trường,Marketing,Digital Marketing,B03,KV1,01,"Truyền thông,Kỹ thuật,Toán học",8.5,7.7,0.0,0.0,4.2,0.0,0.0,5.4,0.0,0.0,0.0
+ST0174,Sư phạm Ngữ văn,Thiết kế đồ họa,Thiết kế thời trang,"B02,A08",KV2,05,Dạy học,6.5,7.2,0.0,0.0,0.0,0.0,2.7,0.0,0.0,5.6,0.0
+ST0175,Quản trị nhân lực,Tâm lý học,Giáo dục Tiểu học,C12,KV2,05,"Thể thao,Giúp đỡ người khác",2.5,6.7,6.2,0.0,0.0,0.0,0.0,0.0,4.4,0.0,0.0
+ST0176,Marketing,Quản lý giáo dục,Nhân học,C-TIN,KV2,05,"Giao tiếp,Quảng cáo,Xây dựng",7.0,7.1,0.0,0.0,0.0,4.0,0.0,0.0,3.7,0.0,0.0
+ST0177,Trí tuệ nhân tạo,Khoa học máy tính,Kỹ thuật phần mềm,"D01,D15",KV3,04,"Lập trình,Hóa học,Nghệ thuật",6.7,5.5,0.0,7.9,0.0,0.0,0.0,0.0,0.0,5.4,0.0
+ST0178,Sư phạm Hóa học,Dược học,Y khoa,A09,KV2,05,"Chăm sóc sức khỏe,Hóa học",7.7,5.2,0.0,0.0,4.8,6.5,0.0,0.0,0.0,0.0,0.0
+ST0179,Thiết kế đồ họa,Tài chính - Ngân hàng,Ngôn ngữ Anh,"B03,F-TIN",KV3,03,"Du lịch,Tài chính",5.7,7.7,0.0,0.0,0.0,5.6,0.0,0.0,0.0,5.4,0.0
+ST0180,Sư phạm Ngữ văn,Công nghệ thông tin,Nhân học,B03,KV2,05,"Trò chơi điện tử,Sáng tạo",7.2,6.1,0.0,0.0,0.0,7.6,0.0,4.7,0.0,0.0,0.0
+ST0181,Marketing,Digital Marketing,Luật,"A11,A04",KV2,05,"Xây dựng,Quảng cáo,Chính trị",4.3,5.6,0.0,0.0,0.0,3.6,0.0,0.0,0.0,3.3,0.0
+ST0182,Luật kinh tế,Luật,Công nghệ thông tin,C08,KV2,05,"Thiên nhiên,Phân tích dữ liệu,Luật pháp",7.0,4.6,0.0,3.5,0.0,0.0,0.0,0.0,2.3,0.0,0.0
+ST0183,Sư phạm Ngữ văn,Logistics và Quản lý chuỗi cung ứng,Kỹ thuật xây dựng,"A00,A10",KV2,05,"Du lịch,Công nghệ,Sáng tạo",8.7,4.9,0.0,0.0,0.0,3.9,8.4,0.0,0.0,0.0,0.0
+ST0184,Quản lý giáo dục,Tâm lý học,Thiết kế đồ họa,D07,KV2,05,"Nghiên cứu,Nghệ thuật",8.2,5.8,0.0,0.0,0.0,0.0,0.0,4.4,5.7,0.0,0.0
+ST0185,Công nghệ thực phẩm,Công nghệ sau thu hoạch,Sư phạm Hóa học,"C04,D08",KV2,05,Ẩm thực,6.8,6.7,0.0,0.0,4.2,0.0,0.0,2.7,0.0,0.0,0.0
+ST0186,Sư phạm Ngữ văn,Nhân học,Xã hội học,"C08,B02",KV2,05,Khoa học,7.3,5.8,0.0,0.0,0.0,7.8,5.3,0.0,0.0,0.0,0.0
+ST0187,Báo chí,Marketing,Digital Marketing,B00,KV2,05,"Truyền thông,Đọc sách",6.8,8.0,0.0,0.0,3.3,0.0,4.4,0.0,0.0,0.0,0.0
+ST0188,Kiến trúc,Thiết kế thời trang,Khoa học dữ liệu và Trí tuệ nhân tạo,B03,KV2,05,"Toán học,Sáng tạo,Thể thao",8.3,3.8,5.6,4.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0189,Công nghệ thông tin,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,"C14,A10",KV2,05,"Trò chơi điện tử,Dịch vụ khách hàng,Cơ khí",7.8,8.4,5.2,0.0,7.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0190,Marketing,Thiết kế đồ họa,Quan hệ công chúng,"A03,B04",KV2,05,"Giao tiếp,Quảng cáo,Thống kê",7.1,6.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.9,3.8
+ST0191,Tự động hóa,Trí tuệ nhân tạo,Khoa học máy tính,"D10,C00",KV2,05,Điện tử,5.3,5.9,0.0,6.1,0.0,0.0,0.0,0.0,0.0,3.9,0.0
+ST0192,Nhân học,Kiểm toán,Quản lý tài nguyên và môi trường,"B-TIN,A01",KV2,05,"Môi trường,Tài chính,Nghiên cứu",8.1,8.6,0.0,0.0,0.0,0.0,6.8,0.0,0.0,0.0,5.5
+ST0193,Logistics và Quản lý chuỗi cung ứng,Công nghệ thông tin,Digital Marketing,A05,KV2,05,Công nghệ,8.7,2.8,6.4,0.0,0.0,0.0,5.1,0.0,0.0,0.0,0.0
+ST0194,An toàn thông tin,Mạng máy tính & truyền thông dữ liệu,Kỹ thuật xây dựng,"C04,C-TIN",KV2,05,"Y học,Bảo mật thông tin,Máy tính",7.3,5.4,0.0,6.2,0.0,0.0,7.4,0.0,0.0,0.0,0.0
+ST0195,Kỹ thuật xây dựng,Kiến trúc,Kỹ thuật điện - điện tử,"D08,A-TIN",KV1,03,"Kỹ thuật,Xây dựng",7.1,7.7,0.0,5.8,3.3,0.0,0.0,0.0,0.0,0.0,0.0
+ST0196,Tâm lý học,Sư phạm Tiếng Anh,Sư phạm Toán,A09,KV2,05,"Dạy học,Ẩm thực,Khoa học",6.5,6.9,7.2,0.0,0.0,0.0,0.0,0.0,0.0,5.1,0.0
+ST0197,Xã hội học,Luật kinh tế,Luật,"D84,A11",KV2,05,"Môi trường,Nghệ thuật,Phân tích dữ liệu",4.6,7.0,0.0,0.0,0.0,6.2,0.0,0.0,0.0,0.0,3.7
+ST0198,Nhân học,Xã hội học,Luật,D66,KV3,02,"Giao tiếp,Nghệ thuật",6.4,5.5,0.0,0.0,0.0,4.7,2.9,0.0,0.0,0.0,0.0
+ST0199,Quản lý giáo dục,Quản trị nhân lực,Tâm lý học,"C20,G-TIN",KV2,05,Giúp đỡ người khác,7.6,7.2,0.0,0.0,4.1,0.0,0.0,0.0,5.9,0.0,0.0
+ST0200,Tâm lý học,Sư phạm Ngữ văn,Thú y,C02,KV1,02,"Động vật,Y học",7.8,7.4,0.0,0.0,0.0,7.8,0.0,6.9,0.0,0.0,0.0
+ST0201,Tự động hóa,Ngôn ngữ Pháp,Quản trị khách sạn,A02,KV2,05,"Du lịch,Văn học,Cơ khí",7.7,4.5,0.0,6.1,0.0,0.0,0.0,0.0,3.5,0.0,0.0
+ST0202,Bảo hiểm,Công nghệ thông tin,Quản trị kinh doanh,C05,KV2,05,"Ngoại ngữ,Dịch vụ khách hàng,Phân tích dữ liệu",7.2,5.4,0.0,8.6,4.6,0.0,0.0,0.0,0.0,0.0,0.0
+ST0203,Công nghệ thông tin,Quản trị kinh doanh,Tài chính - Ngân hàng,"A04,D07",KV2,05,"Phân tích dữ liệu,Ẩm thực",5.9,5.1,0.0,0.0,6.3,0.0,5.6,0.0,0.0,0.0,0.0
+ST0204,Tâm lý học,Quản trị nhân lực,Giáo dục Tiểu học,"C12,C01",KV2,05,"Điện tử,Giúp đỡ người khác",3.8,5.3,3.2,0.0,0.0,0.0,0.0,5.2,0.0,0.0,0.0
+ST0205,Luật kinh tế,Luật,Tâm lý học,"A08,A10",KV2,05,"Luật pháp,Khoa học",8.0,6.0,0.0,0.0,0.0,0.0,5.4,0.0,3.2,0.0,0.0
+ST0206,Quản lý bệnh viện,Sư phạm Ngữ văn,Tâm lý học,"C17,D11",KV2,05,"Y học,Nông nghiệp",6.5,6.3,0.0,0.0,0.0,5.7,0.0,4.3,0.0,0.0,0.0
+ST0207,Marketing,Quan hệ công chúng,Logistics và Quản lý chuỗi cung ứng,"C20,D12",KV2,05,"Truyền thông,Kinh doanh,Y học",7.5,4.9,0.0,0.0,4.5,0.0,6.4,0.0,0.0,0.0,0.0
+ST0208,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Quản trị khách sạn,D08,KV2,05,"Giao tiếp,Luật pháp,Ngoại ngữ",7.8,3.0,0.0,5.5,0.0,0.0,0.0,0.0,5.3,0.0,0.0
+ST0209,Quản lý tài nguyên và môi trường,Quản lý đất đai,Tâm lý học,"D11,D84",KV2,05,"Quản lý,Luật pháp",6.2,6.5,0.0,0.0,0.0,0.0,5.8,6.5,0.0,0.0,0.0
+ST0210,Luật,Quan hệ quốc tế,Quản lý giáo dục,D66,KV2,05,"Dịch vụ khách hàng,Công nghệ,Chính trị",6.7,2.5,0.0,0.0,0.0,5.6,0.0,0.0,7.1,0.0,0.0
+ST0211,Công nghệ thông tin,Thiết kế đồ họa,Digital Marketing,"D14,C-TIN",KV2,05,"Phân tích dữ liệu,Chăm sóc sức khỏe",7.6,7.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.3,5.5
+ST0212,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,C00,KV2,05,"Kinh doanh,Quản lý,Văn học",3.6,8.3,0.0,0.0,6.4,0.0,0.0,0.0,0.0,5.5,0.0
+ST0213,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Quản trị khách sạn,"K01,D12",KV2,05,Du lịch,6.7,5.4,0.0,0.0,0.0,3.7,0.0,0.0,5.2,0.0,0.0
+ST0214,Bảo hiểm,Quản trị khách sạn,Thống kê,"A09,C00",KV2,05,"Giáo dục,Thống kê,Dịch vụ khách hàng",7.8,4.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,6.3
+ST0215,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,C13,KV3,02,"Văn học,Y học",7.7,6.8,0.0,8.2,0.0,0.0,0.0,0.0,0.0,6.5,0.0
+ST0216,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,C05,KV2,03,Tài chính,7.2,3.3,0.0,6.0,0.0,0.0,0.0,0.0,0.0,6.3,0.0
+ST0217,Sư phạm Hóa học,Nhân học,Xã hội học,"G-TIN,A11",KV2,05,Nghiên cứu,7.1,5.7,0.0,0.0,5.1,4.5,0.0,0.0,0.0,0.0,0.0
+ST0218,Thú y,Tâm lý học,Quản lý bệnh viện,D15,KV2,05,"Môi trường,Chăm sóc sức khỏe,Tự động hóa",8.2,7.3,0.0,4.0,0.0,0.0,0.0,6.1,0.0,0.0,0.0
+ST0219,Công nghệ thông tin,Marketing,Digital Marketing,"A03,C02",KV2,01,"Lập trình,Truyền thông",2.6,5.2,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.6
+ST0220,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Quản trị khách sạn,C17,KV2,05,"Động vật,Du lịch",8.5,6.1,6.4,0.0,0.0,0.0,0.0,0.0,4.2,0.0,0.0
+ST0221,Quản lý bệnh viện,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,"B02,D10",KV3,05,"Quản lý,Y học,Truyền thông",8.7,2.5,0.0,0.0,0.0,3.4,0.0,0.0,0.0,0.0,4.8
+ST0222,Thiết kế đồ họa,Quản lý tài nguyên và môi trường,Sư phạm Ngữ văn,"D84,C05",KV2,03,Môi trường,7.5,5.6,0.0,0.0,0.0,0.0,5.7,0.0,0.0,4.7,0.0
+ST0223,Sư phạm Ngữ văn,Giáo dục Tiểu học,Quản lý giáo dục,A09,KV2,05,Giáo dục,9.6,6.4,0.0,0.0,0.0,6.6,6.1,0.0,0.0,0.0,0.0
+ST0224,Quản lý giáo dục,Quản lý tài nguyên và môi trường,Logistics và Quản lý chuỗi cung ứng,A02,KV2,05,"Quản lý,Khoa học,Ẩm thực",5.8,6.5,0.0,0.0,0.0,0.0,6.2,0.0,3.9,0.0,0.0
+ST0225,Thiết kế đồ họa,Quản trị kinh doanh,Quản lý bệnh viện,B00,KV2,05,Lãnh đạo,3.4,7.9,0.0,0.0,2.9,0.0,0.0,0.0,0.0,5.6,0.0
+ST0226,Thiết kế đồ họa,Thiết kế thời trang,Logistics và Quản lý chuỗi cung ứng,B00,KV2,05,"Luật pháp,Nông nghiệp,Quản lý",7.4,6.4,0.0,0.0,5.4,0.0,0.0,0.0,0.0,6.5,0.0
+ST0227,Thiết kế thời trang,Thiết kế đồ họa,Công nghệ vật liệu,"B02,D01",KV2,02,"Thể thao,Thiết kế",5.9,5.3,0.0,0.0,2.9,0.0,0.0,0.0,0.0,0.0,3.9
+ST0228,Quản lý giáo dục,Quản trị khách sạn,Thiết kế đồ họa,"A01,D15",KV2,05,"Giao tiếp,Dịch vụ khách hàng,Động vật",8.4,6.7,0.0,0.0,0.0,0.0,0.0,0.0,5.5,6.7,0.0
+ST0229,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,G-TIN,KV2,01,Nghệ thuật,6.2,6.3,0.0,3.1,0.0,0.0,0.0,0.0,0.0,6.7,0.0
+ST0230,Thống kê,Toán Kinh tế,Tài chính - Ngân hàng,"A08,D66",KV2,05,"Toán học,Thống kê,Đọc sách",9.0,7.5,0.0,4.6,6.3,0.0,0.0,0.0,0.0,0.0,0.0
+ST0231,Xã hội học,Thống kê,Kinh tế học,"A01,A07",KV2,05,"Điện tử,Thống kê",7.8,7.6,0.0,0.0,0.0,5.5,0.0,0.0,0.0,0.0,3.6
+ST0232,Thiết kế đồ họa,Công nghệ thông tin,Sư phạm Ngữ văn,"A08,B02",KV2,05,"Công nghệ,Nông nghiệp,Thiết kế",8.6,7.7,0.0,0.0,0.0,6.9,0.0,0.0,0.0,0.0,3.4
+ST0233,Công nghệ thông tin,Quản lý giáo dục,Thiết kế đồ họa,"B03,D84",KV2,05,"Máy tính,Xây dựng,Văn học",7.9,5.7,0.0,4.7,0.0,0.0,0.0,0.0,7.0,0.0,0.0
+ST0234,Luật kinh tế,Luật,Luật quốc tế,C08,KV2,05,"Kỹ thuật,Luật pháp",7.6,8.0,4.1,6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0235,Sư phạm Ngữ văn,Robot và Trí tuệ nhân tạo,Tự động hóa,D66,KV2,05,Dạy học,7.9,3.2,0.0,0.0,0.0,0.0,4.3,0.0,0.0,0.0,7.5
+ST0236,Marketing,Digital Marketing,Thiết kế đồ họa,D08,KV2,05,Sáng tạo,6.4,7.2,5.8,0.0,0.0,0.0,6.2,0.0,0.0,0.0,0.0
+ST0237,Tâm lý học,Marketing,Digital Marketing,D14,KV2,05,Truyền thông,4.0,2.4,0.0,0.0,0.0,0.0,0.0,6.5,1.7,0.0,0.0
+ST0238,Quản lý giáo dục,Luật kinh tế,Luật,D66,KV2,05,"Thiên nhiên,Bảo mật thông tin,Nghiên cứu",8.6,7.8,6.5,0.0,0.0,0.0,0.0,0.0,7.7,0.0,0.0
+ST0239,Tự động hóa,Công nghệ kỹ thuật ô tô,Quản lý giáo dục,D09,KV2,05,Cơ khí,8.5,7.6,0.0,0.0,0.0,0.0,0.0,0.0,4.3,0.0,7.1
+ST0240,Thiết kế đồ họa,Thống kê,Khoa học dữ liệu và Trí tuệ nhân tạo,B00,KV2,05,Thống kê,8.2,6.0,0.0,0.0,0.0,0.0,2.7,0.0,0.0,4.5,0.0
+ST0241,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,"A04,D07",KV2,05,"Cơ khí,Hóa học,Công nghệ",7.7,7.5,6.2,0.0,5.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0242,Sư phạm Ngữ văn,Marketing,Digital Marketing,"A07,A05",KV2,05,"Sáng tạo,Ngoại ngữ,Điện tử",8.7,6.1,0.0,0.0,0.0,0.0,0.0,3.4,5.7,0.0,0.0
+ST0243,Quản lý tài nguyên và môi trường,Sư phạm Ngữ văn,Sư phạm Hóa học,D13,KV2,05,"Văn học,Khoa học",7.8,7.0,0.0,0.0,7.0,0.0,7.3,0.0,0.0,0.0,0.0
+ST0244,Quản lý tài nguyên và môi trường,Quản lý đất đai,Nuôi trồng thủy sản,C14,KV2,05,Điện tử,9.1,3.6,0.0,0.0,0.0,0.0,5.2,7.0,0.0,0.0,0.0
+ST0245,Luật,Quản lý giáo dục,Sư phạm Ngữ văn,D07,KV2,05,Điện tử,5.3,6.6,0.0,0.0,0.0,6.1,0.0,0.0,5.7,0.0,0.0
+ST0246,Xã hội học,Quản lý giáo dục,Sư phạm Ngữ văn,B02,KV2,05,"Giúp đỡ người khác,Thống kê,Giáo dục",4.3,5.8,0.0,0.0,0.0,4.7,0.0,0.0,6.2,0.0,0.0
+ST0247,Tâm lý học,Công nghệ thông tin,Marketing,D13,KV2,05,"Giao tiếp,Trò chơi điện tử",6.6,6.7,0.0,0.0,0.0,0.0,0.0,4.7,0.0,5.0,0.0
+ST0248,Tự động hóa,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,D01,KV2,05,"Cơ khí,Điện tử,Kỹ thuật",7.5,6.6,0.0,0.0,4.2,0.0,0.0,0.0,2.3,0.0,0.0
+ST0249,Quản lý tài nguyên và môi trường,Sư phạm Hóa học,Quản trị kinh doanh,C01,KV1,02,"Khoa học,Lãnh đạo,Xây dựng",7.9,5.6,0.0,0.0,3.7,0.0,5.3,0.0,0.0,0.0,0.0
+ST0250,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"C05,A10",KV2,05,"Giao tiếp,Kinh doanh,Xây dựng",7.0,6.8,0.0,6.8,0.0,0.0,0.0,0.0,2.7,0.0,0.0
+ST0251,Tâm lý học,Công nghệ sinh học,Nông nghiệp,"D10,D84",KV2,05,Nghiên cứu,6.1,6.2,0.0,0.0,0.0,0.0,0.0,7.9,0.0,0.0,4.7
+ST0252,Công nghệ thông tin,Tâm lý học,Thiết kế đồ họa,C01,KV2,04,Máy tính,9.4,8.7,0.0,3.6,0.0,0.0,0.0,6.0,0.0,0.0,0.0
+ST0253,Quản lý bệnh viện,Y khoa,Răng - Hàm - Mặt,"C03,A01",KV2,05,"Luật pháp,Chăm sóc sức khỏe,Y học",7.0,7.1,5.4,0.0,5.6,0.0,0.0,0.0,0.0,0.0,0.0
+ST0254,Sư phạm Ngữ văn,Nhân học,Tâm lý học,"D15,D01",KV2,05,"Giúp đỡ người khác,Nông nghiệp,Giáo dục",8.8,4.8,0.0,0.0,0.0,0.0,5.6,2.6,0.0,0.0,0.0
+ST0255,Tâm lý học,Luật quốc tế,Xã hội học,"B04,A04",KV2,05,"Giúp đỡ người khác,Ngoại ngữ",1.7,7.5,0.0,0.0,0.0,0.0,0.0,6.5,7.6,0.0,0.0
+ST0256,Quản lý bệnh viện,Y khoa,Dược học,C00,KV2,05,"Khoa học,Lãnh đạo,Chăm sóc sức khỏe",7.2,5.2,0.0,4.3,0.0,0.0,4.2,0.0,0.0,0.0,0.0
+ST0257,Sư phạm Tiếng Anh,Sư phạm Toán,Giáo dục Tiểu học,"A05,D84",KV2,05,Giáo dục,7.1,7.0,8.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.8
+ST0258,Công nghệ thực phẩm,Marketing,Digital Marketing,D84,KV2,05,Sáng tạo,4.3,5.6,0.0,0.0,3.9,0.0,0.0,0.0,0.0,0.0,6.6
+ST0259,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,"G-TIN,D07",KV2,05,Phân tích dữ liệu,7.6,8.1,3.2,4.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0260,Công nghệ thực phẩm,Kỹ thuật môi trường,Công nghệ vật liệu,C20,KV2,05,Ẩm thực,8.8,3.7,0.0,0.0,6.2,0.0,0.0,0.0,0.0,0.0,7.0
+ST0261,Nông nghiệp,Nuôi trồng thủy sản,Công nghệ sau thu hoạch,"C02,A09",KV2,05,Nông nghiệp,4.3,1.4,0.0,0.0,0.0,3.7,0.0,0.0,0.0,0.0,4.4
+ST0262,Robot và Trí tuệ nhân tạo,Tự động hóa,Công nghệ kỹ thuật ô tô,D01,KV2,05,"Tự động hóa,Luật pháp,Du lịch",6.9,4.5,0.0,6.9,0.0,0.0,0.0,0.0,0.0,0.0,7.4
+ST0263,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Công nghệ thông tin,D10,KV2,05,Thiên nhiên,6.3,3.8,4.2,0.0,0.0,4.9,0.0,0.0,0.0,0.0,0.0
+ST0264,Tâm lý học,Quản trị nhân lực,Giáo dục Tiểu học,"D66,A00",KV2,05,"Xây dựng,Giúp đỡ người khác,Động vật",8.7,8.6,0.0,0.0,0.0,0.0,0.0,3.7,3.7,0.0,0.0
+ST0265,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"A02,D13",KV2,05,"Ẩm thực,Nghệ thuật",5.7,6.3,4.7,0.0,0.0,0.0,3.8,0.0,0.0,0.0,0.0
+ST0266,Tài chính - Ngân hàng,Kế toán,Kiểm toán,"D08,B-TIN",KV1,03,"Tài chính,Du lịch",8.5,7.8,0.0,4.8,5.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0267,Sư phạm Ngữ văn,Sư phạm Hóa học,Sư phạm Tiếng Anh,"D84,C20",KV2,05,"Bảo mật thông tin,Môi trường,Dạy học",7.7,3.5,0.0,0.0,1.4,4.9,0.0,0.0,0.0,0.0,0.0
+ST0268,Thiết kế đồ họa,Tài chính - Ngân hàng,Thống kê,"A05,A02",KV2,05,"Toán học,Thiết kế",8.9,8.5,0.0,0.0,4.9,5.7,0.0,0.0,0.0,0.0,0.0
+ST0269,Marketing,Công nghệ sinh học,Digital Marketing,D10,KV2,05,"Bảo mật thông tin,Dịch vụ khách hàng,Truyền thông",5.1,3.9,0.0,0.0,0.0,0.0,0.0,3.5,0.0,0.0,6.0
+ST0270,Robot và Trí tuệ nhân tạo,Công nghệ kỹ thuật ô tô,Trí tuệ nhân tạo,A07,KV2,05,"Kỹ thuật,Tự động hóa",7.0,5.2,0.0,5.6,0.0,0.0,0.0,0.0,3.3,0.0,0.0
+ST0271,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,G-TIN,KV2,05,Giáo dục,6.6,4.5,0.0,0.0,0.0,0.0,4.0,4.3,0.0,0.0,0.0
+ST0272,Sư phạm Hóa học,Marketing,Digital Marketing,C13,KV2,05,"Quảng cáo,Xây dựng,Khoa học",8.1,8.0,0.0,0.0,4.4,0.0,0.0,0.0,4.7,0.0,0.0
+ST0273,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Quản lý giáo dục,C03,KV2,05,Du lịch,6.6,6.1,0.0,3.6,0.0,0.0,0.0,0.0,5.7,0.0,0.0
+ST0274,Tâm lý học,Công nghệ thông tin,Marketing,C02,KV2,03,Kỹ thuật,8.0,7.0,4.1,0.0,0.0,0.0,0.0,5.6,0.0,0.0,0.0
+ST0275,Thiết kế đồ họa,Thiết kế thời trang,Luật kinh tế,"D-TIN,C08",KV2,05,Luật pháp,6.5,6.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.8,3.8
+ST0276,Công nghệ thông tin,Trí tuệ nhân tạo,Khoa học máy tính,G-TIN,KV2,05,"Môi trường,Lập trình",3.2,3.5,0.0,0.0,3.7,0.0,0.0,0.0,0.0,3.7,0.0
+ST0277,Tự động hóa,Công nghệ kỹ thuật ô tô,Công nghệ thông tin,"B00,C00",KV2,05,Tự động hóa,8.3,5.4,0.0,3.3,5.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0278,Sư phạm Hóa học,Tự động hóa,Âm nhạc,K01,KV2,05,"Ẩm thực,Tự động hóa",5.2,7.8,4.0,0.0,8.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0279,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Ngôn ngữ Anh,D08,KV2,05,"Chăm sóc sức khỏe,Du lịch,Dịch vụ khách hàng",8.5,8.4,0.0,0.0,5.2,5.8,0.0,0.0,0.0,0.0,0.0
+ST0280,Quản lý giáo dục,Quản trị kinh doanh,Quản lý bệnh viện,"D07,D10",KV2,05,"Giao tiếp,Lãnh đạo",8.1,4.8,0.0,0.0,0.0,0.0,2.5,0.0,3.2,0.0,0.0
+ST0281,Xã hội học,Công nghệ kỹ thuật ô tô,Răng - Hàm - Mặt,A08,KV1,07,"Thống kê,Cơ khí,Thiết kế",7.6,5.7,0.0,0.0,8.4,7.3,0.0,0.0,0.0,0.0,0.0
+ST0282,Quản lý giáo dục,Sư phạm Hóa học,Sư phạm Toán,A00,KV2,05,"Nghiên cứu,Dạy học",8.9,4.7,0.0,0.0,4.5,0.0,0.0,0.0,6.7,0.0,0.0
+ST0283,Sư phạm Ngữ văn,Marketing,Digital Marketing,B04,KV2,05,Sáng tạo,7.1,8.2,0.0,0.0,5.3,0.0,5.9,0.0,0.0,0.0,0.0
+ST0284,Răng - Hàm - Mặt,Tự động hóa,Kiến trúc,F-TIN,KV2,05,"Tự động hóa,Sáng tạo",7.7,3.3,0.0,2.8,5.4,0.0,0.0,0.0,0.0,0.0,0.0
+ST0285,Digital Marketing,Quản lý giáo dục,Công nghệ thông tin,C04,KV3,06,"Giáo dục,Quảng cáo,Công nghệ",5.9,7.4,0.0,0.0,0.0,0.0,0.0,0.0,3.8,0.0,4.1
+ST0286,Thiết kế thời trang,Âm nhạc,Sư phạm Ngữ văn,E-TIN,KV2,05,Thể thao,3.5,5.9,0.0,0.0,0.0,0.0,4.9,0.0,0.0,0.0,1.8
+ST0287,Tâm lý học,Công nghệ sinh học,Nông nghiệp,C-TIN,KV2,05,"Quản lý,Nghiên cứu,Phân tích dữ liệu",6.8,6.0,0.0,0.0,0.0,0.0,0.0,5.4,0.0,0.0,5.7
+ST0288,Công nghệ thông tin,Quản lý bệnh viện,Trí tuệ nhân tạo,D10,KV2,05,"Y học,Lập trình,Thiên nhiên",6.5,7.3,0.0,5.0,0.0,0.0,0.0,0.0,3.1,0.0,0.0
+ST0289,Sư phạm Hóa học,Marketing,Digital Marketing,"D-TIN,A09",KV2,05,"Giáo dục,Quảng cáo",9.1,6.4,0.0,0.0,5.6,0.0,0.0,0.0,0.0,0.0,5.7
+ST0290,Quản lý giáo dục,Thiết kế thời trang,Âm nhạc,"B00,B04",KV3,02,Thể thao,8.4,6.1,0.0,0.0,0.0,0.0,0.0,3.3,6.0,0.0,0.0
+ST0291,Luật kinh tế,Luật,Giáo dục Tiểu học,"A09,A01",KV2,05,Môi trường,3.2,5.4,0.0,0.0,0.0,6.5,5.3,0.0,0.0,0.0,0.0
+ST0292,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Bảo hiểm,C17,KV2,05,Dịch vụ khách hàng,6.3,6.5,0.0,0.0,0.0,0.0,0.0,0.0,3.9,0.0,2.2
+ST0293,Công nghệ sinh học,Nông nghiệp,Nuôi trồng thủy sản,D01,KV2,05,"Môi trường,Chính trị",8.5,4.9,0.0,0.0,0.0,0.0,0.0,4.2,0.0,0.0,5.5
+ST0294,Sư phạm Ngữ văn,Tâm lý học,Răng - Hàm - Mặt,B00,KV2,05,"Sáng tạo,Lập trình",6.3,6.6,0.0,0.0,0.0,6.6,0.0,7.9,0.0,0.0,0.0
+ST0295,Quản lý giáo dục,Tâm lý học,Dược học,"B00,K01",KV2,05,Hóa học,7.8,5.9,0.0,0.0,0.0,0.0,0.0,4.5,5.7,0.0,0.0
+ST0296,Tài chính - Ngân hàng,Kế toán,Kiểm toán,"A00,D10",KV2,05,"Tài chính,Kỹ thuật,Môi trường",5.5,5.5,2.8,0.0,7.1,0.0,0.0,0.0,0.0,0.0,0.0
+ST0297,Thống kê,Nhân học,Công nghệ thông tin,"D08,A-TIN",KV2,02,"Giao tiếp,Thống kê,Máy tính",8.1,4.4,0.0,0.0,0.0,0.0,3.1,0.0,0.0,0.0,2.8
+ST0298,Nhân học,Xã hội học,Quản trị nhân lực,F-TIN,KV2,05,Giúp đỡ người khác,4.7,4.4,0.0,1.7,0.0,6.0,0.0,0.0,0.0,0.0,0.0
+ST0299,Tâm lý học,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,C08,KV2,05,Dịch vụ khách hàng,7.7,5.9,0.0,0.0,0.0,0.0,0.0,6.9,0.0,3.6,0.0
+ST0300,Tâm lý học,Nhân học,Quản lý tài nguyên và môi trường,"A11,C20",KV2,01,"Khoa học,Nghiên cứu,Động vật",8.5,5.8,0.0,0.0,0.0,0.0,3.6,1.5,0.0,0.0,0.0
+ST0301,Thiết kế đồ họa,Răng - Hàm - Mặt,Thiết kế thời trang,D15,KV2,05,"Thiết kế,Nông nghiệp",8.1,5.9,5.9,0.0,5.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0302,Marketing,Digital Marketing,Quan hệ công chúng,"C08,D13",KV2,05,"Ẩm thực,Quảng cáo",8.6,8.2,0.0,0.0,0.0,0.0,3.2,0.0,0.0,0.0,4.1
+ST0303,Công nghệ thông tin,Quản lý giáo dục,Thiết kế thời trang,C14,KV1,04,"Cơ khí,Lập trình,Thể thao",7.0,7.5,0.0,0.0,0.0,0.0,1.7,0.0,5.8,0.0,0.0
+ST0304,Quản trị kinh doanh,Quản lý bệnh viện,Quản lý giáo dục,A02,KV2,05,"Quản lý,Sáng tạo,Lãnh đạo",5.2,6.0,0.0,3.4,0.0,0.0,0.0,1.3,0.0,0.0,0.0
+ST0305,Kỹ thuật xây dựng,Kiến trúc,Thiết kế nội thất,A03,KV2,05,Xây dựng,6.6,4.7,0.0,0.0,5.1,0.0,0.0,0.0,4.6,0.0,0.0
+ST0306,Kỹ thuật xây dựng,Kỹ thuật điện - điện tử,Công nghệ thông tin,"C-TIN,A05",KV2,05,"Toán học,Công nghệ,Chăm sóc sức khỏe",7.0,3.9,0.0,3.2,3.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0307,Kỹ thuật xây dựng,Thống kê,Kiến trúc,A07,KV1,06,"Thống kê,Ẩm thực,Xây dựng",9.5,4.9,0.0,0.0,7.4,0.0,3.0,0.0,0.0,0.0,0.0
+ST0308,Sư phạm Ngữ văn,Sư phạm Hóa học,Nhân học,"A11,A03",KV3,03,"Bảo mật thông tin,Xây dựng,Hóa học",6.3,5.7,0.0,0.0,0.0,5.1,0.0,0.0,3.7,0.0,0.0
+ST0309,Tài chính - Ngân hàng,Kế toán,Kiểm toán,A05,KV1,03,Tài chính,6.9,5.4,0.0,0.0,6.6,0.0,3.5,0.0,0.0,0.0,0.0
+ST0310,Răng - Hàm - Mặt,Kỹ thuật xây dựng,Kiến trúc,"C-TIN,A06",KV2,06,"Dịch vụ khách hàng,Thiết kế",6.9,4.4,0.0,3.6,2.8,0.0,0.0,0.0,0.0,0.0,0.0
+ST0311,Trí tuệ nhân tạo,Khoa học máy tính,Kỹ thuật phần mềm,C05,KV1,04,"Lập trình,Luật pháp",7.6,4.8,0.0,7.5,0.0,0.0,0.0,0.0,0.0,6.0,0.0
+ST0312,Bảo hiểm,Marketing,Logistics và Quản lý chuỗi cung ứng,B03,KV2,05,"Thống kê,Nông nghiệp,Kinh doanh",5.5,6.8,5.7,0.0,0.0,0.0,0.0,0.0,0.0,4.8,0.0
+ST0313,Dược học,Công nghệ sinh học,Công nghệ thực phẩm,C03,KV2,05,Hóa học,3.8,4.2,0.0,0.0,4.4,0.0,0.0,6.7,0.0,0.0,0.0
+ST0314,Nhân học,Quản trị nhân lực,Tâm lý học,B04,KV1,06,Giúp đỡ người khác,7.4,7.1,0.0,0.0,0.0,0.0,5.9,0.0,0.0,0.0,5.8
+ST0315,Tâm lý học,Thú y,Công nghệ sinh học,"E-TIN,A00",KV2,06,Động vật,7.2,5.5,0.0,0.0,0.0,0.0,0.0,5.6,0.0,0.0,3.6
+ST0316,Marketing,Quan hệ công chúng,Ngôn ngữ Hàn Quốc,C01,KV2,05,"Truyền thông,Giáo dục,Giao tiếp",7.4,7.7,7.8,0.0,5.1,0.0,0.0,0.0,0.0,0.0,0.0
+ST0317,Công nghệ thông tin,Quản lý bệnh viện,An toàn thông tin,B-TIN,KV2,05,"Trò chơi điện tử,Bảo mật thông tin,Y học",5.7,4.6,7.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.4
+ST0318,Quản trị kinh doanh,Quản lý bệnh viện,Quản lý giáo dục,C00,KV2,05,"Nông nghiệp,Lãnh đạo",6.3,5.7,5.9,0.0,0.0,0.0,0.0,0.0,6.6,0.0,0.0
+ST0319,Tài chính - Ngân hàng,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,A07,KV2,05,"Toán học,Tài chính,Ngoại ngữ",7.0,7.0,4.8,0.0,0.0,0.0,0.0,0.0,0.0,4.9,0.0
+ST0320,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,C02,KV2,05,"Dạy học,Giáo dục",7.2,4.8,0.0,4.3,0.0,0.0,5.6,0.0,0.0,0.0,0.0
+ST0321,Ngôn ngữ Anh,Ngôn ngữ Nhật,Thiết kế thời trang,D08,KV2,05,"Đọc sách,Thể thao",8.6,3.6,2.2,0.0,0.0,0.0,0.0,0.0,6.4,0.0,0.0
+ST0322,Logistics và Quản lý chuỗi cung ứng,Kiến trúc,Thiết kế nội thất,A04,KV2,05,"Thể thao,Kinh doanh,Nghệ thuật",5.3,4.7,0.0,0.0,0.0,0.0,7.7,0.0,2.8,0.0,0.0
+ST0323,Thiết kế thời trang,Sư phạm Ngữ văn,Âm nhạc,"C00,C19",KV2,05,Thể thao,8.1,7.6,0.0,0.0,0.0,5.2,5.3,0.0,0.0,0.0,0.0
+ST0324,Tâm lý học,Sư phạm Ngữ văn,Nhân học,"C00,A07",KV2,05,Khoa học,6.6,5.3,0.0,0.0,0.0,6.3,0.0,0.0,0.0,3.6,0.0
+ST0325,Luật,Kinh tế học,Luật quốc tế,"C08,C19",KV2,05,"Chính trị,Dạy học,Thiên nhiên",8.9,6.7,4.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.6
+ST0326,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"C17,B03",KV2,05,"Toán học,Thiết kế",6.7,3.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.9,3.9
+ST0327,Công nghệ thông tin,Tự động hóa,Sư phạm Ngữ văn,"B04,A08",KV2,05,Lập trình,9.4,5.7,0.0,0.0,5.9,6.1,0.0,0.0,0.0,0.0,0.0
+ST0328,Kỹ thuật xây dựng,Sư phạm Ngữ văn,Công nghệ thông tin,C08,KV2,05,"Công nghệ,Văn học,Kỹ thuật",9.1,5.4,0.0,2.2,0.0,0.0,4.4,0.0,0.0,0.0,0.0
+ST0329,Sư phạm Hóa học,Sư phạm Toán,Giáo dục Tiểu học,C17,KV2,05,Giáo dục,4.9,7.6,0.0,5.1,6.4,0.0,0.0,0.0,0.0,0.0,0.0
+ST0330,Kỹ thuật xây dựng,Thiết kế đồ họa,Sư phạm Ngữ văn,C12,KV2,05,"Thiết kế,Động vật",7.0,3.9,0.0,0.0,0.0,6.7,4.4,0.0,0.0,0.0,0.0
+ST0331,Nhân học,Quan hệ quốc tế,Xã hội học,A01,KV1,04,"Văn hóa,Nghiên cứu,Chính trị",8.7,7.7,0.0,3.4,0.0,5.6,0.0,0.0,0.0,0.0,0.0
+ST0332,Công nghệ thông tin,Marketing,Digital Marketing,F-TIN,KV2,05,Trò chơi điện tử,5.5,6.3,8.4,0.0,0.0,0.0,3.4,0.0,0.0,0.0,0.0
+ST0333,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Ngôn ngữ Nhật,"A00,D11",KV2,05,Du lịch,5.9,8.1,0.0,0.0,0.0,7.4,0.0,0.0,2.6,0.0,0.0
+ST0334,Quản lý bệnh viện,Sư phạm Ngữ văn,Nhân học,"D07,C01",KV2,05,"Y học,Thể thao,Chăm sóc sức khỏe",7.8,7.5,0.0,0.0,0.0,0.0,7.5,0.0,0.0,0.0,6.4
+ST0335,Công nghệ thông tin,Trí tuệ nhân tạo,Khoa học máy tính,"A11,D12",KV2,05,"Tài chính,Lập trình,Luật pháp",6.2,4.6,0.0,0.0,0.0,0.0,0.0,0.0,5.3,4.7,0.0
+ST0336,Thiết kế thời trang,Nghệ thuật,Quản trị kinh doanh quốc tế,"K01,B02",KV2,05,Văn hóa,8.0,5.3,0.0,0.0,6.5,0.0,0.0,0.0,0.0,2.7,0.0
+ST0337,Công nghệ thực phẩm,Công nghệ sau thu hoạch,Y khoa,C01,KV2,05,"Y học,Nghiên cứu,Ẩm thực",7.3,3.9,0.0,3.8,0.0,0.0,0.0,0.0,0.0,0.0,6.8
+ST0338,Quản lý bệnh viện,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,C00,KV2,05,"Chăm sóc sức khỏe,Cơ khí",7.2,6.2,5.9,0.0,0.0,0.0,0.0,0.0,0.0,7.1,0.0
+ST0339,Tâm lý học,Sư phạm Hóa học,Y khoa,"D10,D15",KV2,05,"Tự động hóa,Tài chính,Nghiên cứu",6.1,8.6,0.0,0.0,3.6,0.0,0.0,6.1,0.0,0.0,0.0
+ST0340,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D01,KV1,02,"Nghiên cứu,Chính trị,Thiết kế",7.8,4.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,5.1
+ST0341,Quản lý giáo dục,Kỹ thuật xây dựng,Kiến trúc,B04,KV2,05,Xây dựng,4.8,5.3,0.0,0.0,4.7,0.0,0.0,0.0,5.4,0.0,0.0
+ST0342,Robot và Trí tuệ nhân tạo,Mạng máy tính & truyền thông dữ liệu,Kỹ thuật xây dựng,D01,KV2,05,Kỹ thuật,6.5,4.4,8.6,7.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0343,Luật,Kinh tế học,Luật quốc tế,B00,KV2,05,"Bảo mật thông tin,Chính trị",8.6,3.9,0.0,0.0,0.0,0.0,2.3,0.0,0.0,2.4,0.0
+ST0344,Sư phạm Ngữ văn,Tâm lý học,Nhân học,A03,KV2,05,"Bảo mật thông tin,Dạy học",8.5,8.5,0.0,0.0,0.0,0.0,6.4,4.6,0.0,0.0,0.0
+ST0345,Tâm lý học,Sư phạm Ngữ văn,Nhân học,"D11,D15",KV2,05,"Nghiên cứu,Ngoại ngữ",6.6,8.0,0.0,0.0,0.0,5.3,0.0,4.4,0.0,0.0,0.0
+ST0346,Luật kinh tế,Luật,Luật quốc tế,"C12,B-TIN",KV2,05,Luật pháp,4.4,7.7,0.0,2.0,0.0,0.0,0.0,2.7,0.0,0.0,0.0
+ST0347,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,"A03,C20",KV2,05,"Dạy học,Giáo dục",8.9,7.7,0.0,0.0,0.0,4.9,0.0,0.0,0.0,0.0,5.9
+ST0348,Tài chính - Ngân hàng,Quản lý bệnh viện,Thống kê,B04,KV2,05,"Chăm sóc sức khỏe,Toán học,Tài chính",7.8,5.2,0.0,0.0,0.0,1.6,0.0,0.0,4.6,0.0,0.0
+ST0349,Quản trị kinh doanh,Quản lý bệnh viện,Kế toán,C-TIN,KV2,05,Quản lý,7.2,4.7,0.0,0.0,8.7,0.0,0.0,0.0,4.3,0.0,0.0
+ST0350,Thú y,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,"A06,A01",KV2,05,"Động vật,Tự động hóa",6.7,5.7,0.0,6.1,0.0,0.0,0.0,3.9,0.0,0.0,0.0
+ST0351,Robot và Trí tuệ nhân tạo,Công nghệ thông tin,Tự động hóa,"D08,A03",KV2,05,"Máy tính,Phân tích dữ liệu,Lập trình",6.2,4.2,0.0,0.0,0.0,0.0,0.0,0.0,2.3,0.0,7.9
+ST0352,Thiết kế đồ họa,Thiết kế thời trang,Nhân học,"C14,D12",KV2,05,"Công nghệ,Giúp đỡ người khác,Nghệ thuật",6.5,6.6,0.0,0.0,0.0,0.0,5.7,0.0,0.0,5.1,0.0
+ST0353,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"F-TIN,E-TIN",KV2,05,"Thiết kế,Tự động hóa",9.5,5.9,6.5,0.0,0.0,4.1,0.0,0.0,0.0,0.0,0.0
+ST0354,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"C08,A06",KV2,01,Thiết kế,7.1,6.6,0.0,0.0,0.0,0.0,4.0,0.0,0.0,7.7,0.0
+ST0355,Xã hội học,Quản trị nhân lực,Tâm lý học,D14,KV2,05,"Hóa học,Thống kê,Giúp đỡ người khác",9.3,6.4,0.0,0.0,0.0,0.0,0.0,0.0,2.2,0.0,6.1
+ST0356,Công nghệ thông tin,Quản lý giáo dục,Luật,"A06,C20",KV2,05,"Thể thao,Động vật,Trò chơi điện tử",7.8,3.6,0.0,0.0,0.0,5.3,0.0,0.0,6.9,0.0,0.0
+ST0357,Sư phạm Ngữ văn,Công nghệ thông tin,Digital Marketing,"A10,D66",KV2,05,"Ngoại ngữ,Công nghệ",5.5,5.3,0.0,0.0,0.0,0.0,3.4,4.1,0.0,0.0,0.0
+ST0358,Thiết kế đồ họa,Thiết kế thời trang,Sư phạm Ngữ văn,C13,KV2,05,"Sáng tạo,Máy tính",9.2,6.3,0.0,0.0,0.0,0.0,4.1,0.0,0.0,4.0,0.0
+ST0359,Quản lý đất đai,Kỹ thuật xây dựng,Luật,A05,KV2,05,"Xây dựng,Chính trị,Môi trường",8.7,4.4,0.0,0.0,0.0,3.9,4.5,0.0,0.0,0.0,0.0
+ST0360,Quản trị kinh doanh,Quản lý bệnh viện,Quản lý giáo dục,"A02,D11",KV2,05,"Ẩm thực,Lãnh đạo",4.1,5.9,0.0,0.0,0.0,3.7,0.0,2.5,0.0,0.0,0.0
+ST0361,Dược học,Công nghệ sinh học,Sư phạm Hóa học,D66,KV2,05,"Trò chơi điện tử,Máy tính,Hóa học",7.4,5.9,0.0,0.0,5.2,0.0,0.0,5.1,0.0,0.0,0.0
+ST0362,Trí tuệ nhân tạo,Tài chính - Ngân hàng,Thống kê,"B04,D-TIN",KV1,07,"Toán học,Hóa học,Tự động hóa",6.3,6.3,0.0,0.0,0.0,0.0,3.1,0.0,0.0,4.0,0.0
+ST0363,Thiết kế thời trang,Thiết kế đồ họa,Nghệ thuật,"A10,A09",KV3,06,"Văn hóa,Thể thao,Máy tính",7.4,8.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.2,4.0
+ST0364,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"C05,A04",KV3,02,Tài chính,8.1,6.6,0.0,0.0,0.0,0.0,0.0,0.0,5.9,8.5,0.0
+ST0365,Luật kinh tế,Luật,Xã hội học,C05,KV2,05,"Lập trình,Phân tích dữ liệu,Bảo mật thông tin",8.1,6.3,0.0,0.0,0.0,6.1,6.3,0.0,0.0,0.0,0.0
+ST0366,Thiết kế đồ họa,An toàn thông tin,Mạng máy tính & truyền thông dữ liệu,D15,KV2,07,Bảo mật thông tin,8.8,6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.7,3.9
+ST0367,Sư phạm Ngữ văn,Thiết kế đồ họa,Thiết kế thời trang,"A00,C20",KV2,05,"Tài chính,Sáng tạo,Thiết kế",8.1,5.8,0.0,0.0,0.0,4.8,0.0,0.0,0.0,0.0,5.4
+ST0368,Sư phạm Ngữ văn,Luật,Kinh tế học,D15,KV2,05,"Văn học,Chính trị",8.6,7.0,0.0,5.8,0.0,3.1,0.0,0.0,0.0,0.0,0.0
+ST0369,Nghệ thuật,Quản trị dịch vụ du lịch và lữ hành,Digital Marketing,B-TIN,KV2,05,"Truyền thông,Dịch vụ khách hàng",6.6,4.6,0.0,0.0,0.0,0.0,6.4,0.0,0.0,4.9,0.0
+ST0370,Công nghệ thông tin,An toàn thông tin,Mạng máy tính & truyền thông dữ liệu,C17,KV2,05,"Bảo mật thông tin,Trò chơi điện tử,Môi trường",5.1,4.1,0.0,0.0,0.0,0.0,0.0,0.0,6.7,5.7,0.0
+ST0371,Quản lý giáo dục,Công nghệ thông tin,Quản trị kinh doanh,D66,KV2,05,"Thiên nhiên,Lãnh đạo,Trò chơi điện tử",7.9,5.9,0.0,0.0,0.0,0.0,5.1,0.0,4.1,0.0,0.0
+ST0372,Nhân học,Xã hội học,Công nghệ thông tin,"A02,C-TIN",KV2,05,"Giúp đỡ người khác,Lập trình",5.5,6.6,0.0,0.0,6.4,5.7,0.0,0.0,0.0,0.0,0.0
+ST0373,Luật,Kinh tế học,Luật quốc tế,"D09,A08",KV2,05,"Hóa học,Chính trị",8.5,5.1,0.0,0.0,0.0,4.8,0.0,3.9,0.0,0.0,0.0
+ST0374,Quản lý giáo dục,Tâm lý học,Kỹ thuật môi trường,"A11,D12",KV2,05,Kỹ thuật,8.3,4.8,0.0,0.0,0.0,0.0,0.0,4.5,5.5,0.0,0.0
+ST0375,Thiết kế thời trang,Âm nhạc,Công nghệ thông tin,C02,KV2,05,Thể thao,8.6,5.2,4.6,0.0,0.0,0.0,0.0,0.0,4.7,0.0,0.0
+ST0376,Tự động hóa,Thiết kế đồ họa,Kỹ thuật điện - điện tử,"A01,C05",KV2,05,Điện tử,8.4,5.3,0.0,4.1,0.0,0.0,0.0,0.0,0.0,3.2,0.0
+ST0377,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Sư phạm Ngữ văn,C04,KV3,01,Quản lý,7.7,6.7,0.0,0.0,0.0,0.0,6.8,0.0,0.0,0.0,2.0
+ST0378,Thống kê,Kinh tế học,Kế toán,"C03,C04",KV1,04,"Thống kê,Động vật",8.1,7.6,0.0,0.0,0.0,0.0,3.8,0.0,2.8,0.0,0.0
+ST0379,Thiết kế đồ họa,Công nghệ thông tin,Marketing,"C05,C13",KV2,05,"Sáng tạo,Máy tính",5.8,5.7,0.0,0.0,0.0,0.0,0.0,3.8,4.5,0.0,0.0
+ST0380,Nhân học,Quản trị dịch vụ du lịch và lữ hành,Quan hệ quốc tế,C17,KV2,05,"Văn hóa,Dịch vụ khách hàng,Chính trị",8.8,6.8,0.0,0.0,3.0,0.0,4.3,0.0,0.0,0.0,0.0
+ST0381,Logistics và Quản lý chuỗi cung ứng,Công nghệ thông tin,Marketing,"K01,D07",KV2,05,"Lập trình,Kinh doanh",7.7,5.4,0.0,0.0,0.0,0.0,6.9,0.0,5.9,0.0,0.0
+ST0382,Tự động hóa,Kỹ thuật điện - điện tử,Quản trị kinh doanh quốc tế,"C00,B02",KV2,05,"Thể thao,Điện tử,Ngoại ngữ",7.2,4.9,0.0,2.6,0.0,0.0,0.0,0.0,0.0,0.0,3.5
+ST0383,Marketing,Digital Marketing,Quan hệ công chúng,B00,KV2,05,Quảng cáo,7.4,5.4,0.0,0.0,0.0,0.0,0.0,4.1,0.0,0.0,4.1
+ST0384,Digital Marketing,Ngôn ngữ Hàn Quốc,Quan hệ công chúng,"A11,C19",KV2,05,"Ngoại ngữ,Công nghệ,Truyền thông",4.1,7.8,0.0,0.0,8.1,0.0,0.0,0.0,6.5,0.0,0.0
+ST0385,Sư phạm Ngữ văn,Nhân học,Xã hội học,A-TIN,KV2,05,"Thiết kế,Tài chính",7.0,6.9,0.0,0.0,5.3,7.7,0.0,0.0,0.0,0.0,0.0
+ST0386,Kỹ thuật xây dựng,Kiến trúc,Nhân học,B00,KV2,05,"Xây dựng,Văn hóa",5.8,4.0,0.0,0.0,5.1,2.6,0.0,0.0,0.0,0.0,0.0
+ST0387,Quản lý giáo dục,Robot và Trí tuệ nhân tạo,Công nghệ thông tin,A08,KV2,05,Động vật,8.3,5.2,0.0,0.0,0.0,0.0,0.0,0.0,5.5,0.0,5.7
+ST0388,Tự động hóa,Công nghệ thông tin,Công nghệ kỹ thuật ô tô,D15,KV2,05,"Công nghệ,Cơ khí",5.4,5.4,7.6,4.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0389,Tâm lý học,Quản trị kinh doanh,Quản lý bệnh viện,"A09,D13",KV2,05,Lãnh đạo,4.9,6.0,0.0,0.0,0.0,2.2,0.0,5.9,0.0,0.0,0.0
+ST0390,Quản lý bệnh viện,Quản lý giáo dục,Sư phạm Ngữ văn,"A06,B00",KV2,05,Chăm sóc sức khỏe,5.7,4.0,0.0,0.0,0.0,0.0,3.8,0.0,4.2,0.0,0.0
+ST0391,Marketing,Trí tuệ nhân tạo,Logistics và Quản lý chuỗi cung ứng,D09,KV2,05,Kinh doanh,8.1,6.8,0.0,7.1,0.0,0.0,0.0,0.0,0.0,4.3,0.0
+ST0392,Sư phạm Ngữ văn,Giáo dục Tiểu học,Sư phạm Tiếng Anh,"A02,A09",KV2,05,"Hóa học,Dạy học",4.6,8.0,0.0,0.0,0.0,6.2,1.2,0.0,0.0,0.0,0.0
+ST0393,Sư phạm Ngữ văn,Sư phạm Hóa học,Công nghệ thông tin,C12,KV2,05,"Giáo dục,Lập trình",8.7,7.0,0.0,0.0,3.6,7.3,0.0,0.0,0.0,0.0,0.0
+ST0394,Tự động hóa,Công nghệ kỹ thuật ô tô,Sư phạm Ngữ văn,A07,KV2,04,Tự động hóa,8.7,4.4,0.0,0.0,5.6,6.0,0.0,0.0,0.0,0.0,0.0
+ST0395,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,C12,KV2,05,"Kỹ thuật,Văn hóa,Môi trường",7.1,6.5,6.0,0.0,0.0,0.0,0.0,0.0,2.6,0.0,0.0
+ST0396,Y khoa,Răng - Hàm - Mặt,Điều dưỡng,A04,KV2,05,"Du lịch,Y học,Cơ khí",4.7,4.4,0.0,0.0,7.1,4.1,0.0,0.0,0.0,0.0,0.0
+ST0397,Tâm lý học,Tài chính - Ngân hàng,Quản trị nhân lực,"A07,D-TIN",KV2,05,"Giúp đỡ người khác,Toán học,Khoa học",5.3,7.0,0.0,0.0,0.0,0.0,1.8,0.0,0.0,0.0,3.0
+ST0398,An toàn thông tin,Thiết kế đồ họa,Mạng máy tính & truyền thông dữ liệu,D14,KV2,05,Bảo mật thông tin,5.7,5.3,0.0,0.0,0.0,0.0,2.8,0.0,0.0,3.0,0.0
+ST0399,Công nghệ thông tin,Thiết kế đồ họa,Tài chính - Ngân hàng,B03,KV2,05,"Tài chính,Máy tính,Động vật",7.3,5.7,0.0,0.0,0.0,0.0,4.3,0.0,0.0,0.0,6.3
+ST0400,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Trí tuệ nhân tạo,A05,KV2,05,"Thống kê,Thiên nhiên",5.1,3.6,0.0,3.9,0.0,0.0,0.0,0.0,0.0,6.7,0.0
+ST0401,Thiết kế đồ họa,Kiến trúc,Thiết kế nội thất,"D09,D07",KV2,05,Nghệ thuật,6.8,7.6,0.0,3.1,4.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0402,Kiến trúc,Thiết kế nội thất,Thiết kế đồ họa,A05,KV3,02,Nghệ thuật,8.6,4.2,0.0,0.0,5.5,0.0,0.0,0.0,4.3,0.0,0.0
+ST0403,Công nghệ vật liệu,Tự động hóa,Công nghệ kỹ thuật ô tô,C02,KV2,05,"Công nghệ,Cơ khí",6.5,6.4,0.0,0.0,4.7,0.0,0.0,0.0,0.0,0.0,7.4
+ST0404,Luật kinh tế,Luật,Luật quốc tế,"A01,A08",KV2,05,"Nghiên cứu,Luật pháp",9.1,6.3,0.0,4.6,0.0,0.0,0.0,0.0,0.0,0.0,7.1
+ST0405,Nghệ thuật,Marketing,Digital Marketing,"A11,B04",KV2,05,"Bảo mật thông tin,Truyền thông,Thiết kế",8.5,7.1,6.1,0.0,0.0,3.8,0.0,0.0,0.0,0.0,0.0
+ST0406,Quản trị kinh doanh,Luật,Quản lý bệnh viện,A02,KV3,02,"Chính trị,Lãnh đạo,Tự động hóa",5.0,6.5,0.0,0.0,0.0,0.0,0.0,3.8,0.0,0.0,3.3
+ST0407,Nghệ thuật,Marketing,Digital Marketing,"C20,A07",KV2,05,"Luật pháp,Dạy học,Truyền thông",5.9,7.1,0.0,0.0,0.0,0.0,0.0,0.0,5.5,4.9,0.0
+ST0408,Khoa học dữ liệu và Trí tuệ nhân tạo,Tâm lý học,Tự động hóa,A09,KV2,05,"Công nghệ,Điện tử",8.0,5.5,0.0,3.8,0.0,0.0,0.0,7.9,0.0,0.0,0.0
+ST0409,Tâm lý học,Luật kinh tế,Luật,"C19,A03",KV2,05,Luật pháp,7.2,6.2,0.0,0.0,3.4,0.0,0.0,5.8,0.0,0.0,0.0
+ST0410,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,Thiết kế đồ họa,D10,KV2,05,Tự động hóa,8.0,4.6,3.6,0.0,0.0,0.0,0.0,0.0,0.0,4.7,0.0
+ST0411,Nhân học,Xã hội học,Marketing,"C02,A-TIN",KV2,05,"Bảo mật thông tin,Giao tiếp",7.6,6.8,0.0,0.0,0.0,6.2,0.0,0.0,0.0,0.0,5.2
+ST0412,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Quản trị khách sạn,"A04,C08",KV2,05,"Du lịch,Chăm sóc sức khỏe",3.3,5.8,0.0,0.0,0.0,0.0,5.7,0.0,0.0,2.5,0.0
+ST0413,Quản lý giáo dục,Công nghệ thông tin,Quản trị kinh doanh,"D01,K01",KV2,05,"Xây dựng,Lãnh đạo,Trò chơi điện tử",6.8,5.2,0.0,0.0,0.0,0.0,0.0,3.6,5.3,0.0,0.0
+ST0414,Thiết kế đồ họa,Quản trị khách sạn,Công nghệ vật liệu,"B03,D11",KV2,05,"Thiết kế,Dịch vụ khách hàng",6.4,7.5,0.0,0.0,4.3,0.0,0.0,0.0,0.0,0.0,4.2
+ST0415,Công nghệ thông tin,Thiết kế đồ họa,Ngôn ngữ Anh,"C13,C01",KV1,06,"Máy tính,Đọc sách",5.3,6.1,0.0,0.0,4.2,0.0,0.0,3.1,0.0,0.0,0.0
+ST0416,Sư phạm Ngữ văn,Báo chí,Logistics và Quản lý chuỗi cung ứng,"A08,A03",KV3,05,"Tự động hóa,Công nghệ,Văn học",6.5,4.6,0.0,0.0,0.0,5.0,6.6,0.0,0.0,0.0,0.0
+ST0417,Luật,Kinh tế học,Công nghệ thông tin,B00,KV2,05,"Chính trị,Phân tích dữ liệu",6.5,8.5,0.0,0.0,0.0,0.0,5.8,0.0,0.0,3.3,0.0
+ST0418,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Sư phạm Ngữ văn,"A09,D84",KV1,03,"Ngoại ngữ,Quản lý",5.9,4.4,0.0,0.0,4.2,3.9,0.0,0.0,0.0,0.0,0.0
+ST0419,Ngôn ngữ Anh,Ngôn ngữ Nhật,Báo chí,A03,KV2,05,Đọc sách,7.7,7.2,0.0,0.0,4.0,0.0,2.8,0.0,0.0,0.0,0.0
+ST0420,Tâm lý học,Nhân học,Xã hội học,"D12,A10",KV2,07,"Quảng cáo,Nghiên cứu,Nông nghiệp",6.9,5.3,0.0,0.0,0.0,5.8,0.0,6.2,0.0,0.0,0.0
+ST0421,Công nghệ thông tin,Thiết kế đồ họa,Quản lý giáo dục,"C14,D14",KV2,05,"Nghệ thuật,Lập trình,Môi trường",6.9,6.5,0.0,3.2,0.0,0.0,0.0,0.0,5.4,0.0,0.0
+ST0422,Sư phạm Ngữ văn,Sư phạm Toán,Giáo dục Tiểu học,"A01,C01",KV2,05,Dạy học,4.3,5.7,0.0,6.4,0.0,0.0,3.9,0.0,0.0,0.0,0.0
+ST0423,Sư phạm Ngữ văn,Nhân học,Xã hội học,"D84,C14",KV1,03,Y học,7.8,7.1,0.0,0.0,0.0,7.5,0.0,0.0,0.0,3.6,0.0
+ST0424,Xã hội học,Luật kinh tế,Luật,"A11,B04",KV2,05,Phân tích dữ liệu,4.3,6.3,0.0,0.0,2.9,7.0,0.0,0.0,0.0,0.0,0.0
+ST0425,Thiết kế thời trang,Nghệ thuật,Quản trị kinh doanh quốc tế,"D12,C14",KV2,05,"Thiết kế,Văn hóa,Toán học",9.0,6.6,4.9,0.0,0.0,0.0,4.5,0.0,0.0,0.0,0.0
+ST0426,Quản lý giáo dục,Sư phạm Ngữ văn,Sư phạm Hóa học,"A01,A04",KV3,07,"Hóa học,Giáo dục,Thể thao",7.8,7.2,0.0,0.0,0.0,3.2,0.0,0.0,6.8,0.0,0.0
+ST0427,Quản lý bệnh viện,Quản trị kinh doanh,Quản lý giáo dục,"C00,D11",KV2,05,"Lãnh đạo,Y học",6.8,8.9,0.0,0.0,0.0,0.0,3.3,0.0,0.0,0.0,5.2
+ST0428,Thiết kế đồ họa,Tài chính - Ngân hàng,Thiết kế thời trang,C13,KV2,05,"Tài chính,Động vật",4.7,5.4,0.0,0.0,0.0,0.0,0.0,0.0,5.9,5.7,0.0
+ST0429,Công nghệ thông tin,Logistics và Quản lý chuỗi cung ứng,Marketing,"A11,D11",KV2,05,Nông nghiệp,9.3,5.2,4.8,0.0,0.0,0.0,5.7,0.0,0.0,0.0,0.0
+ST0430,Quản trị kinh doanh,Quản lý bệnh viện,Quản lý giáo dục,"B00,C14",KV2,05,"Giao tiếp,Lãnh đạo,Thiên nhiên",7.0,6.7,3.3,0.0,0.0,0.0,3.6,0.0,0.0,0.0,0.0
+ST0431,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,D07,KV2,05,"Thiên nhiên,Kinh doanh",4.1,7.2,0.0,4.5,0.0,0.0,0.0,0.0,3.7,0.0,0.0
+ST0432,Tự động hóa,Công nghệ kỹ thuật ô tô,Sư phạm Ngữ văn,"A09,D66",KV2,03,Cơ khí,6.3,5.1,0.0,0.0,3.8,0.0,4.5,0.0,0.0,0.0,0.0
+ST0433,Sư phạm Hóa học,Y khoa,Dược học,A04,KV2,07,"Thống kê,Nghệ thuật,Khoa học",6.2,5.6,3.0,0.0,5.9,0.0,0.0,0.0,0.0,0.0,0.0
+ST0434,Quản trị kinh doanh,Quản lý bệnh viện,Quản lý giáo dục,D14,KV2,05,Lãnh đạo,8.6,6.3,0.0,0.0,4.2,0.0,4.5,0.0,0.0,0.0,0.0
+ST0435,An toàn thông tin,Mạng máy tính & truyền thông dữ liệu,Công nghệ thông tin,C02,KV2,05,"Ẩm thực,Máy tính,Bảo mật thông tin",8.9,4.4,6.6,4.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0436,Kỹ thuật xây dựng,Kiến trúc,Tài chính - Ngân hàng,"A03,A04",KV2,05,"Toán học,Cơ khí,Hóa học",6.0,5.5,0.0,2.9,0.0,0.0,6.1,0.0,0.0,0.0,0.0
+ST0437,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Giáo dục Tiểu học,"D08,A10",KV1,07,Giáo dục,2.9,5.3,0.0,6.2,0.0,0.0,6.7,0.0,0.0,0.0,0.0
+ST0438,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"D09,B03",KV1,03,Dạy học,9.2,5.9,0.0,0.0,0.0,0.0,0.0,0.0,3.2,7.0,0.0
+ST0439,Nhân học,Xã hội học,Tâm lý học,"D84,B04",KV2,05,"Giúp đỡ người khác,Dạy học,Nghiên cứu",5.1,4.0,0.0,0.0,0.0,2.1,0.0,0.0,0.0,0.0,5.9
+ST0440,Tâm lý học,Thú y,Sư phạm Vật lý,"B-TIN,D08",KV2,05,Thiên nhiên,5.1,6.6,0.0,7.4,0.0,0.0,0.0,7.8,0.0,0.0,0.0
+ST0441,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"B03,A01",KV2,05,"Tự động hóa,Thiết kế",7.4,7.4,6.0,0.0,0.0,0.0,0.0,0.0,5.5,0.0,0.0
+ST0442,Quản lý giáo dục,Tài chính - Ngân hàng,Thiết kế đồ họa,D10,KV2,05,"Tài chính,Điện tử,Giáo dục",7.0,4.1,0.0,0.0,0.0,0.0,0.0,0.0,5.2,4.6,0.0
+ST0443,Marketing,Digital Marketing,Quản trị khách sạn,"A02,B00",KV2,05,"Giáo dục,Dịch vụ khách hàng,Truyền thông",7.1,4.3,3.7,6.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0444,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Thống kê,A04,KV2,05,Thống kê,7.3,3.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.0,2.3
+ST0445,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"C14,A-TIN",KV2,05,Nghệ thuật,8.2,6.8,0.0,0.0,0.0,0.0,0.0,6.2,0.0,3.8,0.0
+ST0446,Luật kinh tế,Công nghệ thông tin,Y khoa,"D15,C08",KV3,01,"Luật pháp,Du lịch",8.3,5.0,0.0,5.2,6.6,0.0,0.0,0.0,0.0,0.0,0.0
+ST0447,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,A03,KV2,05,"Kỹ thuật,Dạy học",8.5,7.2,0.0,0.0,0.0,0.0,5.3,2.2,0.0,0.0,0.0
+ST0448,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,B00,KV2,05,Điện tử,8.4,6.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,4.5
+ST0449,Sư phạm Vật lý,Sư phạm Toán,Giáo dục Tiểu học,C13,KV1,06,Giáo dục,6.2,4.3,0.0,4.8,0.0,0.0,0.0,4.1,0.0,0.0,0.0
+ST0450,Quản lý giáo dục,Sư phạm Hóa học,Thống kê,"C04,A10",KV2,05,"Văn học,Nghiên cứu,Máy tính",8.7,7.6,0.0,0.0,6.1,0.0,0.0,0.0,5.7,0.0,0.0
+ST0451,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,Trí tuệ nhân tạo,A02,KV1,03,"Thiên nhiên,Động vật,Công nghệ",7.1,4.5,7.2,6.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0452,Hóa học,Robot và Trí tuệ nhân tạo,Công nghệ thông tin,D13,KV2,05,"Phân tích dữ liệu,Động vật",5.4,4.7,0.0,0.0,5.3,0.0,0.0,0.0,0.0,0.0,6.5
+ST0453,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,D84,KV2,05,Kinh doanh,6.4,5.8,0.0,0.0,5.6,4.4,0.0,0.0,0.0,0.0,0.0
+ST0454,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,D15,KV2,05,Giao tiếp,8.8,7.8,4.3,0.0,0.0,0.0,0.0,0.0,0.0,3.9,0.0
+ST0455,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,"C-TIN,A04",KV2,05,Phân tích dữ liệu,6.0,8.3,3.6,0.0,0.0,0.0,0.0,0.0,8.1,0.0,0.0
+ST0456,Quản lý bệnh viện,Thiết kế thời trang,Sư phạm Ngữ văn,C-TIN,KV2,05,"Chăm sóc sức khỏe,Nông nghiệp,Thể thao",7.6,5.0,0.0,0.0,0.0,5.5,0.0,0.0,0.0,0.0,4.3
+ST0457,Quản lý giáo dục,Nông nghiệp,Nuôi trồng thủy sản,"D10,C08",KV3,03,"Đọc sách,Thiên nhiên,Nông nghiệp",4.9,4.8,0.0,0.0,4.3,0.0,0.0,0.0,7.0,0.0,0.0
+ST0458,Công nghệ thông tin,Thiết kế đồ họa,Thống kê,C19,KV1,03,"Nông nghiệp,Môi trường,Máy tính",4.1,6.1,0.9,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0
+ST0459,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,C-TIN,KV2,05,Y học,6.3,5.6,0.0,6.3,0.0,0.0,0.0,0.0,0.0,6.6,0.0
+ST0460,Ngôn ngữ Anh,Ngôn ngữ Nhật,Thiết kế thời trang,"D13,D08",KV2,05,"Thể thao,Đọc sách",7.4,3.2,4.1,0.0,0.0,2.9,0.0,0.0,0.0,0.0,0.0
+ST0461,Sư phạm Ngữ văn,Thiết kế đồ họa,Nhân học,B03,KV2,05,"Văn học,Thiết kế",9.5,6.3,0.0,0.0,2.8,6.7,0.0,0.0,0.0,0.0,0.0
+ST0462,Marketing,Digital Marketing,Thiết kế đồ họa,A01,KV2,05,"Sáng tạo,Thiên nhiên",7.5,4.7,4.9,0.0,0.0,6.2,0.0,0.0,0.0,0.0,0.0
+ST0463,Thiết kế đồ họa,Khoa học máy tính,An toàn thông tin,C17,KV2,05,"Trò chơi điện tử,Máy tính",7.2,5.6,0.0,5.0,0.0,0.0,0.0,0.0,0.0,4.3,0.0
+ST0464,Quản trị nhân lực,Tâm lý học,Giáo dục Tiểu học,C13,KV2,05,Giúp đỡ người khác,5.6,2.6,4.4,0.0,0.0,4.3,0.0,0.0,0.0,0.0,0.0
+ST0465,Marketing,Digital Marketing,Thiết kế đồ họa,"E-TIN,A09",KV2,05,"Sáng tạo,Y học,Tự động hóa",5.5,5.9,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,1.8
+ST0466,Tự động hóa,Công nghệ kỹ thuật ô tô,Sư phạm Toán,B-TIN,KV2,05,"Dạy học,Cơ khí",7.5,3.8,0.0,6.3,0.0,0.0,0.0,0.0,0.0,2.9,0.0
+ST0467,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,A02,KV2,05,Công nghệ,6.6,7.1,7.7,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0
+ST0468,Ngôn ngữ Trung Quốc,Quan hệ quốc tế,Quản trị kinh doanh quốc tế,A01,KV2,04,"Văn hóa,Nghiên cứu,Điện tử",7.6,5.0,3.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.1
+ST0469,Y khoa,Điều dưỡng,Công nghệ sinh học,A07,KV2,05,"Giúp đỡ người khác,Môi trường",7.3,5.9,0.0,6.6,8.3,0.0,0.0,0.0,0.0,0.0,0.0
+ST0470,Luật kinh tế,Luật,Luật quốc tế,"C17,C00",KV2,05,"Xây dựng,Luật pháp,Điện tử",7.4,6.0,0.0,0.0,3.6,0.0,3.6,0.0,0.0,0.0,0.0
+ST0471,Quản trị kinh doanh,Quản lý bệnh viện,Quản trị khách sạn,C02,KV2,05,"Lãnh đạo,Dịch vụ khách hàng,Quản lý",5.8,7.1,7.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.1
+ST0472,Công nghệ thông tin,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,C19,KV2,05,"Lập trình,Dịch vụ khách hàng,Nông nghiệp",6.5,6.7,6.7,0.0,0.0,2.7,0.0,0.0,0.0,0.0,0.0
+ST0473,Răng - Hàm - Mặt,Thiết kế đồ họa,Tâm lý học,A-TIN,KV2,05,Thiết kế,8.0,3.8,0.0,0.0,0.0,0.0,0.0,5.0,4.8,0.0,0.0
+ST0474,Quản trị kinh doanh,Tài chính - Ngân hàng,Luật kinh tế,"C05,B03",KV1,06,Kinh doanh,7.2,8.5,0.0,5.5,4.4,0.0,0.0,0.0,0.0,0.0,0.0
+ST0475,Tâm lý học,Thú y,Sư phạm Hóa học,C02,KV2,05,Động vật,4.5,7.4,0.0,0.0,3.1,0.0,0.0,2.7,0.0,0.0,0.0
+ST0476,Răng - Hàm - Mặt,Y khoa,Điều dưỡng,"C17,C08",KV2,05,"Y học,Thiết kế",7.0,2.2,0.0,3.8,0.0,0.0,0.0,0.0,6.0,0.0,0.0
+ST0477,Luật,Kinh tế học,Luật quốc tế,A00,KV2,05,Chính trị,6.0,4.2,4.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.3
+ST0478,Tài chính - Ngân hàng,Kế toán,Kiểm toán,"A09,D14",KV2,05,Tài chính,2.7,8.2,0.0,2.7,4.1,0.0,0.0,0.0,0.0,0.0,0.0
+ST0479,Quản lý bệnh viện,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,"B-TIN,B00",KV2,05,"Dịch vụ khách hàng,Chăm sóc sức khỏe",5.1,6.0,5.2,0.0,0.0,0.0,0.0,5.4,0.0,0.0,0.0
+ST0480,Công nghệ sinh học,Nông nghiệp,Nuôi trồng thủy sản,"D10,C14",KV3,02,"Môi trường,Nghệ thuật,Văn hóa",4.5,7.3,0.0,0.0,0.0,0.0,0.0,4.8,0.0,0.0,6.3
+ST0481,Răng - Hàm - Mặt,Kỹ thuật xây dựng,Kiến trúc,C19,KV2,05,"Ẩm thực,Thiết kế",7.8,3.5,0.0,7.5,0.0,0.0,0.0,0.0,6.3,0.0,0.0
+ST0482,Công nghệ thông tin,Thiết kế đồ họa,Quản lý bệnh viện,"A11,D09",KV1,07,"Cơ khí,Máy tính,Y học",6.7,5.6,0.0,0.0,4.5,0.0,0.0,0.0,4.6,0.0,0.0
+ST0483,Công nghệ thông tin,Luật kinh tế,Luật,"B00,A06",KV2,05,"Lập trình,Trò chơi điện tử,Nghiên cứu",6.3,3.6,6.1,0.0,0.0,3.8,0.0,0.0,0.0,0.0,0.0
+ST0484,Thiết kế đồ họa,Kiến trúc,Thiết kế nội thất,D14,KV1,05,Nghệ thuật,7.8,4.9,0.0,0.0,5.2,0.0,0.0,0.0,0.0,0.0,4.9
+ST0485,Luật,Quản lý giáo dục,Tài chính - Ngân hàng,"K01,C19",KV2,05,"Xây dựng,Cơ khí,Tài chính",5.2,5.6,0.0,0.0,0.0,4.3,0.0,0.0,6.8,0.0,0.0
+ST0486,Tâm lý học,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,A09,KV3,07,"Truyền thông,Nghiên cứu",6.9,6.0,0.0,0.0,0.0,0.0,0.0,5.9,0.0,2.5,0.0
+ST0487,Sư phạm Hóa học,Công nghệ thông tin,Dược học,"C13,C00",KV2,05,"Hóa học,Máy tính,Kỹ thuật",3.7,7.5,0.0,3.5,5.8,0.0,0.0,0.0,0.0,0.0,0.0
+ST0488,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,"K01,D08",KV2,05,Ngoại ngữ,7.2,7.0,3.6,0.0,0.0,0.0,4.5,0.0,0.0,0.0,0.0
+ST0489,Thống kê,Toán Kinh tế,Sư phạm Toán,"D09,A00",KV2,05,"Toán học,Nghiên cứu,Thiết kế",7.9,4.1,6.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+ST0490,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Tâm lý học,D09,KV2,05,Dịch vụ khách hàng,6.2,7.4,0.0,0.0,0.0,0.0,0.0,4.4,0.0,0.0,5.4
+ST0491,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,Digital Marketing,"C01,D01",KV3,02,"Động vật,Công nghệ",6.6,3.0,0.0,0.0,0.0,6.1,0.0,3.2,0.0,0.0,0.0
+ST0492,Kỹ thuật môi trường,Nông nghiệp,Nuôi trồng thủy sản,C20,KV2,05,Thiên nhiên,6.8,4.2,0.0,0.0,0.0,0.0,4.6,0.0,0.0,0.0,6.2
+ST0493,Marketing,Răng - Hàm - Mặt,Báo chí,"B03,F-TIN",KV2,05,"Sáng tạo,Văn học,Động vật",7.2,4.4,1.8,0.0,6.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0494,Marketing,Digital Marketing,Quản trị kinh doanh,C08,KV2,05,"Lãnh đạo,Quảng cáo,Cơ khí",6.5,6.1,0.0,3.0,0.0,0.0,0.0,0.0,0.0,4.6,0.0
+ST0495,Tâm lý học,Xã hội học,Logistics và Quản lý chuỗi cung ứng,"A07,D-TIN",KV2,05,"Phân tích dữ liệu,Chính trị,Quản lý",5.7,7.9,0.0,0.0,0.0,5.0,0.0,4.4,0.0,0.0,0.0
+ST0496,Y khoa,Thiết kế đồ họa,Răng - Hàm - Mặt,"A11,D07",KV2,05,"Nghệ thuật,Dịch vụ khách hàng,Chăm sóc sức khỏe",4.7,5.0,5.2,0.0,4.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0497,Sư phạm Ngữ văn,Quản trị dịch vụ du lịch và lữ hành,Ngôn ngữ Pháp,"C14,D14",KV3,07,"Ngoại ngữ,Văn học",6.8,3.0,0.0,2.8,0.0,0.0,5.7,0.0,0.0,0.0,0.0
+ST0498,Công nghệ sinh học,Tâm lý học,Nông nghiệp,A03,KV2,05,Tài chính,8.6,4.3,0.0,0.0,0.0,0.0,0.0,5.8,0.0,0.0,5.1
+ST0499,Quản lý giáo dục,Tự động hóa,Robot và Trí tuệ nhân tạo,B02,KV1,01,"Điện tử,Tự động hóa",8.1,8.5,0.0,0.0,0.0,0.0,0.0,0.0,6.6,0.0,5.1
+ST0500,Quản lý giáo dục,Sư phạm Ngữ văn,Luật,"F-TIN,G-TIN",KV2,03,"Giáo dục,Thiên nhiên",6.5,5.2,0.0,0.0,0.0,6.8,0.0,0.0,6.4,0.0,0.0
+ST0501,Thiết kế thời trang,Công nghệ sinh học,Nghệ thuật,C04,KV2,05,"Khoa học,Văn hóa,Nghệ thuật",4.6,3.3,0.0,0.0,0.0,0.0,0.0,0.0,4.4,0.0,4.9
+ST0502,Bảo hiểm,Tài chính - Ngân hàng,Quản trị khách sạn,"D66,D14",KV2,05,"Dịch vụ khách hàng,Kỹ thuật,Tài chính",7.1,7.3,6.3,0.0,0.0,0.0,0.0,4.3,0.0,0.0,0.0
+ST0503,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,A08,KV2,05,"Quản lý,Bảo mật thông tin",6.5,7.8,0.0,3.9,0.0,5.1,0.0,0.0,0.0,0.0,0.0
+ST0504,Thiết kế thời trang,Công nghệ sinh học,Kinh tế học,C17,KV2,05,"Môi trường,Chính trị,Thể thao",8.4,3.8,0.0,0.0,6.4,0.0,0.0,0.0,0.0,5.4,0.0
+ST0505,Công nghệ thông tin,Marketing,Digital Marketing,C20,KV2,05,"Cơ khí,Nông nghiệp,Động vật",7.0,5.6,7.6,0.0,0.0,4.4,0.0,0.0,0.0,0.0,0.0
+ST0506,Tự động hóa,Kỹ thuật xây dựng,Kiến trúc,"C04,C17",KV2,05,"Xây dựng,Tự động hóa,Điện tử",4.2,5.5,0.0,0.0,7.2,5.6,0.0,0.0,0.0,0.0,0.0
+ST0507,Luật kinh tế,Luật,Quản trị nhân lực,D84,KV2,05,"Giúp đỡ người khác,Luật pháp,Thể thao",4.3,5.3,5.6,0.0,0.0,0.0,0.0,0.0,0.0,4.2,0.0
+ST0508,Tâm lý học,Tài chính - Ngân hàng,Sư phạm Ngữ văn,"B03,C04",KV2,05,Tài chính,7.0,5.5,0.0,0.0,0.0,6.0,0.0,7.5,0.0,0.0,0.0
+ST0509,Ngôn ngữ Trung Quốc,Nhân học,Ngôn ngữ Anh,"A04,C02",KV2,05,"Nghiên cứu,Du lịch,Văn hóa",8.7,5.3,0.0,0.0,0.0,4.1,0.0,0.0,0.0,0.0,6.1
+ST0510,Bảo hiểm,Công nghệ thông tin,Marketing,"D66,C12",KV2,05,"Kinh doanh,Máy tính,Dịch vụ khách hàng",7.7,5.0,0.0,0.0,0.0,0.0,0.0,0.0,4.1,0.0,4.3
+ST0511,Quản lý tài nguyên và môi trường,Quản lý đất đai,Nuôi trồng thủy sản,"C01,B03",KV2,05,"Môi trường,Chăm sóc sức khỏe,Trò chơi điện tử",3.4,4.8,0.0,0.0,0.0,0.0,4.0,4.3,0.0,0.0,0.0
+ST0512,Sư phạm Ngữ văn,Quản trị dịch vụ du lịch và lữ hành,Ngôn ngữ Anh,"A03,D07",KV2,05,"Kỹ thuật,Du lịch,Giáo dục",9.1,4.3,2.7,0.0,0.0,0.0,5.9,0.0,0.0,0.0,0.0
+ST0513,Y khoa,Răng - Hàm - Mặt,Điều dưỡng,D13,KV2,05,"Cơ khí,Đọc sách,Y học",8.7,2.6,7.6,0.0,6.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0514,Sư phạm Ngữ văn,Nhân học,Quản lý tài nguyên và môi trường,"K01,B00",KV2,05,Ẩm thực,7.7,6.5,0.0,0.0,3.1,0.0,6.5,0.0,0.0,0.0,0.0
+ST0515,Nhân học,Xã hội học,Logistics và Quản lý chuỗi cung ứng,"A-TIN,C20",KV3,07,"Kỹ thuật,Quản lý,Giao tiếp",7.5,5.3,0.0,0.0,0.0,5.3,0.0,0.0,0.0,4.6,0.0
+ST0516,Công nghệ sinh học,Công nghệ thực phẩm,Hóa học,"C20,A-TIN",KV2,05,"Hóa học,Khoa học",9.5,5.0,0.0,0.0,0.0,0.0,4.2,0.0,0.0,0.0,5.5
+ST0517,Luật kinh tế,Luật,Trí tuệ nhân tạo,"D84,D07",KV2,05,"Luật pháp,Phân tích dữ liệu,Động vật",8.8,9.3,0.0,4.3,0.0,0.0,0.0,0.0,0.0,5.2,0.0
+ST0518,Tâm lý học,Sư phạm Vật lý,Sư phạm Hóa học,A11,KV2,05,"Dạy học,Khoa học",5.5,4.2,0.0,0.0,0.0,0.0,0.0,4.5,0.0,1.8,0.0
+ST0519,Quản lý bệnh viện,Y khoa,Sư phạm Ngữ văn,"B04,A09",KV2,05,"Y học,Chăm sóc sức khỏe",6.7,4.6,0.0,0.0,0.0,4.9,4.9,0.0,0.0,0.0,0.0
+ST0520,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,D15,KV2,02,Quản lý,8.5,8.6,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.8,4.4
+ST0521,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Tài chính - Ngân hàng,D08,KV2,05,"Ngoại ngữ,Tài chính",8.0,5.6,6.3,0.0,0.0,0.0,0.0,0.0,0.0,4.9,0.0
+ST0522,Quản trị kinh doanh,Tài chính - Ngân hàng,Luật kinh tế,A04,KV2,05,"Tài chính,Lãnh đạo,Luật pháp",8.6,5.2,4.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,8.0
+ST0523,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"D07,G-TIN",KV2,05,Thiết kế,6.5,4.2,0.0,0.0,0.0,3.8,0.0,0.0,0.0,6.5,0.0
+ST0524,Giáo dục Tiểu học,Marketing,Răng - Hàm - Mặt,K01,KV2,05,"Sáng tạo,Giao tiếp",8.0,8.5,0.0,6.3,4.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0525,Marketing,Digital Marketing,Quan hệ công chúng,"B03,E-TIN",KV2,05,Quảng cáo,4.7,7.9,5.7,0.0,0.0,0.0,0.0,5.1,0.0,0.0,0.0
+ST0526,Tài chính - Ngân hàng,Kế toán,Kiểm toán,C02,KV2,05,Tài chính,6.7,7.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.9,2.8
+ST0527,Sư phạm Ngữ văn,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,A08,KV2,05,"Lãnh đạo,Ngoại ngữ",9.4,6.0,4.1,0.0,0.0,0.0,6.2,0.0,0.0,0.0,0.0
+ST0528,Tự động hóa,Sư phạm Hóa học,Công nghệ kỹ thuật ô tô,A-TIN,KV2,05,"Động vật,Tự động hóa",5.4,5.9,2.6,0.0,5.4,0.0,0.0,0.0,0.0,0.0,0.0
+ST0529,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Bảo hiểm,"C05,C19",KV3,07,Dịch vụ khách hàng,6.7,6.9,0.0,4.1,0.0,0.0,0.0,0.0,3.6,0.0,0.0
+ST0530,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,"C-TIN,A-TIN",KV2,03,"Ẩm thực,Thống kê,Ngoại ngữ",8.6,4.6,0.0,5.7,0.0,0.0,0.0,0.0,0.0,7.5,0.0
+ST0531,Tâm lý học,Marketing,Logistics và Quản lý chuỗi cung ứng,A11,KV2,05,Giao tiếp,6.0,5.8,0.0,5.4,0.0,0.0,0.0,3.3,0.0,0.0,0.0
+ST0532,Sư phạm Hóa học,Thiết kế đồ họa,Marketing,D09,KV2,05,"Kỹ thuật,Giao tiếp",7.3,8.1,0.0,0.0,8.1,0.0,0.0,0.0,0.0,5.6,0.0
+ST0533,Sư phạm Ngữ văn,Quản lý giáo dục,Quản lý tài nguyên và môi trường,C-TIN,KV2,05,"Thống kê,Môi trường,Giáo dục",6.9,4.6,0.0,0.0,0.0,0.0,6.3,0.0,4.6,0.0,0.0
+ST0534,Công nghệ thông tin,Trí tuệ nhân tạo,Khoa học máy tính,C20,KV2,05,"Lập trình,Khoa học",3.6,2.8,0.0,0.0,0.0,0.0,0.0,0.0,2.6,5.5,0.0
+ST0535,Quản trị kinh doanh quốc tế,Sư phạm Hóa học,Kinh doanh quốc tế,A10,KV2,02,"Tài chính,Văn hóa",6.8,7.1,0.0,0.0,6.8,0.0,0.0,0.0,0.0,0.0,4.2
+ST0536,Tự động hóa,Kỹ thuật xây dựng,Kiến trúc,"A10,A07",KV2,05,"Xây dựng,Điện tử,Bảo mật thông tin",5.9,5.5,0.0,0.0,5.5,0.0,0.0,0.0,2.7,0.0,0.0
+ST0537,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"C08,A09",KV2,05,"Thiết kế,Tài chính",7.5,7.2,0.0,0.0,0.0,0.0,0.0,5.3,0.0,6.4,0.0
+ST0538,Tâm lý học,Quản lý giáo dục,Ngôn ngữ Pháp,"A01,B04",KV2,05,"Văn học,Động vật",6.6,6.9,0.0,0.0,0.0,0.0,0.0,4.9,4.9,0.0,0.0
+ST0539,Sư phạm Ngữ văn,Nhân học,Xã hội học,"D13,A07",KV2,07,Cơ khí,6.2,6.4,0.0,0.0,0.0,5.3,0.0,0.0,0.0,0.0,2.8
+ST0540,Ngôn ngữ Anh,Ngôn ngữ Nhật,Báo chí,"D07,D15",KV2,05,Đọc sách,7.1,5.2,0.0,0.0,0.0,2.4,0.0,0.0,0.0,0.0,6.8
+ST0541,Điều dưỡng,Quản lý bệnh viện,Y khoa,B03,KV2,05,"Chăm sóc sức khỏe,Giao tiếp",6.9,5.1,0.0,0.0,6.0,0.0,0.0,3.5,0.0,0.0,0.0
+ST0542,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"C14,B00",KV2,05,"Môi trường,Giao tiếp",6.1,4.1,0.0,6.0,0.0,3.6,0.0,0.0,0.0,0.0,0.0
+ST0543,Tâm lý học,Y khoa,Công nghệ sinh học,D08,KV2,05,"Quảng cáo,Khoa học,Giúp đỡ người khác",8.3,2.3,0.0,0.0,0.0,0.0,0.0,1.9,0.0,0.0,2.3
+ST0544,Bảo hiểm,Công nghệ thông tin,Y khoa,"E-TIN,D01",KV2,06,"Bảo mật thông tin,Dịch vụ khách hàng",6.2,5.3,0.0,6.9,6.6,0.0,0.0,0.0,0.0,0.0,0.0
+ST0545,Quản lý bệnh viện,Quản lý giáo dục,Y khoa,C12,KV2,05,Y học,8.3,9.2,0.0,4.8,0.0,0.0,0.0,0.0,5.7,0.0,0.0
+ST0546,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Ngôn ngữ Nhật,"D13,C-TIN",KV2,05,"Phân tích dữ liệu,Du lịch,Văn hóa",6.9,7.3,5.2,0.0,0.0,0.0,0.0,0.0,5.7,0.0,0.0
+ST0547,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,C-TIN,KV2,07,Chăm sóc sức khỏe,6.5,5.9,0.0,0.0,0.0,4.8,0.0,0.0,0.0,7.5,0.0
+ST0548,Sư phạm Toán,Marketing,Logistics và Quản lý chuỗi cung ứng,C01,KV2,05,"Giao tiếp,Tự động hóa,Toán học",8.7,7.3,5.2,0.0,0.0,0.0,0.0,0.0,6.4,0.0,0.0
+ST0549,Sư phạm Ngữ văn,Nhân học,Ngôn ngữ Trung Quốc,"F-TIN,D12",KV2,05,"Ngoại ngữ,Nghiên cứu,Dạy học",7.3,6.1,0.0,0.0,0.0,0.0,5.8,0.0,0.0,0.0,4.4
+ST0550,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,D08,KV2,05,"Văn hóa,Điện tử",8.8,4.4,2.9,0.0,0.0,0.0,0.0,0.0,4.5,0.0,0.0
+ST0551,Quản lý giáo dục,Luật,Luật quốc tế,D08,KV2,05,"Giao tiếp,Chính trị",8.8,5.1,0.0,6.2,0.0,0.0,0.0,0.0,4.2,0.0,0.0
+ST0552,Luật,Luật quốc tế,Quan hệ quốc tế,"C19,C08",KV1,07,"Chính trị,Giao tiếp",6.0,7.0,5.2,0.0,0.0,0.0,3.1,0.0,0.0,0.0,0.0
+ST0553,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D09,KV1,07,"Thiết kế,Động vật",8.1,6.1,0.0,3.5,0.0,0.0,0.0,0.0,0.0,3.3,0.0
+ST0554,Marketing,Tâm lý học,Digital Marketing,A05,KV2,05,"Quảng cáo,Dịch vụ khách hàng,Cơ khí",7.4,7.8,0.0,0.0,0.0,0.0,0.0,5.5,0.0,0.0,4.9
+ST0555,Tài chính - Ngân hàng,Kế toán,Kiểm toán,C00,KV2,05,Tài chính,9.2,4.3,6.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.6
+ST0556,Sư phạm Hóa học,Luật kinh tế,Luật,"D13,D66",KV2,05,"Luật pháp,Động vật,Giáo dục",8.0,6.5,0.0,0.0,4.0,0.0,0.0,0.0,0.0,4.4,0.0
+ST0557,Thiết kế đồ họa,Công nghệ thông tin,Thống kê,C19,KV2,05,Máy tính,9.3,5.0,0.0,0.0,0.0,0.0,0.0,0.0,4.6,1.8,0.0
+ST0558,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"C08,A07",KV2,05,"Dạy học,Tự động hóa,Kinh doanh",8.5,4.8,3.1,0.0,0.0,0.0,0.0,4.9,0.0,0.0,0.0
+ST0559,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"E-TIN,B04",KV2,07,"Nghệ thuật,Động vật",7.9,8.1,4.4,0.0,0.0,0.0,0.0,0.0,7.1,0.0,0.0
+ST0560,Quản lý bệnh viện,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,C17,KV2,05,"Quản lý,Nghệ thuật",7.9,4.3,0.0,0.0,2.5,0.0,0.0,3.1,0.0,0.0,0.0
+ST0561,Nhân học,Marketing,Quản trị kinh doanh quốc tế,A10,KV3,03,"Giao tiếp,Văn hóa,Quảng cáo",5.4,6.8,0.0,0.0,0.0,2.8,0.0,0.0,3.4,0.0,0.0
+ST0562,Quản lý giáo dục,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"C17,G-TIN",KV1,05,"Hóa học,Quản lý,Bảo mật thông tin",5.5,6.5,0.0,0.0,0.0,0.0,5.9,0.0,6.5,0.0,0.0
+ST0563,Quản lý giáo dục,Nhân học,Xã hội học,B00,KV2,05,"Lãnh đạo,Nghiên cứu,Hóa học",8.2,4.6,0.0,0.0,0.0,4.3,0.0,0.0,3.4,0.0,0.0
+ST0564,Kỹ thuật môi trường,Nông nghiệp,Nuôi trồng thủy sản,"D84,A08",KV2,05,"Thiên nhiên,Bảo mật thông tin,Truyền thông",8.4,7.7,0.0,0.0,4.7,0.0,0.0,5.9,0.0,0.0,0.0
+ST0565,Quản lý giáo dục,Quản trị kinh doanh,Luật kinh tế,"A11,K01",KV2,05,"Nghiên cứu,Lãnh đạo",8.8,6.4,0.0,0.0,0.0,0.0,0.0,0.0,6.3,4.6,0.0
+ST0566,Marketing,Digital Marketing,Quan hệ công chúng,"A07,A08",KV2,05,Quảng cáo,6.3,4.1,5.8,0.0,0.0,5.1,0.0,0.0,0.0,0.0,0.0
+ST0567,Thiết kế đồ họa,Thiết kế thời trang,Sư phạm Hóa học,"K01,E-TIN",KV2,05,Thiên nhiên,5.5,5.9,0.0,0.0,4.0,0.0,0.0,0.0,0.0,3.5,0.0
+ST0568,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,"B00,C02",KV2,05,"Cơ khí,Quản lý",7.8,6.5,0.0,0.0,0.0,0.0,0.0,4.1,0.0,2.3,0.0
+ST0569,Sư phạm Ngữ văn,Giáo dục Tiểu học,Quản lý giáo dục,"A10,B04",KV3,05,Giáo dục,6.6,6.1,0.0,0.0,0.0,5.9,4.7,0.0,0.0,0.0,0.0
+ST0570,Quản lý giáo dục,Luật,Quan hệ công chúng,B00,KV2,05,"Hóa học,Môi trường,Giao tiếp",6.1,5.8,0.0,0.0,0.0,0.0,0.0,0.0,8.8,0.0,4.5
+ST0571,Kỹ thuật xây dựng,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,"A05,F-TIN",KV2,05,Kỹ thuật,3.2,5.7,0.0,0.0,8.0,0.0,0.0,0.0,5.2,0.0,0.0
+ST0572,Quản lý giáo dục,Marketing,Digital Marketing,"B04,D09",KV2,05,"Sáng tạo,Tài chính",7.5,4.6,0.0,0.0,0.0,0.0,0.0,0.0,7.6,0.0,4.0
+ST0573,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,"D84,C13",KV2,05,"Dạy học,Trò chơi điện tử,Giao tiếp",5.9,6.2,0.0,5.5,0.0,3.5,0.0,0.0,0.0,0.0,0.0
+ST0574,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,K01,KV2,05,"Văn hóa,Máy tính,Nông nghiệp",5.9,7.9,0.0,0.0,0.0,0.0,0.0,5.1,0.0,6.7,0.0
+ST0575,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A06,KV2,03,Nghệ thuật,5.7,4.2,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.3
+ST0576,Nhân học,Quản lý giáo dục,Luật,F-TIN,KV2,05,"Tài chính,Giao tiếp",5.9,8.2,0.0,0.0,0.0,0.0,6.8,0.0,4.0,0.0,0.0
+ST0577,Tâm lý học,Khoa học dữ liệu và Trí tuệ nhân tạo,Y khoa,"C-TIN,A01",KV2,05,"Công nghệ,Giúp đỡ người khác,Đọc sách",8.2,4.7,0.0,0.0,0.0,0.0,0.0,5.0,3.8,0.0,0.0
+ST0578,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,F-TIN,KV2,05,Văn hóa,9.2,7.9,6.0,0.0,0.0,0.0,0.0,0.0,4.1,0.0,0.0
+ST0579,Marketing,Quan hệ công chúng,Quản lý giáo dục,A04,KV2,05,"Kinh doanh,Động vật,Sáng tạo",8.1,5.3,0.0,4.1,0.0,0.0,0.0,0.0,6.4,0.0,0.0
+ST0580,Kỹ thuật xây dựng,Kiến trúc,Thiết kế nội thất,C13,KV2,05,Xây dựng,4.4,7.8,0.0,5.5,4.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0581,Công nghệ thông tin,Quản lý tài nguyên và môi trường,Thiết kế thời trang,"C03,B-TIN",KV2,05,"Thể thao,Lập trình,Môi trường",7.2,5.2,0.0,0.0,3.0,0.0,3.5,0.0,0.0,0.0,0.0
+ST0582,Nghệ thuật,Marketing,Tâm lý học,"B00,C-TIN",KV2,05,"Truyền thông,Ẩm thực",7.9,5.4,0.0,0.0,0.0,0.0,0.0,5.6,0.0,3.6,0.0
+ST0583,Tâm lý học,Sư phạm Ngữ văn,Nhân học,D11,KV1,06,"Điện tử,Văn học,Giao tiếp",7.2,6.4,0.0,0.0,0.0,4.5,0.0,5.5,0.0,0.0,0.0
+ST0584,Tâm lý học,Quản lý giáo dục,Ngôn ngữ Pháp,G-TIN,KV2,05,"Thể thao,Giao tiếp,Văn học",6.4,7.2,0.0,0.0,0.0,0.0,0.0,4.4,4.9,0.0,0.0
+ST0585,Quản lý bệnh viện,Quản lý giáo dục,Quản trị kinh doanh quốc tế,"D07,F-TIN",KV2,05,"Quản lý,Chăm sóc sức khỏe",9.1,3.7,0.0,0.0,0.0,3.9,0.0,0.0,2.0,0.0,0.0
+ST0586,Thiết kế đồ họa,Sư phạm Tiếng Anh,Sư phạm Toán,"D84,F-TIN",KV2,05,Giáo dục,7.1,6.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.8,6.5
+ST0587,Nhân học,Xã hội học,Quản lý giáo dục,"F-TIN,C00",KV2,02,Giúp đỡ người khác,7.1,6.4,0.0,0.0,0.0,5.6,0.0,0.0,6.4,0.0,0.0
+ST0588,Tài chính - Ngân hàng,Thiết kế đồ họa,Kế toán,D07,KV2,05,Tài chính,5.8,7.1,0.0,0.0,0.0,0.0,3.5,0.0,0.0,4.7,0.0
+ST0589,Thú y,Quản lý giáo dục,Công nghệ thông tin,C12,KV3,04,Động vật,6.9,6.3,0.0,5.4,0.0,0.0,0.0,0.0,4.0,0.0,0.0
+ST0590,Bảo hiểm,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,"C02,A07",KV2,05,"Thống kê,Dịch vụ khách hàng",6.2,5.6,0.0,4.8,0.0,0.0,0.0,0.0,4.7,0.0,0.0
+ST0591,Xã hội học,Thống kê,Kinh tế học,"C08,C20",KV2,05,"Xây dựng,Nông nghiệp,Thống kê",8.1,6.3,0.0,0.0,3.8,5.7,0.0,0.0,0.0,0.0,0.0
+ST0592,Tâm lý học,Ngôn ngữ Trung Quốc,Luật quốc tế,"B02,C08",KV2,05,"Ngoại ngữ,Nghiên cứu,Hóa học",6.1,6.0,0.0,0.0,0.0,3.4,0.0,3.8,0.0,0.0,0.0
+ST0593,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A11,KV2,05,"Ẩm thực,Nghệ thuật",8.2,8.3,0.0,4.9,0.0,0.0,0.0,0.0,0.0,2.3,0.0
+ST0594,Quản trị kinh doanh,Tài chính - Ngân hàng,Luật kinh tế,B00,KV2,05,"Kinh doanh,Văn học",8.3,4.9,0.0,7.9,5.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0595,Thiết kế thời trang,Nghệ thuật,Ngôn ngữ Anh,"A08,D01",KV2,05,"Du lịch,Văn hóa",5.0,4.5,1.7,0.0,0.0,0.0,0.0,0.0,0.0,5.7,0.0
+ST0596,Quản trị dịch vụ du lịch và lữ hành,Quản trị khách sạn,Bảo hiểm,D84,KV2,05,Dịch vụ khách hàng,6.9,3.7,5.9,0.0,0.0,0.0,6.2,0.0,0.0,0.0,0.0
+ST0597,Marketing,Digital Marketing,Quan hệ công chúng,"C13,D66",KV2,05,"Nông nghiệp,Quảng cáo",6.3,8.4,3.1,0.0,0.0,0.0,0.0,0.0,0.0,5.1,0.0
+ST0598,Kế toán,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"A04,C08",KV2,05,"Quản lý,Tài chính",6.8,2.9,4.7,0.0,0.0,0.0,0.0,5.3,0.0,0.0,0.0
+ST0599,Sư phạm Hóa học,Quản lý bệnh viện,Y khoa,"C13,A05",KV2,05,"Quản lý,Y học,Khoa học",7.2,7.3,0.0,0.0,5.4,0.0,0.0,0.0,2.3,0.0,0.0
+ST0600,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"C03,D09",KV2,05,Nông nghiệp,6.7,7.6,0.0,0.0,0.0,0.0,3.3,0.0,0.0,6.6,0.0
+ST0601,Luật kinh tế,Logistics và Quản lý chuỗi cung ứng,Marketing,B03,KV2,05,"Tự động hóa,Kinh doanh",5.1,3.8,0.0,0.0,0.0,3.9,4.9,0.0,0.0,0.0,0.0
+ST0602,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Bảo hiểm,"B-TIN,D66",KV1,03,"Dịch vụ khách hàng,Bảo mật thông tin",7.7,6.1,2.4,0.0,0.0,6.5,0.0,0.0,0.0,0.0,0.0
+ST0603,Y khoa,Răng - Hàm - Mặt,Điều dưỡng,"C04,D09",KV2,05,"Toán học,Y học",5.7,7.9,0.0,4.7,6.1,0.0,0.0,0.0,0.0,0.0,0.0
+ST0604,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Luật kinh tế,"G-TIN,D-TIN",KV1,01,"Văn hóa,Luật pháp,Động vật",4.0,8.8,5.1,0.0,0.0,0.0,0.0,0.0,4.2,0.0,0.0
+ST0605,Luật kinh tế,Luật,Luật quốc tế,"B03,C01",KV2,05,Luật pháp,8.8,4.2,5.4,0.0,0.0,0.0,6.1,0.0,0.0,0.0,0.0
+ST0606,Thiết kế đồ họa,Tâm lý học,Thiết kế thời trang,B-TIN,KV2,05,Thiên nhiên,7.5,7.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,5.3,0.0
+ST0607,Công nghệ thông tin,Kỹ thuật xây dựng,Kiến trúc,A05,KV2,05,"Lập trình,Nông nghiệp,Thiết kế",9.2,7.3,0.0,3.2,0.0,0.0,5.0,0.0,0.0,0.0,0.0
+ST0608,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"C-TIN,A05",KV2,05,"Đọc sách,Kinh doanh",4.5,4.1,5.3,0.0,4.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0609,Kỹ thuật xây dựng,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,C04,KV1,07,Kỹ thuật,8.6,5.3,0.0,0.0,5.0,4.2,0.0,0.0,0.0,0.0,0.0
+ST0610,Công nghệ thông tin,Khoa học dữ liệu và Trí tuệ nhân tạo,Digital Marketing,"B02,D07",KV2,05,"Điện tử,Công nghệ",9.4,5.5,0.0,0.0,0.0,6.1,0.0,4.8,0.0,0.0,0.0
+ST0611,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,"A11,D15",KV2,05,"Bảo mật thông tin,Phân tích dữ liệu",6.7,6.7,2.6,0.0,0.0,3.8,0.0,0.0,0.0,0.0,0.0
+ST0612,Sư phạm Toán,Tài chính - Ngân hàng,Thống kê,A11,KV1,06,"Toán học,Giáo dục,Môi trường",8.0,6.8,2.9,0.0,0.0,0.0,0.0,4.3,0.0,0.0,0.0
+ST0613,Tâm lý học,Xã hội học,Kiểm toán,"D12,C14",KV2,05,"Nghiên cứu,Phân tích dữ liệu,Tài chính",6.2,5.6,0.0,0.0,0.0,5.3,0.0,5.6,0.0,0.0,0.0
+ST0614,Công nghệ thông tin,Marketing,Digital Marketing,"B02,C14",KV2,05,"Điện tử,Lập trình",6.2,8.3,4.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.7
+ST0615,Sư phạm Hóa học,Tâm lý học,Thiết kế thời trang,"C-TIN,C13",KV3,02,"Thể thao,Khoa học",7.9,5.9,0.0,0.0,4.2,5.6,0.0,0.0,0.0,0.0,0.0
+ST0616,Sư phạm Hóa học,Luật kinh tế,Luật,"C03,C19",KV2,05,"Luật pháp,Nghiên cứu",6.5,8.1,0.0,2.3,4.8,0.0,0.0,0.0,0.0,0.0,0.0
+ST0617,Quan hệ công chúng,Luật kinh tế,Ngôn ngữ Hàn Quốc,D66,KV2,07,"Truyền thông,Y học,Kinh doanh",2.9,6.4,0.0,0.0,0.0,8.2,0.0,0.0,0.0,3.6,0.0
+ST0618,Thiết kế thời trang,Nghệ thuật,Quản trị kinh doanh quốc tế,"C04,B-TIN",KV2,05,"Tài chính,Văn hóa,Thiết kế",8.8,5.5,6.7,0.0,0.0,4.9,0.0,0.0,0.0,0.0,0.0
+ST0619,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,Trí tuệ nhân tạo,"C03,A04",KV2,05,Giúp đỡ người khác,6.8,3.4,6.3,0.0,0.0,0.0,0.0,0.0,0.0,7.4,0.0
+ST0620,Tài chính - Ngân hàng,Kế toán,Kiểm toán,B03,KV2,05,Tài chính,8.3,8.3,3.7,0.0,0.0,0.0,5.4,0.0,0.0,0.0,0.0
+ST0621,Công nghệ thông tin,Quản trị kinh doanh quốc tế,Marketing,D10,KV2,05,"Kinh doanh,Máy tính",7.7,6.2,0.0,0.0,0.0,6.5,0.0,0.0,4.1,0.0,0.0
+ST0622,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"K01,D13",KV2,05,Kinh doanh,6.8,6.6,0.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,1.7
+ST0623,Marketing,Digital Marketing,Quan hệ quốc tế,A10,KV2,05,"Xây dựng,Chính trị,Truyền thông",7.2,3.1,0.0,6.5,0.0,7.2,0.0,0.0,0.0,0.0,0.0
+ST0624,Quản lý giáo dục,Luật,Xã hội học,"C13,D01",KV2,05,"Đọc sách,Giao tiếp",7.5,6.2,0.0,0.0,0.0,3.8,0.0,0.0,8.6,0.0,0.0
+ST0625,Sư phạm Tiếng Anh,Sư phạm Toán,Giáo dục Tiểu học,"A-TIN,B02",KV2,05,"Môi trường,Dạy học,Nông nghiệp",5.8,5.8,7.3,0.0,0.0,6.3,0.0,0.0,0.0,0.0,0.0
+ST0626,Công nghệ thông tin,Marketing,Logistics và Quản lý chuỗi cung ứng,A06,KV2,05,"Đọc sách,Lập trình,Kinh doanh",6.4,5.5,0.0,0.0,0.0,0.0,0.0,0.0,6.0,0.0,3.3
+ST0627,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,B02,KV2,05,"Cơ khí,Văn hóa",4.1,7.2,7.2,5.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0628,Tâm lý học,Quản trị nhân lực,Logistics và Quản lý chuỗi cung ứng,"A09,D13",KV2,05,"Nghệ thuật,Quản lý,Giúp đỡ người khác",7.8,6.1,0.0,0.0,0.0,0.0,0.0,3.6,0.0,0.0,5.2
+ST0629,Tâm lý học,Marketing,Logistics và Quản lý chuỗi cung ứng,C08,KV3,05,"Giao tiếp,Xây dựng",7.7,7.9,0.0,4.5,0.0,0.0,0.0,4.5,0.0,0.0,0.0
+ST0630,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D84,KV2,05,"Thiết kế,Sáng tạo,Nông nghiệp",6.3,8.3,5.8,0.0,0.0,0.0,4.7,0.0,0.0,0.0,0.0
+ST0631,Công nghệ thông tin,Tâm lý học,Thiết kế đồ họa,"A06,C-TIN",KV2,05,"Máy tính,Đọc sách",7.2,4.9,0.0,0.0,0.0,0.0,0.0,5.5,4.1,0.0,0.0
+ST0632,Kiến trúc,Thiết kế đồ họa,Thiết kế nội thất,A09,KV2,05,"Chăm sóc sức khỏe,Nghệ thuật,Xây dựng",7.0,7.6,0.0,3.3,0.0,0.0,2.7,0.0,0.0,0.0,0.0
+ST0633,Sư phạm Ngữ văn,Công nghệ thông tin,Trí tuệ nhân tạo,"K01,C04",KV2,05,"Ẩm thực,Văn học,Lập trình",9.0,5.0,0.0,0.0,0.0,5.1,0.0,0.0,0.0,3.9,0.0
+ST0634,Quản lý giáo dục,Sư phạm Ngữ văn,Nhân học,"D08,A06",KV1,04,Điện tử,7.6,6.8,0.0,0.0,0.0,0.0,4.9,0.0,6.2,0.0,0.0
+ST0635,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Bảo hiểm,"C-TIN,D11",KV3,01,Dịch vụ khách hàng,6.5,7.7,2.6,0.0,0.0,4.2,0.0,0.0,0.0,0.0,0.0
+ST0636,Công nghệ thông tin,Khoa học máy tính,An toàn thông tin,D66,KV2,05,"Máy tính,Môi trường,Quản lý",8.4,6.5,3.7,6.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0637,Sư phạm Ngữ văn,Tâm lý học,Nhân học,A03,KV2,05,Động vật,5.9,7.9,0.0,0.0,0.0,6.6,0.0,4.9,0.0,0.0,0.0
+ST0638,Sư phạm Ngữ văn,Marketing,Digital Marketing,C00,KV2,05,"Sáng tạo,Quản lý",8.0,5.3,0.0,0.0,3.4,4.1,0.0,0.0,0.0,0.0,0.0
+ST0639,Thiết kế đồ họa,Sư phạm Hóa học,Âm nhạc,"C02,A07",KV2,05,Nghệ thuật,5.6,7.8,0.0,0.0,6.6,0.0,0.0,2.8,0.0,0.0,0.0
+ST0640,Marketing,Digital Marketing,Quan hệ công chúng,C05,KV2,05,Truyền thông,4.2,6.1,0.0,0.0,0.0,0.0,2.5,0.0,0.0,0.0,4.0
+ST0641,Quản lý giáo dục,Luật,Quan hệ công chúng,"C17,A-TIN",KV2,05,Bảo mật thông tin,5.0,5.4,0.0,0.0,0.0,0.0,0.0,0.0,8.0,0.0,5.1
+ST0642,Công nghệ thông tin,Tự động hóa,Sư phạm Hóa học,D66,KV2,05,"Lập trình,Ẩm thực,Thiên nhiên",6.5,6.7,0.0,0.0,5.1,2.8,0.0,0.0,0.0,0.0,0.0
+ST0643,Tâm lý học,Y khoa,Điều dưỡng,"F-TIN,C13",KV2,05,"Giúp đỡ người khác,Tài chính",6.7,3.7,0.0,4.6,0.0,0.0,0.0,5.6,0.0,0.0,0.0
+ST0644,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,C-TIN,KV3,06,Nghệ thuật,7.1,6.5,4.8,0.0,0.0,5.9,0.0,0.0,0.0,0.0,0.0
+ST0645,Quản lý tài nguyên và môi trường,Quản lý đất đai,Nuôi trồng thủy sản,"D09,A10",KV2,05,"Điện tử,Thiên nhiên,Môi trường",5.1,3.6,0.0,0.0,3.1,0.0,6.9,0.0,0.0,0.0,0.0
+ST0646,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,"A01,A02",KV2,06,Dạy học,6.4,6.4,0.0,0.0,0.0,2.9,0.0,2.7,0.0,0.0,0.0
+ST0647,Ngôn ngữ Pháp,Báo chí,Sư phạm Ngữ văn,"A07,A11",KV2,05,"Tự động hóa,Văn học",3.0,6.7,4.2,0.0,0.0,4.5,0.0,0.0,0.0,0.0,0.0
+ST0648,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,Tự động hóa,A00,KV2,05,"Lãnh đạo,Tự động hóa",8.2,3.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.3,4.3
+ST0649,Quản lý giáo dục,Quản trị kinh doanh quốc tế,Kế toán,C00,KV2,05,"Tài chính,Quản lý",5.4,5.5,0.0,0.0,0.0,7.2,0.0,0.0,4.4,0.0,0.0
+ST0650,Tài chính - Ngân hàng,Kế toán,Kiểm toán,"D09,C05",KV3,02,"Môi trường,Tài chính",7.7,5.3,3.8,0.0,0.0,0.0,0.0,2.6,0.0,0.0,0.0
+ST0651,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,A03,KV2,05,"Kinh doanh,Môi trường,Giao tiếp",7.9,4.8,5.7,0.0,0.0,4.1,0.0,0.0,0.0,0.0,0.0
+ST0652,Thiết kế đồ họa,Thiết kế thời trang,Sư phạm Ngữ văn,C02,KV2,05,"Nghệ thuật,Nông nghiệp",7.0,6.1,0.0,0.0,0.0,5.4,4.6,0.0,0.0,0.0,0.0
+ST0653,Sư phạm Ngữ văn,Nhân học,Ngôn ngữ Anh,D15,KV3,07,"Du lịch,Tự động hóa",8.7,7.5,0.0,0.0,3.8,0.0,7.1,0.0,0.0,0.0,0.0
+ST0654,Tâm lý học,Nhân học,Quản lý tài nguyên và môi trường,"K01,C00",KV1,05,"Giúp đỡ người khác,Thiên nhiên,Du lịch",8.7,8.0,0.0,0.0,0.0,0.0,5.4,4.8,0.0,0.0,0.0
+ST0655,Trí tuệ nhân tạo,Khoa học máy tính,Kỹ thuật phần mềm,A04,KV2,03,Lập trình,5.8,4.8,0.0,3.9,0.0,0.0,0.0,0.0,0.0,4.3,0.0
+ST0656,Sư phạm Ngữ văn,Quản lý tài nguyên và môi trường,Nhân học,"D14,C14",KV3,05,Khoa học,8.0,6.1,0.0,0.0,0.0,0.0,7.3,0.0,0.0,0.0,4.5
+ST0657,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A04,KV2,05,"Nghệ thuật,Giáo dục,Môi trường",8.6,5.6,0.0,0.0,0.0,0.0,6.7,0.0,0.0,7.7,0.0
+ST0658,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,Thiết kế đồ họa,"D66,B02",KV2,05,"Tự động hóa,Khoa học,Môi trường",9.6,5.4,0.0,0.0,0.0,3.6,0.0,0.0,0.0,4.9,0.0
+ST0659,Công nghệ thông tin,Marketing,Digital Marketing,"D08,D07",KV2,05,"Hóa học,Nông nghiệp",5.3,6.2,4.5,0.0,0.0,0.0,3.8,0.0,0.0,0.0,0.0
+ST0660,Nhân học,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,"F-TIN,C14",KV2,05,"Văn hóa,Du lịch,Quảng cáo",5.8,5.3,0.0,0.0,0.0,5.3,0.0,3.5,0.0,0.0,0.0
+ST0661,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,F-TIN,KV2,05,"Điện tử,Nghệ thuật",5.1,5.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.2,4.4
+ST0662,Công nghệ thông tin,Tài chính - Ngân hàng,Thống kê,"A11,D13",KV2,05,"Trò chơi điện tử,Toán học",8.2,7.8,0.0,0.0,0.0,0.0,5.1,3.0,0.0,0.0,0.0
+ST0663,Quản lý giáo dục,Marketing,Digital Marketing,"C04,B03",KV1,03,"Nông nghiệp,Truyền thông,Quản lý",8.8,7.6,0.0,0.0,0.0,4.5,0.0,0.0,5.1,0.0,0.0
+ST0664,Sư phạm Ngữ văn,Thiết kế đồ họa,Sư phạm Tiếng Anh,B03,KV2,05,Dạy học,8.7,7.7,0.0,0.0,0.0,0.0,5.0,0.0,0.0,4.7,0.0
+ST0665,Ngôn ngữ Pháp,Báo chí,Sư phạm Ngữ văn,C19,KV2,05,Văn học,6.5,7.7,0.0,0.0,0.0,0.0,0.0,2.9,0.0,0.0,6.2
+ST0666,Tâm lý học,Thiết kế đồ họa,Thiết kế thời trang,C-TIN,KV2,05,"Cơ khí,Thiết kế,Giao tiếp",9.0,4.6,0.0,0.0,0.0,0.0,0.0,5.4,0.0,3.8,0.0
+ST0667,Nhân học,Công nghệ thông tin,Quản trị kinh doanh quốc tế,"A10,C02",KV2,05,"Văn hóa,Trò chơi điện tử",8.7,6.3,0.0,0.0,0.0,5.5,6.3,0.0,0.0,0.0,0.0
+ST0668,Nông nghiệp,Nuôi trồng thủy sản,Công nghệ sau thu hoạch,"A03,A01",KV1,02,"Điện tử,Nông nghiệp,Kinh doanh",5.4,6.1,0.0,0.0,6.7,0.0,0.0,5.0,0.0,0.0,0.0
+ST0669,Thống kê,Công nghệ thông tin,Quản trị kinh doanh quốc tế,B00,KV3,03,"Máy tính,Văn hóa,Toán học",4.7,5.0,4.2,0.0,0.0,4.3,0.0,0.0,0.0,0.0,0.0
+ST0670,Thiết kế đồ họa,Công nghệ thông tin,Digital Marketing,E-TIN,KV2,07,"Điện tử,Nghệ thuật,Công nghệ",7.5,7.7,4.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0
+ST0671,Tâm lý học,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,A04,KV2,05,Tự động hóa,7.7,7.9,0.0,4.9,0.0,0.0,0.0,4.4,0.0,0.0,0.0
+ST0672,Quản lý giáo dục,Luật,Quan hệ công chúng,"C14,A01",KV2,05,Môi trường,3.9,5.8,0.0,0.0,2.0,0.0,0.0,0.0,7.0,0.0,0.0
+ST0673,Sư phạm Ngữ văn,Quản lý giáo dục,Marketing,"A-TIN,G-TIN",KV2,05,"Kinh doanh,Sáng tạo,Quản lý",5.9,7.4,0.0,0.0,0.0,6.3,0.0,0.0,4.9,0.0,0.0
+ST0674,Thiết kế đồ họa,Thiết kế thời trang,Luật,A02,KV2,05,"Thiết kế,Chính trị",7.4,5.9,7.3,0.0,0.0,0.0,0.0,0.0,0.0,8.5,0.0
+ST0675,Công nghệ thông tin,Sư phạm Ngữ văn,Nhân học,D66,KV2,05,"Trò chơi điện tử,Lập trình",8.4,5.7,0.0,0.0,4.7,6.3,0.0,0.0,0.0,0.0,0.0
+ST0676,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Luật quốc tế,D84,KV2,05,"Cơ khí,Chính trị,Ngoại ngữ",9.0,5.0,0.0,0.0,0.0,0.0,0.0,4.8,0.0,6.5,0.0
+ST0677,Kinh tế học,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,"D15,C05",KV2,05,"Chính trị,Văn hóa",8.4,3.5,0.0,6.6,2.3,0.0,0.0,0.0,0.0,0.0,0.0
+ST0678,Công nghệ thông tin,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,C08,KV1,02,"Ẩm thực,Du lịch,Lập trình",4.3,5.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,2.8
+ST0679,Quản lý bệnh viện,Công nghệ thông tin,Marketing,D07,KV3,04,"Kỹ thuật,Y học",7.0,7.3,4.9,0.0,0.0,0.0,3.6,0.0,0.0,0.0,0.0
+ST0680,Thiết kế đồ họa,Thiết kế thời trang,Nuôi trồng thủy sản,"C19,D10",KV2,05,"Nông nghiệp,Cơ khí",5.6,3.5,0.0,0.0,0.0,0.0,3.6,0.0,0.0,5.0,0.0
+ST0681,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,G-TIN,KV3,04,Quản lý,9.2,4.2,3.5,0.0,0.0,0.0,0.0,0.0,0.0,2.5,0.0
+ST0682,Quản lý giáo dục,Marketing,Digital Marketing,A06,KV2,05,"Môi trường,Lãnh đạo,Sáng tạo",6.5,7.5,4.2,0.0,0.0,0.0,0.0,0.0,7.1,0.0,0.0
+ST0683,Sư phạm Ngữ văn,Thiết kế đồ họa,Thiết kế thời trang,"A04,C13",KV2,04,"Dịch vụ khách hàng,Dạy học",5.9,7.0,0.0,0.0,0.0,4.9,0.0,0.0,0.0,7.1,0.0
+ST0684,Tâm lý học,Khoa học dữ liệu và Trí tuệ nhân tạo,Thiết kế đồ họa,E-TIN,KV2,05,"Thiết kế,Môi trường,Công nghệ",7.5,6.6,0.0,0.0,0.0,5.2,0.0,8.8,0.0,0.0,0.0
+ST0685,Nhân học,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,"C01,D07",KV2,05,Văn hóa,7.9,7.1,3.5,0.0,0.0,0.0,5.8,0.0,0.0,0.0,0.0
+ST0686,Robot và Trí tuệ nhân tạo,Tự động hóa,Kỹ thuật điện - điện tử,"A06,A02",KV2,05,Truyền thông,8.0,5.2,0.0,5.6,0.0,0.0,0.0,0.0,0.0,0.0,6.1
+ST0687,Tâm lý học,Quản lý giáo dục,Robot và Trí tuệ nhân tạo,D84,KV2,04,"Tự động hóa,Khoa học,Kỹ thuật",6.1,5.6,1.6,0.0,0.0,0.0,0.0,0.0,6.3,0.0,0.0
+ST0688,Robot và Trí tuệ nhân tạo,Tự động hóa,Luật kinh tế,A07,KV2,05,"Tự động hóa,Thể thao,Nghiên cứu",7.0,4.2,3.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7.6
+ST0689,Răng - Hàm - Mặt,Marketing,Digital Marketing,"A06,A10",KV2,05,"Y học,Sáng tạo",5.0,7.4,5.1,0.0,5.8,0.0,0.0,0.0,0.0,0.0,0.0
+ST0690,Công nghệ thông tin,Sư phạm Hóa học,Dược học,"A09,B00",KV2,05,"Trò chơi điện tử,Hóa học",7.6,8.0,0.0,6.1,0.0,0.0,0.0,0.0,3.3,0.0,0.0
+ST0691,Sư phạm Ngữ văn,Tự động hóa,Nhân học,C01,KV1,04,"Ẩm thực,Cơ khí",8.5,5.2,0.0,0.0,0.0,0.0,5.8,0.0,0.0,0.0,4.2
+ST0692,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,"A08,A03",KV2,05,Công nghệ,4.4,6.3,2.7,2.6,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0693,Sư phạm Ngữ văn,Nhân học,Xã hội học,B00,KV2,04,Ẩm thực,7.9,7.2,0.0,0.0,0.0,6.5,0.0,0.0,4.8,0.0,0.0
+ST0694,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,"B-TIN,C01",KV2,05,"Nghiên cứu,Dạy học,Công nghệ",6.8,5.1,4.2,0.0,0.0,0.0,0.0,0.0,0.0,7.0,0.0
+ST0695,Kỹ thuật xây dựng,Kiến trúc,Thiết kế nội thất,D01,KV2,05,"Thể thao,Xây dựng,Động vật",5.9,6.4,0.0,4.3,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+ST0696,Công nghệ thông tin,Sư phạm Ngữ văn,Nhân học,"A10,C14",KV2,05,Lập trình,7.4,5.4,0.0,0.0,0.0,5.2,0.0,0.0,2.9,0.0,0.0
+ST0697,Marketing,Điều dưỡng,Quản trị kinh doanh,"A06,A01",KV2,05,Giao tiếp,8.2,3.8,5.5,0.0,5.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0698,Kiến trúc,Thiết kế nội thất,Sư phạm Ngữ văn,"D11,C12",KV2,05,"Sáng tạo,Xây dựng,Du lịch",7.5,6.6,0.0,6.5,0.0,2.2,0.0,0.0,0.0,0.0,0.0
+ST0699,Tâm lý học,Thú y,Sư phạm Vật lý,A09,KV2,05,"Khoa học,Máy tính,Kinh doanh",8.1,5.4,0.0,3.6,0.0,0.0,0.0,6.1,0.0,0.0,0.0
+ST0700,Marketing,Digital Marketing,Quan hệ công chúng,"C17,B-TIN",KV2,05,Truyền thông,6.4,4.6,6.1,0.0,0.0,3.9,0.0,0.0,0.0,0.0,0.0
+ST0701,Quản lý bệnh viện,Sư phạm Tiếng Anh,Sư phạm Toán,"D10,C17",KV2,05,"Giáo dục,Y học,Cơ khí",8.8,6.4,3.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.9
+ST0702,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Quản trị khách sạn,"C03,D08",KV2,05,Du lịch,8.6,4.9,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,5.0
+ST0703,Quản lý tài nguyên và môi trường,Sư phạm Hóa học,Nuôi trồng thủy sản,"C17,G-TIN",KV2,04,"Luật pháp,Môi trường,Khoa học",6.8,6.7,0.0,0.0,4.4,0.0,6.1,0.0,0.0,0.0,0.0
+ST0704,Khoa học dữ liệu và Trí tuệ nhân tạo,Trí tuệ nhân tạo,Khoa học dữ liệu,D15,KV2,05,"Thống kê,Luật pháp,Tự động hóa",8.5,5.2,0.0,0.0,0.0,0.0,0.0,0.0,5.2,8.5,0.0
+ST0705,Y khoa,Marketing,Răng - Hàm - Mặt,"G-TIN,D14",KV2,06,"Chăm sóc sức khỏe,Thống kê,Quảng cáo",5.4,6.2,0.0,0.0,7.1,0.0,0.0,0.0,0.0,0.0,5.9
+ST0706,Nhân học,Sư phạm Hóa học,Quản trị kinh doanh quốc tế,C14,KV2,01,"Xây dựng,Hóa học,Văn hóa",7.7,7.3,0.0,0.0,5.0,0.0,5.8,0.0,0.0,0.0,0.0
+ST0707,Quản trị nhân lực,Tâm lý học,Giáo dục Tiểu học,D15,KV2,05,"Hóa học,Giúp đỡ người khác",9.3,7.6,3.0,0.0,0.0,0.0,0.0,0.0,0.0,4.1,0.0
+ST0708,Công nghệ thông tin,Y khoa,Răng - Hàm - Mặt,"A04,A06",KV2,05,Du lịch,8.4,3.1,0.0,4.8,5.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0709,Tâm lý học,Khoa học dữ liệu và Trí tuệ nhân tạo,Điều dưỡng,"K01,F-TIN",KV2,05,"Giao tiếp,Nông nghiệp",7.1,6.6,0.0,0.0,0.0,0.0,0.0,7.0,0.0,4.3,0.0
+ST0710,Luật kinh tế,Thiết kế đồ họa,Thiết kế thời trang,A10,KV2,05,"Kinh doanh,Cơ khí",3.2,5.2,0.0,0.0,0.0,0.0,7.1,0.0,0.0,8.1,0.0
+ST0711,Tài chính - Ngân hàng,Kế toán,Kiểm toán,"C00,C19",KV2,05,Tài chính,7.0,6.9,0.0,0.0,4.5,0.0,0.0,0.0,0.0,0.0,6.6
+ST0712,Thiết kế đồ họa,Công nghệ thông tin,Digital Marketing,"D84,A08",KV2,05,"Nghệ thuật,Máy tính,Công nghệ",5.8,3.8,0.0,0.0,0.0,0.0,1.5,0.0,4.7,0.0,0.0
+ST0713,Công nghệ thông tin,Thiết kế đồ họa,Thiết kế thời trang,"E-TIN,C12",KV2,05,"Nghệ thuật,Trò chơi điện tử",8.2,7.2,3.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.8
+ST0714,Luật,Kinh tế học,Luật quốc tế,"A05,C03",KV2,07,Chính trị,7.9,4.6,7.8,0.0,0.0,0.0,5.4,0.0,0.0,0.0,0.0
+ST0715,Quản lý bệnh viện,Quản lý giáo dục,Sư phạm Ngữ văn,"A01,A06",KV2,05,"Bảo mật thông tin,Y học,Chăm sóc sức khỏe",5.8,7.8,0.0,0.0,0.0,3.0,0.0,0.0,3.2,0.0,0.0
+ST0716,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,B-TIN,KV2,05,"Máy tính,Kinh doanh,Văn hóa",5.0,7.5,0.0,0.0,0.0,0.0,0.0,3.9,0.0,7.4,0.0
+ST0717,Quản trị kinh doanh,Tài chính - Ngân hàng,Quản lý bệnh viện,"C20,D10",KV2,05,"Xây dựng,Toán học,Lãnh đạo",5.1,5.6,3.6,0.0,0.0,0.0,5.1,0.0,0.0,0.0,0.0
+ST0718,Quản lý giáo dục,Marketing,Điều dưỡng,"D14,D07",KV2,05,"Giao tiếp,Thống kê,Truyền thông",7.1,5.6,0.0,0.0,8.5,0.0,0.0,0.0,7.0,0.0,0.0
+ST0719,Sư phạm Hóa học,Công nghệ thông tin,Tự động hóa,E-TIN,KV2,05,"Lập trình,Hóa học",6.2,7.4,0.0,0.0,6.7,0.0,0.0,0.0,5.3,0.0,0.0
+ST0720,Ngôn ngữ Trung Quốc,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,C-TIN,KV2,05,"Du lịch,Nghiên cứu",6.4,5.2,3.2,5.6,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0721,Sư phạm Ngữ văn,Nhân học,Sư phạm Tiếng Anh,C02,KV1,05,Giáo dục,8.7,6.8,0.0,0.0,0.0,0.0,6.4,0.0,0.0,0.0,6.5
+ST0722,Luật kinh tế,Luật,Thiết kế đồ họa,A-TIN,KV1,05,"Ẩm thực,Luật pháp,Văn học",6.6,6.9,0.0,3.0,0.0,0.0,0.0,0.0,0.0,4.3,0.0
+ST0723,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,Kinh doanh quốc tế,"A07,A09",KV2,05,"Lãnh đạo,Ngoại ngữ",6.3,6.2,5.1,0.0,0.0,0.0,0.0,0.0,0.8,0.0,0.0
+ST0724,Tâm lý học,Sư phạm Hóa học,Sư phạm Ngữ văn,B03,KV1,03,Khoa học,7.0,8.0,0.0,0.0,0.0,1.0,3.9,0.0,0.0,0.0,0.0
+ST0725,Marketing,Quan hệ công chúng,Ngôn ngữ Hàn Quốc,"B04,C20",KV2,05,"Giao tiếp,Truyền thông",5.3,4.5,5.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.5
+ST0726,Công nghệ thông tin,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,A11,KV2,05,"Chính trị,Lập trình,Phân tích dữ liệu",7.5,6.3,0.0,7.7,0.0,0.0,0.0,0.0,4.6,0.0,0.0
+ST0727,Thống kê,Toán Kinh tế,Xã hội học,"B03,A-TIN",KV2,05,"Toán học,Thống kê,Bảo mật thông tin",7.8,7.5,0.0,0.0,0.0,3.7,0.0,0.0,0.0,0.0,4.5
+ST0728,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A07,KV2,05,"Nghệ thuật,Ẩm thực",5.7,6.9,3.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0
+ST0729,Luật kinh tế,Luật,Tâm lý học,C04,KV2,05,"Kỹ thuật,Nghiên cứu",5.0,6.7,3.7,0.0,0.0,0.0,0.0,0.0,2.8,0.0,0.0
+ST0730,Nhân học,Công nghệ thông tin,Marketing,D10,KV2,05,"Giao tiếp,Trò chơi điện tử",6.1,6.0,0.0,0.0,0.0,0.0,6.1,0.0,0.0,3.4,0.0
+ST0731,Răng - Hàm - Mặt,Công nghệ thông tin,Y khoa,"D09,C-TIN",KV2,05,"Chăm sóc sức khỏe,Phân tích dữ liệu,Thiết kế",4.8,5.4,0.0,6.7,5.8,0.0,0.0,0.0,0.0,0.0,0.0
+ST0732,Sư phạm Hóa học,Sư phạm Ngữ văn,Nhân học,D84,KV2,05,Dịch vụ khách hàng,7.5,8.4,0.0,0.0,7.4,7.2,0.0,0.0,0.0,0.0,0.0
+ST0733,Kỹ thuật môi trường,Hóa học,Quản lý đất đai,D10,KV2,05,"Tài chính,Xây dựng,Môi trường",5.6,5.6,0.0,0.0,6.5,0.0,0.0,0.0,0.0,0.0,4.3
+ST0734,Tâm lý học,Quản lý giáo dục,Công nghệ thông tin,"C12,D14",KV2,05,Động vật,3.9,7.4,0.0,0.0,0.0,0.0,0.0,3.6,2.3,0.0,0.0
+ST0735,Quản lý giáo dục,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,"C14,F-TIN",KV3,02,"Thiết kế,Lãnh đạo",7.6,5.5,0.0,0.0,0.0,0.0,0.0,0.0,4.3,0.0,7.4
+ST0736,Sư phạm Hóa học,Thiết kế đồ họa,Thiết kế thời trang,C12,KV2,05,Hóa học,6.8,5.9,0.0,0.0,3.2,0.0,0.0,0.0,0.0,4.3,0.0
+ST0737,Luật kinh tế,Bảo hiểm,Quản lý tài nguyên và môi trường,C13,KV2,05,"Dịch vụ khách hàng,Luật pháp",8.1,3.6,0.0,0.0,5.9,0.0,4.6,0.0,0.0,0.0,0.0
+ST0738,Sư phạm Ngữ văn,Công nghệ thông tin,Quản trị kinh doanh quốc tế,C00,KV2,05,"Lập trình,Động vật,Ngoại ngữ",7.4,5.4,0.0,0.0,0.0,0.0,5.1,3.8,0.0,0.0,0.0
+ST0739,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,D13,KV2,05,"Kinh doanh,Động vật",6.4,5.0,6.7,0.0,0.0,0.0,0.0,4.8,0.0,0.0,0.0
+ST0740,Xã hội học,Luật,Quản lý giáo dục,"C05,D84",KV3,04,"Nghệ thuật,Môi trường,Thống kê",7.4,7.1,0.0,0.0,0.0,6.7,0.0,0.0,7.2,0.0,0.0
+ST0741,Thiết kế đồ họa,Thiết kế thời trang,Quản lý giáo dục,"K01,B04",KV2,05,Y học,6.7,3.9,0.0,0.0,0.0,0.0,0.0,0.0,6.0,6.1,0.0
+ST0742,Sư phạm Ngữ văn,Thiết kế đồ họa,Giáo dục Tiểu học,"D66,A07",KV2,05,"Sáng tạo,Máy tính,Thiên nhiên",9.2,7.2,0.0,0.0,0.0,6.1,6.1,0.0,0.0,0.0,0.0
+ST0743,Quản lý giáo dục,Luật kinh tế,Luật,"B-TIN,A10",KV2,05,Nghiên cứu,5.8,9.0,3.7,0.0,0.0,0.0,0.0,0.0,6.1,0.0,0.0
+ST0744,Sư phạm Hóa học,Sư phạm Ngữ văn,Thiết kế đồ họa,"B02,D07",KV2,05,"Dạy học,Nông nghiệp,Nghệ thuật",7.5,7.5,0.0,0.0,5.7,4.3,0.0,0.0,0.0,0.0,0.0
+ST0745,Thiết kế đồ họa,Quản lý giáo dục,Thiết kế thời trang,D01,KV2,05,Nghệ thuật,8.5,4.0,0.0,0.0,0.0,3.3,0.0,0.0,6.1,0.0,0.0
+ST0746,Marketing,Digital Marketing,Quan hệ công chúng,C00,KV1,07,Truyền thông,8.3,6.7,5.1,0.0,0.0,0.0,0.0,0.0,5.7,0.0,0.0
+ST0747,Thống kê,Kinh tế học,Kế toán,C03,KV2,05,"Thống kê,Ẩm thực",4.9,5.5,4.3,0.0,4.4,0.0,0.0,0.0,0.0,0.0,0.0
+ST0748,Bảo hiểm,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,"A08,D11",KV3,03,"Dịch vụ khách hàng,Thống kê",6.4,7.7,0.0,0.0,0.0,0.0,0.0,2.4,0.0,5.7,0.0
+ST0749,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,B03,KV2,05,"Ngoại ngữ,Thiên nhiên",6.7,7.8,0.0,6.9,0.0,0.0,0.0,2.7,0.0,0.0,0.0
+ST0750,Tài chính - Ngân hàng,Kế toán,Kiểm toán,C20,KV2,05,Tài chính,8.1,8.2,6.1,0.0,0.0,0.0,0.0,0.0,6.0,0.0,0.0
+ST0751,Quản lý giáo dục,Quản trị nhân lực,Tâm lý học,"D10,A10",KV1,07,Giúp đỡ người khác,5.2,8.3,0.0,6.1,0.0,0.0,0.0,0.0,6.4,0.0,0.0
+ST0752,Luật kinh tế,Luật,Luật quốc tế,"A07,A10",KV2,05,"Bảo mật thông tin,Môi trường,Luật pháp",6.0,7.7,2.9,0.0,0.0,0.0,5.6,0.0,0.0,0.0,0.0
+ST0753,Sư phạm Ngữ văn,Quản lý giáo dục,Marketing,D11,KV2,05,"Quảng cáo,Dạy học,Ẩm thực",6.7,7.5,0.0,0.0,0.0,3.7,0.0,0.0,7.7,0.0,0.0
+ST0754,Thiết kế đồ họa,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,"D84,A-TIN",KV2,05,Công nghệ,8.2,5.6,0.0,0.0,0.0,0.0,5.3,0.0,0.0,6.2,0.0
+ST0755,Quản lý giáo dục,Quản lý bệnh viện,Y khoa,"B04,A01",KV1,01,Chăm sóc sức khỏe,6.7,7.1,0.0,6.2,0.0,0.0,0.0,0.0,6.8,0.0,0.0
+ST0756,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,Trí tuệ nhân tạo,G-TIN,KV3,03,"Công nghệ,Thể thao",7.2,3.7,0.0,6.8,0.0,5.0,0.0,0.0,0.0,0.0,0.0
+ST0757,Công nghệ thông tin,Marketing,Digital Marketing,"G-TIN,B03",KV3,06,Xây dựng,7.0,6.6,5.5,0.0,4.9,0.0,0.0,0.0,0.0,0.0,0.0
+ST0758,Tâm lý học,Kỹ thuật môi trường,Công nghệ sinh học,"D08,B-TIN",KV1,01,Kỹ thuật,6.0,4.3,0.0,0.0,0.0,0.0,0.0,6.2,0.0,0.0,3.1
+ST0759,Sư phạm Ngữ văn,Quản lý tài nguyên và môi trường,Quản lý đất đai,C-TIN,KV2,05,"Nghệ thuật,Dạy học",5.5,4.5,0.0,0.0,0.0,0.0,6.7,7.7,0.0,0.0,0.0
+ST0760,Marketing,Digital Marketing,Quản lý giáo dục,"A-TIN,A11",KV2,05,"Bảo mật thông tin,Quảng cáo",8.4,6.3,0.0,0.0,0.0,0.0,5.7,0.0,5.7,0.0,0.0
+ST0761,Sư phạm Hóa học,Kỹ thuật môi trường,Quản lý tài nguyên và môi trường,C02,KV2,05,"Kỹ thuật,Giáo dục,Môi trường",5.9,4.2,0.0,0.0,4.0,0.0,1.4,0.0,0.0,0.0,0.0
+ST0762,Tâm lý học,Quản trị kinh doanh,Luật,D14,KV2,05,"Chính trị,Lãnh đạo",5.1,8.8,0.0,0.0,0.0,5.2,0.0,5.5,0.0,0.0,0.0
+ST0763,Marketing,Digital Marketing,Luật kinh tế,A03,KV2,05,"Chăm sóc sức khỏe,Truyền thông,Nghiên cứu",8.5,7.1,3.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.1
+ST0764,Công nghệ thông tin,Thiết kế đồ họa,Thống kê,C01,KV2,03,Máy tính,8.2,7.5,3.9,0.0,0.0,0.0,0.0,0.0,0.0,2.9,0.0
+ST0765,Kỹ thuật xây dựng,Robot và Trí tuệ nhân tạo,Kỹ thuật điện - điện tử,"D-TIN,C05",KV3,02,"Du lịch,Kỹ thuật,Công nghệ",6.6,6.2,0.0,0.0,0.0,0.0,7.2,0.0,0.0,0.0,6.2
+ST0766,Công nghệ sinh học,Ngôn ngữ Pháp,Báo chí,G-TIN,KV2,05,"Văn học,Môi trường",5.3,2.6,3.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.6
+ST0767,Thiết kế đồ họa,Marketing,Digital Marketing,C00,KV2,05,"Điện tử,Động vật,Quảng cáo",8.6,6.9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.7,6.9
+ST0768,Sư phạm Tiếng Anh,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,A05,KV2,05,"Giao tiếp,Giáo dục,Ngoại ngữ",6.4,5.6,6.3,3.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0769,Sư phạm Ngữ văn,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,"A06,D66",KV2,05,"Thể thao,Giáo dục,Dịch vụ khách hàng",8.4,6.2,2.2,0.0,0.0,0.0,3.6,0.0,0.0,0.0,0.0
+ST0770,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,C12,KV2,05,Thiết kế,7.3,8.8,0.0,0.0,0.0,5.2,0.0,0.0,0.0,3.4,0.0
+ST0771,Tài chính - Ngân hàng,Thống kê,Toán Kinh tế,"D12,F-TIN",KV3,05,Toán học,3.9,5.9,7.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,8.1
+ST0772,Công nghệ thông tin,Quản lý bệnh viện,Y khoa,"D11,A11",KV3,02,"Y học,Trò chơi điện tử,Tự động hóa",4.8,8.1,3.1,0.0,5.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0773,Nhân học,Logistics và Quản lý chuỗi cung ứng,Kỹ thuật xây dựng,"B04,A-TIN",KV2,05,"Thống kê,Giúp đỡ người khác,Công nghệ",8.8,6.0,0.0,0.0,0.0,0.0,7.4,0.0,4.5,0.0,0.0
+ST0774,Quản trị dịch vụ du lịch và lữ hành,Quản trị khách sạn,Sư phạm Ngữ văn,"C14,A05",KV2,05,"Dịch vụ khách hàng,Cơ khí",7.8,5.1,1.7,0.0,0.0,0.0,7.7,0.0,0.0,0.0,0.0
+ST0775,Quản lý giáo dục,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,D08,KV2,05,Dịch vụ khách hàng,5.2,5.8,0.0,0.0,0.0,0.0,0.0,0.0,8.0,0.0,7.8
+ST0776,Tự động hóa,Kỹ thuật điện - điện tử,Công nghệ sinh học,D08,KV2,05,"Khoa học,Điện tử,Kinh doanh",7.5,5.7,0.0,3.4,0.0,0.0,0.0,0.0,0.0,0.0,7.6
+ST0777,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Giáo dục Tiểu học,"D07,C19",KV2,05,"Giáo dục,Kỹ thuật",4.7,6.0,0.0,0.0,0.0,4.8,0.0,0.0,0.0,4.0,0.0
+ST0778,Thiết kế thời trang,Thiết kế đồ họa,Âm nhạc,C-TIN,KV2,05,Thể thao,6.3,6.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.2,5.8
+ST0779,Công nghệ thông tin,Quản trị kinh doanh,Tài chính - Ngân hàng,A03,KV2,05,Phân tích dữ liệu,8.0,4.8,0.0,6.4,6.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0780,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Quản trị kinh doanh,"C20,B04",KV1,01,"Quản lý,Du lịch,Thể thao",4.1,3.4,7.0,0.0,4.6,0.0,0.0,0.0,0.0,0.0,0.0
+ST0781,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,Trí tuệ nhân tạo,"B00,A00",KV2,05,Phân tích dữ liệu,6.4,5.1,0.0,0.0,0.0,0.0,6.1,0.0,0.0,6.2,0.0
+ST0782,Tâm lý học,Quản trị nhân lực,Y khoa,A04,KV2,05,Giúp đỡ người khác,8.3,7.5,0.0,6.6,0.0,0.0,0.0,3.4,0.0,0.0,0.0
+ST0783,Quản lý tài nguyên và môi trường,Logistics và Quản lý chuỗi cung ứng,Công nghệ thông tin,B04,KV2,05,"Công nghệ,Môi trường,Kinh doanh",8.6,5.5,0.0,0.0,6.7,0.0,4.5,0.0,0.0,0.0,0.0
+ST0784,Quản lý giáo dục,Tâm lý học,Nông nghiệp,"C02,C04",KV2,04,Nông nghiệp,6.0,7.2,0.0,0.0,0.0,0.0,0.0,5.1,6.7,0.0,0.0
+ST0785,Công nghệ thông tin,Trí tuệ nhân tạo,Khoa học máy tính,"D08,C19",KV2,05,"Lập trình,Giúp đỡ người khác",6.8,4.4,3.9,6.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0786,Y khoa,Điều dưỡng,Giáo dục Tiểu học,"C-TIN,C12",KV2,05,Giúp đỡ người khác,8.5,4.6,0.0,3.3,4.3,0.0,0.0,0.0,0.0,0.0,0.0
+ST0787,Robot và Trí tuệ nhân tạo,Tự động hóa,Công nghệ sinh học,C01,KV2,05,"Hóa học,Tự động hóa,Du lịch",5.0,3.1,0.0,0.0,0.0,3.5,0.0,0.0,0.0,0.0,4.4
+ST0788,Tâm lý học,Nhân học,Quản lý tài nguyên và môi trường,"A11,C08",KV2,05,Giao tiếp,7.2,6.4,0.0,0.0,0.0,0.0,6.5,6.5,0.0,0.0,0.0
+ST0789,Công nghệ thông tin,Marketing,Digital Marketing,D15,KV2,05,Động vật,4.5,7.4,4.8,0.0,4.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0790,Sư phạm Ngữ văn,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,F-TIN,KV2,05,"Ẩm thực,Ngoại ngữ",5.6,5.3,0.0,0.0,0.0,0.0,5.3,0.0,6.0,0.0,0.0
+ST0791,Nhân học,Luật,Giáo dục Tiểu học,"K01,D15",KV2,05,"Giao tiếp,Bảo mật thông tin",7.2,4.9,0.0,0.0,0.0,4.5,7.0,0.0,0.0,0.0,0.0
+ST0792,Tài chính - Ngân hàng,Luật kinh tế,Luật,D84,KV1,02,"Toán học,Luật pháp",7.7,6.5,2.9,0.0,0.0,3.4,0.0,0.0,0.0,0.0,0.0
+ST0793,Quản lý giáo dục,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,"B02,A00",KV2,05,"Cơ khí,Giáo dục",7.4,5.6,0.0,0.0,0.0,0.0,3.9,0.0,4.7,0.0,0.0
+ST0794,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Khoa học máy tính,"C19,B00",KV3,04,Nghiên cứu,6.6,4.3,0.0,5.0,0.0,0.0,0.0,1.2,0.0,0.0,0.0
+ST0795,Sư phạm Ngữ văn,Quản lý bệnh viện,Luật kinh tế,C00,KV2,05,Y học,6.8,5.4,0.0,0.0,0.0,6.6,5.1,0.0,0.0,0.0,0.0
+ST0796,Luật kinh tế,Luật,Quản trị nhân lực,C04,KV2,05,"Thể thao,Luật pháp,Giúp đỡ người khác",5.5,4.0,6.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.2
+ST0797,Y khoa,Điều dưỡng,Quản trị nhân lực,D09,KV2,05,Giúp đỡ người khác,5.2,5.8,8.7,0.0,6.3,0.0,0.0,0.0,0.0,0.0,0.0
+ST0798,Công nghệ thông tin,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,B02,KV2,05,"Tự động hóa,Phân tích dữ liệu",7.1,5.8,0.0,0.0,3.7,0.0,0.0,0.0,0.0,3.3,0.0
+ST0799,Sư phạm Ngữ văn,Nhân học,Xã hội học,"B03,C03",KV2,05,Hóa học,8.2,8.4,0.0,0.0,0.0,8.2,0.0,0.0,0.0,4.6,0.0
+ST0800,Sư phạm Ngữ văn,Sư phạm Toán,Giáo dục Tiểu học,"B00,D12",KV2,05,"Văn học,Giáo dục",8.7,7.1,0.0,8.2,0.0,4.6,0.0,0.0,0.0,0.0,0.0
+ST0801,Tâm lý học,Nghệ thuật,Y khoa,C04,KV2,05,"Truyền thông,Khoa học",5.8,6.5,0.0,0.0,0.0,0.0,0.0,6.7,0.0,4.2,0.0
+ST0802,Công nghệ thông tin,Tâm lý học,Công nghệ sinh học,C19,KV2,05,Trò chơi điện tử,8.1,6.2,0.0,0.0,0.0,0.0,0.0,5.6,0.0,0.0,4.6
+ST0803,Marketing,Quan hệ công chúng,Digital Marketing,A03,KV2,05,"Quảng cáo,Kinh doanh",8.3,7.5,0.0,6.1,0.0,5.2,0.0,0.0,0.0,0.0,0.0
+ST0804,Công nghệ thông tin,Robot và Trí tuệ nhân tạo,Digital Marketing,"A11,E-TIN",KV2,05,"Phân tích dữ liệu,Lập trình,Sáng tạo",8.9,6.9,0.0,0.0,0.0,0.0,0.0,0.0,4.1,0.0,6.6
+ST0805,Tâm lý học,Y khoa,Điều dưỡng,C-TIN,KV2,05,"Toán học,Giúp đỡ người khác,Kỹ thuật",7.0,6.4,0.0,0.0,3.9,0.0,0.0,4.1,0.0,0.0,0.0
+ST0806,Thiết kế đồ họa,Tâm lý học,Thiết kế thời trang,D66,KV2,05,Nghệ thuật,9.7,8.2,0.0,3.9,0.0,0.0,0.0,4.5,0.0,0.0,0.0
+ST0807,Công nghệ thực phẩm,Kỹ thuật môi trường,Công nghệ vật liệu,"D15,C17",KV1,04,"Kỹ thuật,Bảo mật thông tin,Ẩm thực",4.6,4.5,0.0,0.0,5.8,0.0,0.0,0.0,0.0,0.0,4.0
+ST0808,Marketing,Sư phạm Hóa học,Luật kinh tế,"C08,C05",KV2,05,"Thống kê,Luật pháp,Quảng cáo",4.5,6.6,0.0,0.0,7.8,0.0,3.9,0.0,0.0,0.0,0.0
+ST0809,Thú y,Y khoa,Công nghệ thông tin,"D12,D-TIN",KV2,05,"Lập trình,Chăm sóc sức khỏe",8.4,5.0,0.0,3.7,0.0,0.0,0.0,5.3,0.0,0.0,0.0
+ST0810,Marketing,Digital Marketing,Quản trị khách sạn,"D09,C03",KV2,05,"Dịch vụ khách hàng,Truyền thông,Môi trường",9.7,6.7,1.8,0.0,0.0,0.0,0.0,6.0,0.0,0.0,0.0
+ST0811,Quản lý giáo dục,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,D09,KV2,05,"Dịch vụ khách hàng,Xây dựng",6.8,4.2,0.0,0.0,0.0,3.3,0.0,0.0,5.8,0.0,0.0
+ST0812,Công nghệ thông tin,Robot và Trí tuệ nhân tạo,Trí tuệ nhân tạo,G-TIN,KV2,05,"Lập trình,Kỹ thuật",9.2,6.7,5.5,4.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0813,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,A06,KV2,01,Thiên nhiên,6.6,4.1,0.0,6.4,0.0,0.0,0.0,0.0,0.0,4.2,0.0
+ST0814,Luật kinh tế,Quan hệ công chúng,Tâm lý học,"D13,C02",KV3,01,Kinh doanh,3.5,7.7,0.0,0.0,0.0,7.3,0.0,7.5,0.0,0.0,0.0
+ST0815,Quản lý giáo dục,Thống kê,Nhân học,"A04,D13",KV1,01,"Nghiên cứu,Máy tính",4.3,6.2,0.0,0.0,0.0,0.0,3.6,0.0,4.9,0.0,0.0
+ST0816,Công nghệ thông tin,Quản lý giáo dục,Ngôn ngữ Anh,D84,KV2,05,"Trò chơi điện tử,Du lịch",5.4,6.6,0.0,0.0,0.0,0.0,0.0,0.0,6.8,0.0,3.6
+ST0817,Nhân học,Xã hội học,Sư phạm Ngữ văn,B03,KV2,05,Giúp đỡ người khác,6.2,7.5,0.0,0.0,0.0,6.6,0.0,0.0,0.0,0.0,6.2
+ST0818,Quản lý tài nguyên và môi trường,Quản lý đất đai,Nuôi trồng thủy sản,D84,KV2,05,Thiên nhiên,7.1,4.3,0.0,0.0,0.0,0.0,6.0,2.7,0.0,0.0,0.0
+ST0819,Công nghệ thông tin,Tự động hóa,Sư phạm Hóa học,"C03,A01",KV2,05,Cơ khí,6.5,7.7,0.0,0.0,2.1,0.0,0.0,0.0,0.0,0.0,3.1
+ST0820,Công nghệ thông tin,Sư phạm Ngữ văn,Nhân học,"A03,A-TIN",KV1,04,Lập trình,5.0,5.5,0.0,0.0,0.0,0.0,5.9,0.0,3.2,0.0,0.0
+ST0821,Sư phạm Ngữ văn,Digital Marketing,Thiết kế đồ họa,"D14,A03",KV2,05,"Cơ khí,Sáng tạo,Công nghệ",6.4,8.5,0.0,4.8,0.0,6.5,0.0,0.0,0.0,0.0,0.0
+ST0822,Sư phạm Ngữ văn,Luật quốc tế,Quản trị kinh doanh quốc tế,A02,KV2,06,"Ngoại ngữ,Luật pháp",4.3,5.9,0.0,0.0,0.0,4.4,0.0,0.0,0.0,2.6,0.0
+ST0823,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,C02,KV2,05,"Công nghệ,Lập trình,Chăm sóc sức khỏe",7.0,4.5,2.5,0.0,0.0,0.0,3.3,0.0,0.0,0.0,0.0
+ST0824,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Quản trị kinh doanh quốc tế,A10,KV2,05,"Dạy học,Ngoại ngữ,Chăm sóc sức khỏe",7.6,7.6,0.0,0.0,0.0,4.6,0.0,0.0,4.3,0.0,0.0
+ST0825,Quản lý giáo dục,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"B04,D01",KV2,04,"Giao tiếp,Quản lý",4.9,2.9,0.0,0.0,0.0,0.0,0.0,0.0,4.5,0.0,2.8
+ST0826,Quản lý tài nguyên và môi trường,Marketing,Răng - Hàm - Mặt,"D01,C04",KV2,05,"Môi trường,Sáng tạo",5.8,3.4,0.0,0.0,7.8,0.0,3.1,0.0,0.0,0.0,0.0
+ST0827,Công nghệ thông tin,Marketing,Logistics và Quản lý chuỗi cung ứng,"A08,D13",KV2,05,"Trò chơi điện tử,Kinh doanh",8.4,4.7,4.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.3
+ST0828,Y khoa,Răng - Hàm - Mặt,Điều dưỡng,C14,KV2,05,"Chăm sóc sức khỏe,Dạy học",5.6,4.7,0.0,7.5,0.0,0.0,0.0,0.0,0.0,3.6,0.0
+ST0829,Tự động hóa,Công nghệ kỹ thuật ô tô,Robot và Trí tuệ nhân tạo,"B04,C03",KV2,05,"Cơ khí,Giáo dục",8.6,3.0,0.0,4.9,0.0,0.0,0.0,0.0,0.0,0.0,4.0
+ST0830,Luật kinh tế,Luật,Giáo dục Tiểu học,K01,KV2,05,Điện tử,5.0,6.4,0.0,0.0,0.0,4.7,6.2,0.0,0.0,0.0,0.0
+ST0831,Thiết kế đồ họa,Thiết kế thời trang,An toàn thông tin,A04,KV2,05,"Giúp đỡ người khác,Bảo mật thông tin",8.7,6.6,0.0,0.0,0.0,0.0,0.0,0.0,4.5,6.8,0.0
+ST0832,Sư phạm Tiếng Anh,Quản lý giáo dục,Sư phạm Toán,"D15,A01",KV3,02,"Dạy học,Xây dựng",7.2,4.8,0.0,0.0,0.0,0.0,0.0,4.3,5.3,0.0,0.0
+ST0833,Sư phạm Vật lý,Tâm lý học,Sư phạm Tiếng Anh,"C03,C19",KV2,05,"Tự động hóa,Giáo dục",8.3,5.3,0.0,2.2,0.0,0.0,0.0,4.8,0.0,0.0,0.0
+ST0834,Kỹ thuật xây dựng,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,D11,KV2,05,"Thống kê,Động vật,Lãnh đạo",5.7,8.0,0.0,7.5,0.0,0.0,6.2,0.0,0.0,0.0,0.0
+ST0835,Tự động hóa,Quản trị kinh doanh,Quản lý bệnh viện,C04,KV2,05,"Cơ khí,Lãnh đạo",3.0,3.6,0.0,6.6,5.3,0.0,0.0,0.0,0.0,0.0,0.0
+ST0836,Kiến trúc,Thiết kế nội thất,Thiết kế đồ họa,C13,KV2,05,"Nghệ thuật,Chính trị",6.6,2.4,0.0,0.0,0.0,0.0,7.1,0.0,0.0,3.4,0.0
+ST0837,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"A04,A06",KV2,05,"Sáng tạo,Xây dựng",7.7,3.9,0.0,0.0,3.4,0.0,0.0,0.0,0.0,4.6,0.0
+ST0838,Tâm lý học,Quản lý giáo dục,Công nghệ thông tin,C14,KV2,05,Xây dựng,4.0,7.8,0.0,0.0,0.0,0.0,0.0,3.6,4.1,0.0,0.0
+ST0839,Sư phạm Ngữ văn,Marketing,Digital Marketing,"D10,F-TIN",KV2,05,Quảng cáo,8.7,4.2,0.0,0.0,0.0,7.0,4.1,0.0,0.0,0.0,0.0
+ST0840,Y khoa,Răng - Hàm - Mặt,Điều dưỡng,C-TIN,KV2,05,Chăm sóc sức khỏe,8.1,5.1,0.0,2.9,5.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0841,Quản lý giáo dục,Báo chí,Marketing,K01,KV2,05,"Văn học,Quảng cáo,Đọc sách",8.1,7.6,0.0,0.0,0.0,0.0,0.0,0.0,7.5,4.5,0.0
+ST0842,Tài chính - Ngân hàng,Kế toán,Kiểm toán,C-TIN,KV2,05,"Phân tích dữ liệu,Tài chính,Văn học",8.4,6.3,6.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.7
+ST0843,Nghệ thuật,An toàn thông tin,Digital Marketing,"A09,A02",KV2,02,"Truyền thông,Bảo mật thông tin,Ẩm thực",9.5,5.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,7.3,0.0
+ST0844,Quản lý giáo dục,Tâm lý học,Thú y,C03,KV2,05,Động vật,8.6,7.4,0.0,0.0,0.0,0.0,0.0,4.6,6.3,0.0,0.0
+ST0845,Quản lý giáo dục,Quản lý bệnh viện,Logistics và Quản lý chuỗi cung ứng,F-TIN,KV2,05,"Chăm sóc sức khỏe,Quản lý,Thể thao",6.2,8.7,0.0,0.0,0.0,0.0,0.0,0.0,6.4,0.0,4.3
+ST0846,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,Kinh doanh quốc tế,D-TIN,KV2,06,"Văn hóa,Lãnh đạo",3.9,6.7,7.7,4.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0847,Quản lý giáo dục,Tài chính - Ngân hàng,Thống kê,"F-TIN,D15",KV2,05,"Hóa học,Toán học",6.5,6.3,0.0,0.0,0.0,0.0,2.3,0.0,6.8,0.0,0.0
+ST0848,Sư phạm Ngữ văn,Quản lý giáo dục,Sư phạm Tiếng Anh,A06,KV2,05,Giáo dục,6.9,7.5,0.0,0.0,0.0,6.1,0.0,0.0,4.4,0.0,0.0
+ST0849,Quản trị kinh doanh quốc tế,Quản lý giáo dục,Kinh doanh quốc tế,"A08,A00",KV2,05,"Lập trình,Ngoại ngữ,Quản lý",5.5,6.4,0.0,0.0,0.0,0.0,0.0,4.1,3.8,0.0,0.0
+ST0850,Thiết kế đồ họa,Quản lý giáo dục,Ngôn ngữ Anh,"E-TIN,B04",KV2,05,"Nghệ thuật,Khoa học,Đọc sách",9.2,4.3,0.0,0.0,0.0,2.5,0.0,0.0,6.0,0.0,0.0
+ST0851,Y khoa,Răng - Hàm - Mặt,Tâm lý học,"B04,D66",KV2,05,"Nghiên cứu,Truyền thông",5.4,4.9,0.0,0.0,4.6,0.0,0.0,3.7,0.0,0.0,0.0
+ST0852,Tài chính - Ngân hàng,Bảo hiểm,Marketing,D12,KV2,05,"Kinh doanh,Tài chính",8.4,6.0,0.0,0.0,0.0,0.0,5.1,4.0,0.0,0.0,0.0
+ST0853,Trí tuệ nhân tạo,Robot và Trí tuệ nhân tạo,Sư phạm Ngữ văn,D66,KV2,05,"Hóa học,Tự động hóa",6.5,6.6,0.0,5.2,0.0,0.0,5.7,0.0,0.0,0.0,0.0
+ST0854,Thiết kế đồ họa,Marketing,Digital Marketing,K01,KV2,05,"Chăm sóc sức khỏe,Toán học,Quảng cáo",5.4,8.6,0.0,0.0,4.8,0.0,0.0,0.0,0.0,5.4,0.0
+ST0855,Kỹ thuật môi trường,Sư phạm Hóa học,Tâm lý học,"F-TIN,A08",KV2,05,"Kỹ thuật,Nghiên cứu,Ngoại ngữ",9.4,6.6,0.0,0.0,5.7,0.0,0.0,3.7,0.0,0.0,0.0
+ST0856,Luật,Luật quốc tế,Quan hệ quốc tế,"A00,G-TIN",KV2,05,"Chính trị,Giao tiếp",6.6,6.7,8.2,3.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0857,Tâm lý học,Quản trị kinh doanh,Quản lý bệnh viện,A03,KV2,05,"Lãnh đạo,Cơ khí",9.1,7.3,0.0,0.0,0.0,0.0,3.9,7.3,0.0,0.0,0.0
+ST0858,Công nghệ thực phẩm,Công nghệ sau thu hoạch,Tâm lý học,C17,KV1,04,"Ẩm thực,Thể thao,Luật pháp",6.5,3.2,0.0,0.0,0.0,1.1,0.0,5.5,0.0,0.0,0.0
+ST0859,Quản lý giáo dục,Thiết kế đồ họa,Logistics và Quản lý chuỗi cung ứng,"D09,A11",KV2,05,"Quản lý,Động vật",7.4,6.4,0.0,0.0,0.0,0.0,0.0,0.0,4.9,5.3,0.0
+ST0860,Công nghệ thông tin,Công nghệ sinh học,Công nghệ thực phẩm,"D14,C05",KV2,05,"Hóa học,Trò chơi điện tử,Nông nghiệp",8.8,5.1,6.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7.8
+ST0861,Tâm lý học,Y khoa,Điều dưỡng,B00,KV2,04,"Môi trường,Giúp đỡ người khác,Ẩm thực",6.4,5.6,0.0,5.7,0.0,0.0,0.0,3.5,0.0,0.0,0.0
+ST0862,Kỹ thuật xây dựng,Kiến trúc,Tài chính - Ngân hàng,"C17,D07",KV2,05,Toán học,5.8,5.3,0.0,1.7,0.0,0.0,6.3,0.0,0.0,0.0,0.0
+ST0863,Tài chính - Ngân hàng,Kế toán,Kiểm toán,"G-TIN,A04",KV2,05,"Ẩm thực,Tài chính",7.7,3.9,2.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.5
+ST0864,Công nghệ thông tin,Marketing,Digital Marketing,D66,KV2,05,Kỹ thuật,6.3,6.9,3.1,0.0,4.4,0.0,0.0,0.0,0.0,0.0,0.0
+ST0865,Sư phạm Hóa học,Sư phạm Toán,Luật kinh tế,"C00,C12",KV2,05,"Dạy học,Nghiên cứu,Chăm sóc sức khỏe",5.0,6.4,0.0,0.0,2.6,0.0,0.0,0.0,0.0,4.2,0.0
+ST0866,Thiết kế đồ họa,Quản lý bệnh viện,Sư phạm Ngữ văn,A02,KV2,05,"Chăm sóc sức khỏe,Nghệ thuật,Môi trường",7.3,7.0,0.0,4.0,0.0,6.1,0.0,0.0,0.0,0.0,0.0
+ST0867,Sư phạm Ngữ văn,Kỹ thuật xây dựng,Kiến trúc,C-TIN,KV2,05,"Dạy học,Thống kê,Xây dựng",5.9,5.8,0.0,3.8,0.0,0.0,3.9,0.0,0.0,0.0,0.0
+ST0868,Tâm lý học,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,C01,KV3,01,"Dịch vụ khách hàng,Điện tử",5.9,9.4,0.0,5.0,0.0,0.0,0.0,8.4,0.0,0.0,0.0
+ST0869,Nhân học,Quản lý giáo dục,Sư phạm Ngữ văn,"B03,C14",KV3,01,"Giúp đỡ người khác,Luật pháp,Chăm sóc sức khỏe",6.5,7.1,0.0,0.0,0.0,0.0,6.6,0.0,6.3,0.0,0.0
+ST0870,Quản lý bệnh viện,Y khoa,Thiết kế đồ họa,"A00,D11",KV2,07,"Chăm sóc sức khỏe,Y học,Nông nghiệp",6.9,5.3,4.5,0.0,0.0,0.0,0.0,0.0,0.0,6.7,0.0
+ST0871,Ngôn ngữ Anh,Ngôn ngữ Nhật,Thống kê,K01,KV2,05,"Thống kê,Đọc sách",7.4,5.6,6.0,0.0,0.0,0.0,0.0,3.6,0.0,0.0,0.0
+ST0872,Sư phạm Ngữ văn,Tài chính - Ngân hàng,Kế toán,B02,KV2,05,"Tự động hóa,Tài chính,Dạy học",4.8,6.5,0.0,0.0,0.0,2.9,0.0,0.0,4.5,0.0,0.0
+ST0873,Luật kinh tế,Luật,Luật quốc tế,A01,KV3,03,Luật pháp,7.5,4.8,0.0,0.0,0.0,0.0,0.0,0.0,3.2,3.6,0.0
+ST0874,Trí tuệ nhân tạo,Khoa học máy tính,An toàn thông tin,C20,KV2,05,Dịch vụ khách hàng,7.7,7.4,0.0,8.4,0.0,0.0,0.0,0.0,0.0,4.9,0.0
+ST0875,Quản lý bệnh viện,Tâm lý học,Công nghệ thông tin,C03,KV3,06,"Máy tính,Lãnh đạo",8.2,6.5,0.0,0.0,4.1,0.0,0.0,7.3,0.0,0.0,0.0
+ST0876,Tâm lý học,Sư phạm Ngữ văn,Quản trị kinh doanh quốc tế,"D07,C03",KV2,05,Ngoại ngữ,9.2,7.2,0.0,0.0,0.0,0.0,3.2,8.0,0.0,0.0,0.0
+ST0877,Quản lý tài nguyên và môi trường,Quản trị kinh doanh,Quản lý bệnh viện,"A01,C00",KV2,05,"Quản lý,Chính trị",7.5,4.2,0.0,0.0,4.7,0.0,3.8,0.0,0.0,0.0,0.0
+ST0878,Kế toán,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,D84,KV2,05,"Thể thao,Thống kê,Quản lý",6.0,4.4,0.0,0.0,0.0,0.0,0.0,4.8,0.0,0.0,5.6
+ST0879,Công nghệ thông tin,Marketing,Digital Marketing,"C-TIN,A03",KV3,07,"Nông nghiệp,Lập trình,Môi trường",8.7,8.2,5.8,0.0,0.0,5.8,0.0,0.0,0.0,0.0,0.0
+ST0880,Thiết kế thời trang,Âm nhạc,Sư phạm Ngữ văn,D13,KV2,05,Thể thao,8.8,6.6,0.0,0.0,0.0,4.8,0.0,0.0,0.0,0.0,4.9
+ST0881,Kỹ thuật điện - điện tử,Thiết kế đồ họa,Tài chính - Ngân hàng,"C00,K01",KV2,05,"Thiết kế,Điện tử,Toán học",7.6,5.4,0.0,0.0,0.0,4.1,0.0,0.0,0.0,0.0,3.6
+ST0882,Quản trị dịch vụ du lịch và lữ hành,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,D13,KV2,05,"Điện tử,Dịch vụ khách hàng,Văn hóa",8.7,4.8,3.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.7
+ST0883,Thiết kế đồ họa,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,A07,KV2,05,"Môi trường,Công nghệ",8.0,5.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.3,6.4
+ST0884,Quản lý bệnh viện,Sư phạm Ngữ văn,Nhân học,"C13,A05",KV2,05,Chăm sóc sức khỏe,9.2,6.6,0.0,0.0,0.0,0.0,4.9,0.0,0.0,0.0,5.7
+ST0885,Luật,Kinh tế học,Luật quốc tế,"C12,C00",KV2,05,Chính trị,7.1,3.8,0.0,0.0,0.0,0.0,0.0,2.2,4.0,0.0,0.0
+ST0886,Nhân học,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,D66,KV2,05,"Y học,Văn hóa,Kinh doanh",8.2,5.3,0.0,0.0,0.0,0.0,6.5,0.0,0.0,3.3,0.0
+ST0887,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,Quản trị kinh doanh,A01,KV2,05,Quản lý,8.3,5.7,0.0,0.0,0.0,4.0,0.0,4.1,0.0,0.0,0.0
+ST0888,Marketing,Digital Marketing,Quan hệ công chúng,D84,KV3,05,"Dạy học,Quảng cáo,Thiên nhiên",7.5,7.8,7.2,0.0,0.0,5.1,0.0,0.0,0.0,0.0,0.0
+ST0889,Sư phạm Ngữ văn,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,A09,KV2,05,Ngoại ngữ,7.4,8.1,0.0,0.0,5.0,3.2,0.0,0.0,0.0,0.0,0.0
+ST0890,Nhân học,Quản lý giáo dục,Thiết kế thời trang,D10,KV2,05,"Thiết kế,Thể thao,Nghiên cứu",7.8,7.0,0.0,0.0,0.0,0.0,5.6,0.0,2.9,0.0,0.0
+ST0891,Kỹ thuật xây dựng,Kiến trúc,Thiết kế nội thất,"D01,D12",KV2,05,"Động vật,Thiết kế",7.1,3.0,0.0,0.0,0.0,0.0,5.2,0.0,0.0,0.0,4.2
+ST0892,Thú y,Luật kinh tế,Luật,A03,KV2,05,"Môi trường,Động vật,Luật pháp",5.3,6.2,4.3,0.0,0.0,0.0,0.0,8.2,0.0,0.0,0.0
+ST0893,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Trí tuệ nhân tạo,A09,KV2,05,Thống kê,6.1,3.3,0.0,3.3,0.0,0.0,0.0,0.0,0.0,5.2,0.0
+ST0894,Thiết kế đồ họa,Công nghệ thông tin,Digital Marketing,"C14,B02",KV2,05,Công nghệ,8.2,6.1,0.0,0.0,4.8,0.0,0.0,0.0,0.0,2.3,0.0
+ST0895,Quản trị kinh doanh,Quản lý bệnh viện,Tâm lý học,"D07,A-TIN",KV2,05,"Lãnh đạo,Hóa học",7.8,8.8,0.0,4.1,0.0,0.0,0.0,4.5,0.0,0.0,0.0
+ST0896,Công nghệ thông tin,Digital Marketing,Logistics và Quản lý chuỗi cung ứng,C14,KV2,05,"Thiên nhiên,Công nghệ,Cơ khí",6.9,6.9,0.0,0.0,0.0,0.0,6.3,0.0,3.2,0.0,0.0
+ST0897,Sư phạm Hóa học,Quản lý giáo dục,Sư phạm Tiếng Anh,A04,KV2,04,"Hóa học,Ẩm thực,Dạy học",8.3,6.1,0.0,0.0,0.0,0.0,0.0,0.0,5.7,3.4,0.0
+ST0898,Sư phạm Ngữ văn,Marketing,Quản lý giáo dục,F-TIN,KV2,03,"Sáng tạo,Cơ khí,Xây dựng",7.6,7.5,0.0,0.0,0.0,4.3,0.0,0.0,6.5,0.0,0.0
+ST0899,Sư phạm Ngữ văn,Quản trị dịch vụ du lịch và lữ hành,Quản trị khách sạn,"K01,A03",KV2,05,"Dịch vụ khách hàng,Ngoại ngữ,Môi trường",7.4,6.4,0.0,0.0,0.0,5.5,6.9,0.0,0.0,0.0,0.0
+ST0900,Nhân học,Kỹ thuật xây dựng,Kiến trúc,A07,KV2,07,"Thiết kế,Giúp đỡ người khác,Chính trị",6.8,5.9,0.0,0.0,0.0,0.0,7.4,0.0,0.0,0.0,5.6
+ST0901,Quản lý giáo dục,Công nghệ sinh học,Kỹ thuật môi trường,G-TIN,KV2,05,Môi trường,6.6,4.9,0.0,3.6,0.0,0.0,0.0,0.0,6.1,0.0,0.0
+ST0902,Công nghệ thực phẩm,Marketing,Digital Marketing,C03,KV2,05,"Quảng cáo,Ẩm thực,Thể thao",7.8,7.0,0.0,0.0,4.3,0.0,0.0,0.0,0.0,0.0,6.5
+ST0903,Công nghệ thông tin,Sư phạm Hóa học,Quản lý giáo dục,D84,KV2,05,Trò chơi điện tử,6.9,6.9,0.0,0.0,5.6,0.0,0.0,0.0,4.7,0.0,0.0
+ST0904,Quản lý giáo dục,Marketing,Logistics và Quản lý chuỗi cung ứng,"D09,B04",KV2,05,Giao tiếp,6.2,4.6,0.0,0.0,4.3,0.0,0.0,0.0,3.2,0.0,0.0
+ST0905,Tài chính - Ngân hàng,Luật,Thống kê,C05,KV2,05,"Chính trị,Toán học",8.7,4.1,4.3,0.0,6.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0906,Quản lý bệnh viện,Thiết kế đồ họa,Thiết kế thời trang,"A02,D66",KV2,05,Y học,5.9,5.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.6,5.7
+ST0907,Luật kinh tế,Marketing,Logistics và Quản lý chuỗi cung ứng,"A09,C13",KV2,05,"Kỹ thuật,Kinh doanh",7.1,7.5,0.0,0.0,0.0,4.6,6.5,0.0,0.0,0.0,0.0
+ST0908,Quản lý giáo dục,Thiết kế thời trang,Âm nhạc,B03,KV2,05,Thể thao,7.7,5.6,0.0,0.0,0.0,0.0,0.0,0.0,5.5,0.0,4.9
+ST0909,Sư phạm Hóa học,Thiết kế thời trang,Công nghệ thông tin,"D01,A06",KV2,05,Thể thao,7.9,7.8,0.0,3.9,6.6,0.0,0.0,0.0,0.0,0.0,0.0
+ST0910,Thiết kế thời trang,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,D11,KV2,05,"Dịch vụ khách hàng,Thể thao,Dạy học",8.9,5.9,3.9,0.0,0.0,0.0,0.0,0.0,0.0,6.4,0.0
+ST0911,Công nghệ thông tin,Luật kinh tế,Thú y,C12,KV2,05,"Luật pháp,Trò chơi điện tử,Động vật",8.5,3.7,0.0,6.3,0.0,0.0,0.0,0.0,4.6,0.0,0.0
+ST0912,Nhân học,Xã hội học,Ngôn ngữ Trung Quốc,C08,KV2,01,"Nghiên cứu,Tự động hóa,Du lịch",7.3,4.2,0.0,4.9,0.0,4.5,0.0,0.0,0.0,0.0,0.0
+ST0913,Thiết kế đồ họa,Thiết kế thời trang,Ngôn ngữ Pháp,C14,KV2,07,"Văn học,Hóa học",6.5,6.3,0.0,0.0,0.0,0.0,0.0,3.2,0.0,4.8,0.0
+ST0914,Marketing,Digital Marketing,Quan hệ công chúng,"A10,A-TIN",KV2,05,Truyền thông,8.0,7.9,4.4,0.0,6.1,0.0,0.0,0.0,0.0,0.0,0.0
+ST0915,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"A07,B02",KV2,05,Khoa học,7.2,6.4,0.0,0.0,0.0,0.0,3.6,0.0,0.0,6.7,0.0
+ST0916,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D14,KV2,05,"Văn học,Sáng tạo,Bảo mật thông tin",9.0,7.6,0.0,0.0,3.8,0.0,0.0,0.0,0.0,6.8,0.0
+ST0917,Nghệ thuật,Âm nhạc,Thiết kế thời trang,"A11,D08",KV2,05,"Hóa học,Nghệ thuật,Văn hóa",6.1,7.1,6.7,7.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0918,Quản lý tài nguyên và môi trường,Sư phạm Ngữ văn,Quản lý đất đai,A-TIN,KV2,05,Thể thao,6.5,5.0,0.0,0.0,0.0,0.0,7.7,4.5,0.0,0.0,0.0
+ST0919,Sư phạm Ngữ văn,Thiết kế đồ họa,Thiết kế thời trang,"A07,C13",KV2,05,"Y học,Dạy học,Chính trị",7.8,5.6,0.0,0.0,0.0,0.0,5.5,0.0,0.0,6.7,0.0
+ST0920,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,C17,KV2,05,Văn hóa,6.9,2.6,5.1,4.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0921,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,"A00,C12",KV2,05,"Văn hóa,Tài chính",4.4,4.4,5.3,0.0,0.0,4.7,0.0,0.0,0.0,0.0,0.0
+ST0922,Ngôn ngữ Anh,Sư phạm Ngữ văn,Ngôn ngữ Nhật,A02,KV2,05,"Đọc sách,Thể thao",8.1,5.0,0.0,6.8,0.0,6.1,0.0,0.0,0.0,0.0,0.0
+ST0923,Tâm lý học,Thú y,Sư phạm Ngữ văn,C-TIN,KV1,02,Động vật,7.0,4.7,0.0,0.0,0.0,6.1,0.0,7.6,0.0,0.0,0.0
+ST0924,Nhân học,Tâm lý học,Quản lý tài nguyên và môi trường,C19,KV2,05,"Giúp đỡ người khác,Động vật,Khoa học",6.5,5.7,0.0,0.0,2.7,0.0,5.3,0.0,0.0,0.0,0.0
+ST0925,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"B00,D11",KV2,05,"Bảo mật thông tin,Thiết kế",6.8,6.8,0.0,0.0,0.0,0.0,3.5,0.0,0.0,0.0,5.3
+ST0926,Quản lý bệnh viện,Marketing,Digital Marketing,"D10,C-TIN",KV2,05,"Truyền thông,Quản lý",5.3,6.7,0.0,0.0,6.2,0.0,0.0,4.4,0.0,0.0,0.0
+ST0927,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,"A07,A04",KV2,05,"Dạy học,Giáo dục,Thiết kế",8.8,6.8,0.0,0.0,0.0,3.7,0.0,0.0,2.7,0.0,0.0
+ST0928,Tâm lý học,Sư phạm Hóa học,Y khoa,B03,KV2,05,Khoa học,7.8,7.9,0.0,5.5,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+ST0929,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,"C01,C-TIN",KV3,06,"Kinh doanh,Động vật",7.2,7.1,0.0,6.7,0.0,3.5,0.0,0.0,0.0,0.0,0.0
+ST0930,Thiết kế thời trang,Nghệ thuật,Marketing,C04,KV2,05,"Thể thao,Truyền thông,Thiên nhiên",7.8,7.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.5,3.5
+ST0931,Thiết kế đồ họa,Quản lý giáo dục,Thiết kế thời trang,"A07,D01",KV2,05,Thiết kế,8.6,7.8,0.0,0.0,0.0,0.0,4.4,0.0,5.6,0.0,0.0
+ST0932,Quản lý giáo dục,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,"B02,C03",KV2,05,"Nghiên cứu,Lãnh đạo,Động vật",8.7,5.1,4.6,4.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0933,Thống kê,Kinh tế học,Kế toán,A05,KV2,05,"Thống kê,Bảo mật thông tin",6.8,5.9,0.0,3.6,0.0,0.0,0.0,2.8,0.0,0.0,0.0
+ST0934,Sư phạm Ngữ văn,Sư phạm Tiếng Anh,Sư phạm Toán,"E-TIN,C-TIN",KV2,05,Dạy học,7.5,8.3,0.0,0.0,0.0,6.1,0.0,3.0,0.0,0.0,0.0
+ST0935,Quản trị khách sạn,Quản trị dịch vụ du lịch và lữ hành,Bảo hiểm,"C19,C04",KV2,05,"Dịch vụ khách hàng,Du lịch,Tài chính",6.7,7.6,4.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.7
+ST0936,Công nghệ thông tin,Marketing,Digital Marketing,D10,KV2,05,Xây dựng,4.4,6.6,6.4,0.0,0.0,0.0,0.0,5.4,0.0,0.0,0.0
+ST0937,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,"E-TIN,B04",KV2,05,"Nghệ thuật,Động vật,Thiết kế",8.1,6.0,6.0,0.0,0.0,0.0,0.0,3.7,0.0,0.0,0.0
+ST0938,Răng - Hàm - Mặt,Kiến trúc,Kinh tế học,"A11,A00",KV1,06,"Sáng tạo,Thể thao,Chính trị",6.8,3.6,0.0,2.7,6.2,0.0,0.0,0.0,0.0,0.0,0.0
+ST0939,Sư phạm Ngữ văn,Ngôn ngữ Pháp,Báo chí,D10,KV2,05,Văn học,7.2,4.1,3.6,0.0,0.0,0.0,6.0,0.0,0.0,0.0,0.0
+ST0940,Thống kê,Kinh tế học,Kế toán,C12,KV2,05,"Dạy học,Thống kê,Ngoại ngữ",8.2,3.0,0.0,4.0,1.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0941,Tâm lý học,Y khoa,Điều dưỡng,"C19,D-TIN",KV2,05,"Tài chính,Kinh doanh,Giúp đỡ người khác",6.1,4.7,0.0,0.0,2.8,0.0,0.0,5.7,0.0,0.0,0.0
+ST0942,Marketing,Digital Marketing,Y khoa,B02,KV2,04,"Thiên nhiên,Quảng cáo,Chăm sóc sức khỏe",3.8,4.3,0.0,3.7,0.0,0.0,0.0,0.0,4.4,0.0,0.0
+ST0943,Xã hội học,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,B03,KV2,05,Phân tích dữ liệu,8.2,5.1,0.0,6.5,0.0,5.0,0.0,0.0,0.0,0.0,0.0
+ST0944,Marketing,Digital Marketing,Quan hệ công chúng,C08,KV1,07,Truyền thông,6.8,2.7,0.0,0.0,0.0,0.0,0.0,0.0,4.6,0.0,5.2
+ST0945,Công nghệ thông tin,Thiết kế đồ họa,Thống kê,"A01,A03",KV2,05,Máy tính,5.5,7.8,0.0,5.4,0.0,0.0,4.8,0.0,0.0,0.0,0.0
+ST0946,Marketing,Nhân học,Kỹ thuật môi trường,A04,KV2,05,"Giao tiếp,Truyền thông,Thiên nhiên",6.2,4.5,0.0,0.0,0.0,0.0,4.4,0.0,0.0,0.0,7.6
+ST0947,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,Công nghệ thông tin,A06,KV2,05,"Điện tử,Lập trình",7.3,4.2,0.0,0.0,0.0,0.0,0.0,7.1,0.0,5.2,0.0
+ST0948,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,"A09,A07",KV2,05,Ngoại ngữ,7.0,5.5,0.0,0.0,2.6,0.0,0.0,0.0,5.8,0.0,0.0
+ST0949,Sư phạm Ngữ văn,Nhân học,Luật kinh tế,D13,KV2,05,Ẩm thực,5.6,7.1,0.0,0.0,0.0,3.0,5.8,0.0,0.0,0.0,0.0
+ST0950,Robot và Trí tuệ nhân tạo,Tự động hóa,Công nghệ thông tin,"B04,A03",KV2,05,Lập trình,5.5,4.3,0.0,2.2,0.0,0.0,0.0,0.0,0.0,0.0,5.7
+ST0951,Khoa học dữ liệu và Trí tuệ nhân tạo,Tâm lý học,Khoa học dữ liệu,D08,KV2,05,Phân tích dữ liệu,8.2,5.5,0.0,0.0,0.0,0.0,0.0,3.4,0.0,4.4,0.0
+ST0952,Công nghệ thông tin,Marketing,Digital Marketing,"A08,C17",KV2,05,Động vật,5.5,7.4,5.0,6.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0953,Công nghệ thông tin,Sư phạm Hóa học,Sư phạm Tiếng Anh,A03,KV2,05,"Trò chơi điện tử,Giáo dục",4.6,4.5,4.5,0.0,6.1,0.0,0.0,0.0,0.0,0.0,0.0
+ST0954,Luật,Kinh tế học,Luật quốc tế,"B04,A06",KV3,04,"Môi trường,Chính trị",8.1,6.6,5.7,5.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0955,Công nghệ thông tin,Quản lý giáo dục,Công nghệ thực phẩm,E-TIN,KV2,05,"Trò chơi điện tử,Ẩm thực",5.1,4.6,0.0,0.0,0.0,0.0,0.0,0.0,5.3,0.0,4.6
+ST0956,Nhân học,Xã hội học,Luật kinh tế,C02,KV2,05,"Nghiên cứu,Kỹ thuật",8.3,6.4,0.0,0.0,0.0,3.6,1.5,0.0,0.0,0.0,0.0
+ST0957,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,C02,KV2,05,Môi trường,5.5,7.3,0.0,0.0,0.0,6.2,0.0,0.0,0.0,7.6,0.0
+ST0958,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,Robot và Trí tuệ nhân tạo,"D11,D09",KV2,05,Thiết kế,8.4,5.5,0.0,5.9,0.0,0.0,0.0,0.0,0.0,0.0,6.3
+ST0959,Xã hội học,Luật kinh tế,Logistics và Quản lý chuỗi cung ứng,D01,KV2,05,"Kinh doanh,Phân tích dữ liệu,Bảo mật thông tin",6.4,7.4,0.0,0.0,0.0,6.8,0.0,0.0,0.0,0.0,3.6
+ST0960,Sư phạm Hóa học,Công nghệ thông tin,Quản lý tài nguyên và môi trường,"C02,D84",KV2,04,"Hóa học,Trò chơi điện tử,Chính trị",8.6,4.8,0.0,0.0,4.5,0.0,6.5,0.0,0.0,0.0,0.0
+ST0961,Tâm lý học,Công nghệ thông tin,Marketing,D-TIN,KV2,05,Bảo mật thông tin,6.1,7.5,0.0,0.0,0.0,0.0,0.0,4.6,0.0,0.0,3.4
+ST0962,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Tài chính - Ngân hàng,"B04,D-TIN",KV1,01,"Toán học,Văn hóa",6.9,5.8,4.7,0.0,4.9,0.0,0.0,0.0,0.0,0.0,0.0
+ST0963,Khoa học dữ liệu và Trí tuệ nhân tạo,Công nghệ thông tin,Trí tuệ nhân tạo,"D84,A06",KV2,05,"Điện tử,Thiên nhiên,Phân tích dữ liệu",7.2,4.9,4.8,5.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+ST0964,Quản lý giáo dục,Sư phạm Ngữ văn,Công nghệ thông tin,"A11,F-TIN",KV2,05,"Giáo dục,Nông nghiệp,Trò chơi điện tử",7.3,7.0,0.0,0.0,0.0,0.0,2.7,0.0,4.8,0.0,0.0
+ST0965,Tâm lý học,Quản lý tài nguyên và môi trường,Nuôi trồng thủy sản,"A05,D15",KV2,05,"Đọc sách,Luật pháp,Khoa học",8.3,5.5,0.0,0.0,0.0,0.0,5.2,3.9,0.0,0.0,0.0
+ST0966,Quản lý bệnh viện,Thiết kế đồ họa,An toàn thông tin,C00,KV2,05,"Thiên nhiên,Bảo mật thông tin,Y học",7.0,6.3,0.0,0.0,0.0,0.0,2.4,0.0,0.0,4.4,0.0
+ST0967,Quản lý tài nguyên và môi trường,Quản lý đất đai,Nuôi trồng thủy sản,C04,KV2,05,"Thiên nhiên,Truyền thông,Máy tính",5.9,5.0,0.0,0.0,0.0,0.0,3.5,7.2,0.0,0.0,0.0
+ST0968,Quản lý giáo dục,Kế toán,Logistics và Quản lý chuỗi cung ứng,C00,KV1,02,"Quản lý,Thiết kế,Thống kê",8.9,7.9,0.0,3.3,0.0,0.0,0.0,0.0,6.1,0.0,0.0
+ST0969,Quản trị khách sạn,Sư phạm Hóa học,Quản trị dịch vụ du lịch và lữ hành,B03,KV2,05,Dịch vụ khách hàng,6.8,6.7,0.0,0.0,6.0,0.0,0.0,0.0,0.0,0.0,4.3
+ST0970,Robot và Trí tuệ nhân tạo,Tự động hóa,Kỹ thuật điện - điện tử,B03,KV1,05,Hóa học,6.6,6.9,0.0,5.8,0.0,0.0,0.0,0.0,0.0,0.0,6.1
+ST0971,Sư phạm Ngữ văn,Nuôi trồng thủy sản,Nhân học,D15,KV2,05,Nông nghiệp,7.1,5.4,0.0,0.0,0.0,0.0,6.2,0.0,4.0,0.0,0.0
+ST0972,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,D12,KV2,05,"Điện tử,Lãnh đạo,Sáng tạo",9.0,5.3,0.0,0.0,0.0,2.8,0.0,0.0,0.0,5.4,0.0
+ST0973,Marketing,Digital Marketing,Luật,"G-TIN,D12",KV2,05,"Truyền thông,Chính trị",7.4,4.8,0.0,0.0,0.0,5.4,0.0,0.0,0.0,0.0,6.1
+ST0974,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,Robot và Trí tuệ nhân tạo,F-TIN,KV2,05,"Quảng cáo,Đọc sách,Thiết kế",8.1,4.5,0.0,4.3,0.0,0.0,0.0,0.0,0.0,0.0,4.9
+ST0975,Sư phạm Hóa học,Tâm lý học,Y khoa,D08,KV2,05,Khoa học,8.7,7.8,0.0,0.0,6.2,4.8,0.0,0.0,0.0,0.0,0.0
+ST0976,Quản lý bệnh viện,Y khoa,Công nghệ thông tin,A07,KV2,05,Chăm sóc sức khỏe,8.5,6.6,0.0,0.0,2.2,0.0,0.0,0.0,0.0,0.0,5.0
+ST0977,Thiết kế thời trang,Nghệ thuật,Quản trị kinh doanh quốc tế,D07,KV2,05,Văn hóa,5.8,7.2,0.0,5.0,0.0,0.0,0.0,0.0,0.0,4.3,0.0
+ST0978,Luật,Quản lý bệnh viện,Quản trị khách sạn,C00,KV2,05,"Chăm sóc sức khỏe,Chính trị,Dịch vụ khách hàng",6.6,6.6,6.2,0.0,0.0,0.0,2.5,0.0,0.0,0.0,0.0
+ST0979,Sư phạm Ngữ văn,Quản lý tài nguyên và môi trường,Nhân học,"C14,A06",KV2,01,"Văn học,Thiên nhiên",7.0,6.8,0.0,0.0,5.2,0.0,7.7,0.0,0.0,0.0,0.0
+ST0980,Sư phạm Hóa học,Tâm lý học,Quản lý bệnh viện,"C12,A04",KV2,05,"Giáo dục,Nông nghiệp,Y học",8.3,8.3,0.0,0.0,1.8,0.0,0.0,5.4,0.0,0.0,0.0
+ST0981,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,A10,KV2,05,Tự động hóa,8.3,7.6,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,4.3
+ST0982,Thiết kế thời trang,An toàn thông tin,Thiết kế đồ họa,"D11,B00",KV3,02,"Thể thao,Văn học,Bảo mật thông tin",8.0,5.1,0.0,0.0,0.0,0.0,0.0,0.0,5.7,6.9,0.0
+ST0983,Ngôn ngữ Anh,Ngôn ngữ Trung Quốc,Quản trị khách sạn,B04,KV2,05,"Du lịch,Xây dựng,Kỹ thuật",6.4,6.5,0.0,0.0,3.1,0.0,0.0,0.0,4.3,0.0,0.0
+ST0984,Tâm lý học,Khoa học dữ liệu và Trí tuệ nhân tạo,Khoa học dữ liệu,D08,KV2,05,Kỹ thuật,7.2,6.7,0.0,0.0,0.0,0.0,0.0,6.4,0.0,3.2,0.0
+ST0985,Tâm lý học,Công nghệ thông tin,Thú y,C14,KV2,05,"Khoa học,Trò chơi điện tử",5.7,7.0,3.4,0.0,0.0,0.0,0.0,4.7,0.0,0.0,0.0
+ST0986,Quản lý bệnh viện,Quản lý giáo dục,Công nghệ thông tin,G-TIN,KV1,07,"Y học,Cơ khí",8.5,7.4,0.0,0.0,0.0,0.0,0.0,0.0,5.5,0.0,2.1
+ST0987,Kỹ thuật xây dựng,Kiến trúc,Thiết kế nội thất,"C19,A10",KV3,04,"Xây dựng,Du lịch",7.4,9.2,0.0,5.1,6.5,0.0,0.0,0.0,0.0,0.0,0.0
+ST0988,Quản trị kinh doanh quốc tế,Kinh doanh quốc tế,Ngôn ngữ Anh,"A03,C20",KV2,05,"Ngoại ngữ,Khoa học",5.2,7.1,0.0,5.4,0.0,0.0,0.0,0.0,0.0,0.0,5.4
+ST0989,Kỹ thuật xây dựng,Kỹ thuật điện - điện tử,Công nghệ kỹ thuật ô tô,"A08,C12",KV2,05,Kỹ thuật,6.2,4.5,0.0,0.0,5.9,0.0,0.0,0.0,0.0,3.7,0.0
+ST0990,Công nghệ thông tin,Robot và Trí tuệ nhân tạo,Digital Marketing,"C04,D08",KV2,05,"Điện tử,Kỹ thuật,Phân tích dữ liệu",6.2,7.1,0.0,0.0,0.0,0.0,0.0,0.0,4.7,4.6,0.0
+ST0991,Thống kê,Kinh tế học,Kế toán,"C05,A06",KV2,05,Thống kê,8.4,5.0,5.7,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.5
+ST0992,Thiết kế đồ họa,Thiết kế thời trang,Nghệ thuật,B00,KV2,05,"Sáng tạo,Y học,Ẩm thực",7.9,5.9,0.0,0.0,0.0,0.0,0.0,0.0,4.6,5.8,0.0
+ST0993,Luật,Quản lý giáo dục,Sư phạm Ngữ văn,A01,KV2,05,Chính trị,8.1,6.1,0.0,0.0,0.0,6.7,0.0,0.0,7.0,0.0,0.0
+ST0994,Thiết kế đồ họa,Sư phạm Tiếng Anh,Sư phạm Toán,"C-TIN,A04",KV2,05,Giáo dục,8.6,8.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4.5,8.3
+ST0995,Marketing,Logistics và Quản lý chuỗi cung ứng,Quản trị kinh doanh quốc tế,D13,KV2,05,Kinh doanh,7.8,7.0,0.0,5.6,0.0,0.0,4.5,0.0,0.0,0.0,0.0
+ST0996,Công nghệ thông tin,Thiết kế đồ họa,Thống kê,E-TIN,KV2,05,"Nông nghiệp,Máy tính,Bảo mật thông tin",7.2,4.1,4.1,0.0,6.7,0.0,0.0,0.0,0.0,0.0,0.0
+ST0997,Sư phạm Hóa học,Tâm lý học,Y khoa,B03,KV2,05,"Khoa học,Máy tính",8.0,7.0,0.0,0.0,5.9,0.0,0.0,2.5,0.0,0.0,0.0
+ST0998,Tâm lý học,Thú y,Công nghệ thông tin,"A07,C12",KV2,05,Động vật,6.6,8.2,0.0,0.0,0.0,2.3,0.0,7.4,0.0,0.0,0.0
+ST0999,Luật kinh tế,Luật,Luật quốc tế,"D09,C01",KV2,05,"Luật pháp,Thể thao",7.1,3.5,0.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,3.8
+ST1000,Kinh tế học,Công nghệ thông tin,Y khoa,"C13,A-TIN",KV2,05,Chính trị,7.1,4.9,0.0,4.0,7.3,0.0,0.0,0.0,0.0,0.0,0.0

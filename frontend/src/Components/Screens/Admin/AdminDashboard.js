@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import UserManagement from './UserManagement';
+import DataManagement from './DataManagement';
 import AdminHeader from '../../layout/AdminHeader';
 
 // Đơn giản hóa component để tránh lỗi hooks
@@ -10,6 +11,8 @@ const AdminDashboard = () => {
     switch (activeTab) {
       case 'users':
         return <UserManagement />;
+      case 'data':
+        return <DataManagement />;
       case 'statistics':
         return (
           <div>
@@ -33,8 +36,6 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <AdminHeader />
       <div style={{ padding: '20px', marginTop: '80px' }}>
-
-        
         <div className="admin-container" style={{ display: 'flex' }}>
           <div className="admin-sidebar" style={{ width: '250px', marginRight: '20px' }}>
             <div className="admin-nav">
@@ -54,6 +55,23 @@ const AdminDashboard = () => {
                     }}
                   >
                     Quản lý tài khoản
+                  </button>
+                </li>
+                <li style={{ marginBottom: '10px' }}>
+                  <button 
+                    onClick={() => setActiveTab('data')}
+                    style={{ 
+                      padding: '10px', 
+                      width: '100%', 
+                      textAlign: 'left',
+                      backgroundColor: activeTab === 'data' ? '#007bff' : '#f8f9fa',
+                      color: activeTab === 'data' ? 'white' : 'black',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Quản lý dữ liệu
                   </button>
                 </li>
                 <li style={{ marginBottom: '10px' }}>

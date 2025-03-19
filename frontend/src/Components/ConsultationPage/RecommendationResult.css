@@ -1,0 +1,208 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fb;
+}
+
+.page-header {
+    background: linear-gradient(135deg, #3f51b5 0%, #7986cb 100%);
+    color: white;
+    padding: 30px 0;
+    margin-bottom: 30px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.major-card {
+    border-left: 5px solid #3f51b5;
+    transition: transform 0.3s ease;
+    padding: 20px !important;
+}
+
+.major-card:hover {
+    transform: translateY(-3px);
+}
+
+.major-card.first {
+    border-left-color: #ffc107;
+}
+
+.major-card.second {
+    border-left-color: #6c757d;
+}
+
+.major-card.third {
+    border-left-color: #cd7f32;
+}
+
+.major-title {
+    color: #3f51b5;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.score-badge {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.progress {
+    height: 6px;
+    margin-bottom: 3px;
+    background-color: #e9ecef;
+}
+
+.progress-bar-subject {
+    background-color: #3f51b5;
+}
+
+.progress-bar-interest {
+    background-color: #4caf50;
+}
+
+.progress-bar-market {
+    background-color: #ff9800;
+}
+
+.progress-bar-priority {
+    background-color: #9c27b0;
+}
+
+.component-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.component-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.matches-tag {
+    display: inline-block;
+    background-color: #f0f2f5;
+    border-radius: 15px;
+    padding: 2px 8px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.btn-primary {
+    background-color: #3f51b5;
+    border-color: #3f51b5;
+}
+
+.btn-primary:hover {
+    background-color: #303f9f;
+    border-color: #303f9f;
+}
+
+.btn-outline-primary {
+    color: #3f51b5;
+    border-color: #3f51b5;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3f51b5;
+    border-color: #3f51b5;
+}
+
+/* Print styles */
+@media print {
+    .btn {
+        display: none;
+    }
+    
+    .major-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .page-header {
+        background: none !important;
+        color: #000;
+        padding: 15px 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .major-card {
+        padding: 15px !important;
+    }
+    
+    .major-title {
+        font-size: 1.2rem;
+    }
+    
+    .score-badge {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+    
+    .component-label,
+    .component-value {
+        font-size: 0.85rem;
+    }
+}
+
+/* Container width control */
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+/* Score analysis section */
+.score-analysis {
+    margin-top: 1rem;
+}
+
+.score-analysis h5 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+}
+
+/* Interest and market trend sections */
+.interest-section,
+.market-trend-section {
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.interest-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.interest-section li {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 4px;
+} 
