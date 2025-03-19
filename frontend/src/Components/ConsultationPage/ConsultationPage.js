@@ -182,21 +182,21 @@ const ConsultationPage = () => {
     });
 
     // Fetch provinces
-    useEffect(() => {
-        const fetchProvinces = async () => {
-            try {
-                const response = await fetch('https://provinces.open-api.vn/api/p/');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch provinces');
-                }
-                const data = await response.json();
-                setProvinces(data);
-            } catch (err) {
-                setError('Không thể tải danh sách tỉnh thành phố');
-                console.error('Error fetching provinces:', err);
-            } 
-        };
+    const fetchProvinces = async () => {
+        try {
+            const response = await fetch('https://provinces.open-api.vn/api/p/');
+            if (!response.ok) {
+                throw new Error('Failed to fetch provinces');
+            }
+            const data = await response.json();
+            setProvinces(data);
+        } catch (err) {
+            setError('Không thể tải danh sách tỉnh thành phố');
+            console.error('Error fetching provinces:', err);
+        } 
+    };
 
+    useEffect(() => {
         fetchProvinces();
     }, []);
 

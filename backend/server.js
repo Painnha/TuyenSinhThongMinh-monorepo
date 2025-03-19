@@ -2,23 +2,17 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
-// Import routes
-const interestsRouter = require('./routes/interests');
-const subjectCombinationsRouter = require('./routes/subjectCombinations');
-const universitiesRouter = require('./routes/universities');
-
 const app = express();
 
-// Middleware
-app.use(cors());
+// Configure CORS
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Routes
-app.use('/api/interests', interestsRouter);
-app.use('/api/subject-combinations', subjectCombinationsRouter);
-app.use('/api/universities', universitiesRouter);
 
 // MongoDB connection
 const connectDB = async () => {
@@ -28,20 +22,51 @@ const connectDB = async () => {
             useUnifiedTopology: true
         });
         console.log('MongoDB connected successfully');
+        return true;
     } catch (error) {
         console.error('MongoDB connection error:', error);
-        process.exit(1);
+        return false;
     }
 };
 
-// Start server
+// Start server after successful DB connection
 const startServer = async () => {
+  try {
+    // Connect to MongoDB with retry logic
     await connectDB();
     
+    // Import routes
+    const authRoutes = require('./routes/authRoutes');
+    const subjectCombinationsRouter = require('./routes/subjectCombinations');
+    const universityRoutes = require('./routes/universityRoutes');
+    const userRoutes = require('./routes/userRoutes');
+    const interestsRouter = require('./routes/interests');
+
+    // Use routes
+    app.use('/api/auth', authRoutes);
+    app.use('/api/subject-combinations', subjectCombinationsRouter);
+    app.use('/api/universities', universityRoutes);
+    app.use('/api/users', userRoutes);
+    app.use('/api/interests', interestsRouter);
+
+    // Error handling middleware
+    app.use((err, req, res, next) => {
+      console.error(err.stack);
+      res.status(500).json({
+        success: false,
+        error: 'Something went wrong!'
+      });
+    });
+
+    // Start server
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+      console.log(`Server is running on port ${PORT}`);
     });
+  } catch (error) {
+    console.error('Server startup error:', error);
+    process.exit(1);
+  }
 };
 
 startServer();
