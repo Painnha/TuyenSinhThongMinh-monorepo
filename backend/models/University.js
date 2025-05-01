@@ -46,4 +46,5 @@ universitySchema.index({ name: 'text' });
 universitySchema.index({ 'benchmarks.majorCode': 1 });
 universitySchema.index({ 'benchmarks.year': 1 });
 
-module.exports = mongoose.model('University', universitySchema);
+// Chuyển đến database mới và collection mới
+module.exports = mongoose.model('University', universitySchema, 'universities_benchmark_full');

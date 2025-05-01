@@ -17,11 +17,21 @@ app.use(express.urlencoded({ extended: true }));
 // MongoDB connection
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {
+        // Kết nối trực tiếp đến database tuyen_sinh_thong_minh
+        const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+        
+        // Ẩn thông tin đăng nhập khi log URI
+        const maskedUri = connectionString.replace(/\/\/([^:]+):([^@]+)@/, '//***:***@');
+        console.log('Connecting to MongoDB:', maskedUri);
+        
+        // Kết nối và chỉ định database name
+        await mongoose.connect(connectionString, {
+            dbName: 'tuyen_sinh_thong_minh',
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        console.log('MongoDB connected successfully');
+        
+        console.log(`MongoDB connected successfully to database: ${mongoose.connection.db.databaseName}`);
         return true;
     } catch (error) {
         console.error('MongoDB connection error:', error);
