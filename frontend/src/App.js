@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+// import { ThemeProvider, createTheme } from '@mui/material/styles';
+// import CssBaseline from '@mui/material/CssBaseline';
 import Header from './Components/layout/Header';
 import Home from './Components/Screens/Home/Home';
 import NewsListScreen from './Components/Screens/NewsListScreen/NewsListScreen';
@@ -16,6 +18,9 @@ import UniversityDetail from './Components/UniversityDetail/UniversityDetail';
 import AdminDashboard from './Components/Screens/Admin/AdminDashboard';
 import ProtectedRoute from './Components/utils/ProtectedRoute';
 import './App.css';
+
+// Tạm thời loại bỏ ThemeProvider để tìm nguyên nhân lỗi
+// const theme = createTheme();
 
 // Component để kiểm tra và render Header
 const AppContent = () => {

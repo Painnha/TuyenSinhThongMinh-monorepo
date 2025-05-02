@@ -1,0 +1,145 @@
+[
+  {
+    "major_name": "thiết kế đồ họa",
+    "category": "Không xác định",
+    "confidence": 0.83481764793396,
+    "primary_subject_groups": "A01,D01,D09",
+    "secondary_subject_groups": "D14,H00,H07,V01,H01,H03,H04,H05,H06",
+    "interests": "Nghệ thuật,Thiết kế,Sáng tạo,Công nghệ,Máy tính",
+    "suitable_schools": [
+      {
+        "school_name": "Đại học Hoa Sen",
+        "subject_groups": [
+          {
+            "min_score": 15.0,
+            "combinations": [
+              "D01",
+              "D09",
+              "D14"
+            ]
+          }
+        ]
+      },
+      {
+        "school_name": "Đại học Mỹ thuật TP.HCM",
+        "subject_groups": [
+          {
+            "min_score": 23.75,
+            "combinations": [
+              "H00",
+              "H07"
+            ]
+          }
+        ]
+      },
+      {
+        "school_name": "Đại học Nguyễn Tất Thành",
+        "subject_groups": [
+          {
+            "min_score": 15.0,
+            "combinations": [
+              "D01",
+              "H00",
+              "H01"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "major_name": "thiết kế nội thất",
+    "category": "Không xác định",
+    "confidence": 0.8211280703544617,
+    "primary_subject_groups": "A01,D01,D09",
+    "secondary_subject_groups": "D14,V00,V01,V02,H00,H02,H01,H03,H04,H05,H06",
+    "interests": "Thiết kế,Nghệ thuật,Sáng tạo,Xây dựng,Mỹ thuật",
+    "suitable_schools": [
+      {
+        "school_name": "Đại học Hoa Sen",
+        "subject_groups": [
+          {
+            "min_score": 15.0,
+            "combinations": [
+              "D01",
+              "D09",
+              "D14"
+            ]
+          }
+        ]
+      },
+      {
+        "school_name": "Đại học Kiến trúc TP.HCM",
+        "subject_groups": [
+          {
+            "min_score": 23.48,
+            "combinations": [
+              "H00",
+              "H02"
+            ]
+          }
+        ]
+      },
+      {
+        "school_name": "Đại học Nguyễn Tất Thành",
+        "subject_groups": [
+          {
+            "min_score": 15.0,
+            "combinations": [
+              "D01",
+              "H00",
+              "H01"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "major_name": "thiết kế thời trang",
+    "category": "Không xác định",
+    "confidence": 0.31175729632377625,
+    "primary_subject_groups": "A01,D01,D09",
+    "secondary_subject_groups": "D14,H00,H07,A00,H03,H04,H05,H06",
+    "interests": "Thiết kế,Sáng tạo,Nghệ thuật,Thể thao,Văn hóa",
+    "suitable_schools": [
+      {
+        "school_name": "Đại học Hoa Sen",
+        "subject_groups": [
+          {
+            "min_score": 15.0,
+            "combinations": [
+              "D01",
+              "D09",
+              "D14"
+            ]
+          }
+        ]
+      },
+      {
+        "school_name": "Đại học Mỹ thuật TP.HCM",
+        "subject_groups": [
+          {
+            "min_score": 21.65,
+            "combinations": [
+              "H00",
+              "H07"
+            ]
+          }
+        ]
+      },
+      {
+        "school_name": "Đại học Nguyễn Tất Thành",
+        "subject_groups": [
+          {
+            "min_score": 15.0,
+            "combinations": [
+              "D01",
+              "D14"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

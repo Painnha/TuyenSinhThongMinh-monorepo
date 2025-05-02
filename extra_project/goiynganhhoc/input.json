@@ -1,0 +1,16 @@
+{
+    "scores": {
+        "Toan": 5,
+        "NguVan": 8.0,
+        "VatLy": 0.0,
+        "HoaHoc": 0.0,
+        "SinhHoc": 0.0,
+        "LichSu": 8.0,
+        "DiaLy": 9.0,
+        "GDCD": 8.0,
+        "NgoaiNgu": 7.0
+    },
+    "tohopthi": "XH",
+    "interests": ["Thiết kế", "Nghệ thuật", "Sáng tạo"],
+    "subject_groups": ["D14", "D15"]
+}

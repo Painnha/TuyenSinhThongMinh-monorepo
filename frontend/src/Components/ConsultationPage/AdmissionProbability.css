@@ -1,0 +1,277 @@
+.admission-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.admission-title {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.admission-description {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.admission-form-paper {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-grid-item {
+  min-width: 0;
+}
+
+.form-grid-item.full-width {
+  grid-column: span 2;
+}
+
+/* Custom form controls */
+.custom-form-control {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.custom-form-control input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.custom-form-control input:focus {
+  outline: none;
+  border-color: #2196F3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.help-text {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Custom select */
+.custom-select {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-select:hover {
+  border-color: #aaa;
+}
+
+.selected-value {
+  font-size: 14px;
+}
+
+.select-arrow {
+  font-size: 10px;
+  color: #666;
+}
+
+.select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 0 0 4px 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.select-option {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.select-option:hover {
+  background-color: #f5f5f5;
+}
+
+.select-option.selected {
+  background-color: #e3f2fd;
+  color: #2196F3;
+}
+
+/* Custom autocomplete */
+.custom-autocomplete {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 0 0 4px 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-option {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.autocomplete-option:hover {
+  background-color: #f5f5f5;
+}
+
+/* Submit button */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.submit-button {
+  background-color: #2196F3;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  min-width: 200px;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #1976D2;
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-message {
+  background-color: #ffebee;
+  color: #f44336;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Prediction results */
+.prediction-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.prediction-content {
+  padding: 20px;
+}
+
+.prediction-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.prediction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.prediction-item {
+  font-size: 14px;
+  color: #333;
+  padding: 5px 0;
+}
+
+.prediction-item.full-width {
+  grid-column: span 2;
+  margin-top: 20px;
+}
+
+.probability-title {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.progress-container {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+.assessment {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-grid-item.full-width {
+    grid-column: span 1;
+  }
+  
+  .prediction-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .prediction-item.full-width {
+    grid-column: span 1;
+  }
+} 

@@ -4,32 +4,64 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
     ports:
-      - "3000:80"
-    environment:
-      - REACT_APP_API_URL=http://localhost:5000
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     depends_on:
       - backend
+    networks:
+      - app-network
 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/tuyen_sinh_thong_minh
+    networks:
+      - app-network
+
+  be_python:
+    build:
+      context: ./BE_python
     ports:
       - "5000:5000"
-    env_file:
-      - ./backend/.env
+    volumes:
+      - ./BE_python:/app
+      - /app/venv
+      - ./BE_python/data:/app/data
+      - ./BE_python/ai_models:/app/ai_models
+    depends_on:
+      - mongodb
     environment:
-      - NODE_ENV=development
-      - PORT=5000
-
+      - MONGO_URI=mongodb://mongodb:27017
+      - MONGO_DB_NAME=tuyen_sinh_thong_minh
+      - API_HOST=0.0.0.0
+      - API_PORT=5000
+      - DEBUG_MODE=False
+    networks:
+      - app-network
+      
   mongodb:
-    image: mongo:latest
+    image: mongo:6
     ports:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mongodb_data:

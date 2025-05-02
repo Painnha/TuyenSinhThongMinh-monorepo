@@ -1,0 +1,10 @@
+numpy==1.23.5
+pandas==1.5.3
+tensorflow==2.12.0
+scikit-learn==1.2.2
+pymongo==4.4.1
+flask==2.3.3
+flask-cors==4.0.0
+python-dotenv==1.0.0
+gunicorn==21.2.0
+requests==2.31.0 

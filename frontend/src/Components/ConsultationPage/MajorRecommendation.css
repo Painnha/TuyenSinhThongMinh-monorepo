@@ -1,0 +1,307 @@
+/* CSS cho MajorRecommendation */
+.major-recommendation {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #1976d2;
+}
+
+.section-description {
+  font-size: 16px;
+  margin-bottom: 24px;
+  color: #666;
+}
+
+.form-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.form-section-title {
+  font-size: 18px;
+  margin: 24px 0 16px;
+  color: #333;
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.subject-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.subject-input label {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.subject-input input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.to-hop-thi {
+  max-width: 300px;
+}
+
+.priority-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.form-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.submit-button {
+  background-color: #1976d2;
+  color: white;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 200px;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #1565c0;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #f44336;
+  padding: 16px;
+  margin-bottom: 24px;
+  border: 1px solid #f44336;
+  border-radius: 4px;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.recommendations {
+  margin-top: 32px;
+}
+
+.recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.recommendation-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 24px;
+  transition: transform 0.2s;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-4px);
+}
+
+.major-name {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.category {
+  color: #666;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.confidence {
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.matching-interests {
+  margin-bottom: 16px;
+}
+
+.matching-interests p {
+  margin-bottom: 8px;
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.custom-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  background-color: rgba(25, 118, 210, 0.08);
+  color: #1976d2;
+  border: 1px solid rgba(25, 118, 210, 0.24);
+}
+
+.chip-delete {
+  margin-left: 4px;
+  font-size: 18px;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 16px 0;
+}
+
+.suitable-universities {
+  margin-top: 16px;
+}
+
+.university {
+  margin-bottom: 16px;
+}
+
+.university-name {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.subject-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.result {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.result.success {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+.result.error {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+/* Custom Select */
+.custom-select-container {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.custom-select-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.custom-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px 16px;
+  cursor: pointer;
+  background-color: white;
+  transition: border-color 0.2s;
+}
+
+.custom-select:hover {
+  border-color: #1976d2;
+}
+
+.custom-select-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-select-arrow {
+  margin-left: 8px;
+  font-size: 12px;
+  color: #666;
+}
+
+.custom-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.custom-select-option {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.custom-select-option:hover {
+  background-color: rgba(25, 118, 210, 0.04);
+}
+
+.custom-select-option.selected {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+.custom-select-option input[type="checkbox"] {
+  margin-right: 8px;
+} 
