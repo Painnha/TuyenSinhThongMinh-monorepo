@@ -26,5 +26,6 @@ COLLECTIONS = {
     'admission_criteria': 'admission_criteria',
     'student_data': 'student_data',
     'model_configs': 'model_configs',
-    'training_data': 'training_data'
+    'training_data': 'training_data',
+    'benchmark_scores': 'benchmark_scores'
 } 

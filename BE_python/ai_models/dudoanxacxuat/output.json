@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "request": {
+    "university_code": "YDS",
+    "major_name": "Y khoa",
+    "combination": "B00",
+    "student_score": 27.5
+  },
+  "prediction": {
+    "university_name": "Đại học Y Dược TP.HCM",
+    "expected_score": 27.29,
+    "score_difference": 0.21000000000000085,
+    "admission_probability": 0.5845987796783447,
+    "admission_percentage": "58.46%",
+    "market_trend": 0.95,
+    "assessment": "Khả năng trúng tuyển trung bình"
+  },
+  "metadata": {
+    "timestamp": "2025-05-04T16:06:20.799567",
+    "model_version": "1.0.0"
+  }
+}

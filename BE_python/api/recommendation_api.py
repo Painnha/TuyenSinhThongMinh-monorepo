@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import numpy as np
+import datetime
 from flask import Blueprint, request, jsonify
 from werkzeug.exceptions import BadRequest
 
@@ -10,14 +11,14 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.config import MODEL_DIR
 from utils.db_utils import db_client
-from ai_models.data_preprocessing import DataPreprocessor
-from ai_models.neural_network import MajorRecommendationModel
+from ai_models.goiynganhhoc.data_preprocessing import DataPreprocessor
+from ai_models.goiynganhhoc.neural_network import MajorRecommendationModel
 
 # Tạo blueprint cho API
 recommendation_api = Blueprint('recommendation_api', __name__)
 
-# Đường dẫn tới mô hình đã huấn luyện
-MODEL_PATH = os.path.join(MODEL_DIR, 'major_recommendation_model.keras')
+# Đường dẫn tới thư mục mô hình
+MAJOR_RECOMMENDATION_MODEL_DIR = os.path.join(MODEL_DIR, 'goiynganhhoc', 'model')
 
 # Biến toàn cục cho mô hình và preprocessor (lazy loading)
 _model = None
@@ -28,7 +29,18 @@ def get_model():
     global _model
     if _model is None:
         try:
-            _model = MajorRecommendationModel.load(MODEL_PATH)
+            # Tìm file model mới nhất trong thư mục
+            model_files = [f for f in os.listdir(MAJOR_RECOMMENDATION_MODEL_DIR) 
+                          if f.endswith('.h5')]
+            
+            if not model_files:
+                raise FileNotFoundError("Không tìm thấy file mô hình trong thư mục")
+                
+            # Lấy file mới nhất (sắp xếp theo thời gian)
+            latest_model = sorted(model_files)[-1]
+            model_path = os.path.join(MAJOR_RECOMMENDATION_MODEL_DIR, latest_model)
+            
+            _model = MajorRecommendationModel.load(model_path)
         except Exception as e:
             raise RuntimeError(f"Không thể tải mô hình gợi ý ngành học: {e}")
     return _model
@@ -38,12 +50,12 @@ def get_preprocessor():
     global _preprocessor
     if _preprocessor is None:
         try:
-            _preprocessor = DataPreprocessor(db_client)
+            _preprocessor = DataPreprocessor()
         except Exception as e:
             raise RuntimeError(f"Không thể khởi tạo preprocessor: {e}")
     return _preprocessor
 
-@recommendation_api.route('/health', methods=['GET'])
+@recommendation_api.route('/major-recommendation/health', methods=['GET'])
 def health_check():
     """Kiểm tra trạng thái hoạt động của API"""
     return jsonify({
@@ -52,7 +64,7 @@ def health_check():
         'preprocessor_loaded': _preprocessor is not None
     })
 
-@recommendation_api.route('/recommend', methods=['POST'])
+@recommendation_api.route('/major-recommendation', methods=['POST'])
 def recommend_majors():
     """
     API gợi ý ngành học
@@ -209,9 +221,9 @@ def format_recommendations(recommendations, preprocessor, student_data):
         
         # Tìm các sở thích phù hợp
         matching_interests = []
-        if 'interests' in major_info:
+        if 'interests' in major_info and isinstance(major_info['interests'], list):
             for interest in student_data.get('interests', []):
-                if any(i['name'] == interest for i in major_info['interests']):
+                if any(i.get('name') == interest for i in major_info['interests']):
                     matching_interests.append(interest)
         
         # Thêm vào kết quả
@@ -265,7 +277,7 @@ def find_suitable_universities(major_name, student_data):
         subject_group_results = []
         
         for uc in university_criteria:
-            # Lấy điểm chuẩn mới nhất
+            # Lấy quota mới nhất
             quota_data = uc.get('quota', [])
             if not quota_data:
                 continue
@@ -273,7 +285,7 @@ def find_suitable_universities(major_name, student_data):
             # Sắp xếp theo năm giảm dần
             sorted_quota = sorted(quota_data, key=lambda x: x.get('year', 0), reverse=True)
             
-            # Lấy điểm chuẩn năm gần nhất
+            # Lấy quota năm gần nhất
             latest_quota = sorted_quota[0] if sorted_quota else None
             if not latest_quota:
                 continue
@@ -284,7 +296,24 @@ def find_suitable_universities(major_name, student_data):
                 student_score = calculate_student_score_for_subject_group(student_data, sg)
                 
                 # Kiểm tra điểm chuẩn
-                min_score = latest_quota.get('minScore', 0)
+                min_score = 20.0  # Điểm mặc định nếu không có thông tin
+                
+                # Lấy danh sách điểm chuẩn từ các năm gần đây
+                # Thực tế sẽ cần truy vấn collection khác để lấy điểm chuẩn
+                admission_scores = db_client.fetch_data(
+                    'admission_criteria',
+                    {
+                        'universityName': university_name,
+                        'majorName': major_name
+                    }
+                )
+                
+                if admission_scores:
+                    # Lấy điểm chuẩn của năm gần nhất
+                    for adm in admission_scores:
+                        if 'minScore' in adm:
+                            min_score = adm['minScore']
+                            break
                 
                 # Thêm vào kết quả
                 subject_group_results.append({
@@ -316,7 +345,13 @@ def calculate_student_score_for_subject_group(student_data, subject_group):
     Returns:
         Tổng điểm tổ hợp
     """
-    # Mapping tổ hợp môn (đơn giản hóa, cần bổ sung đầy đủ)
+    # Lấy mapping tổ hợp môn từ MongoDB
+    subject_mapping = db_client.fetch_data(
+        'subject_combinations',
+        {'code': subject_group}
+    )
+    
+    # Mapping tổ hợp môn (mặc định nếu không tìm thấy trong DB)
     subject_group_mapping = {
         'A00': ['Toan', 'VatLy', 'HoaHoc'],
         'A01': ['Toan', 'VatLy', 'NgoaiNgu'],
@@ -325,6 +360,29 @@ def calculate_student_score_for_subject_group(student_data, subject_group):
         'D01': ['NguVan', 'Toan', 'NgoaiNgu'],
         # Thêm các tổ hợp khác ở đây
     }
+    
+    # Cập nhật mapping từ DB nếu có
+    if subject_mapping:
+        db_subjects = subject_mapping[0].get('subjects', [])
+        if db_subjects:
+            # Chuyển mã môn (TOAN, LY, HOA) sang tên môn (Toan, VatLy, HoaHoc)
+            subject_translation = {
+                'TOAN': 'Toan',
+                'LY': 'VatLy',
+                'HOA': 'HoaHoc',
+                'SINH': 'SinhHoc',
+                'VAN': 'NguVan',
+                'SU': 'LichSu',
+                'DIA': 'DiaLy',
+                'GDCD': 'GDCD',
+                'ANH': 'NgoaiNgu'
+            }
+            
+            translated_subjects = [
+                subject_translation.get(s, s) for s in db_subjects
+            ]
+            
+            subject_group_mapping[subject_group] = translated_subjects
     
     # Nếu không có mapping cho tổ hợp này, trả về 0
     if subject_group not in subject_group_mapping:
@@ -383,8 +441,8 @@ def save_student_data(student_data, recommendations):
             'recommendations': recommendations,
             'metadata': {
                 'dataVersion': '1.0',
-                'createdAt': datetime.now(),
-                'updatedAt': datetime.now()
+                'createdAt': datetime.datetime.now(),
+                'updatedAt': datetime.datetime.now()
             }
         }
         
@@ -401,6 +459,32 @@ def save_student_data(student_data, recommendations):
     except Exception as e:
         # Log lỗi nhưng không dừng xử lý
         print(f"Lỗi khi lưu dữ liệu học sinh: {e}")
+
+# Thêm endpoint để train model
+@recommendation_api.route('/major-recommendation/train', methods=['POST'])
+def train_model_endpoint():
+    """API endpoint để huấn luyện mô hình"""
+    try:
+        from ai_models.goiynganhhoc.train_model import train_model
+        
+        # Huấn luyện mô hình
+        model, model_path = train_model()
+        
+        # Reset model để load lại
+        global _model
+        _model = None
+        
+        return jsonify({
+            'success': True,
+            'message': 'Mô hình đã được huấn luyện thành công',
+            'model_path': model_path
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f"Lỗi khi huấn luyện mô hình: {str(e)}"
+        }), 500
 
 # Thêm endpoint mới nếu cần
 # @recommendation_api.route('/endpoint', methods=['GET', 'POST'])

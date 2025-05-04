@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "request": {
+    "university_code": "YDS",
+    "major_name": "y khoa",
+    "combination": "B00",
+    "student_score": 27.5
+  },
+  "prediction": {
+    "university_name": "Đại học YDS (giả lập)",
+    "expected_score": 26.75,
+    "score_difference": 0.75,
+    "admission_probability": 0.6807489395141602,
+    "admission_percentage": "68.07%",
+    "market_trend": 0.5,
+    "assessment": "Khả năng trúng tuyển cao"
+  },
+  "metadata": {
+    "timestamp": "2025-05-04T15:49:25.845082",
+    "model_version": "1.0.0"
+  }
+}

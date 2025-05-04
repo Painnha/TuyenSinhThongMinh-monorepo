@@ -1,5 +1,10 @@
 import pymongo
 from pymongo import MongoClient
+import os
+import sys
+
+# Thêm đường dẫn gốc vào sys.path để có thể import
+sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from config.config import MONGO_URI, MONGO_DB_NAME, COLLECTIONS
 
 class MongoDBClient:
