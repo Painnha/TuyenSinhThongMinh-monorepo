@@ -25,11 +25,14 @@ const connectDB = async () => {
         console.log('Connecting to MongoDB:', maskedUri);
         
         // Kết nối và chỉ định database name
-        await mongoose.connect(connectionString, {
+        const client = await mongoose.connect(connectionString, {
             dbName: 'tuyen_sinh_thong_minh',
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
+        
+        // Lưu mongoose connection vào app.locals để dùng cho native MongoDB queries
+        app.locals.db = client.connection.db;
         
         console.log(`MongoDB connected successfully to database: ${mongoose.connection.db.databaseName}`);
         return true;
@@ -51,6 +54,7 @@ const startServer = async () => {
     const universityRoutes = require('./routes/universityRoutes');
     const userRoutes = require('./routes/userRoutes');
     const interestsRouter = require('./routes/interests');
+    const admissionRoutes = require('./routes/admissionRoutes');
 
     // Use routes
     app.use('/api/auth', authRoutes);
@@ -58,6 +62,7 @@ const startServer = async () => {
     app.use('/api/universities', universityRoutes);
     app.use('/api/users', userRoutes);
     app.use('/api/interests', interestsRouter);
+    app.use('/api/data/admission', admissionRoutes);
 
     // Error handling middleware
     app.use((err, req, res, next) => {

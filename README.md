@@ -69,78 +69,101 @@ Dự đoán xác suất trúng tuyển vào trường/ngành cụ thể dựa tr
 
 ## Cài đặt
 
-1. Clone repository:
+### Yêu cầu hệ thống
+- Node.js (>= 14.x)
+- Python (>= 3.8)
+- MongoDB
+
+### Cài đặt thư viện
+
+#### 1. Thư viện Node.js
 ```bash
-git clone https://github.com/your-username/TuyenSinhThongMinh-monorepo.git
-cd TuyenSinhThongMinh-monorepo
-```
-
-2. Cài đặt dependencies:
-```bash
-# Cài đặt Node.js dependencies
-yarn install
-
-# Cài đặt Python dependencies
-cd BE_python
-pip install -r requirements.txt
-```
-
-3. Tạo file .env:
-
-Trong thư mục backend (Node.js):
-```
-PORT=8080
-MONGODB_URI=mongodb://localhost:27017/tuyen_sinh_thong_minh
-JWT_SECRET=your_jwt_secret
-INFOBIP_API_KEY=your_infobip_api_key
-INFOBIP_BASE_URL=your_infobip_base_url
-```
-
-Trong thư mục BE_python:
-```
-MONGO_URI=mongodb://localhost:27017
-MONGO_DB_NAME=tuyen_sinh_thong_minh
-API_HOST=0.0.0.0
-API_PORT=5000
-DEBUG_MODE=False
-```
-
-4. Khởi động development server:
-```bash
-# Sử dụng Docker Compose (khuyến nghị)
-docker-compose up
-
-# Hoặc khởi động từng dịch vụ:
-
-# Khởi động MongoDB
-mongod
-
-# Khởi động backend Node.js
+# Trong thư mục backend
 cd backend
-yarn dev
+npm install
 
-# Khởi động backend Python
+# Trong thư mục frontend
+cd frontend
+npm install
+```
+
+#### 2. Thư viện Python
+```bash
+pip install flask flask-cors python-dotenv pymongo tensorflow numpy scikit-learn
+```
+
+## Chạy ứng dụng
+
+### Cách 1: Sử dụng script tự động
+
+Để chạy tất cả các thành phần cùng lúc, sử dụng file script:
+
+```bash
+start-servers.bat
+```
+
+Script này sẽ:
+1. Cài đặt các thư viện Python cần thiết
+2. Khởi động Python API server
+3. Khởi động Node.js API server
+4. Khởi động React frontend
+
+### Cách 2: Khởi động thủ công
+
+Nếu muốn khởi động các server riêng biệt, mở 3 cửa sổ terminal riêng:
+
+#### Terminal 1: Python API
+```bash
 cd BE_python
 python app.py
+```
 
-# Khởi động frontend
+#### Terminal 2: Node.js API
+```bash
+cd backend
+npm start
+```
+
+#### Terminal 3: Frontend
+```bash
 cd frontend
-yarn dev
+npm start
 ```
 
-## Chuẩn bị dữ liệu và huấn luyện mô hình AI
+## Cấu trúc dự án
 
-1. Import dữ liệu:
+- **BE_python**: Chứa mã nguồn Python cho mô hình dự đoán AI
+  - **ai_models/dudoanxacxuat**: Mô hình dự đoán xác suất đậu đại học
+  - **models**: Thư mục chứa các mô hình đã huấn luyện
+
+- **backend**: API Node.js
+  - **routes**: Các endpoint API
+  - **controllers**: Xử lý logic
+  - **models**: Định nghĩa schema MongoDB
+
+- **frontend**: UI React
+  - **src/Components**: Các component React
+  - **src/services**: Các service gọi API
+
+## Sử dụng
+
+1. Mở trình duyệt tại địa chỉ: http://localhost:3000
+2. Truy cập chức năng "Dự đoán xác suất đậu đại học"
+3. Nhập thông tin trường, ngành và điểm thi
+4. Nhận kết quả dự đoán
+
+## Xử lý lỗi
+
+Nếu gặp lỗi "Không thể tải mô hình dự đoán", hãy thực hiện:
 ```bash
 cd BE_python
-python scripts/import_data.py --all
+python -m ai_models.dudoanxacxuat.initialize_model
 ```
 
-2. Huấn luyện mô hình:
-```bash
-cd BE_python
-python ai_models/train_models.py --all
-```
+Nếu vẫn gặp lỗi, kiểm tra:
+1. MongoDB đã được khởi động
+2. Kết nối mạng hoạt động tốt
+3. Các port 5000, 5001 và 3000 không bị chiếm bởi ứng dụng khác
 
 ## API Endpoints
 

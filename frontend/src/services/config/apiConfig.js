@@ -1,4 +1,13 @@
-export const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+// Lấy API URL từ biến môi trường hoặc sử dụng giá trị mặc định
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+// Log thông tin API URL để debug
+console.log('=== API Configuration ===');
+console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
+console.log('Using API_URL:', apiUrl);
+console.log('=== End API Configuration ===');
+
+export const API_URL = apiUrl;
 
 export const API_CONFIG = {
   headers: {

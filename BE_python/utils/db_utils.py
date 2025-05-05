@@ -101,5 +101,17 @@ class MongoDBClient:
         collection = self.get_collection('majors')
         return collection.find_one({'code': major_code})
     
+    def check_collection_exists(self, collection_name):
+        """Kiểm tra collection có tồn tại không"""
+        if collection_name not in COLLECTIONS:
+            raise ValueError(f"Collection {collection_name} không được định nghĩa")
+        collection_name = COLLECTIONS[collection_name]
+        return collection_name in self.db.list_collection_names()
+    
+    def count_documents(self, collection_name, query=None):
+        """Đếm số lượng document trong collection"""
+        collection = self.get_collection(collection_name)
+        return collection.count_documents(query or {})
+
 # Singleton instance
 db_client = MongoDBClient() 

@@ -71,6 +71,11 @@
   margin-top: 5px;
 }
 
+.help-text.warning {
+  color: #ff9800;
+  font-weight: 500;
+}
+
 /* Custom select */
 .custom-select {
   position: relative;
@@ -273,5 +278,50 @@
   
   .prediction-item.full-width {
     grid-column: span 1;
+  }
+}
+
+/* Thêm css mới sau các style đã có, không xóa style nào hiện tại */
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.subject-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.subject-item label {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.subject-item input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+@media (max-width: 992px) {
+  .subjects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .subjects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .subjects-grid {
+    grid-template-columns: 1fr;
   }
 } 
