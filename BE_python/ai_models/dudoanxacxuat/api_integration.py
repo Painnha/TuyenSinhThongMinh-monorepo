@@ -9,8 +9,8 @@ from pymongo import MongoClient
 import os
 
 # Kết nối MongoDB - sử dụng biến môi trường thống nhất với Node.js
-MONGODB_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
-MONGODB_NAME = os.getenv('MONGODB_NAME', 'tuyen_sinh_thong_minh')
+MONGODB_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
+MONGODB_NAME = os.getenv('MONGO_DB_NAME', 'tuyen_sinh_thong_minh')
 
 print(f"Python API MongoDB Configuration: URI={MONGODB_URI}, DB={MONGODB_NAME}")
 client = MongoClient(MONGODB_URI)

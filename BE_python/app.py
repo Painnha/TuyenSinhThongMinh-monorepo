@@ -35,6 +35,15 @@ except ImportError as e:
     print(f"CẢNH BÁO: Không thể import module dự đoán xác suất đậu đại học: {e}")
     ADMISSION_PREDICTION_AVAILABLE = False
 
+# Import module gợi ý ngành học
+try:
+    from ai_models.goiynganhhoc.api_integration import major_recommendation_blueprint
+    MAJOR_RECOMMENDATION_AVAILABLE = True
+    print("API gợi ý ngành học đã được tải thành công")
+except ImportError as e:
+    print(f"CẢNH BÁO: Không thể import module gợi ý ngành học: {e}")
+    MAJOR_RECOMMENDATION_AVAILABLE = False
+
 # Tạo Flask app
 app = Flask(__name__)
 CORS(app)
@@ -51,6 +60,12 @@ def index():
                 "method": "POST",
                 "description": "Dự đoán xác suất đậu đại học",
                 "available": ADMISSION_PREDICTION_AVAILABLE
+            },
+            {
+                "path": "/api/recommendation/recommend",
+                "method": "POST",
+                "description": "Gợi ý ngành học",
+                "available": MAJOR_RECOMMENDATION_AVAILABLE
             }
         ]
     })
@@ -65,6 +80,18 @@ else:
         return jsonify({
             "success": False,
             "message": "API dự đoán xác suất đậu đại học không khả dụng"
+        }), 503
+
+# Đăng ký blueprint gợi ý ngành học
+if MAJOR_RECOMMENDATION_AVAILABLE:
+    app.register_blueprint(major_recommendation_blueprint, url_prefix='/api/recommendation')
+    print(f"Đã đăng ký blueprint gợi ý ngành học: /api/recommendation/recommend")
+else:
+    @app.route('/api/recommendation/recommend', methods=['POST'])
+    def recommend_majors_placeholder():
+        return jsonify({
+            "success": False,
+            "message": "API gợi ý ngành học không khả dụng"
         }), 503
 
 if __name__ == '__main__':
@@ -82,7 +109,7 @@ if __name__ == '__main__':
     print(f"URL Endpoint for prediction: http://localhost:{port}/api/data/admission/predict-ai")
     
     # Khởi động server
-    app.run(host=os.environ.get('API_HOST', '0.0.0.0'), port=port, debug=True)
+    app.run(host=os.environ.get('API_HOST', '0.0.0.0'), port=port, debug=True) 
 
     # Thêm vào cuối file app.py, trước app.run()
     print("Các routes đã đăng ký:")

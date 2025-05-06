@@ -162,23 +162,42 @@ const RecommendationResults = ({ recommendations }) => {
               </p>
             )}
             
+            {/* Hiển thị thông tin điểm tổ hợp của học sinh */}
+            <div className="student-score-info">
+              <h4>Thông tin điểm số của bạn</h4>
+              <div className="score-container">
+                <p>Tổ hợp tối ưu: <strong>{recommendation.best_combination}</strong></p>
+                <p>Điểm của bạn: <strong>{recommendation.student_score.toFixed(1)}</strong></p>
+              </div>
+            </div>
+            
+            {/* Hiển thị các trường phù hợp */}
             {recommendation.suitable_universities && recommendation.suitable_universities.length > 0 && (
               <div className="suitable-universities">
                 <hr className="divider" />
-                <p>Các trường phù hợp:</p>
+                <h4>Các trường đại học phù hợp:</h4>
                 
                 {recommendation.suitable_universities.map((university, i) => (
-                  <div className="university" key={i}>
-                    <p className="university-name">{university.university_name}</p>
+                  <div className="university-item" key={i}>
+                    <div className="university-header">
+                      <h5 className="university-name">{university.university_name}</h5>
+                      <div className={`safety-level ${university.safety_level.replace(' ', '-').toLowerCase()}`}>
+                        {university.safety_level}
+                      </div>
+                    </div>
                     
-                    {university.subject_groups && university.subject_groups.map((group, j) => (
-                      <div className="subject-group" key={j}>
-                        <span>{group.code}: {group.min_score} điểm</span>
-                        <span className={`result ${group.result === "Đạt" ? "success" : "error"}`}>
-                          {group.result}
+                    <div className="university-details">
+                      <div className="benchmark-info">
+                        <span>Điểm chuẩn {university.combination}: <strong>{university.benchmark_score.toFixed(1)}</strong></span>
+                      </div>
+                      
+                      <div className="score-difference">
+                        <span>Chênh lệch: </span>
+                        <span className={`difference ${university.score_difference >= 0 ? 'positive' : 'negative'}`}>
+                          {university.score_difference >= 0 ? '+' : ''}{university.score_difference.toFixed(1)}
                         </span>
                       </div>
-                    ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -480,15 +499,19 @@ const ConsultationPage = () => {
         try {
             // Chuẩn bị dữ liệu gửi đi
             const requestData = {
-                ...formData,
                 scores: {
-                    ...formData.scores,
-                    // Đảm bảo điểm được lưu dưới dạng số
-                    thpt: Object.entries(formData.scores.thpt).reduce((acc, [key, value]) => {
-                        acc[key] = parseFloat(value) || 0;
-                        return acc;
-                    }, {})
-                }
+                    Toan: formData.scores.thpt.math || 0,
+                    NguVan: formData.scores.thpt.literature || 0,
+                    NgoaiNgu: formData.scores.thpt.foreignLanguage || 0,
+                    VatLy: formData.scores.thpt.physics || 0,
+                    HoaHoc: formData.scores.thpt.chemistry || 0,
+                    SinhHoc: formData.scores.thpt.biology || 0,
+                    LichSu: formData.scores.thpt.history || 0,
+                    DiaLy: formData.scores.thpt.geography || 0,
+                    GDCD: formData.scores.thpt.civics || 0
+                },
+                interests: formData.interests,
+                subject_groups: formData.examBlocks || []
             };
             
             console.log("Sending data to AI:", requestData);

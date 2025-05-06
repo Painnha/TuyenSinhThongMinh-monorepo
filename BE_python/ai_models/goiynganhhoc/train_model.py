@@ -9,6 +9,8 @@ from sklearn.model_selection import train_test_split
 from bson import ObjectId
 import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+from sklearn.preprocessing import StandardScaler
+from tensorflow import keras
 
 # Thêm thư mục cha vào sys.path để import các module
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -148,7 +150,7 @@ def plot_training_history(history, save_path=None):
 def evaluate_model(model, X_test, y_test, preprocessor):
     """Đánh giá chi tiết mô hình để phát hiện overfitting"""
     # Dự đoán trên tập test
-    y_pred = model.model.predict(X_test)
+    y_pred = model.predict(X_test)
     
     # Tính các metric
     mae = mean_absolute_error(y_test, y_pred)
@@ -238,24 +240,49 @@ def train_model_adjusted():
     # Chia dữ liệu thành tập huấn luyện và tập kiểm tra với tỷ lệ 20% cho tập kiểm tra
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
-    # Tạo và huấn luyện mô hình
-    print(f"Đang tạo mô hình với {X_train.shape[1]} đặc trưng đầu vào và {y_train.shape[1]} đặc trưng đầu ra...")
-    model = MajorRecommendationModel(
-        input_dim=X_train.shape[1],
-        output_dim=y_train.shape[1]
+    # Chuẩn hóa dữ liệu
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+    
+    # Lưu thông số chuẩn hóa
+    scaler_mean = scaler.mean_
+    scaler_scale = scaler.scale_
+    
+    # Tạo mô hình
+    model = keras.Sequential([
+        keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],),
+                          kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+        keras.layers.BatchNormalization(),
+        keras.layers.Dropout(0.3),
+        keras.layers.Dense(64, activation='relu',
+                          kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+        keras.layers.BatchNormalization(),
+        keras.layers.Dropout(0.3),
+        keras.layers.Dense(y_train.shape[1], activation='sigmoid')
+    ])
+    
+    # Biên dịch
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+        loss='mean_squared_error',
+        metrics=['mae']
     )
     
-    # Early stopping và ReduceLROnPlateau đã được cấu hình trong model.train()
-    
-    # Huấn luyện mô hình với số epoch giảm để tránh overfitting
+    # Huấn luyện
     print("Đang huấn luyện mô hình...")
-    history = model.train(
-        X_train, y_train,
-        X_val=X_test, y_val=y_test,
-        epochs=20,  # Giảm số epoch so với ban đầu
-        batch_size=16,  # Giảm batch size để cải thiện generalization
-        callbacks=None,  # Sử dụng cấu hình mặc định trong model.train()
-        verbose=1
+    history = model.fit(
+        X_train_scaled, y_train,
+        epochs=50,
+        batch_size=32,
+        validation_data=(X_test_scaled, y_test),
+        callbacks=[
+            tf.keras.callbacks.EarlyStopping(
+                monitor='val_loss',
+                patience=5,
+                restore_best_weights=True
+            )
+        ]
     )
     
     # Vẽ và lưu biểu đồ lịch sử huấn luyện
@@ -265,20 +292,13 @@ def train_model_adjusted():
     # Đánh giá mô hình
     mae, mse, rmse, r2, accuracies = evaluate_model(model, X_test, y_test, preprocessor)
     
-    # Lưu mô hình
+    # Lưu mô hình và scaler
     if not os.path.exists(MODEL_PATH):
         os.makedirs(MODEL_PATH)
     
-    # Lưu mô hình với định dạng SavedModel
-    saved_model_path = os.path.join(MODEL_PATH, "saved_model")
-    print(f"Đang lưu mô hình tại {saved_model_path}...")
-    model.model.save(saved_model_path, save_format="tf")
-    
-    # Lưu mô hình với timestamp và thông tin số sở thích (làm backup)
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    model_filename = f"major_recommendation_model_{timestamp}.h5"
-    model_path = os.path.join(MODEL_PATH, model_filename)
-    model.save(model_path)
+    model.save(os.path.join(MODEL_PATH, "major_recommendation_model.h5"))
+    np.save(os.path.join(MODEL_PATH, "scaler_mean.npy"), scaler_mean)
+    np.save(os.path.join(MODEL_PATH, "scaler_scale.npy"), scaler_scale)
     
     # Cập nhật thông tin cấu hình mô hình vào MongoDB
     model_config = {
@@ -328,7 +348,7 @@ def train_model_adjusted():
         print("Đã tạo cấu hình mô hình mới trong MongoDB")
     
     print("Huấn luyện mô hình hoàn tất!")
-    return model, saved_model_path, history, preprocessor, X_test, y_test
+    return model, history, preprocessor, X_test, y_test
 
 def test_model(model, preprocessor, student_data=None):
     """Kiểm tra mô hình với dữ liệu mẫu"""
@@ -355,9 +375,12 @@ def test_model(model, preprocessor, student_data=None):
     student_features = preprocessor.preprocess_student_data(student_data)
     student_features = np.expand_dims(student_features, axis=0)  # Thêm batch dimension
     
-    # Dự đoán (không áp dụng market trend weights)
-    # Xu hướng thị trường đã được tích hợp sẵn vào nhãn train_data
-    recommendations = model.predict(student_features, None, top_k=5)
+    # Dự đoán 
+    predictions = model.predict(student_features)
+    
+    # Lấy top-5 ngành có xác suất cao nhất
+    top_indices = np.argsort(predictions[0])[::-1][:5]
+    recommendations = [(idx, float(predictions[0][idx])) for idx in top_indices]
     
     # In kết quả
     print("\n=== Gợi ý ngành học ===")
@@ -382,7 +405,7 @@ def test_model(model, preprocessor, student_data=None):
 
 if __name__ == "__main__":
     # Huấn luyện mô hình đã điều chỉnh
-    model, model_path, history, preprocessor, X_test, y_test = train_model_adjusted()
+    model, history, preprocessor, X_test, y_test = train_model_adjusted()
     
     # Test mô hình với dữ liệu mẫu
     test_model(model, preprocessor)
