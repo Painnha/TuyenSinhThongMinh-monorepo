@@ -450,7 +450,8 @@ const ConsultationPage = () => {
             if (response && response.recommendations) {
                 setRecommendations({
                     data: response.recommendations,
-                    scores: processedScores // Lưu điểm đã xử lý cùng với recommendations
+                    scores: processedScores, // Lưu điểm đã xử lý cùng với recommendations
+                    _id: response._id // Lưu _id từ response API
                 });
             } else {
                 throw new Error("Không nhận được kết quả gợi ý từ hệ thống AI");
@@ -899,6 +900,7 @@ const ConsultationPage = () => {
                         <MajorRecommendation 
                             initialRecommendations={recommendations.data} 
                             studentScores={recommendations.scores}
+                            predictionId={recommendations._id}
                         />
                         <button 
                             className="back-button"

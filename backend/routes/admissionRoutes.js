@@ -322,4 +322,34 @@ router.get('/subjects', async (req, res) => {
     }
 });
 
+/**
+ * Gửi feedback về kết quả dự đoán đến Python API
+ */
+router.post('/feedback', async (req, res) => {
+    try {
+        console.log('Feedback request received:', req.body);
+        const response = await axios.post(`${PYTHON_API_URL}/api/data/admission/feedback`, req.body, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('Feedback response from Python API:', response.data);
+        return res.status(response.status).json(response.data);
+    } catch (error) {
+        console.error('Error forwarding feedback to Python API:', error.message);
+        if (error.response) {
+            return res.status(error.response.status).json({
+                success: false,
+                message: error.response.data.message || 'Lỗi từ Python API',
+                error: error.response.data
+            });
+        }
+        return res.status(500).json({
+            success: false,
+            message: 'Không thể kết nối đến Python API',
+            error: error.message
+        });
+    }
+});
+
 module.exports = router; 

@@ -109,354 +109,374 @@
 
 .recommendation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .recommendation-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  padding: 24px;
-  transition: transform 0.2s;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1.5px solid #000000;
 }
 
 .recommendation-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .major-name {
-  font-size: 20px;
-  margin-bottom: 12px;
-  color: #333;
+  font-size: 1.8rem;
+  color: #1a73e8;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
 }
 
 .category {
-  color: #666;
-  margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 1.1rem;
+  color: #424242;
+  margin-bottom: 0.3rem;
+}
+
+.confidence-container {
+  margin-bottom: 0.5rem;
 }
 
 .confidence {
-  font-weight: 500;
-  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2e7d32;
+  background-color: rgba(46, 125, 50, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
 }
 
 .matching-interests {
-  margin-bottom: 16px;
+  margin: 0.5rem 0;
 }
 
 .matching-interests p {
-  margin-bottom: 8px;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
 }
 
 .chips-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 .custom-chip {
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
-  border-radius: 16px;
-  font-size: 14px;
-  background-color: rgba(25, 118, 210, 0.08);
-  color: #1976d2;
-  border: 1px solid rgba(25, 118, 210, 0.24);
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.chip-delete {
-  margin-left: 4px;
-  font-size: 18px;
-  color: #666;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 4px;
+.description-container {
+  margin: 0.5rem 0;
+  background: #f5f5f5;
+  padding: 0.75rem;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .description {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #424242;
+  line-height: 1.6;
+}
+
+/* Cải thiện thông tin điểm số */
+.student-score-info {
+  background: #f9f9f9;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  border-left: 4px solid #1a73e8;
+}
+
+.student-score-info h4 {
+  color: #1a73e8;
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.score-container p {
+  margin: 0;
+}
+
+/* Cải thiện phần trường đại học */
+.suitable-universities {
+  margin-top: 0.75rem;
 }
 
 .divider {
   border: none;
-  border-top: 1px solid #ddd;
-  margin: 16px 0;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 0.75rem 0;
 }
 
-.suitable-universities {
-  margin-top: 16px;
+.university-section-title {
+  font-size: 1.4rem;
+  color: #1a73e8;
+  margin-bottom: 0.75rem;
 }
 
-.university {
-  margin-bottom: 16px;
+.universities-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
 }
 
-.university-name {
-  font-weight: 500;
-  margin-bottom: 8px;
+.university-item {
+  width: 100%;
 }
 
-.subject-group {
+.university-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.university-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.university-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.university-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.stat-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4px;
-  font-size: 14px;
+  font-size: 0.95rem;
 }
 
-.result {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-.result.success {
-  background-color: rgba(76, 175, 80, 0.1);
-  color: #4caf50;
-}
-
-.result.error {
-  background-color: rgba(244, 67, 54, 0.1);
-  color: #f44336;
-}
-
-/* Custom Select */
-.custom-select-container {
-  position: relative;
-  margin-bottom: 16px;
-}
-
-.custom-select-label {
-  display: block;
-  margin-bottom: 8px;
+.stat-label {
   font-weight: 500;
-}
-
-.custom-select {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 12px 16px;
-  cursor: pointer;
-  background-color: white;
-  transition: border-color 0.2s;
-}
-
-.custom-select:hover {
-  border-color: #1976d2;
-}
-
-.custom-select-value {
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.custom-select-arrow {
-  margin-left: 8px;
-  font-size: 12px;
   color: #666;
 }
 
-.custom-select-options {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.custom-select-option {
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-}
-
-.custom-select-option:hover {
-  background-color: rgba(25, 118, 210, 0.04);
-}
-
-.custom-select-option.selected {
-  background-color: rgba(25, 118, 210, 0.1);
-}
-
-.custom-select-option input[type="checkbox"] {
-  margin-right: 8px;
-}
-
-/* Styling cho phần xem xác suất đậu */
-.university-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.university-name {
-  font-weight: bold;
-  margin: 0;
-  font-size: 1.1em;
-}
-
-.predict-button {
-  background-color: #4285f4;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 0.9em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.predict-button:hover {
-  background-color: #3367d6;
-}
-
-.predict-button:disabled {
-  background-color: #a4c2f4;
-  cursor: not-allowed;
-}
-
-.university-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.university-details p {
-  margin: 0;
-  font-size: 0.9em;
-}
-
-.safety-level.safe {
-  color: #0d904f;
-}
-
-.safety-level.consider {
-  color: #f5a623;
-}
-
-.safety-level.difficult {
-  color: #d73a49;
+.stat-value {
+  font-weight: 600;
+  color: #333;
 }
 
 .positive {
-  color: #0d904f;
+  color: #2e7d32;
 }
 
 .negative {
-  color: #d73a49;
+  color: #d32f2f;
 }
 
-/* Kết quả dự đoán xác suất */
-.admission-prediction-result {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-safe {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-consider {
+  background-color: #fff8e1;
+  color: #f57c00;
+}
+
+.status-difficult {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+/* Nút xem xác suất trúng tuyển */
+.predict-admission-btn-prominent {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin: 0.75rem 0;
+  text-align: center;
+}
+
+.predict-admission-btn-prominent:hover {
+  background-color: #1557b0;
+}
+
+.predict-admission-btn-prominent:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+/* Kết quả dự đoán xác suất trong trường đại học */
+.university-prediction-result {
+  margin-top: 1rem;
+  background: #f5f5f5;
+  padding: 1rem;
   border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.admission-prediction-result h3 {
-  margin-top: 0;
-  color: #333;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  border-left: 4px solid #1a73e8;
 }
 
 .prediction-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.prediction-details p {
-  margin: 8px 0;
-}
-
-.prediction-details .probability {
-  grid-column: 1 / -1;
-  font-size: 1.2em;
-  padding: 8px;
-  border-radius: 4px;
-  text-align: center;
+.probability {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
 .very-high-probability {
-  background-color: #d4edda;
-  color: #0d904f;
+  background-color: #e8f5e9;
+  color: #2e7d32;
 }
 
 .high-probability {
-  background-color: #e3f3d8;
-  color: #4caf50;
+  background-color: #dcedc8;
+  color: #33691e;
 }
 
 .medium-probability {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: #fff8e1;
+  color: #f57c00;
 }
 
 .somewhat-low-probability {
-  background-color: #ffe0b2;
-  color: #e65100;
+  background-color: #ffecb3;
+  color: #ff8f00;
 }
 
 .low-probability {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-.prediction-details .assessment {
-  grid-column: 1 / -1;
-  font-style: italic;
+  background-color: #ffebee;
+  color: #d32f2f;
 }
 
 .positive-diff {
-  color: #0d904f;
+  color: #2e7d32;
+  font-weight: 600;
 }
 
 .negative-diff {
-  color: #d73a49;
+  color: #d32f2f;
+  font-weight: 600;
 }
 
-.prediction-loading,
-.prediction-error {
-  background-color: #f8f9fa;
-  padding: 15px;
+.assessment {
+  font-style: italic;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 0.5rem;
+}
+
+/* Nút feedback trong kết quả dự đoán */
+.prediction-feedback {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  justify-content: flex-end;
+}
+
+.feedback-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 4px;
-  margin-bottom: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.feedback-icon.positive:hover {
+  background-color: #e8f5e9;
+}
+
+.feedback-icon.negative:hover {
+  background-color: #ffebee;
+}
+
+/* Form feedback ở cuối danh sách */
+.feedback-form-container {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px dashed #e0e0e0;
+}
+
+/* Loading và error states */
+.university-prediction-loading,
+.university-prediction-error {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
   text-align: center;
 }
 
-.prediction-error {
-  background-color: #f8d7da;
-  color: #721c24;
+.university-prediction-loading {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.university-prediction-error {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .universities-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 }
 
 /* Responsive */
@@ -468,167 +488,4 @@
   .university-details {
     grid-template-columns: 1fr;
   }
-}
-
-/* Styling cho trường đại học */
-.university-section-title {
-  font-size: 18px;
-  color: #333;
-  margin: 20px 0 16px;
-}
-
-.universities-list {
-  display: grid;
-  gap: 16px;
-}
-
-.university-item {
-  transition: transform 0.2s ease;
-}
-
-.university-item:hover {
-  transform: translateY(-3px);
-}
-
-.university-card {
-  background-color: #f5f8ff;
-  border-radius: 8px;
-  border: 1px solid #e0e7ff;
-  padding: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.university-info {
-  flex: 1;
-}
-
-.university-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 12px;
-  color: #1565c0;
-}
-
-.university-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-
-.stat-label {
-  color: #666;
-  margin-right: 6px;
-  white-space: nowrap;
-}
-
-.stat-value {
-  font-weight: 500;
-}
-
-.status-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.status-safe {
-  background-color: rgba(13, 144, 79, 0.1);
-  color: #0d904f;
-}
-
-.status-consider {
-  background-color: rgba(245, 166, 35, 0.1);
-  color: #f5a623;
-}
-
-.status-difficult {
-  background-color: rgba(215, 58, 73, 0.1);
-  color: #d73a49;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 8px;
-}
-
-.predict-admission-btn {
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.predict-admission-btn:hover {
-  background-color: #1565c0;
-}
-
-.predict-admission-btn:disabled {
-  background-color: #90caf9;
-  cursor: not-allowed;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .university-stats {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Nút xem xác suất nổi bật */
-.predict-admission-btn-prominent {
-  display: block;
-  width: 100%;
-  margin: 10px 0 15px;
-  background-color: #ff5722;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 16px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.predict-admission-btn-prominent:hover {
-  background-color: #e64a19;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.predict-admission-btn-prominent:disabled {
-  background-color: #ffab91;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-/* Thêm animation để làm nút nổi bật */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.predict-admission-btn-prominent {
-  animation: pulse 2s infinite;
 } 
