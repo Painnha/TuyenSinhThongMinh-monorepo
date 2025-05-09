@@ -7,6 +7,7 @@ import traceback
 from datetime import datetime
 from pymongo import MongoClient
 import os
+from bson import ObjectId
 
 # Kết nối MongoDB - sử dụng biến môi trường thống nhất với Node.js
 MONGODB_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
@@ -65,6 +66,11 @@ def predict_admission():
         major_name = data.get('majorName').lower().strip()
         subject_scores = data.get('scores', {})
         priority_score = float(data.get('priorityScore', 0))
+        
+        # Lấy userId từ dữ liệu hoặc sử dụng số điện thoại nếu có
+        user_id = data.get('userId', None)
+        if not user_id and 'phone' in data:
+            user_id = data.get('phone')
         
         # Chuyển đổi các giá trị điểm từ chuỗi rỗng thành None
         for key, value in subject_scores.items():
@@ -178,6 +184,7 @@ def predict_admission():
         # Xử lý chỉ tiêu
         quota = None
         q0 = None
+        quota_history = []
         current_year = datetime.now().year
         
         if admission_criteria and 'quota' in admission_criteria:
@@ -193,10 +200,17 @@ def predict_admission():
                     low, high = map(int, total.split('-'))
                     avg_quota = (low + high) / 2
                     all_quotas.append(avg_quota)
+                    quota_history.append((year, avg_quota))
                     
                     # Nếu là năm hiện tại, lưu làm quota chính
                     if year == current_year:
                         quota = avg_quota
+                elif total and isinstance(total, (int, float)):
+                    all_quotas.append(float(total))
+                    quota_history.append((year, float(total)))
+                    
+                    if year == current_year:
+                        quota = float(total)
             
             # Tính q0 (trung bình của tất cả chỉ tiêu)
             q0 = sum(all_quotas) / len(all_quotas) if all_quotas else None
@@ -309,10 +323,45 @@ def predict_admission():
             
             prediction['assessment'] = assessment
             
+            # Tạo đối tượng log để lưu vào database
+            data_to_predict = {
+                "student_score": student_score,
+                "average_score": average_score,
+                "expected_score": expected_score,
+                "score_diff": student_score - expected_score,
+                "quota": quota,
+                "q0": q0,
+                "market_trend": market_trend,
+                "score_trend": score_trend,
+                "historicalScores": historical_scores,
+                "q": quota_history
+            }
+            
+            log_data = {
+                "userId": user_id,
+                "timestamp": datetime.now(),
+                "modelType": "admission_prediction",
+                "inputs": {
+                    "universityCode": university_code,
+                    "majorName": major_name,
+                    "scores": subject_scores,
+                    "priorityScore": priority_score,
+                    "combination": best_combination
+                },
+                "outputs": prediction,
+                "dataToPredict": data_to_predict,
+                "isUseful": None,
+                "feedback": None
+            }
+            
+            # Lưu vào MongoDB
+            log_id = db.prediction_logs.insert_one(log_data).inserted_id
+            
             # Trả về kết quả
             return jsonify({
                 'success': True,
-                'prediction': prediction
+                'prediction': prediction,
+                '_id': str(log_id)  # Thêm ID của log để frontend có thể sử dụng cho feedback
             }), 200
             
         except FileNotFoundError as e:
@@ -349,6 +398,50 @@ def predict_admission():
             'success': False,
             'message': f"Đã xảy ra lỗi: {str(e)}",
             'error': 'INTERNAL_ERROR'
+        }), 500
+
+# API cập nhật feedback cho dự đoán
+@admission_prediction_blueprint.route('/feedback', methods=['POST'])
+def update_feedback():
+    try:
+        data = request.get_json()
+        
+        if not data or 'predictionId' not in data:
+            return jsonify({
+                'success': False,
+                'message': 'Thiếu thông tin predictionId'
+            }), 400
+            
+        prediction_id = data.get('predictionId')
+        is_useful = data.get('isUseful')
+        feedback_text = data.get('feedback')
+        
+        # Cập nhật log trong MongoDB
+        result = db.prediction_logs.update_one(
+            {'_id': ObjectId(prediction_id)},
+            {'$set': {
+                'isUseful': is_useful,
+                'feedback': feedback_text,
+                'feedbackDate': datetime.now()
+            }}
+        )
+        
+        if result.modified_count > 0:
+            return jsonify({
+                'success': True,
+                'message': 'Đã cập nhật feedback thành công'
+            }), 200
+        else:
+            return jsonify({
+                'success': False,
+                'message': 'Không tìm thấy dự đoán với ID đã cung cấp'
+            }), 404
+            
+    except Exception as e:
+        print(f"Lỗi khi cập nhật feedback: {e}")
+        return jsonify({
+            'success': False,
+            'message': f"Đã xảy ra lỗi: {str(e)}"
         }), 500
 
 def calculate_expected_score(mu, t, q, q0, score_trend, alpha=0.5, beta=1.0, gamma=0.7):

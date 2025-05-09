@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { aiService } from '../../services/api/aiService';
 import './AdmissionProbability.css';
+import FeedbackForm from '../PredictionLogs/FeedbackForm';
 
 // Custom Select Component
 const CustomSelect = ({ label, options, value, onChange }) => {
@@ -109,6 +110,7 @@ const AdmissionProbability = () => {
   const [subjects, setSubjects] = useState([]);
   const [filteredMajors, setFilteredMajors] = useState([]);
   const [filteredUniversities, setFilteredUniversities] = useState([]);
+  const [predictionId, setPredictionId] = useState(null);
   
   // Lấy dữ liệu từ API khi component mount
   useEffect(() => {
@@ -283,7 +285,9 @@ const AdmissionProbability = () => {
         universityCode: formData.universityCode,
         majorName: formData.majorName, // Đã được chọn từ danh sách options nên đảm bảo đúng format
         scores: formData.scores,
-        priorityScore: formData.priorityScore
+        priorityScore: formData.priorityScore,
+        // Thêm userId từ localStorage nếu đã đăng nhập
+        userId: localStorage.getItem('userId') || null
       };
       
       console.log('Gửi dữ liệu dự đoán:', requestData);
@@ -293,6 +297,9 @@ const AdmissionProbability = () => {
       
       if (response && response.success && response.prediction) {
         setPrediction(response.prediction);
+        if (response._id) {
+          setPredictionId(response._id);
+        }
       } else {
         throw new Error(response.message || 'Không thể dự đoán xác suất đậu đại học');
       }
@@ -311,6 +318,11 @@ const AdmissionProbability = () => {
     if (probability >= 0.4) return '#ffb74d'; // Cam
     if (probability >= 0.2) return '#ff9800'; // Cam đậm
     return '#f44336'; // Đỏ
+  };
+  
+  // Xử lý khi người dùng gửi feedback
+  const handleFeedbackSubmitted = (isUseful, feedbackText) => {
+    console.log('Feedback submitted for admission prediction:', isUseful, feedbackText);
   };
   
   return (
@@ -485,6 +497,14 @@ const AdmissionProbability = () => {
             </div>
           </div>
         </div>
+      )}
+      
+      {prediction && predictionId && (
+        <FeedbackForm 
+          predictionId={predictionId}
+          modelType="admission_prediction"
+          onFeedbackSubmitted={handleFeedbackSubmitted}
+        />
       )}
     </div>
   );

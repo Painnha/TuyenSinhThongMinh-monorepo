@@ -76,10 +76,47 @@ def preprocess_student_data(student_data, db):
     major_to_id = {}
     id_to_major = {}
     
+    # Debug thông tin ngành học
+    print(f"\n===== DEBUG THÔNG TIN NGÀNH HỌC =====")
+    print(f"Số lượng ngành trong DB: {len(majors)}")
+    
+    # Kiểm tra thông tin sở thích cho mỗi ngành
+    major_with_interests = 0
+    for major in majors:
+        if 'interests' in major and isinstance(major['interests'], list):
+            major_with_interests += 1
+    
+    print(f"Số ngành có trường interests: {major_with_interests}/{len(majors)}")
+    
     for i, major in enumerate(majors):
         name = major['name']
         major_to_id[name] = i
-        id_to_major[i] = {'name': name, 'id': str(major['_id']), 'description': major.get('description', '')}
+        
+        # Lấy đầy đủ thông tin ngành học
+        # Chú ý: Trong MongoDB, interests là mảng các object {interestId, name, weight}
+        # Cần trích xuất chỉ tên sở thích
+        major_interests = []
+        if 'interests' in major and isinstance(major['interests'], list):
+            for interest_obj in major['interests']:
+                if isinstance(interest_obj, dict) and 'name' in interest_obj:
+                    major_interests.append(interest_obj['name'])
+        
+        id_to_major[i] = {
+            'name': name, 
+            'id': str(major['_id']), 
+            'description': major.get('description', ''),
+            'category': major.get('category', 'Chưa phân loại'),
+            'interests': major_interests  # Lưu mảng tên sở thích đã trích xuất
+        }
+        
+        # Debug một số ngành để kiểm tra
+        if i < 3 or name == "Nuôi trồng thủy sản":  # Debug thêm ngành đang có vấn đề
+            print(f"Ngành {name}: có {len(major_interests)} sở thích")
+            if major_interests:
+                print(f"- Sở thích đã trích xuất: {major_interests}")
+                # In cấu trúc sở thích gốc để debug
+                if 'interests' in major:
+                    print(f"- Cấu trúc sở thích gốc (1 mẫu): {major['interests'][0] if major['interests'] else 'N/A'}")
     
     # Danh sách các môn học
     subjects = ['Toan', 'NguVan', 'VatLy', 'HoaHoc', 'SinhHoc', 'LichSu', 'DiaLy', 'GDCD', 'NgoaiNgu']
@@ -153,33 +190,57 @@ def predict_recommended_majors(model, scaler, features, metadata, top_k=5):
     recommendations = []
     id_to_major = metadata['id_to_major']
     student_data = metadata['student_data']
+    student_interests = metadata['student_interests']
     
     # Xác định tổ hợp môn và điểm cao nhất của học sinh
     best_combination, student_score = find_best_combination_score(student_data)
     
+    print("\n====== GỢI Ý NGÀNH HỌC ======")
+    print(f"Sở thích của học sinh: {student_interests}")
+    
     for idx in top_indices:
         if idx in id_to_major:
             major_info = id_to_major[idx]
+            major_name = major_info['name']
+            confidence = float(predictions[idx])
+            
+            print(f"\nNgành: {major_name}, Mức độ phù hợp: {confidence*100:.1f}%")
             
             # Tìm các sở thích khớp với ngành học
             matching_interests = []
-            for interest in metadata['student_interests']:
-                if interest in major_info.get('interests', []):
+            major_interests = major_info.get('interests', [])
+            
+            print(f"Sở thích của ngành từ MongoDB: {major_interests}")
+            
+            # Kiểm tra sự trùng khớp giữa sở thích của học sinh và sở thích của ngành
+            for interest in student_interests:
+                if interest in major_interests:
                     matching_interests.append(interest)
+                    print(f"✓ Khớp với sở thích: {interest}")
+                else:
+                    print(f"✗ Không khớp với sở thích: {interest}")
+            
+            # Nếu không tìm thấy sở thích nào khớp và độ tin cậy đủ cao, 
+            # thêm tối đa 2 sở thích đầu tiên của học sinh (như code cũ)
+            if not matching_interests and confidence >= 0.15:  # 15% min confidence
+                num_interests = min(2, len(student_interests))
+                if num_interests > 0:
+                    matching_interests = student_interests[:num_interests]
+                    print(f"⚠️ Không tìm thấy sở thích trùng khớp. Tạm thời thêm {num_interests} sở thích đầu tiên.")
             
             # Tìm các trường đại học phù hợp với ngành này
             suitable_universities = find_suitable_universities(
-                major_info['name'], 
+                major_name, 
                 best_combination, 
                 student_score, 
                 db=metadata['db']
             )
             
             recommendation = {
-                'major_name': major_info['name'],
+                'major_name': major_name,
                 'category': major_info.get('category', 'Chưa phân loại'),
-                'confidence': float(predictions[idx]),
-                'matching_interests': matching_interests or metadata['student_interests'][:2],
+                'confidence': confidence,
+                'matching_interests': matching_interests,
                 'description': major_info.get('description', 'Không có mô tả'),
                 'best_combination': best_combination,
                 'student_score': student_score,
@@ -238,7 +299,7 @@ def find_suitable_universities(major_name, combination, student_score, db):
         benchmark_query = {
             'major': {'$regex': major_name, '$options': 'i'},
             'subject_combination': combination,
-            'year': 2024  # Năm mới nhất
+            'year': 2024  # Chỉ lấy năm 2024
         }
         
         print(f"\n====== TÌM TRƯỜNG PHÙ HỢP ======")
@@ -266,26 +327,60 @@ def find_suitable_universities(major_name, combination, student_score, db):
                 'subject_combination': combination
             }
             print(f"Query mở rộng: {broader_query}")
-            benchmarks = list(db.benchmark_scores.find(broader_query).sort('year', -1))
-            print(f"Tìm thấy {len(benchmarks)} điểm chuẩn với query mở rộng")
             
-            # Nếu vẫn không tìm thấy, thử bỏ qua subject_combination
+            # Tìm năm gần nhất có dữ liệu
+            latest_year = db.benchmark_scores.find(broader_query).sort('year', -1).limit(1)
+            latest_year = list(latest_year)
+            if latest_year:
+                latest_year = latest_year[0].get('year')
+                print(f"Tìm thấy năm gần nhất: {latest_year}")
+                
+                # Chỉ lấy dữ liệu của năm gần nhất
+                year_query = {
+                    'major': {'$regex': major_name, '$options': 'i'},
+                    'subject_combination': combination,
+                    'year': latest_year
+                }
+                benchmarks = list(db.benchmark_scores.find(year_query))
+                print(f"Tìm thấy {len(benchmarks)} điểm chuẩn với năm {latest_year}")
+            
+            # Nếu vẫn không tìm thấy, thử bỏ qua subject_combination với năm gần nhất
             if not benchmarks:
                 print("Không tìm thấy điểm chuẩn với tổ hợp, tìm bất kỳ tổ hợp nào")
-                name_only_query = {'major': {'$regex': major_name, '$options': 'i'}}
-                print(f"Query chỉ theo tên ngành: {name_only_query}")
-                benchmarks = list(db.benchmark_scores.find(name_only_query).sort('year', -1))
-                print(f"Tìm thấy {len(benchmarks)} điểm chuẩn chỉ dựa vào tên ngành")
+                # Tìm năm gần nhất
+                latest_year_query = {'major': {'$regex': major_name, '$options': 'i'}}
+                latest_year_data = db.benchmark_scores.find(latest_year_query).sort('year', -1).limit(1)
+                latest_year_data = list(latest_year_data)
+                
+                if latest_year_data:
+                    latest_year = latest_year_data[0].get('year')
+                    name_only_query = {
+                        'major': {'$regex': major_name, '$options': 'i'},
+                        'year': latest_year
+                    }
+                    print(f"Query chỉ theo tên ngành và năm {latest_year}: {name_only_query}")
+                    benchmarks = list(db.benchmark_scores.find(name_only_query))
+                    print(f"Tìm thấy {len(benchmarks)} điểm chuẩn chỉ dựa vào tên ngành và năm {latest_year}")
         
         # Phân loại trường theo điểm chuẩn và entry_level
         high_level = []
         mid_level = []
         low_level = []
         
+        # Track trường đã thêm để tránh trùng lặp
+        seen_universities = set()
+        
         for benchmark in benchmarks:
             benchmark_score = float(benchmark.get('benchmark_score', 0))
             university_name = benchmark.get('university', 'Không xác định')
+            university_id = benchmark.get('university_id')  # Lấy id trường nếu có
             entry_level = benchmark.get('entry_level', 'Trung bình')
+            
+            # Bỏ qua nếu trường đã được thêm
+            if university_name in seen_universities:
+                continue
+            
+            seen_universities.add(university_name)
             
             # Tính chênh lệch điểm
             score_diff = student_score - benchmark_score
@@ -300,10 +395,12 @@ def find_suitable_universities(major_name, combination, student_score, db):
             
             uni_info = {
                 'university_name': university_name,
+                'university_id': university_id,  # Thêm id trường nếu có
                 'benchmark_score': benchmark_score,
                 'combination': benchmark.get('subject_combination', combination),
                 'score_difference': score_diff,
-                'safety_level': safety_level
+                'safety_level': safety_level,
+                'year': benchmark.get('year', 2024)  # Thêm năm để biết điểm chuẩn là của năm nào
             }
             
             # Phân loại theo entry_level

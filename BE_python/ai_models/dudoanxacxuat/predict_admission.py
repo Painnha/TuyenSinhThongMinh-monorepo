@@ -588,6 +588,7 @@ def predict_from_mongodb(university_code, major_name, combination, student_score
             'expectedScore': expected_score,
             'scoreDiff': student_score - expected_score,
             'quota': quota,
+            'q0': q0,
             'marketTrend': market_trend,
             'admissionProbability': float(probability),
             'admissionPercentage': f"{float(probability)*100:.2f}%",

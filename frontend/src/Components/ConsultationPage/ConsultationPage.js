@@ -122,93 +122,6 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
     );
 };
 
-// Component để hiển thị kết quả gợi ý ngành học
-const RecommendationResults = ({ recommendations }) => {
-  if (!recommendations || recommendations.length === 0) {
-    return <div className="no-results">Không có kết quả gợi ý nào phù hợp.</div>;
-  }
-  
-  return (
-    <div className="recommendation-results">
-      <h2>Kết quả gợi ý ngành học</h2>
-      
-      <div className="recommendation-grid">
-        {recommendations.map((recommendation, index) => (
-          <div className="recommendation-card" key={index}>
-            <h3 className="major-name">{recommendation.major_name.toUpperCase()}</h3>
-            
-            <p className="category">Ngành: {recommendation.category}</p>
-            
-            <p className="confidence">
-              Mức độ phù hợp: {(recommendation.confidence * 100).toFixed(1)}%
-            </p>
-            
-            {recommendation.matching_interests && recommendation.matching_interests.length > 0 && (
-              <div className="matching-interests">
-                <p>Phù hợp với sở thích:</p>
-                <div className="chips-container">
-                  {recommendation.matching_interests.map((interest, i) => (
-                    <span className="custom-chip" key={i}>{interest}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            {recommendation.description && (
-              <p className="description">
-                {recommendation.description.length > 150 
-                  ? `${recommendation.description.substring(0, 150)}...` 
-                  : recommendation.description}
-              </p>
-            )}
-            
-            {/* Hiển thị thông tin điểm tổ hợp của học sinh */}
-            <div className="student-score-info">
-              <h4>Thông tin điểm số của bạn</h4>
-              <div className="score-container">
-                <p>Tổ hợp tối ưu: <strong>{recommendation.best_combination}</strong></p>
-                <p>Điểm của bạn: <strong>{recommendation.student_score.toFixed(1)}</strong></p>
-              </div>
-            </div>
-            
-            {/* Hiển thị các trường phù hợp */}
-            {recommendation.suitable_universities && recommendation.suitable_universities.length > 0 && (
-              <div className="suitable-universities">
-                <hr className="divider" />
-                <h4>Các trường đại học phù hợp:</h4>
-                
-                {recommendation.suitable_universities.map((university, i) => (
-                  <div className="university-item" key={i}>
-                    <div className="university-header">
-                      <h5 className="university-name">{university.university_name}</h5>
-                      <div className={`safety-level ${university.safety_level.replace(' ', '-').toLowerCase()}`}>
-                        {university.safety_level}
-                      </div>
-                    </div>
-                    
-                    <div className="university-details">
-                      <div className="benchmark-info">
-                        <span>Điểm chuẩn {university.combination}: <strong>{university.benchmark_score.toFixed(1)}</strong></span>
-                      </div>
-                      
-                      <div className="score-difference">
-                        <span>Chênh lệch: </span>
-                        <span className={`difference ${university.score_difference >= 0 ? 'positive' : 'negative'}`}>
-                          {university.score_difference >= 0 ? '+' : ''}{university.score_difference.toFixed(1)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const ConsultationPage = () => {
     const [formData, setFormData] = useState({
         admissionMethod: '',
@@ -497,7 +410,7 @@ const ConsultationPage = () => {
         setRecommendations(null);
         
         try {
-            // Chuẩn bị dữ liệu gửi đi
+            // Chuẩn bị dữ liệu gửi đi theo cấu trúc gốc
             const requestData = {
                 scores: {
                     Toan: formData.scores.thpt.math || 0,
@@ -514,14 +427,31 @@ const ConsultationPage = () => {
                 subject_groups: formData.examBlocks || []
             };
             
-            console.log("Sending data to AI:", requestData);
+            // Tạo một bản sao của điểm đã xử lý để sử dụng sau
+            const processedScores = {
+                Toan: parseFloat(formData.scores.thpt.math) || 0,
+                NguVan: parseFloat(formData.scores.thpt.literature) || 0,
+                NgoaiNgu: parseFloat(formData.scores.thpt.foreignLanguage) || 0,
+                VatLy: parseFloat(formData.scores.thpt.physics) || 0,
+                HoaHoc: parseFloat(formData.scores.thpt.chemistry) || 0,
+                SinhHoc: parseFloat(formData.scores.thpt.biology) || 0,
+                LichSu: parseFloat(formData.scores.thpt.history) || 0,
+                DiaLy: parseFloat(formData.scores.thpt.geography) || 0,
+                GDCD: parseFloat(formData.scores.thpt.civics) || 0
+            };
             
-            // Gọi API gợi ý ngành học
+            console.log("Đang gọi API với dữ liệu:", requestData);
+            console.log("Điểm đã được xử lý để sử dụng sau:", processedScores);
+            
+            // Gọi API gợi ý ngành học 
             const response = await aiService.recommendMajors(requestData);
             console.log("AI response:", response);
             
             if (response && response.recommendations) {
-                setRecommendations(response.recommendations);
+                setRecommendations({
+                    data: response.recommendations,
+                    scores: processedScores // Lưu điểm đã xử lý cùng với recommendations
+                });
             } else {
                 throw new Error("Không nhận được kết quả gợi ý từ hệ thống AI");
             }
@@ -964,7 +894,12 @@ const ConsultationPage = () => {
                     </form>
                 ) : (
                     <div className="ai-results-container">
-                        <RecommendationResults recommendations={recommendations} />
+                        {console.log("=== ĐIỂM HỌC SINH TRƯỚC KHI TRUYỀN ===", recommendations.scores)}
+                        
+                        <MajorRecommendation 
+                            initialRecommendations={recommendations.data} 
+                            studentScores={recommendations.scores}
+                        />
                         <button 
                             className="back-button"
                             onClick={() => setRecommendations(null)}

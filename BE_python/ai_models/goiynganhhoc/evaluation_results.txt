@@ -1,10 +1,10 @@
 === ĐÁNH GIÁ MÔ HÌNH ===
-Mean Absolute Error (MAE): 0.0105
+Mean Absolute Error (MAE): 0.0127
 Mean Squared Error (MSE): 0.0015
-Root Mean Squared Error (RMSE): 0.0390
-R² Score: 0.0094
+Root Mean Squared Error (RMSE): 0.0393
+R² Score: 0.0082
 
-Top-1 Accuracy: 67.80%
-Top-3 Accuracy: 81.80%
-Top-5 Accuracy: 88.65%
-Top-10 Accuracy: 95.55%
+Top-1 Accuracy: 65.35%
+Top-3 Accuracy: 85.10%
+Top-5 Accuracy: 91.35%
+Top-10 Accuracy: 96.75%

@@ -5,6 +5,8 @@ import json
 import traceback
 from pymongo import MongoClient
 import os
+from datetime import datetime
+from bson import ObjectId
 
 # Kết nối MongoDB - sử dụng biến môi trường thống nhất với Node.js
 # Thứ tự ưu tiên: MONGODB_URI -> MONGO_URI -> fallback tới giá trị mặc định
@@ -99,10 +101,32 @@ def recommend_majors():
             features, metadata = preprocess_student_data(transformed_data, db)
             recommendations = predict_recommended_majors(model, scaler, features, metadata, top_k=5)
             
+            # Chuẩn bị dữ liệu để lưu log
+            user_id = data.get('userId', None)
+            
+            # Nếu userId không có hoặc rỗng thì sử dụng số điện thoại (nếu có)
+            if not user_id and 'phone' in data:
+                user_id = data.get('phone')
+            
+            # Tạo log dữ liệu
+            log_data = {
+                "userId": user_id,
+                "timestamp": datetime.now(),
+                "modelType": "major_recommendation",
+                "inputs": transformed_data,
+                "outputs": recommendations,
+                "isUseful": None,  # Sẽ được cập nhật khi có feedback
+                "feedback": None   # Sẽ được cập nhật khi có feedback
+            }
+            
+            # Lưu vào MongoDB và lấy id của bản ghi
+            log_id = db.prediction_logs.insert_one(log_data).inserted_id
+            
             # Trả về kết quả
             return jsonify({
                 'success': True,
-                'recommendations': recommendations
+                'recommendations': recommendations,
+                '_id': str(log_id)  # Thêm ID của log để frontend có thể sử dụng cho feedback
             }), 200
             
         except FileNotFoundError as e:
@@ -128,6 +152,50 @@ def recommend_majors():
             'success': False,
             'message': f"Đã xảy ra lỗi: {str(e)}",
             'error': 'INTERNAL_ERROR'
+        }), 500
+
+# API cập nhật feedback cho dự đoán
+@major_recommendation_blueprint.route('/feedback', methods=['POST'])
+def update_feedback():
+    try:
+        data = request.get_json()
+        
+        if not data or 'predictionId' not in data:
+            return jsonify({
+                'success': False,
+                'message': 'Thiếu thông tin predictionId'
+            }), 400
+            
+        prediction_id = data.get('predictionId')
+        is_useful = data.get('isUseful')
+        feedback_text = data.get('feedback')
+        
+        # Cập nhật log trong MongoDB
+        result = db.prediction_logs.update_one(
+            {'_id': ObjectId(prediction_id)},
+            {'$set': {
+                'isUseful': is_useful,
+                'feedback': feedback_text,
+                'feedbackDate': datetime.now()
+            }}
+        )
+        
+        if result.modified_count > 0:
+            return jsonify({
+                'success': True,
+                'message': 'Đã cập nhật feedback thành công'
+            }), 200
+        else:
+            return jsonify({
+                'success': False,
+                'message': 'Không tìm thấy dự đoán với ID đã cung cấp'
+            }), 404
+            
+    except Exception as e:
+        print(f"Lỗi khi cập nhật feedback: {e}")
+        return jsonify({
+            'success': False,
+            'message': f"Đã xảy ra lỗi: {str(e)}"
         }), 500
 
 # API lấy danh sách sở thích

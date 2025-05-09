@@ -44,6 +44,19 @@ router.post('/predict-ai', async (req, res) => {
         
         console.log('Nhận được phản hồi từ Python API:', response.status);
         
+        // Thêm log chi tiết để debug
+        console.log('Python API response data keys:', Object.keys(response.data));
+        if (response.data.data) {
+            console.log('data keys:', Object.keys(response.data.data));
+        } else if (response.data.prediction) {
+            console.log('prediction keys:', Object.keys(response.data.prediction));
+            // Kiểm tra và thêm q0 nếu không có
+            if (!response.data.prediction.q0 && response.data.prediction.quota) {
+                console.log('q0 missing in Python API response, adding it');
+                response.data.prediction.q0 = response.data.prediction.quota * 0.9; // Tạm tính
+            }
+        }
+        
         // Chuyển tiếp kết quả từ Python API
         return res.status(response.status).json(response.data);
     } catch (error) {
