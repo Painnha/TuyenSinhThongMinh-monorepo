@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:5000/api';
+// Sử dụng biến môi trường hoặc URL mặc định
+const API_URL = (process.env.REACT_APP_API_URL || 'https://tuyensinhthongminh-api.onrender.com') + '/api';
 
 // University service
 export const universityService = {

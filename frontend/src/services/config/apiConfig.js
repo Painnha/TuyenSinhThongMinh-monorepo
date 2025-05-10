@@ -1,5 +1,5 @@
-// Lấy API URL từ biến môi trường hoặc sử dụng giá trị mặc định
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+// Lấy API URL từ biến môi trường hoặc sử dụng giá trị mặc định cho production
+const apiUrl = process.env.REACT_APP_API_URL || 'https://tuyensinhthongminh-api.onrender.com';
 
 // Log thông tin API URL để debug
 console.log('=== API Configuration ===');
