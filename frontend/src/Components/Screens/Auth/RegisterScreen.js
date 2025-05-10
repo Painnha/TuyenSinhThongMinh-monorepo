@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Auth.css';
 import LoginImg from '../../Image/RegisterImg.png';
 import axios from 'axios';
+import { API_URL } from '../../../services/config/apiConfig';
 
 const RegisterScreen = () => {
   const [step, setStep] = useState(1); // 1: số điện thoại, 2: OTP, 3: thông tin đăng ký
@@ -83,7 +84,7 @@ const RegisterScreen = () => {
     try {
       // Chuyển đổi định dạng số điện thoại trước khi gửi
       const formattedPhone = formatPhoneNumber(phone);
-      await axios.post('http://localhost:5000/api/auth/check-phone', { phone: formattedPhone });
+      await axios.post(`${API_URL}/api/auth/check-phone`, { phone: formattedPhone });
       setStep(2); // Chuyển sang bước nhập OTP
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại ban đầu
@@ -98,7 +99,7 @@ const RegisterScreen = () => {
     setLoading(true);
     try {
       const formattedPhone = formatPhoneNumber(phone);
-      await axios.post('http://localhost:5000/api/auth/resend-otp', { phone: formattedPhone });
+      await axios.post(`${API_URL}/api/auth/resend-otp`, { phone: formattedPhone });
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại cho đến khi hết thời gian mới
       setError(''); // Xóa thông báo lỗi nếu có
@@ -122,7 +123,7 @@ const RegisterScreen = () => {
 
     try {
       const formattedPhone = formatPhoneNumber(phone);
-      const response = await axios.post('http://localhost:5000/api/auth/verify-otp', { phone: formattedPhone, otp });
+      const response = await axios.post(`${API_URL}/api/auth/verify-otp`, { phone: formattedPhone, otp });
       setStep(3); // Chuyển sang bước nhập thông tin đăng ký
     } catch (error) {
       setError(error.response?.data?.message || 'Mã OTP không đúng. Vui lòng kiểm tra lại');
@@ -157,7 +158,7 @@ const RegisterScreen = () => {
 
     try {
       const formattedPhone = formatPhoneNumber(phone);
-      await axios.post('http://localhost:5000/api/auth/register', {
+      await axios.post(`${API_URL}/api/auth/register`, {
         phone: formattedPhone,
         userName,
         password

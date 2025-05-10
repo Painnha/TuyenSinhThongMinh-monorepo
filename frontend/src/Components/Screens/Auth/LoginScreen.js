@@ -6,6 +6,7 @@ import GoogleIcon from '../../Image/GoogleIcon.png';
 import FaceIcon from '../../Image/FaceIcon.png';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { API_URL } from '../../../services/config/apiConfig';
 
 const LoginScreen = () => {
   const [phone, setPhone] = useState('');
@@ -75,14 +76,14 @@ const LoginScreen = () => {
     setLoading(true);
 
     try {
-      console.log('Đang gửi request đến:', 'http://localhost:5000/api/auth/login');
+      console.log('Đang gửi request đến:', `${API_URL}/api/auth/login`);
       
       // Chuyển đổi định dạng số điện thoại trước khi gửi
       const formattedPhone = formatPhoneNumber(phone);
       
       console.log('Dữ liệu gửi đi:', { phone: formattedPhone, password });
       
-      const response = await axios.post('http://localhost:5000/api/auth/login', { 
+      const response = await axios.post(`${API_URL}/api/auth/login`, { 
         phone: formattedPhone, 
         password 
       }, {

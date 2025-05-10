@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../../../services/config/apiConfig';
 import './BenchmarkScoreManagement.css'; // Tạo file CSS riêng cho component này
 
-// API Base URL - sửa theo địa chỉ backend của bạn
-const API_BASE_URL = 'http://localhost:5000';
+// API Base URL - sử dụng từ cấu hình
+const API_BASE_URL = API_URL;
 
 // Hàm để lấy token xác thực từ localStorage
 const getAuthToken = () => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../../../services/config/apiConfig';
 
 // Import các component con
 import LogsList from '../../PredictionLogs/LogsList';
@@ -10,9 +11,6 @@ import DeleteConfirmModal from '../../PredictionLogs/DeleteConfirmModal';
 
 // CSS
 import './PredictionLogManagement.css';
-
-// Lấy API URL từ biến môi trường
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 // Component Tab tùy chỉnh
 const CustomTab = ({ active, onClick, title }) => {

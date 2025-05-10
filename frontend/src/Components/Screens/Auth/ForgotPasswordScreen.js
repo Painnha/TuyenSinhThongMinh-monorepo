@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Auth.css';
 import LoginImg from '../../Image/RegisterImg.png';
 import axios from 'axios';
+import { API_URL } from '../../../services/config/apiConfig';
 
 const ForgotPasswordScreen = () => {
   const [step, setStep] = useState(1); // 1: số điện thoại, 2: OTP, 3: mật khẩu mới
@@ -34,7 +35,7 @@ const ForgotPasswordScreen = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/forgot-password/check-phone', { phone });
+      await axios.post(`${API_URL}/forgot-password/check-phone`, { phone });
       setStep(2); // Chuyển sang bước nhập OTP
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại ban đầu
@@ -48,7 +49,7 @@ const ForgotPasswordScreen = () => {
   const handleResendOtp = async () => {
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/forgot-password/resend-otp', { phone });
+      await axios.post(`${API_URL}/forgot-password/resend-otp`, { phone });
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại
       setError(''); // Xóa thông báo lỗi nếu có
@@ -65,7 +66,7 @@ const ForgotPasswordScreen = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/forgot-password/verify-otp', { phone, otp });
+      await axios.post(`${API_URL}/forgot-password/verify-otp`, { phone, otp });
       setStep(3); // Chuyển sang bước nhập mật khẩu mới
     } catch (error) {
       setError(error.response?.data?.message || 'Lỗi khi xác thực OTP');
@@ -86,7 +87,7 @@ const ForgotPasswordScreen = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/forgot-password/reset-password', { phone, newPassword, confirmPassword });
+      await axios.post(`${API_URL}/forgot-password/reset-password`, { phone, newPassword, confirmPassword });
       alert('Đổi mật khẩu thành công!');
       window.location.href = '/login'; // Chuyển hướng về trang đăng nhập
     } catch (error) {
