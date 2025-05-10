@@ -72,7 +72,30 @@ export const aiService = {
             console.log('API URL:', `${API_URL}/api/recommendation/recommend`);
             console.log('Sending data to API:', JSON.stringify(studentData, null, 2));
             
-            const response = await axios.post(`${API_URL}/api/recommendation/recommend`, studentData, {
+            // Lấy thông tin người dùng từ localStorage và trích xuất userId
+            let userId = null;
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                try {
+                    const user = JSON.parse(userStr);
+                    userId = user.phone || user._id; // Sử dụng số điện thoại hoặc _id
+                    console.log('Đã lấy được userId từ localStorage:', userId);
+                } catch (e) {
+                    console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+                }
+            } else {
+                console.log('Không tìm thấy thông tin user trong localStorage');
+            }
+            
+            // Chuẩn bị dữ liệu gửi đi với userId đúng
+            const requestData = {
+                ...studentData,
+                userId: userId
+            };
+            
+            console.log('Dữ liệu gửi đi cuối cùng:', JSON.stringify(requestData, null, 2));
+            
+            const response = await axios.post(`${API_URL}/api/recommendation/recommend`, requestData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -108,6 +131,23 @@ export const aiService = {
             // Kiểm tra dữ liệu đầu vào - sửa để chấp nhận giá trị studentScore = 0
             if (!data.universityCode || !data.majorName || !data.scores) {
                 throw new Error('Thiếu thông tin bắt buộc: universityCode, majorName hoặc scores');
+            }
+            
+            // Lấy thông tin người dùng từ localStorage và trích xuất userId
+            let userId = null;
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                try {
+                    const user = JSON.parse(userStr);
+                    userId = user.phone || user._id; // Sử dụng số điện thoại hoặc _id
+                    console.log('Đã lấy được userId từ localStorage:', userId);
+                    // Thêm userId vào data
+                    data.userId = userId;
+                } catch (e) {
+                    console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+                }
+            } else {
+                console.log('Không tìm thấy thông tin user trong localStorage');
             }
             
             const ADMISSION_API_URL = `${API_URL}/api/data/admission/predict-ai`;
@@ -261,13 +301,54 @@ export const aiService = {
                 throw new Error('Thiếu thông tin predictionId');
             }
             
-            // Xác định userId từ localStorage nếu có
-            const userId = localStorage.getItem('userId');
-            if (userId) {
-                feedbackData.userId = userId;
+            // Lấy thông tin người dùng từ localStorage và trích xuất userId
+            let userId = null;
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                try {
+                    const user = JSON.parse(userStr);
+                    userId = user.phone || user._id; // Sử dụng số điện thoại hoặc _id
+                    console.log('Đã lấy được userId từ localStorage:', userId);
+                    // Thêm userId vào feedbackData
+                    feedbackData.userId = userId;
+                } catch (e) {
+                    console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+                }
+            } else {
+                console.log('Không tìm thấy thông tin user trong localStorage');
             }
             
-            const fullEndpoint = `${API_URL}/api/${endpoint}`;
+            // Sửa đổi: Kiểm tra và xử lý endpoint
+            let fullEndpoint;
+            
+            // Nếu endpoint là recommendation/feedback mà chưa được implement
+            // thì thử dùng data/admission/feedback thay thế
+            if (endpoint === 'recommendation/feedback') {
+                try {
+                    fullEndpoint = `${API_URL}/api/${endpoint}`;
+                    console.log(`Thử gửi feedback đến API: ${fullEndpoint}`);
+                    console.log('Feedback data:', JSON.stringify(feedbackData, null, 2));
+                    
+                    const response = await axios.post(fullEndpoint, feedbackData, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                    
+                    console.log('Kết quả gửi feedback:', response.data);
+                    return response.data;
+                } catch (error) {
+                    if (error.response && error.response.status === 404) {
+                        console.log('API recommendation/feedback không tồn tại, thử dùng data/admission/feedback');
+                        // Thử dùng endpoint thay thế
+                        endpoint = 'data/admission/feedback';
+                    } else {
+                        throw error;
+                    }
+                }
+            }
+            
+            fullEndpoint = `${API_URL}/api/${endpoint}`;
             console.log(`Gửi feedback đến API: ${fullEndpoint}`);
             console.log('Feedback data:', JSON.stringify(feedbackData, null, 2));
             

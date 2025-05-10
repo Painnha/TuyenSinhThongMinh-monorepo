@@ -280,6 +280,19 @@ const AdmissionProbability = () => {
         throw new Error('Vui lòng nhập đủ điểm các môn học cho ít nhất một tổ hợp');
       }
       
+      // Lấy thông tin người dùng từ localStorage
+      let userId = null;
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        try {
+          const user = JSON.parse(userStr);
+          userId = user.phone || user._id;
+          console.log('AdmissionProbability - Đã lấy được userId:', userId);
+        } catch (e) {
+          console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+        }
+      }
+      
       // Chuẩn bị dữ liệu gửi đi - đảm bảo tên ngành được giữ nguyên cách viết hoa/thường từ danh sách
       const requestData = {
         universityCode: formData.universityCode,
@@ -287,7 +300,7 @@ const AdmissionProbability = () => {
         scores: formData.scores,
         priorityScore: formData.priorityScore,
         // Thêm userId từ localStorage nếu đã đăng nhập
-        userId: localStorage.getItem('userId') || null
+        userId: userId
       };
       
       console.log('Gửi dữ liệu dự đoán:', requestData);

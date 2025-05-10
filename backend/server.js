@@ -56,6 +56,8 @@ const startServer = async () => {
     const interestsRouter = require('./routes/interests');
     const admissionRoutes = require('./routes/admissionRoutes');
     const recommendationRoutes = require('./routes/recommendationRoutes');
+    const benchmarkScoreRoutes = require('./routes/benchmarkScoreRoutes');
+    const universityAdminRoutes = require('./routes/universityAdminRoutes');
 
     // Use routes
     app.use('/api/auth', authRoutes);
@@ -65,6 +67,8 @@ const startServer = async () => {
     app.use('/api/interests', interestsRouter);
     app.use('/api/data/admission', admissionRoutes);
     app.use('/api/recommendation', recommendationRoutes);
+    app.use('/api/benchmark-scores', benchmarkScoreRoutes);
+    app.use('/api/admin/universities', universityAdminRoutes);
 
     // Error handling middleware
     app.use((err, req, res, next) => {

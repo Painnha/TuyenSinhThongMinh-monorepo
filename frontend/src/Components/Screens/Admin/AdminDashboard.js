@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import UserManagement from './UserManagement';
 import AdminHeader from '../../layout/AdminHeader';
+import BenchmarkScoreManagement from './BenchmarkScoreManagement';
+import UniversityManagement from './UniversityManagement';
 
 // Đơn giản hóa component để tránh lỗi hooks
 const AdminDashboard = () => {
@@ -10,6 +12,10 @@ const AdminDashboard = () => {
     switch (activeTab) {
       case 'users':
         return <UserManagement />;
+      case 'universities':
+        return <UniversityManagement />;
+      case 'benchmark':
+        return <BenchmarkScoreManagement />;
       case 'statistics':
         return (
           <div>
@@ -54,6 +60,40 @@ const AdminDashboard = () => {
                     }}
                   >
                     Quản lý tài khoản
+                  </button>
+                </li>
+                <li style={{ marginBottom: '10px' }}>
+                  <button 
+                    onClick={() => setActiveTab('universities')}
+                    style={{ 
+                      padding: '10px', 
+                      width: '100%', 
+                      textAlign: 'left',
+                      backgroundColor: activeTab === 'universities' ? '#007bff' : '#f8f9fa',
+                      color: activeTab === 'universities' ? 'white' : 'black',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Quản lý trường đại học
+                  </button>
+                </li>
+                <li style={{ marginBottom: '10px' }}>
+                  <button 
+                    onClick={() => setActiveTab('benchmark')}
+                    style={{ 
+                      padding: '10px', 
+                      width: '100%', 
+                      textAlign: 'left',
+                      backgroundColor: activeTab === 'benchmark' ? '#007bff' : '#f8f9fa',
+                      color: activeTab === 'benchmark' ? 'white' : 'black',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Quản lý điểm chuẩn
                   </button>
                 </li>
                 <li style={{ marginBottom: '10px' }}>

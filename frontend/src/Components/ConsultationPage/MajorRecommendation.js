@@ -230,11 +230,23 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
     try {
       console.log("Gửi dữ liệu:", formData);
       
-      // Chuẩn bị dữ liệu gửi đi
+      // Lấy thông tin người dùng từ localStorage
+      let userId = null;
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        try {
+          const user = JSON.parse(userStr);
+          userId = user.phone || user._id;
+          console.log('Đã lấy được userId từ MajorRecommendation:', userId);
+        } catch (e) {
+          console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+        }
+      }
+      
       const requestData = {
         ...formData,
         // Thêm userId từ localStorage nếu đã đăng nhập
-        userId: localStorage.getItem('userId') || null,
+        userId: userId,
         // Chuyển đổi điểm từ chuỗi sang số
         scores: Object.entries(formData.scores).reduce((acc, [key, value]) => {
           acc[key] = parseFloat(value) || 0;
@@ -358,6 +370,19 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
       // Tạo điểm các môn theo tổ hợp - sử dụng điểm gốc từ studentScores
       const calculatedStudentScore = Object.values(scores).reduce((sum, score) => sum + score, 0);
       
+      // Lấy thông tin người dùng từ localStorage
+      let userId = null;
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        try {
+          const user = JSON.parse(userStr);
+          userId = user.phone || user._id;
+          console.log('Đã lấy được userId cho dự đoán xác suất:', userId);
+        } catch (e) {
+          console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+        }
+      }
+      
       // Dữ liệu gửi đi theo đúng format API backend yêu cầu (universityCode, majorName, scores)
       const predictionData = {
         universityCode: universityCode,
@@ -366,7 +391,7 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
         studentScore: calculatedStudentScore, // Sử dụng điểm đã tính
         scores: scores,
         // Thêm userId từ localStorage nếu đã đăng nhập
-        userId: localStorage.getItem('userId') || null
+        userId: userId
       };
       
       // In chi tiết các thông số gửi đến API
