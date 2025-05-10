@@ -1,0 +1,30 @@
+name: Prepare Shared Package for Netlify
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  prepare-shared:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install shared dependencies
+        run: |
+          cd shared
+          npm install
+          
+      - name: Commit changes if any
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m "Prepare shared package for deployment"
+          git push 
