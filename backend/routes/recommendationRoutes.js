@@ -38,7 +38,7 @@ router.post('/recommend', async (req, res) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            timeout: 30000
+            timeout: 90000
         });
         
         console.log('Nhận được phản hồi từ Python API:', response.status);
@@ -75,7 +75,8 @@ router.get('/interests', async (req, res) => {
         const response = await axios.get(`${PYTHON_API_URL}/api/recommendation/interests`, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            timeout: 60000
         });
         
         return res.status(200).json(response.data);
@@ -97,7 +98,8 @@ router.get('/subject-combinations', async (req, res) => {
         const response = await axios.get(`${PYTHON_API_URL}/api/recommendation/subject-combinations`, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            timeout: 60000
         });
         
         return res.status(200).json(response.data);

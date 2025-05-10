@@ -39,7 +39,7 @@ router.post('/predict-ai', async (req, res) => {
                 'Content-Type': 'application/json'
             },
             // Tăng timeout để đợi mô hình dự đoán
-            timeout: 30000
+            timeout: 90000
         });
         
         console.log('Nhận được phản hồi từ Python API:', response.status);
@@ -108,7 +108,8 @@ router.post('/batch-predict-ai', async (req, res) => {
         const response = await axios.post(`${PYTHON_API_URL}/api/data/admission/predict-ai/batch`, req.body, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            timeout: 90000
         });
         
         // Chuyển tiếp kết quả từ Python API
@@ -331,7 +332,8 @@ router.post('/feedback', async (req, res) => {
         const response = await axios.post(`${PYTHON_API_URL}/api/data/admission/feedback`, req.body, {
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            timeout: 60000
         });
         console.log('Feedback response from Python API:', response.data);
         return res.status(response.status).json(response.data);
