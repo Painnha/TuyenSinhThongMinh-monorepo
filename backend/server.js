@@ -58,6 +58,8 @@ const startServer = async () => {
     const recommendationRoutes = require('./routes/recommendationRoutes');
     const benchmarkScoreRoutes = require('./routes/benchmarkScoreRoutes');
     const universityAdminRoutes = require('./routes/universityAdminRoutes');
+    const predictionLogRoutes = require('./routes/predictionLogRoutes');
+    const userPredictionLogRoutes = require('./routes/userPredictionLogRoutes');
 
     // Use routes
     app.use('/api/auth', authRoutes);
@@ -69,6 +71,8 @@ const startServer = async () => {
     app.use('/api/recommendation', recommendationRoutes);
     app.use('/api/benchmark-scores', benchmarkScoreRoutes);
     app.use('/api/admin/universities', universityAdminRoutes);
+    app.use('/api/prediction-logs', userPredictionLogRoutes);
+    app.use('/api/admin/prediction-logs', predictionLogRoutes);
 
     // Error handling middleware
     app.use((err, req, res, next) => {

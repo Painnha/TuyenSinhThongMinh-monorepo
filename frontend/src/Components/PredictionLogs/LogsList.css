@@ -1,0 +1,357 @@
+/* CSS cho component LogsList */
+
+/* Phần bộ lọc */
+.filter-card {
+  margin-bottom: 1.5rem;
+}
+
+/* Card tùy chỉnh */
+.custom-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+/* Form và input */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.col-md-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+/* Buttons */
+.custom-button {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  margin-left: 0.5rem;
+}
+
+.primary-button {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.primary-button:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.secondary-button {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.secondary-button:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.danger-button {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.danger-button:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.outline-button {
+  color: #007bff;
+  border-color: #007bff;
+  background-color: transparent;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+.outline-button:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.button-icon {
+  margin-right: 0.5rem;
+}
+
+/* Table */
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.custom-table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  background-color: #f8f9fa;
+}
+
+.custom-table tbody tr:nth-of-type(odd) {
+  background-color: rgba(0,0,0,.05);
+}
+
+.custom-table tbody tr:hover {
+  background-color: rgba(0,0,0,.075);
+}
+
+.sortable-header {
+  cursor: pointer;
+}
+
+.sort-icon {
+  margin-left: 0.5rem;
+}
+
+/* Checkbox */
+.custom-checkbox {
+  padding-left: 1.5rem;
+  margin-right: 1rem;
+}
+
+/* Badges */
+.custom-badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.info-badge {
+  color: #fff;
+  background-color: #17a2b8;
+}
+
+.success-badge {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.danger-badge {
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.badge-icon {
+  margin-right: 0.25rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+/* Alerts */
+.custom-alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.error-alert {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Loading spinner */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.custom-spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border .75s linear infinite;
+}
+
+@keyframes spinner-border {
+  to { transform: rotate(360deg); }
+}
+
+/* Pagination */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.pagination-info {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.custom-pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.pagination-button {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+}
+
+.pagination-button:hover {
+  z-index: 2;
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.pagination-button.active {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.pagination-button.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.pagination-ellipsis {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #6c757d;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+/* Spacing utilities */
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.ps-3 {
+  padding-left: 1rem;
+}
+
+.text-center {
+  text-align: center;
+} 

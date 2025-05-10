@@ -1,0 +1,137 @@
+.prediction-log-management .page-title {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.prediction-log-management .card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.prediction-log-management .card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.prediction-log-management .sortable-header {
+  cursor: pointer;
+}
+
+.prediction-log-management .sortable-header:hover {
+  background-color: #f1f1f1;
+}
+
+.prediction-log-management .json-display {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+}
+
+.prediction-log-management .tab-content {
+  padding-top: 1rem;
+}
+
+.prediction-log-management .nav-tabs .nav-link.active {
+  font-weight: 600;
+  border-top: 3px solid #007bff;
+}
+
+.prediction-log-management table th {
+  background-color: #f5f7fa;
+}
+
+.prediction-log-management .badge {
+  font-size: 0.8rem;
+  padding: 0.4em 0.6em;
+}
+
+.prediction-log-management .table-responsive {
+  overflow-x: auto;
+}
+
+.prediction-log-management .modal-dialog {
+  max-width: 800px;
+}
+
+.log-detail p {
+  margin-bottom: 0.5rem;
+}
+
+/* Style cho form filter */
+.prediction-log-management .form-label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+/* Style cho các biểu đồ */
+.prediction-log-management .chart-container {
+  position: relative;
+  margin: auto;
+  height: 300px;
+}
+
+/* Thêm CSS cho thay thế React Bootstrap */
+.prediction-log-management {
+  padding: 20px;
+}
+
+.custom-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.page-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.custom-tabs-container {
+  margin-bottom: 2rem;
+}
+
+.custom-tabs {
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1rem;
+  overflow: visible;
+  flex-wrap: wrap;
+}
+
+.custom-tab {
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  margin-bottom: -1px;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-tab:hover {
+  border-color: #e9ecef #e9ecef #dee2e6;
+  background-color: #f8f9fa;
+}
+
+.custom-tab.active {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.tab-icon {
+  margin-right: 0.5rem;
+}
+
+.tab-content {
+  padding: 1rem 0;
+} 

@@ -3,6 +3,7 @@ import UserManagement from './UserManagement';
 import AdminHeader from '../../layout/AdminHeader';
 import BenchmarkScoreManagement from './BenchmarkScoreManagement';
 import UniversityManagement from './UniversityManagement';
+import PredictionLogManagement from './PredictionLogManagement';
 
 // Đơn giản hóa component để tránh lỗi hooks
 const AdminDashboard = () => {
@@ -16,6 +17,8 @@ const AdminDashboard = () => {
         return <UniversityManagement />;
       case 'benchmark':
         return <BenchmarkScoreManagement />;
+      case 'predictionLogs':
+        return <PredictionLogManagement />;
       case 'statistics':
         return (
           <div>
@@ -94,6 +97,23 @@ const AdminDashboard = () => {
                     }}
                   >
                     Quản lý điểm chuẩn
+                  </button>
+                </li>
+                <li style={{ marginBottom: '10px' }}>
+                  <button 
+                    onClick={() => setActiveTab('predictionLogs')}
+                    style={{ 
+                      padding: '10px', 
+                      width: '100%', 
+                      textAlign: 'left',
+                      backgroundColor: activeTab === 'predictionLogs' ? '#007bff' : '#f8f9fa',
+                      color: activeTab === 'predictionLogs' ? 'white' : 'black',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Quản lý logs dự đoán
                   </button>
                 </li>
                 <li style={{ marginBottom: '10px' }}>

@@ -1,0 +1,411 @@
+/* CSS cho modal chi tiết log */
+
+.log-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.log-detail-modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #777;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.detail-section {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.detail-section h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item.wide {
+  grid-column: 1 / -1;
+}
+
+.detail-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 15px;
+  padding: 8px 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  word-break: break-word;
+}
+
+.probability-bar, .match-bar {
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.probability-fill {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 4px;
+}
+
+.match-fill {
+  height: 100%;
+  background-color: #4a90e2;
+}
+
+.status-text {
+  font-weight: 500;
+}
+
+/* Styles for scores */
+.scores-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.score-item {
+  background-color: #e3f2fd;
+  border: 1px solid #bbdefb;
+  border-radius: 4px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.score-subject {
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.score-value {
+  font-weight: 600;
+  color: #0d47a1;
+}
+
+/* Historical data styles */
+.historical-data {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.history-item {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.history-year {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.history-value {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Recommendation details */
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recommendation-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.recommendation-rank {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.recommendation-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.recommendation-score {
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.recommendation-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.recommendation-category,
+.recommendation-description,
+.recommendation-interests,
+.recommendation-confidence {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.recommendation-details .detail-label {
+  font-size: 13px;
+  color: #555;
+}
+
+/* University suggestions */
+.suitable-universities {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.universities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.university-item {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.university-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.university-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.university-details span {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Feedback section styles */
+.feedback-section {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.feedback-useful {
+  color: #388e3c;
+  background-color: #e8f5e9;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.feedback-not-useful {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.feedback-none {
+  color: #757575;
+  background-color: #f5f5f5;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.feedback-text {
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  line-height: 1.5;
+}
+
+/* Utility classes */
+.positive {
+  color: #4caf50;
+}
+
+.negative {
+  color: #f44336;
+}
+
+.score-diff {
+  font-weight: 600;
+}
+
+.safety-safe {
+  color: #4caf50;
+}
+
+.safety-risky {
+  color: #f44336;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-item {
+  padding: 5px 10px;
+  background-color: #e3f2fd;
+  border: 1px solid #bbdefb;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #1976d2;
+}
+
+.loading {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+}
+
+.error-message {
+  padding: 15px;
+  background-color: #ffebee;
+  color: #d32f2f;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .log-detail-modal {
+    max-width: 95%;
+    max-height: 95vh;
+  }
+  
+  .university-details {
+    grid-template-columns: 1fr;
+  }
+} 
