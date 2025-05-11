@@ -6,11 +6,15 @@ import { updateLogFeedback } from '../../services/predictionLogService';
  * Component hiển thị form gửi feedback cho kết quả dự đoán
  * @param {Object} props
  * @param {string} props.logId - ID của bản ghi dự đoán
+ * @param {string} props.predictionId - ID của bản ghi dự đoán (tương đương với logId)
  * @param {Object} props.initialData - Dữ liệu ban đầu của form
  * @param {Function} props.onClose - Callback khi đóng form
  * @param {Function} props.onSubmitted - Callback khi feedback được gửi
  */
-const FeedbackForm = ({ logId, initialData = {}, onClose, onSubmitted }) => {
+const FeedbackForm = ({ logId, predictionId, initialData = {}, onClose, onSubmitted }) => {
+  // Sử dụng logId nếu có, ngược lại sử dụng predictionId
+  const actualLogId = logId || predictionId;
+  
   const [formData, setFormData] = useState({
     isUseful: initialData.isUseful !== undefined ? initialData.isUseful : null,
     feedback: initialData.feedback || '',
@@ -47,7 +51,7 @@ const FeedbackForm = ({ logId, initialData = {}, onClose, onSubmitted }) => {
       setError('');
       
       // Sử dụng API để cập nhật feedback
-      const response = await updateLogFeedback(logId, formData);
+      const response = await updateLogFeedback(actualLogId, formData);
       
       if (response.success) {
         // Gọi callback để thông báo thành công

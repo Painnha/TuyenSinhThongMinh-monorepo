@@ -1,0 +1,1 @@
+gcloud run deploy tuyensinhthongminh-python-api --source . --platform managed --region asia-southeast1 --allow-unauthenticated --memory 1Gi

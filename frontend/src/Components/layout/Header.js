@@ -92,9 +92,12 @@ const Header = () => {
                   Thông tin cá nhân
                 </div>
                 {user.role === 'admin' && (
-                  <Link to="/login-admin" className="dropdown-item">
+                  <div className="dropdown-item" onClick={() => {
+                    setIsDropdownOpen(false);
+                    navigate('/admin');
+                  }}>
                     Quản trị hệ thống
-                  </Link>
+                  </div>
                 )}
                 <div className="dropdown-item logout" onClick={handleLogout}>
                   Đăng xuất

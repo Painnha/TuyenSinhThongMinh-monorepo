@@ -1,0 +1,18 @@
+runtime: python39
+entrypoint: python app.py
+
+env_variables:
+  PORT: "8080"
+  API_HOST: "0.0.0.0"
+  MONGO_URI: "mongodb+srv://myuser:mypassword@cluster0.xi1lv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  MONGO_DB_NAME: "tuyen_sinh_thong_minh"
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
+  min_idle_instances: 0
+
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 10 

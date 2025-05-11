@@ -273,4 +273,28 @@ textarea:focus {
   border-radius: 4px;
   margin-bottom: 15px;
   font-size: 14px;
+}
+
+/* Nút feedback mới thêm */
+.feedback-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.feedback-button:hover {
+  background-color: #0069d9;
+}
+
+.feedback-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 } 

@@ -103,389 +103,600 @@
   background-color: rgba(244, 67, 54, 0.1);
 }
 
-.recommendations {
-  margin-top: 32px;
+/* ===== THIẾT KẾ MỚI CHO PHẦN HIỂN THỊ KẾT QUẢ ===== */
+
+/* Tiêu đề phần kết quả */
+.results-header {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a237e;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
 }
 
-.recommendation-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
+.results-header:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #1a237e, #4fc3f7);
+  border-radius: 2px;
 }
 
-.recommendation-card {
+/* Container chứa các kết quả */
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Card hiển thị kết quả từng ngành */
+.result-card {
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  border: 1.5px solid #000000;
-}
-
-.recommendation-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.major-name {
-  font-size: 1.8rem;
-  color: #1a73e8;
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 0.5rem;
-}
-
-.category {
-  font-size: 1.1rem;
-  color: #424242;
-  margin-bottom: 0.3rem;
-}
-
-.confidence-container {
-  margin-bottom: 0.5rem;
-}
-
-.confidence {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #2e7d32;
-  background-color: rgba(46, 125, 50, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  display: inline-block;
-}
-
-.matching-interests {
-  margin: 0.5rem 0;
-}
-
-.matching-interests p {
-  font-weight: 500;
-  margin-bottom: 0.3rem;
-}
-
-.chips-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.custom-chip {
-  background: #e3f2fd;
-  color: #1565c0;
-  padding: 0.4rem 0.8rem;
-  border-radius: 16px;
-  font-size: 0.9rem;
-  display: inline-flex;
-  align-items: center;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.description-container {
-  margin: 0.5rem 0;
-  background: #f5f5f5;
-  padding: 0.75rem;
-  border-radius: 8px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.description {
-  font-size: 1rem;
-  color: #424242;
-  line-height: 1.6;
-}
-
-/* Cải thiện thông tin điểm số */
-.student-score-info {
-  background: #f9f9f9;
-  padding: 0.75rem;
-  border-radius: 8px;
-  margin: 0.5rem 0;
-  border-left: 4px solid #1a73e8;
-}
-
-.student-score-info h4 {
-  color: #1a73e8;
-  margin-bottom: 0.3rem;
-  font-size: 1.1rem;
-}
-
-.score-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.score-container p {
-  margin: 0;
-}
-
-/* Cải thiện phần trường đại học */
-.suitable-universities {
-  margin-top: 0.75rem;
-}
-
-.divider {
-  border: none;
-  height: 1px;
-  background-color: #e0e0e0;
-  margin: 0.75rem 0;
-}
-
-.university-section-title {
-  font-size: 1.4rem;
-  color: #1a73e8;
-  margin-bottom: 0.75rem;
-}
-
-.universities-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-
-.university-item {
-  width: 100%;
-}
-
-.university-card {
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 1rem;
-  transition: transform 0.2s ease;
   border: 1px solid #e0e0e0;
 }
 
-.university-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
-.university-title {
-  font-size: 1.3rem;
-  color: #333;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.3rem;
+/* Header của card */
+.result-card-header {
+  background: linear-gradient(135deg, #1a237e, #283593);
+  color: white;
+  padding: 20px 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.result-card-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #FFC107;
+  color: #212121;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.result-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  padding-right: 40px;
+}
+
+/* Thanh hiển thị độ phù hợp */
+.result-card-confidence {
+  margin-top: 5px;
+}
+
+.confidence-meter {
+  width: 100%;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.confidence-fill {
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  transition: width 1s ease-in-out;
+}
+
+.confidence-text {
+  font-size: 14px;
+  display: block;
+  text-align: right;
+}
+
+/* Body của card */
+.result-card-body {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .result-card-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phần thông tin cơ bản */
+.result-card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-label {
+  font-weight: 500;
+  color: #757575;
+}
+
+.info-value {
+  font-weight: 600;
+  color: #424242;
+}
+
+.info-value.highlight {
+  color: #1a237e;
+  padding: 3px 8px;
+  background-color: rgba(26, 35, 126, 0.1);
+  border-radius: 4px;
+}
+
+/* Phần sở thích */
+.interests-section {
+  margin-top: 10px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: #1a237e;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.university-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+.interests-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.stat-item {
+.interest-tag {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+/* Phần mô tả */
+.description-section {
+  margin-top: 10px;
+}
+
+.description-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #616161;
+  text-align: justify;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 3px solid #1a237e;
+}
+
+/* Phần trường đại học */
+.universities-section {
+  padding: 0 25px 25px;
+}
+
+.universities-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.university-tab {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.university-tab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.university-tab.has-prediction {
+  border-color: #1a237e;
+}
+
+.university-header {
+  padding: 15px;
+  background-color: #f5f5f5;
   display: flex;
   justify-content: space-between;
-  font-size: 0.95rem;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.stat-label {
-  font-weight: 500;
-  color: #666;
-}
-
-.stat-value {
+.university-name {
+  font-size: 16px;
   font-weight: 600;
-  color: #333;
+  margin: 0;
+  color: #424242;
+  flex: 1;
 }
 
-.positive {
-  color: #2e7d32;
-}
-
-.negative {
-  color: #d32f2f;
-}
-
-.status-badge {
-  padding: 0.25rem 0.5rem;
+.safety-badge {
+  padding: 5px 10px;
   border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
 }
 
-.status-safe {
+.safety-badge.safe {
   background-color: #e8f5e9;
   color: #2e7d32;
 }
 
-.status-consider {
+.safety-badge.consider {
   background-color: #fff8e1;
   color: #f57c00;
 }
 
-.status-difficult {
+.safety-badge.difficult {
   background-color: #ffebee;
   color: #d32f2f;
 }
 
-/* Nút xem xác suất trúng tuyển */
-.predict-admission-btn-prominent {
-  display: block;
-  width: 100%;
-  padding: 0.8rem 1rem;
-  background-color: #1a73e8;
+.university-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: #757575;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #424242;
+}
+
+.detail-value.positive {
+  color: #2e7d32;
+}
+
+.detail-value.negative {
+  color: #d32f2f;
+}
+
+/* Nút dự đoán xác suất */
+.prediction-button {
+  background-color: #1a237e;
   color: white;
   border: none;
-  border-radius: 6px;
+  padding: 10px 15px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  margin: 0.75rem 0;
-  text-align: center;
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
-.predict-admission-btn-prominent:hover {
-  background-color: #1557b0;
+.prediction-button:hover {
+  background-color: #283593;
+  transform: translateY(-2px);
 }
 
-.predict-admission-btn-prominent:disabled {
-  background-color: #b0b0b0;
+.prediction-button:disabled {
+  background-color: #bdbdbd;
   cursor: not-allowed;
 }
 
-/* Kết quả dự đoán xác suất trong trường đại học */
-.university-prediction-result {
-  margin-top: 1rem;
-  background: #f5f5f5;
-  padding: 1rem;
-  border-radius: 8px;
-  border-left: 4px solid #1a73e8;
+/* Kết quả dự đoán xác suất */
+.prediction-results {
+  padding: 20px 15px;
+  background-color: #f5f9ff;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.prediction-probability {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.probability-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a237e, #283593);
+  color: white;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.probability-number {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.probability-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a237e;
 }
 
 .prediction-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.prediction-item {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.probability {
-  font-size: 1.1rem;
+.prediction-label {
+  font-size: 13px;
+  color: #757575;
+}
+
+.prediction-value {
+  font-size: 14px;
   font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
+  color: #424242;
 }
 
-.very-high-probability {
-  background-color: #e8f5e9;
+.prediction-value.positive {
   color: #2e7d32;
 }
 
-.high-probability {
-  background-color: #dcedc8;
-  color: #33691e;
-}
-
-.medium-probability {
-  background-color: #fff8e1;
-  color: #f57c00;
-}
-
-.somewhat-low-probability {
-  background-color: #ffecb3;
-  color: #ff8f00;
-}
-
-.low-probability {
-  background-color: #ffebee;
+.prediction-value.negative {
   color: #d32f2f;
 }
 
-.positive-diff {
-  color: #2e7d32;
-  font-weight: 600;
+.prediction-assessment {
+  background-color: #e8eaf6;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #424242;
+  line-height: 1.5;
 }
 
-.negative-diff {
-  color: #d32f2f;
-  font-weight: 600;
-}
-
-.assessment {
-  font-style: italic;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 0.5rem;
-}
-
-/* Nút feedback trong kết quả dự đoán */
 .prediction-feedback {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
   justify-content: flex-end;
+  gap: 10px;
 }
 
-.feedback-icon {
-  background: none;
+.feedback-button {
   border: none;
+  background: none;
   cursor: pointer;
-  font-size: 1.2rem;
-  padding: 0.3rem 0.5rem;
+  padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.2s ease;
 }
 
-.feedback-icon.positive:hover {
+.feedback-button.positive:hover {
   background-color: #e8f5e9;
 }
 
-.feedback-icon.negative:hover {
+.feedback-button.negative:hover {
   background-color: #ffebee;
 }
 
-/* Form feedback ở cuối danh sách */
-.feedback-form-container {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 2px dashed #e0e0e0;
+.feedback-icon {
+  font-size: 16px;
 }
 
-/* Loading và error states */
-.university-prediction-loading,
-.university-prediction-error {
-  padding: 1rem;
+/* Loading state */
+.prediction-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f9ff;
+  border-top: 1px solid #e0e0e0;
+}
+
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #e0e0e0;
+  border-top: 3px solid #1a237e;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state */
+.prediction-error {
+  padding: 15px;
+  background-color: #ffebee;
+  color: #d32f2f;
+  border-top: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+/* Nút gửi feedback tổng thể */
+.feedback-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.global-feedback-button {
+  background-color: white;
+  color: #1a237e;
+  border: 2px solid #1a237e;
+  padding: 12px 24px;
   border-radius: 8px;
-  margin-top: 1rem;
-  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.university-prediction-loading {
-  background-color: #e3f2fd;
-  color: #1565c0;
+.global-feedback-button:hover {
+  background-color: #1a237e;
+  color: white;
 }
 
-.university-prediction-error {
-  background-color: #ffebee;
+/* Modal feedback */
+.feedback-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.feedback-modal-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #757575;
+}
+
+.close-button:hover {
   color: #d32f2f;
 }
 
-/* Responsive design */
-@media (min-width: 768px) {
-  .universities-list {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+/* Responsive */
+@media (max-width: 992px) {
+  .universities-tabs {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .prediction-details {
+  .result-card-body {
     grid-template-columns: 1fr;
   }
   
-  .university-details {
+  .detail-row {
     grid-template-columns: 1fr;
+  }
+  
+  .results-header {
+    font-size: 24px;
+  }
+  
+  .result-card-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .major-recommendation {
+    padding: 16px;
+  }
+  
+  .result-card-header {
+    padding: 15px;
+  }
+  
+  .result-card-body {
+    padding: 15px;
+  }
+  
+  .universities-section {
+    padding: 0 15px 15px;
   }
 } 

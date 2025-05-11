@@ -111,6 +111,7 @@ const AdmissionProbability = () => {
   const [filteredMajors, setFilteredMajors] = useState([]);
   const [filteredUniversities, setFilteredUniversities] = useState([]);
   const [predictionId, setPredictionId] = useState(null);
+  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
   
   // Lấy dữ liệu từ API khi component mount
   useEffect(() => {
@@ -334,8 +335,9 @@ const AdmissionProbability = () => {
   };
   
   // Xử lý khi người dùng gửi feedback
-  const handleFeedbackSubmitted = (isUseful, feedbackText) => {
-    console.log('Feedback submitted for admission prediction:', isUseful, feedbackText);
+  const handleFeedbackSubmitted = (feedbackData) => {
+    console.log('Feedback submitted for admission prediction:', feedbackData);
+    setShowFeedbackForm(false);
   };
   
   return (
@@ -506,17 +508,27 @@ const AdmissionProbability = () => {
                 <p className="assessment">
                   Đánh giá: <strong>{prediction.assessment}</strong>
                 </p>
+                
+                {/* Thêm nút gửi đánh giá */}
+                <button 
+                  className="feedback-button"
+                  onClick={() => setShowFeedbackForm(true)}
+                >
+                  Gửi đánh giá của bạn
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
       
-      {prediction && predictionId && (
+      {/* Hiển thị form feedback khi người dùng click vào nút */}
+      {prediction && predictionId && showFeedbackForm && (
         <FeedbackForm 
           predictionId={predictionId}
           modelType="admission_prediction"
-          onFeedbackSubmitted={handleFeedbackSubmitted}
+          onClose={() => setShowFeedbackForm(false)}
+          onSubmitted={handleFeedbackSubmitted}
         />
       )}
     </div>

@@ -48,6 +48,14 @@ except ImportError as e:
 app = Flask(__name__)
 CORS(app)
 
+# Health check endpoint cho Cloud Run
+@app.route('/health')
+def health():
+    return jsonify({
+        "status": "ok",
+        "message": "Service is healthy"
+    })
+
 # Đăng ký blueprint API
 @app.route('/')
 def index():
@@ -95,23 +103,17 @@ else:
         }), 503
 
 if __name__ == '__main__':
-    # Lấy port từ biến môi trường hoặc sử dụng 5001 là mặc định - QUAN TRỌNG
-    port = int(os.environ.get('PYTHON_API_PORT', 5001))
-    if port == 5000:
-        print("CẢNH BÁO: Python API đang cố gắng sử dụng port 5000 - có thể xung đột với Node.js server!")
-        print("Thay đổi sang port 5001...")
-        port = 5001
-    
-    # Hiển thị thông tin khởi động
+    # Sửa phần lấy port để tương thích với Cloud Run
+    port = int(os.environ.get('PORT', os.environ.get('PYTHON_API_PORT', 8080)))
     print(f"Starting Python API server on port {port}")
     print(f"Admission prediction API available: {ADMISSION_PREDICTION_AVAILABLE}")
     print(f"Host: {os.environ.get('API_HOST', '0.0.0.0')}")
-    print(f"URL Endpoint for prediction: http://localhost:{port}/api/data/admission/predict-ai")
+    print(f"URL Endpoint for prediction: /api/data/admission/predict-ai")
     
-    # Khởi động server
-    app.run(host=os.environ.get('API_HOST', '0.0.0.0'), port=port, debug=True) 
-
-    # Thêm vào cuối file app.py, trước app.run()
+    # In các routes đã đăng ký
     print("Các routes đã đăng ký:")
     for rule in app.url_map.iter_rules():
         print(f"Route: {rule}") 
+    
+    # Khởi động server - KHÔNG sử dụng debug=True trên production
+    app.run(host='0.0.0.0', port=port, debug=False) 
