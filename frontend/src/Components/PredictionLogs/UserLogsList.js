@@ -20,13 +20,39 @@ const UserLogsList = () => {
   const [selectedLog, setSelectedLog] = useState(null);
   const [showDetailModal, setShowDetailModal] = useState(false);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  // Lấy userID khi component mount
+  useEffect(() => {
+    try {
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        // Ưu tiên lấy userID theo thứ tự: phone > email > _id
+        setUserId(user.phone || user.email || user._id);
+        console.log('User ID được sử dụng:', user.phone || user.email || user._id);
+      } else {
+        console.warn('Không tìm thấy thông tin người dùng trong localStorage');
+      }
+    } catch (err) {
+      console.error('Lỗi khi lấy thông tin người dùng:', err);
+    }
+  }, []);
 
   // Gọi API để lấy logs khi component được render hoặc có thay đổi về filter/phân trang
   useEffect(() => {
-    fetchLogs();
-  }, [currentPage, filters]);
+    if (userId) {
+      fetchLogs();
+    }
+  }, [currentPage, filters, userId]);
 
   const fetchLogs = async () => {
+    if (!userId) {
+      setError('Không tìm thấy thông tin người dùng. Vui lòng đăng nhập lại.');
+      setLoading(false);
+      return;
+    }
+
     try {
       setLoading(true);
       const response = await getUserLogs({
@@ -37,6 +63,7 @@ const UserLogsList = () => {
         endDate: filters.endDate || undefined,
         sortBy: 'timestamp',
         sortOrder: 'desc',
+        userId: userId // Truyền userId vào request
       });
 
       if (response.success) {

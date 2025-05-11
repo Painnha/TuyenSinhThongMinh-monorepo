@@ -232,13 +232,14 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
     try {
       console.log("Gửi dữ liệu:", formData);
       
-      // Lấy thông tin người dùng từ localStorage
+      // Lấy thông tin người dùng từ localStorage - CẬP NHẬT để hỗ trợ cả email
       let userId = null;
       const userStr = localStorage.getItem('user');
       if (userStr) {
         try {
           const user = JSON.parse(userStr);
-          userId = user.phone || user._id;
+          // Ưu tiên lấy userID theo thứ tự: phone > email > _id
+          userId = user.phone || user.email || user._id;
           console.log('Đã lấy được userId từ MajorRecommendation:', userId);
         } catch (e) {
           console.error('Lỗi khi parse thông tin user từ localStorage:', e);
@@ -378,7 +379,7 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
       if (userStr) {
         try {
           const user = JSON.parse(userStr);
-          userId = user.phone || user._id;
+          userId = user.phone || user.email || user._id;
           console.log('Đã lấy được userId cho dự đoán xác suất:', userId);
         } catch (e) {
           console.error('Lỗi khi parse thông tin user từ localStorage:', e);

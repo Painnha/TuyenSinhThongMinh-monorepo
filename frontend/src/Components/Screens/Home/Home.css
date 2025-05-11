@@ -33,12 +33,13 @@ body {
   border: none;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .card-title {
@@ -47,9 +48,9 @@ body {
 }
 
 .feature-icon {
-  font-size: 48px;
+  font-size: 3rem;
   color: #3f51b5;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .btn-primary {
@@ -62,4 +63,18 @@ body {
 .btn-primary:hover {
   background-color: #303f9f;
   border-color: #303f9f;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 2rem 0;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
 } 

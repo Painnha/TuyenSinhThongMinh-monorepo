@@ -78,7 +78,8 @@ export const aiService = {
             if (userStr) {
                 try {
                     const user = JSON.parse(userStr);
-                    userId = user.phone || user._id; // Sử dụng số điện thoại hoặc _id
+                    // Sử dụng cả email, phone hoặc _id, ưu tiên theo thứ tự
+                    userId = user.phone || user.email || user._id;
                     console.log('Đã lấy được userId từ localStorage:', userId);
                 } catch (e) {
                     console.error('Lỗi khi parse thông tin user từ localStorage:', e);
@@ -110,9 +111,8 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn('Không thể kết nối đến API recommendation, sử dụng dữ liệu giả thay thế:', error);
-            // Trả về dữ liệu giả khi API không hoạt động
-            return mockRecommendations;
+            console.error('Error recommending majors:', error);
+            throw error;
         }
     },
 
@@ -128,160 +128,40 @@ export const aiService = {
      */
     predictAdmissionProbability: async (data) => {
         try {
-            // Kiểm tra dữ liệu đầu vào - sửa để chấp nhận giá trị studentScore = 0
-            if (!data.universityCode || !data.majorName || !data.scores) {
-                throw new Error('Thiếu thông tin bắt buộc: universityCode, majorName hoặc scores');
-            }
-            
-            // Lấy thông tin người dùng từ localStorage và trích xuất userId
-            let userId = null;
-            const userStr = localStorage.getItem('user');
-            if (userStr) {
-                try {
-                    const user = JSON.parse(userStr);
-                    userId = user.phone || user._id; // Sử dụng số điện thoại hoặc _id
-                    console.log('Đã lấy được userId từ localStorage:', userId);
-                    // Thêm userId vào data
-                    data.userId = userId;
-                } catch (e) {
-                    console.error('Lỗi khi parse thông tin user từ localStorage:', e);
-                }
-            } else {
-                console.log('Không tìm thấy thông tin user trong localStorage');
-            }
-            
-            const ADMISSION_API_URL = `${API_URL}/api/data/admission/predict-ai`;
-            console.log('API URL:', ADMISSION_API_URL);
+            console.log('API URL:', `${API_URL}/api/data/admission/predict-ai`);
             console.log('Sending data to API:', JSON.stringify(data, null, 2));
             
-            const response = await axios.post(ADMISSION_API_URL, data);
-            
-            // Kiểm tra cấu trúc response
-            console.log('\n===== DEBUG - FULL RESPONSE STRUCTURE =====');
-            console.log('Response structure:', JSON.stringify(response.data, null, 2));
-            
-            // Xác định vị trí dữ liệu thực tế
-            let predictionData = response.data;
-            
-            // Kiểm tra nếu dữ liệu nằm trong data.data
-            if (response.data && response.data.data) {
-                predictionData = response.data.data;
-                console.log('Data found in response.data.data');
-            } 
-            // Kiểm tra nếu dữ liệu nằm trong data.prediction
-            else if (response.data && response.data.prediction) {
-                predictionData = response.data.prediction;
-                console.log('Data found in response.data.prediction');
+            // Lấy thông tin người dùng từ localStorage nếu không có trong data
+            if (!data.userId) {
+                const userStr = localStorage.getItem('user');
+                if (userStr) {
+                    try {
+                        const user = JSON.parse(userStr);
+                        // Sử dụng cả email, phone hoặc _id, ưu tiên theo thứ tự
+                        data.userId = user.phone || user.email || user._id;
+                        console.log('Đã lấy được userId từ localStorage:', data.userId);
+                    } catch (e) {
+                        console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+                    }
+                }
             }
             
-            // Kiểm tra và tính toán q0 nếu không có
-            if (predictionData && !predictionData.q0 && predictionData.quota) {
-                // Công thức tính q0 tạm thời: q0 = quota * 0.9
-                // Đây là ước lượng dựa trên giả định chỉ tiêu trung bình ngành
-                // thường thấp hơn chỉ tiêu của trường top khoảng 10%
-                
-                // Trong thực tế, q0 được tính bằng cách lấy trung bình chỉ tiêu
-                // của tất cả các trường có đào tạo ngành đó
-                
-                // Cải thiện công thức dựa trên phân tích thống kê
-                // Trường top: quota cao hơn trung bình 10-20%
-                // Trường trung bình: quota xấp xỉ q0
-                // Trường dưới trung bình: quota thấp hơn q0 10-20%
-                
-                let universityTier = 'top'; // Giả định mặc định
-                
-                // Thử xác định tier của trường từ tên hoặc mã
-                const uniCode = predictionData.universityCode || '';
-                const uniName = predictionData.universityName || '';
-                
-                // Các trường top thường là đại học quốc gia, bách khoa, ngoại thương...
-                const topUniversityPatterns = ['QSH', 'QSB', 'QST', 'QSC', 'BKA', 'BKH', 'NTU', 'VNU', 'FTU', 'UEH', 'HCMUS'];
-                const midUniversityPatterns = ['TDT', 'NEU', 'FPT', 'UEF', 'IUH', 'TMU', 'DTU'];
-                
-                if (topUniversityPatterns.some(code => uniCode.includes(code) || uniName.toLowerCase().includes(code.toLowerCase()))) {
-                    universityTier = 'top';
-                } else if (midUniversityPatterns.some(code => uniCode.includes(code) || uniName.toLowerCase().includes(code.toLowerCase()))) {
-                    universityTier = 'mid';
-                } else {
-                    universityTier = 'lower';
-                }
-                
-                // Tính q0 dựa trên tier
-                if (universityTier === 'top') {
-                    predictionData.q0 = predictionData.quota / 1.15; // Trường top: q0 thấp hơn 15%
-                } else if (universityTier === 'mid') {
-                    predictionData.q0 = predictionData.quota * 1.0; // Trường trung bình: q0 ~ quota
-                } else {
-                    predictionData.q0 = predictionData.quota * 1.2; // Trường dưới trung bình: q0 cao hơn 20%
-                }
-                
-                console.log('q0 missing from API, calculated with tier formula:', {
-                    tier: universityTier,
-                    quota: predictionData.quota,
-                    q0: predictionData.q0
-                });
+            const response = await axios.post(`${API_URL}/api/data/admission/predict-ai`, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            console.log('API Response status:', response.status);
+            console.log('API Response data:', response.data);
+            
+            if (response.status !== 200) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
-            console.log('Raw q0 value in prediction data:', predictionData.q0);
-            console.log('All keys in prediction data:', Object.keys(predictionData));
-            console.log('===========================================\n');
-            
-            // Debug dữ liệu trả về từ API
-            console.log('\n===== DEBUG INFO - ADMISSION PREDICTION =====');
-            
-            // 1. Data kết quả trả về từ model
-            console.log('1. DATA KẾT QUẢ TRẢ VỀ TỪ MODEL:');
-            console.log('   - Xác suất trúng tuyển:', 
-                        predictionData?.admissionProbability || predictionData?.probability, 
-                        `(${predictionData?.admissionPercentage || (predictionData?.admissionProbability ? `${(predictionData.admissionProbability*100).toFixed(2)}%` : 'N/A')})`);
-            console.log('   - Điểm của học sinh:', predictionData?.studentScore || predictionData?.totalScore);
-            console.log('   - Trường:', predictionData?.universityName);
-            console.log('   - Ngành:', predictionData?.majorName);
-            console.log('   - Tổ hợp:', predictionData?.combination || predictionData?.selectedCombination);
-            
-            // 2. Điểm chuẩn tìm thấy
-            console.log('\n2. ĐIỂM CHUẨN TÌM THẤY:');
-            console.log('   - Điểm chuẩn trung bình:', predictionData?.averageHistoricalScore || predictionData?.benchmarkScore);
-            console.log('   - Điểm chuẩn dự kiến:', predictionData?.expectedScore);
-            console.log('   - Xu hướng điểm chuẩn:', predictionData?.scoreTrend);
-            console.log('   - Lịch sử điểm chuẩn:', predictionData?.historicalScores);
-            
-            // 3. Market trend
-            console.log('\n3. MARKET TREND:');
-            console.log('   - Market trend:', predictionData?.marketTrend);
-            
-            // 4. Chỉ tiêu tìm thấy
-            console.log('\n4. CHỈ TIÊU TÌM THẤY:');
-            console.log('   - Chỉ tiêu (quota):', predictionData?.quota || predictionData?.admissionQuota);
-            console.log('   - Chỉ tiêu trung bình (q0):', predictionData?.q0);
-            
-            // 5. Data truyền vào model để dự đoán
-            console.log('\n5. DATA TRUYỀN VÀO MODEL:');
-            console.log('   - student_score:', predictionData?.studentScore || predictionData?.totalScore);
-            console.log('   - average_score:', predictionData?.averageHistoricalScore || predictionData?.benchmarkScore);
-            console.log('   - expected_score:', predictionData?.expectedScore);
-            console.log('   - score_diff:', predictionData?.scoreDiff || predictionData?.scoreDifference);
-            console.log('   - quota:', predictionData?.quota || predictionData?.admissionQuota);
-            console.log('   - q0:', predictionData?.q0);
-            console.log('   - market_trend:', predictionData?.marketTrend);
-            console.log('   - score_trend:', predictionData?.scoreTrend);
-            console.log('===============================================\n');
             
             return response.data;
         } catch (error) {
-            console.error('Không thể kết nối đến API admission:', error);
-            
-            // Thêm thông tin lỗi cụ thể
-            if (error.response) {
-                console.error('Error response status:', error.response.status);
-                console.error('Error response data:', error.response.data);
-                
-                // Nếu API trả về thông báo lỗi cụ thể
-                if (error.response.data && error.response.data.message) {
-                    throw new Error(error.response.data.message);
-                }
-            }
-            
+            console.error('Error predicting admission probability:', error);
             throw error;
         }
     },

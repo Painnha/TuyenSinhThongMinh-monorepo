@@ -287,7 +287,8 @@ const AdmissionProbability = () => {
       if (userStr) {
         try {
           const user = JSON.parse(userStr);
-          userId = user.phone || user._id;
+          // Ưu tiên lấy userID theo thứ tự: phone > email > _id
+          userId = user.phone || user.email || user._id;
           console.log('AdmissionProbability - Đã lấy được userId:', userId);
         } catch (e) {
           console.error('Lỗi khi parse thông tin user từ localStorage:', e);

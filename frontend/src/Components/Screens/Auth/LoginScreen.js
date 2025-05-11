@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 import { API_URL } from '../../../services/config/apiConfig';
 
 const LoginScreen = () => {
-  const [phone, setPhone] = useState('');
+  const [identifier, setIdentifier] = useState(''); // Dùng cho cả email hoặc số điện thoại
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -57,13 +57,35 @@ const LoginScreen = () => {
     return phoneRegex.test(phone);
   };
 
+  // Kiểm tra định dạng email hợp lệ
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Xác định loại định danh (email hoặc số điện thoại)
+  const identifyInputType = (value) => {
+    if (isValidEmail(value)) {
+      return 'email';
+    } else if (isValidPhone(value)) {
+      return 'phone';
+    }
+    return null;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     
-    // Kiểm tra định dạng số điện thoại
-    if (!isValidPhone(phone)) {
-      setError('Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (VD: 0912345678 hoặc 84912345678)');
+    if (!identifier.trim()) {
+      setError('Vui lòng nhập email hoặc số điện thoại');
+      return;
+    }
+    
+    const inputType = identifyInputType(identifier);
+    
+    if (!inputType) {
+      setError('Email hoặc số điện thoại không hợp lệ. Vui lòng kiểm tra lại.');
       return;
     }
     
@@ -76,22 +98,37 @@ const LoginScreen = () => {
     setLoading(true);
 
     try {
-      console.log('Đang gửi request đến:', `${API_URL}/api/auth/login`);
+      console.log('Đang gửi request đến:', inputType === 'phone' ? 
+        `${API_URL}/api/auth/login` : 
+        `${API_URL}/api/auth/login-with-email`);
       
-      // Chuyển đổi định dạng số điện thoại trước khi gửi
-      const formattedPhone = formatPhoneNumber(phone);
+      let response;
       
-      console.log('Dữ liệu gửi đi:', { phone: formattedPhone, password });
-      
-      const response = await axios.post(`${API_URL}/api/auth/login`, { 
-        phone: formattedPhone, 
-        password 
-      }, {
-        timeout: 5000, // Timeout sau 5 giây
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      if (inputType === 'phone') {
+        // Chuyển đổi định dạng số điện thoại trước khi gửi
+        const formattedPhone = formatPhoneNumber(identifier);
+        console.log('Dữ liệu gửi đi:', { phone: formattedPhone, password });
+        response = await axios.post(`${API_URL}/api/auth/login`, { 
+          phone: formattedPhone, 
+          password 
+        }, {
+          timeout: 5000,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      } else {
+        console.log('Dữ liệu gửi đi:', { email: identifier, password });
+        response = await axios.post(`${API_URL}/api/auth/login-with-email`, { 
+          email: identifier, 
+          password 
+        }, {
+          timeout: 5000,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      }
       
       console.log('Response từ server:', response.data);
       
@@ -123,7 +160,7 @@ const LoginScreen = () => {
       if (error.response) {
         // Lỗi từ server với response
         console.error('Error response data:', error.response.data);
-        setError(error.response.data.message || 'Số điện thoại hoặc mật khẩu không đúng');
+        setError(error.response.data.message || 'Thông tin đăng nhập không đúng');
       } else if (error.request) {
         // Lỗi không nhận được response
         setError('Không thể kết nối đến server. Vui lòng thử lại sau.');
@@ -157,9 +194,9 @@ const LoginScreen = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Số điện thoại"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Email hoặc số điện thoại"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
             required
           />
        

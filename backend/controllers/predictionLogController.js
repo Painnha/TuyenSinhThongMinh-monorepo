@@ -359,6 +359,7 @@ exports.getFeedbacks = async (req, res) => {
 exports.getUserLogs = async (req, res) => {
   try {
     const { 
+      userId: queryUserId, // Nhận userId từ query params
       modelType, 
       startDate, 
       endDate,
@@ -368,10 +369,24 @@ exports.getUserLogs = async (req, res) => {
       sortOrder = 'desc'
     } = req.query;
 
-    // Lấy userId từ người dùng đã đăng nhập
-    const userId = req.user.phone;
+    // Ưu tiên userId từ query nếu có, nếu không thì lấy từ thông tin người dùng
+    // Hỗ trợ cả trường hợp người dùng dùng email hoặc phone
+    let userId;
+    
+    if (queryUserId) {
+      // Nếu client truyền userId qua query params, ưu tiên sử dụng
+      userId = queryUserId;
+    } else if (req.user) {
+      // Nếu không có trong query, lấy từ thông tin người dùng đăng nhập
+      userId = req.user.phone || req.user.email || req.user._id;
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: 'Không tìm thấy thông tin người dùng'
+      });
+    }
 
-    // Xây dựng filter
+    // Xây dựng filter với userId đã xác định
     const filter = { userId };
     
     if (modelType) filter.modelType = modelType;
@@ -467,7 +482,8 @@ exports.getUserLogs = async (req, res) => {
 exports.getUserLogDetail = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.phone;
+    // Lấy userId từ người dùng đã đăng nhập - hỗ trợ cả email và phone
+    const userId = req.user.phone || req.user.email || req.user._id;
     
     const log = await PredictionLog.findOne({ _id: id, userId });
     
@@ -496,7 +512,8 @@ exports.getUserLogDetail = async (req, res) => {
 exports.updateUserFeedback = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.phone;
+    // Lấy userId từ người dùng đã đăng nhập - hỗ trợ cả email và phone
+    const userId = req.user.phone || req.user.email || req.user._id;
     const { isUseful, feedback } = req.body;
     
     if (isUseful === undefined) {

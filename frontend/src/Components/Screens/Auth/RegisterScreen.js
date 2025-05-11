@@ -6,8 +6,10 @@ import axios from 'axios';
 import { API_URL } from '../../../services/config/apiConfig';
 
 const RegisterScreen = () => {
-  const [step, setStep] = useState(1); // 1: số điện thoại, 2: OTP, 3: thông tin đăng ký
+  const [step, setStep] = useState(1); // 1: thông tin liên hệ, 2: OTP, 3: thông tin đăng ký
+  const [contactType, setContactType] = useState('email'); // 'phone' hoặc 'email'
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -62,6 +64,12 @@ const RegisterScreen = () => {
     return phoneRegex.test(phone);
   };
 
+  // Kiểm tra định dạng email hợp lệ
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   // Kiểm tra định dạng mật khẩu hợp lệ
   const isValidPassword = (password) => {
     // Ít nhất 6 ký tự, có chữ hoa, chữ thường và số
@@ -69,27 +77,39 @@ const RegisterScreen = () => {
     return passwordRegex.test(password);
   };
 
-  const handleCheckPhone = async (e) => {
+  const handleCheckContact = async (e) => {
     e.preventDefault();
     setError('');
     
-    // Kiểm tra định dạng số điện thoại
-    if (!isValidPhone(phone)) {
-      setError('Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (VD: 0912345678 hoặc 84912345678)');
-      return;
+    if (contactType === 'phone') {
+      // Kiểm tra định dạng số điện thoại
+      if (!isValidPhone(phone)) {
+        setError('Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (VD: 0912345678 hoặc 84912345678)');
+        return;
+      }
+    } else {
+      // Kiểm tra định dạng email
+      if (!isValidEmail(email)) {
+        setError('Email không hợp lệ. Vui lòng nhập đúng định dạng email');
+        return;
+      }
     }
     
     setLoading(true);
     
     try {
-      // Chuyển đổi định dạng số điện thoại trước khi gửi
-      const formattedPhone = formatPhoneNumber(phone);
-      await axios.post(`${API_URL}/api/auth/check-phone`, { phone: formattedPhone });
+      if (contactType === 'phone') {
+        // Chuyển đổi định dạng số điện thoại trước khi gửi
+        const formattedPhone = formatPhoneNumber(phone);
+        await axios.post(`${API_URL}/api/auth/check-phone`, { phone: formattedPhone });
+      } else {
+        await axios.post(`${API_URL}/api/auth/check-email`, { email });
+      }
       setStep(2); // Chuyển sang bước nhập OTP
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại ban đầu
     } catch (error) {
-      setError(error.response?.data?.message || 'Lỗi khi kiểm tra số điện thoại');
+      setError(error.response?.data?.message || `Lỗi khi kiểm tra ${contactType === 'phone' ? 'số điện thoại' : 'email'}`);
     } finally {
       setLoading(false);
     }
@@ -98,8 +118,12 @@ const RegisterScreen = () => {
   const handleResendOtp = async () => {
     setLoading(true);
     try {
-      const formattedPhone = formatPhoneNumber(phone);
-      await axios.post(`${API_URL}/api/auth/resend-otp`, { phone: formattedPhone });
+      if (contactType === 'phone') {
+        const formattedPhone = formatPhoneNumber(phone);
+        await axios.post(`${API_URL}/api/auth/resend-otp`, { phone: formattedPhone });
+      } else {
+        await axios.post(`${API_URL}/api/auth/resend-email-otp`, { email });
+      }
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại cho đến khi hết thời gian mới
       setError(''); // Xóa thông báo lỗi nếu có
@@ -122,8 +146,12 @@ const RegisterScreen = () => {
     setLoading(true);
 
     try {
-      const formattedPhone = formatPhoneNumber(phone);
-      const response = await axios.post(`${API_URL}/api/auth/verify-otp`, { phone: formattedPhone, otp });
+      if (contactType === 'phone') {
+        const formattedPhone = formatPhoneNumber(phone);
+        await axios.post(`${API_URL}/api/auth/verify-otp`, { phone: formattedPhone, otp });
+      } else {
+        await axios.post(`${API_URL}/api/auth/verify-email-otp`, { email, otp });
+      }
       setStep(3); // Chuyển sang bước nhập thông tin đăng ký
     } catch (error) {
       setError(error.response?.data?.message || 'Mã OTP không đúng. Vui lòng kiểm tra lại');
@@ -157,12 +185,20 @@ const RegisterScreen = () => {
     setLoading(true);
 
     try {
-      const formattedPhone = formatPhoneNumber(phone);
-      await axios.post(`${API_URL}/api/auth/register`, {
-        phone: formattedPhone,
-        userName,
-        password
-      });
+      if (contactType === 'phone') {
+        const formattedPhone = formatPhoneNumber(phone);
+        await axios.post(`${API_URL}/api/auth/register`, {
+          phone: formattedPhone,
+          userName,
+          password
+        });
+      } else {
+        await axios.post(`${API_URL}/api/auth/register-with-email`, {
+          email,
+          userName,
+          password
+        });
+      }
 
       console.log('Đăng ký thành công');
       window.location.href = '/login';
@@ -193,15 +229,41 @@ const RegisterScreen = () => {
         {error && <p className="error-message">{error}</p>}
         {loading && <p>Đang xử lý...</p>}
 
-        {/* Bước 1: Nhập số điện thoại */}
+        {/* Bước 1: Chọn phương thức và nhập thông tin liên hệ */}
         {step === 1 && (
-          <form onSubmit={handleCheckPhone}>
-            <input
-              type="text"
-              placeholder="Số điện thoại"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
+          <form onSubmit={handleCheckContact}>
+            <div className="contact-type-toggle">
+              <button 
+                type="button" 
+                className={`toggle-btn ${contactType === 'email' ? 'active' : ''}`}
+                onClick={() => setContactType('email')}
+              >
+                Email
+              </button>
+              <button 
+                type="button" 
+                className={`toggle-btn ${contactType === 'phone' ? 'active' : ''}`}
+                onClick={() => setContactType('phone')}
+              >
+                Số điện thoại
+              </button>
+            </div>
+            
+            {contactType === 'phone' ? (
+              <input
+                type="text"
+                placeholder="Số điện thoại"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            ) : (
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            )}
          
             <button type="submit" className="login-button" disabled={loading}>
               Xác thực OTP
@@ -212,6 +274,7 @@ const RegisterScreen = () => {
         {/* Bước 2: Nhập OTP */}
         {step === 2 && (
           <form onSubmit={handleVerifyOtp}>
+            <p>Mã xác thực đã được gửi đến {contactType === 'phone' ? phone : email}</p>
             <input
               type="text"
               placeholder="Nhập mã OTP"

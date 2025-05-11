@@ -61,6 +61,13 @@ const UserManagement = () => {
     return phoneNumber;
   };
 
+  // Hiển thị tên tài khoản (email hoặc số điện thoại)
+  const displayIdentifier = (user) => {
+    if (user.email) return user.email;
+    if (user.phone) return formatPhoneForDisplay(user.phone);
+    return 'N/A';
+  };
+
   // Kiểm tra định dạng số điện thoại hợp lệ
   const isValidPhone = (phoneNumber) => {
     // Loại bỏ các ký tự không phải số
@@ -389,7 +396,7 @@ const UserManagement = () => {
           <thead>
             <tr>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Tên người dùng</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Số điện thoại</th>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Tên tài khoản</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Vai trò</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Trạng thái</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Thao tác</th>
@@ -399,7 +406,7 @@ const UserManagement = () => {
             {users.map(user => (
               <tr key={user._id}>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>{user.userName}</td>
-                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{formatPhoneForDisplay(user.phone)}</td>
+                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{displayIdentifier(user)}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>{user.role}</td>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>
                   <span style={{

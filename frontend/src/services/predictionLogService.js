@@ -25,6 +25,8 @@ export const getUserLogs = async (params = {}) => {
     if (params.limit) queryParams.append('limit', params.limit);
     if (params.sortBy) queryParams.append('sortBy', params.sortBy);
     if (params.sortOrder) queryParams.append('sortOrder', params.sortOrder);
+    // Thêm userId vào query params để server có thể xác định người dùng dựa trên cả phone hoặc email
+    if (params.userId) queryParams.append('userId', params.userId);
     
     const queryString = queryParams.toString();
     const url = `/api/prediction-logs/logs${queryString ? `?${queryString}` : ''}`;
