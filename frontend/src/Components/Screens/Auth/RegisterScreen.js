@@ -209,7 +209,7 @@ const RegisterScreen = () => {
       } else if (error.request) {
         setError('Không thể kết nối đến server');
       } else {
-        setError('Có lỗi xảy ra');
+        setError('Lỗi không xác định khi đăng ký');
       }
     } finally {
       setLoading(false);

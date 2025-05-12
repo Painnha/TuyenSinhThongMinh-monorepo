@@ -124,7 +124,7 @@ exports.resendOtp = async (req, res) => {
 };
 
 /**
- * Đăng ký người dùng mới
+ * Đăng ký người dùng mới bằng số điện thoại
  */
 exports.register = async (req, res) => {
   const { phone, userName, password } = req.body;
@@ -154,13 +154,15 @@ exports.register = async (req, res) => {
     // Mã hóa mật khẩu
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Tạo người dùng mới
-    const newUser = new User({
+    // Tạo người dùng mới - CHỈ lưu các trường cần thiết - KHÔNG bao gồm email
+    const userData = {
       phone: formattedPhone,
       userName,
-      password: hashedPassword,
-    });
-    await newUser.save();
+      password: hashedPassword
+    };
+    
+    // Tạo document trực tiếp với MongoDB để tránh Mongoose tự thêm các trường
+    await User.collection.insertOne(userData);
 
     res.status(201).json({ message: 'Đăng ký thành công' });
   } catch (error) {
@@ -448,13 +450,15 @@ exports.registerWithEmail = async (req, res) => {
     // Mã hóa mật khẩu
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Tạo người dùng mới
-    const newUser = new User({
+    // Tạo người dùng mới - CHỈ lưu các trường cần thiết - KHÔNG bao gồm phone
+    const userData = {
       email,
       userName,
-      password: hashedPassword,
-    });
-    await newUser.save();
+      password: hashedPassword
+    };
+    
+    // Tạo document trực tiếp với MongoDB để tránh Mongoose tự thêm các trường
+    await User.collection.insertOne(userData);
 
     res.status(201).json({ message: 'Đăng ký thành công' });
   } catch (error) {
