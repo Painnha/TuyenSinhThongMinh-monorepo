@@ -27,29 +27,21 @@ class DataPreprocessor:
         self.interest_to_id = {interest['name']: i for i, interest in enumerate(self.interests)}
         self.subject_comb_to_id = {comb['code']: i for i, comb in enumerate(self.subject_combinations)}
         
-        # Tạo danh sách tên ngành (major name) cho model
-        # Tạo cả mapping chuẩn hóa không dấu và không phân biệt hoa thường
+        # Tạo mapping tên ngành đơn giản
         self.major_to_id = {}
         self.id_to_major = {}
         
         for i, major in enumerate(self.majors):
             name = major['name']
-            self.major_to_id[name] = i
+            name_lower = name.lower()
+            
+            # Lưu cả tên gốc và tên lowercase vào mapping
+            self.major_to_id[name_lower] = i
             self.id_to_major[i] = name
-            
-            # Thêm cả phiên bản lower case để dễ matching
-            self.major_to_id[name.lower()] = i
-            
-            # Thêm mapping normalized name nếu có
-            if 'nameNormalized' in major:
-                self.major_to_id[major['nameNormalized']] = i
         
         # In ra thông tin mapping
         print(f"Đã tạo mapping cho {len(self.id_to_major)} ngành học")
         print(f"Tổng số khóa trong major_to_id: {len(self.major_to_id)}")
-        
-        # Tạo thêm mapping normalized bằng phương thức tự xây dựng
-        self._create_normalized_mappings()
         
         # Định nghĩa giá trị ưu tiên khu vực và đối tượng
         self.area_priority_map = {'KV1': 0.75, 'KV2': 0.5, 'KV3': 0.25}
@@ -57,64 +49,6 @@ class DataPreprocessor:
         
         # Danh sách các môn học
         self.subjects = ['Toan', 'NguVan', 'VatLy', 'HoaHoc', 'SinhHoc', 'LichSu', 'DiaLy', 'GDCD', 'NgoaiNgu']
-    
-    def _create_normalized_mappings(self):
-        """Tạo thêm các mapping chuẩn hóa cho ngành học"""
-        # Xác định một list các từ thay thế và ký tự đặc biệt để xử lý
-        replace_dict = {
-            'và': 'and',
-            'quốc tế': 'quoc te',
-            'kỹ thuật': 'ky thuat',
-            'công nghệ': 'cong nghe',
-            'khoa học': 'khoa hoc',
-            'dữ liệu': 'du lieu',
-            'trí tuệ': 'tri tue',
-            'nhân tạo': 'nhan tao',
-            'kinh tế': 'kinh te',
-            'quản trị': 'quan tri',
-            'quản lý': 'quan ly',
-            'thông tin': 'thong tin',
-            'lữ hành': 'lu hanh',
-            'môi trường': 'moi truong',
-            'điện tử': 'dien tu',
-            'tài chính': 'tai chinh',
-            'ngân hàng': 'ngan hang'
-        }
-        
-        # Duyệt qua tất cả majors và tạo thêm các phiên bản normalized
-        for major_id, major_name in self.id_to_major.items():
-            # Tạo phiên bản lowercase và bỏ dấu gạch ngang
-            normalized = major_name.lower().replace('-', ' ')
-            
-            # Thay thế các từ đặc biệt
-            for original, replacement in replace_dict.items():
-                normalized = normalized.replace(original, replacement)
-            
-            # Bỏ khoảng trắng đầu cuối
-            normalized = normalized.strip()
-            
-            # Thêm vào mapping
-            if normalized not in self.major_to_id:
-                self.major_to_id[normalized] = major_id
-        
-        print(f"Sau khi normalized: Tổng số khóa trong major_to_id: {len(self.major_to_id)}")
-        
-        # Tạo các phiên bản không có dấu cách
-        additional_mappings = {}
-        for name, idx in self.major_to_id.items():
-            no_space = name.replace(' ', '')
-            if no_space not in self.major_to_id:
-                additional_mappings[no_space] = idx
-        
-        # Cập nhật mapping với các phiên bản không có dấu cách
-        self.major_to_id.update(additional_mappings)
-        print(f"Sau khi thêm no-space versions: Tổng số khóa trong major_to_id: {len(self.major_to_id)}")
-        
-        # In ra một số mapping để kiểm tra
-        print("Một số mapping mẫu:")
-        sample_keys = list(self.major_to_id.keys())[:5]
-        for key in sample_keys:
-            print(f"  {key} -> {self.id_to_major[self.major_to_id[key]]}")
     
     def preprocess_student_data(self, student_data):
         """
@@ -236,7 +170,7 @@ class DataPreprocessor:
                     major_name = record['Major_1'].lower().strip()
                     # Tìm các sở thích liên quan đến ngành này từ dữ liệu majors
                     for major in self.majors:
-                        if major['name'] == major_name and 'interests' in major:
+                        if major['name'].lower() == major_name and 'interests' in major:
                             for interest_obj in major['interests']:
                                 if 'name' in interest_obj and interest_obj['name'] in self.interest_to_id:
                                     interests[self.interest_to_id[interest_obj['name']]] = 1.0
@@ -303,7 +237,7 @@ class DataPreprocessor:
         current_year = datetime.datetime.now().year
         
         for major in self.majors:
-            major_id = self.major_to_id.get(major['name'])
+            major_id = self.major_to_id.get(major['name'].lower())
             if major_id is not None:
                 # Tìm xu hướng của năm hiện tại
                 market_trend = 0.5  # Giá trị mặc định
@@ -324,7 +258,7 @@ class DataPreprocessor:
         """Lấy thông tin ngành"""
         major_info = None
         for major in self.majors:
-            if major['name'] == major_name:
+            if major['name'].lower() == major_name.lower():
                 major_info = major
                 break
                 

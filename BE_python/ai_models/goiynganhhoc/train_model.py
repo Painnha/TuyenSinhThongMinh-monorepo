@@ -8,7 +8,6 @@ import datetime
 from sklearn.model_selection import train_test_split
 from bson import ObjectId
 import matplotlib.pyplot as plt
-from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 
@@ -17,7 +16,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 from utils.db_utils import db_client
 from ai_models.goiynganhhoc.data_preprocessing import DataPreprocessor
-# Sử dụng mô hình cải tiến thay vì mô hình cũ
+# Sử dụng mô hình từ neural_network.py
 from ai_models.goiynganhhoc.neural_network import MajorRecommendationModel
 
 # Đường dẫn để lưu mô hình
@@ -116,7 +115,7 @@ def create_synthetic_data(X, y):
     return X_synthetic, y_synthetic
 
 def plot_training_history(history, save_path=None):
-    """Vẽ biểu đồ lịch sử huấn luyện để phân tích overfitting"""
+    """Vẽ biểu đồ lịch sử huấn luyện"""
     plt.figure(figsize=(12, 4))
     
     # Vẽ loss
@@ -147,76 +146,8 @@ def plot_training_history(history, save_path=None):
     else:
         plt.show()
 
-def evaluate_model(model, X_test, y_test, preprocessor):
-    """Đánh giá chi tiết mô hình để phát hiện overfitting"""
-    # Dự đoán trên tập test
-    y_pred = model.predict(X_test)
-    
-    # Tính các metric
-    mae = mean_absolute_error(y_test, y_pred)
-    mse = mean_squared_error(y_test, y_pred)
-    rmse = np.sqrt(mse)
-    r2 = r2_score(y_test, y_pred)
-    
-    print("\n=== ĐÁNH GIÁ MÔ HÌNH ===")
-    print(f"Mean Absolute Error (MAE): {mae:.4f}")
-    print(f"Mean Squared Error (MSE): {mse:.4f}")
-    print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
-    print(f"R² Score: {r2:.4f}")
-    
-    # Đánh giá Top-K
-    top_k_values = [1, 3, 5, 10]
-    top_k_accuracies = []
-    
-    for k in top_k_values:
-        correct = 0
-        total = len(y_test)
-        
-        for i in range(total):
-            # Lấy các ngành thực tế có điểm > 0
-            actual_majors = np.where(y_test[i] > 0)[0]
-            if len(actual_majors) == 0:
-                continue
-                
-            # Lấy top-k ngành dự đoán
-            predicted_majors = np.argsort(y_pred[i])[::-1][:k]
-            
-            # Kiểm tra xem có bất kỳ ngành thực tế nào nằm trong top-k không
-            if any(major in predicted_majors for major in actual_majors):
-                correct += 1
-        
-        accuracy = correct / total * 100
-        top_k_accuracies.append(accuracy)
-        print(f"Top-{k} Accuracy: {accuracy:.2f}%")
-    
-    # Kiểm tra overfitting bằng cách so sánh phân phối của dự đoán
-    y_pred_mean = np.mean(y_pred)
-    y_pred_std = np.std(y_pred)
-    y_test_mean = np.mean(y_test)
-    y_test_std = np.std(y_test)
-    
-    print(f"\nPhân phối dự đoán: Mean={y_pred_mean:.4f}, Std={y_pred_std:.4f}")
-    print(f"Phân phối thực tế: Mean={y_test_mean:.4f}, Std={y_test_std:.4f}")
-    
-    if y_pred_std < 0.01:
-        print("CẢNH BÁO: Độ lệch chuẩn của dự đoán rất thấp, có thể đang bị overfitting")
-    
-    # Lưu kết quả đánh giá
-    evaluation_path = os.path.join(MODEL_DIR, 'evaluation_results.txt')
-    with open(evaluation_path, 'w', encoding='utf-8') as f:
-        f.write("=== ĐÁNH GIÁ MÔ HÌNH ===\n")
-        f.write(f"Mean Absolute Error (MAE): {mae:.4f}\n")
-        f.write(f"Mean Squared Error (MSE): {mse:.4f}\n")
-        f.write(f"Root Mean Squared Error (RMSE): {rmse:.4f}\n")
-        f.write(f"R² Score: {r2:.4f}\n\n")
-        
-        for k, acc in zip(top_k_values, top_k_accuracies):
-            f.write(f"Top-{k} Accuracy: {acc:.2f}%\n")
-    
-    return mae, mse, rmse, r2, top_k_accuracies
-
-def train_model_adjusted():
-    """Huấn luyện mô hình gợi ý ngành học với kỹ thuật chống overfitting"""
+def train_model():
+    """Huấn luyện mô hình gợi ý ngành học với MajorRecommendationModel từ neural_network.py"""
     # Khởi tạo preprocessor
     print("Đang tải dữ liệu từ MongoDB...")
     preprocessor = DataPreprocessor()
@@ -249,48 +180,21 @@ def train_model_adjusted():
     scaler_mean = scaler.mean_
     scaler_scale = scaler.scale_
     
-    # Tạo mô hình
-    model = keras.Sequential([
-        keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],),
-                          kernel_regularizer=tf.keras.regularizers.l2(0.001)),
-        keras.layers.BatchNormalization(),
-        keras.layers.Dropout(0.3),
-        keras.layers.Dense(64, activation='relu',
-                          kernel_regularizer=tf.keras.regularizers.l2(0.001)),
-        keras.layers.BatchNormalization(),
-        keras.layers.Dropout(0.3),
-        keras.layers.Dense(y_train.shape[1], activation='sigmoid')
-    ])
-    
-    # Biên dịch
-    model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
-        loss='mean_squared_error',
-        metrics=['mae']
-    )
+    # Tạo mô hình sử dụng MajorRecommendationModel từ neural_network.py
+    model = MajorRecommendationModel(input_dim=X_train.shape[1], output_dim=y_train.shape[1])
     
     # Huấn luyện
     print("Đang huấn luyện mô hình...")
-    history = model.fit(
+    history = model.train(
         X_train_scaled, y_train,
+        X_val=X_test_scaled, y_val=y_test,
         epochs=50,
-        batch_size=32,
-        validation_data=(X_test_scaled, y_test),
-        callbacks=[
-            tf.keras.callbacks.EarlyStopping(
-                monitor='val_loss',
-                patience=5,
-                restore_best_weights=True
-            )
-        ]
+        batch_size=32
     )
     
     # Vẽ và lưu biểu đồ lịch sử huấn luyện
     history_path = os.path.join(MODEL_DIR, 'training_history.png')
     plot_training_history(history, save_path=history_path)
-    
-    # Đánh giá mô hình
-    mae, mse, rmse, r2, accuracies = evaluate_model(model, X_test, y_test, preprocessor)
     
     # Lưu mô hình và scaler
     if not os.path.exists(MODEL_PATH):
@@ -309,9 +213,6 @@ def train_model_adjusted():
             "output_dim": y_train.shape[1],
             "num_interests": len(preprocessor.interest_to_id),
             "training_samples": len(X_train),
-            "validation_mae": float(mae),
-            "validation_accuracy_top1": float(accuracies[0] / 100),
-            "validation_accuracy_top3": float(accuracies[1] / 100),
             "training_date": datetime.datetime.now().isoformat()
         },
         "featureMapping": {
@@ -348,10 +249,10 @@ def train_model_adjusted():
         print("Đã tạo cấu hình mô hình mới trong MongoDB")
     
     print("Huấn luyện mô hình hoàn tất!")
-    return model, history, preprocessor, X_test, y_test
+    return model, history, preprocessor, X_test_scaled, y_test
 
-def test_model(model, preprocessor, student_data=None):
-    """Kiểm tra mô hình với dữ liệu mẫu"""
+def test_major_recommendation(model, preprocessor, student_data=None):
+    """Kiểm tra gợi ý ngành học cho sinh viên mẫu"""
     if student_data is None:
         # Tạo dữ liệu học sinh mẫu để test
         student_data = {
@@ -376,11 +277,7 @@ def test_model(model, preprocessor, student_data=None):
     student_features = np.expand_dims(student_features, axis=0)  # Thêm batch dimension
     
     # Dự đoán 
-    predictions = model.predict(student_features)
-    
-    # Lấy top-5 ngành có xác suất cao nhất
-    top_indices = np.argsort(predictions[0])[::-1][:5]
-    recommendations = [(idx, float(predictions[0][idx])) for idx in top_indices]
+    recommendations = model.predict(student_features, top_k=5)
     
     # In kết quả
     print("\n=== Gợi ý ngành học ===")
@@ -388,24 +285,11 @@ def test_model(model, preprocessor, student_data=None):
         major_name = preprocessor.get_major_by_id(idx)
         print(f"- {major_name}: {score:.2f}")
         
-        # Lấy thông tin chi tiết về ngành
-        major_info = preprocessor.get_major_info(major_name)
-        if major_info and 'interests' in major_info:
-            matching_interests = []
-            for interest_obj in major_info['interests']:
-                if isinstance(interest_obj, dict) and 'name' in interest_obj:
-                    interest_name = interest_obj['name']
-                    if interest_name in student_data['interests']:
-                        matching_interests.append(interest_name)
-            
-            if matching_interests:
-                print(f"  Phù hợp với sở thích: {', '.join(matching_interests)}")
-        
     return recommendations
 
 if __name__ == "__main__":
-    # Huấn luyện mô hình đã điều chỉnh
-    model, history, preprocessor, X_test, y_test = train_model_adjusted()
+    # Huấn luyện mô hình 
+    model, history, preprocessor, X_test, y_test = train_model()
     
     # Test mô hình với dữ liệu mẫu
-    test_model(model, preprocessor)
+    test_major_recommendation(model, preprocessor)
