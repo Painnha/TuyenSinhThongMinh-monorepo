@@ -42,10 +42,7 @@ const UniversityManagement = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Fetching universities...');
       const data = await getAllUniversities();
-      console.log('Universities data:', data);
-      
       // Kiểm tra format dữ liệu trả về từ API
       let universitiesList = [];
       if (data.universities) {

@@ -10,9 +10,9 @@ import { updateLogFeedback } from '../../services/predictionLogService';
  * @param {Object} props.initialData - Dữ liệu ban đầu của form
  * @param {Function} props.onClose - Callback khi đóng form
  * @param {Function} props.onSubmitted - Callback khi feedback được gửi
+ * @param {boolean} props.standalone - Nếu true, sẽ hiển thị dạng modal độc lập
  */
-const FeedbackForm = ({ logId, predictionId, initialData = {}, onClose, onSubmitted }) => {
-  // Sử dụng logId nếu có, ngược lại sử dụng predictionId
+const FeedbackForm = ({ logId, predictionId, initialData = {}, onClose, onSubmitted, standalone = true }) => {
   const actualLogId = logId || predictionId;
   
   const [formData, setFormData] = useState({
@@ -50,12 +50,12 @@ const FeedbackForm = ({ logId, predictionId, initialData = {}, onClose, onSubmit
       setLoading(true);
       setError('');
       
-      // Sử dụng API để cập nhật feedback
       const response = await updateLogFeedback(actualLogId, formData);
       
-      if (response.success) {
-        // Gọi callback để thông báo thành công
+      if (response.status === 200) {
+        alert('Đã cập nhật đánh giá thành công');
         if (onSubmitted) onSubmitted(response.data);
+        onClose();
       } else {
         setError(response.message || 'Đã xảy ra lỗi khi cập nhật đánh giá');
       }
@@ -66,9 +66,9 @@ const FeedbackForm = ({ logId, predictionId, initialData = {}, onClose, onSubmit
     }
   };
 
-  return (
-    <div className="feedback-modal-overlay">
-      <div className="feedback-modal">
+  const renderContent = () => {
+    return (
+      <>
         <div className="feedback-modal-header">
           <h2>{initialData.isUseful !== undefined ? 'Cập nhật đánh giá' : 'Thêm đánh giá mới'}</h2>
           <button className="close-button" onClick={onClose}>&times;</button>
@@ -120,14 +120,33 @@ const FeedbackForm = ({ logId, predictionId, initialData = {}, onClose, onSubmit
                 Hủy
               </button>
               <button type="submit" className="btn-submit" disabled={loading}>
-                {loading ? 'Đang gửi...' : 'Gửi đánh giá'}
+                {loading ? (
+                  <>
+                    <div className="loading-spinner" />
+                    Đang gửi...
+                  </>
+                ) : 'Gửi đánh giá'}
               </button>
             </div>
           </form>
         </div>
+      </>
+    );
+  };
+
+  // Nếu standalone = true, hiển thị dạng modal độc lập
+  if (standalone) {
+    return (
+      <div className="feedback-modal-overlay">
+        <div className="feedback-modal">
+          {renderContent()}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  // Nếu không, chỉ render nội dung form
+  return renderContent();
 };
 
 export default FeedbackForm; 

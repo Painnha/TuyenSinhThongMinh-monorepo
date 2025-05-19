@@ -35,6 +35,10 @@ router.post('/recommend', async (req, res) => {
         
         // Gửi request đến API Python
         try {
+            console.log('\n==== SENDING REQUEST TO PYTHON API ====');
+            console.log('Timeout set to: 90000ms (90 seconds)');
+            const startTime = Date.now();
+            
             const response = await axios.post(`${PYTHON_API_URL}/api/recommendation/recommend`, req.body, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,7 +46,22 @@ router.post('/recommend', async (req, res) => {
                 timeout: 90000
             });
             
-            console.log('Nhận được phản hồi từ Python API:', response.status);
+            const elapsedTime = Date.now() - startTime;
+            console.log(`Request completed in ${elapsedTime}ms`);
+            console.log('Python API status:', response.status);
+            
+            // Kiểm tra dữ liệu trả về
+            console.log('\n==== PYTHON API RESPONSE STRUCTURE ====');
+            console.log('Response has data:', !!response.data);
+            if (response.data) {
+                console.log('Success flag:', response.data.success);
+                if (response.data.recommendations) {
+                    console.log('Recommendations count:', response.data.recommendations.length);
+                } else {
+                    console.log('No recommendations array in response');
+                }
+            }
+            console.log('=======================================\n');
             
             // Chuyển tiếp kết quả từ Python API
             return res.status(200).json(response.data);

@@ -57,7 +57,9 @@ def recommend_majors():
         transformed_data = {
             'scores': {},
             'interests': data.get('interests', []),
-            'subject_groups': data.get('examBlocks', []) or data.get('subject_groups', [])
+            'subject_groups': data.get('examBlocks', []) or data.get('subject_groups', []),
+            'tohopthi': data.get('tohopthi', 'TN'),  # Thêm trường tohopthi mặc định 'TN'
+            'priority': data.get('priority', {'area': 'KV3', 'subject': '00'})  # Thêm trường priority
         }
         
         # Chuyển đổi điểm số
@@ -83,8 +85,18 @@ def recommend_majors():
                 # Nếu điểm đã được chuyển đổi từ frontend
                 transformed_data['scores'] = data['scores']
         
-        # In dữ liệu debug
-        print("Dữ liệu đã chuyển đổi:", transformed_data)
+        # Đảm bảo các giá trị điểm số là số
+        for subject, score in transformed_data['scores'].items():
+            try:
+                transformed_data['scores'][subject] = float(score)
+            except (ValueError, TypeError):
+                print(f"Cảnh báo: Điểm môn {subject} không phải số hợp lệ: {score}, đặt về 0")
+                transformed_data['scores'][subject] = 0.0
+        
+        # In dữ liệu debug chi tiết
+        print("\n========== DỮ LIỆU CHUYỂN ĐỔI CHI TIẾT ==========")
+        print(json.dumps(transformed_data, indent=2, cls=NpEncoder))
+        print("===================================================\n")
         
         # Kiểm tra các trường bắt buộc
         required_fields = ['scores', 'interests', 'subject_groups']
@@ -97,9 +109,38 @@ def recommend_majors():
         
         # Sử dụng dữ liệu đã chuyển đổi
         try:
+            print("\n========== BẮT ĐẦU QUÁ TRÌNH DỰ ĐOÁN ==========")
+            print("1. Đang tải mô hình và scaler...")
             model, scaler, features_info = load_model_and_scaler()
+            print("   ✓ Đã tải mô hình thành công")
+            
+            print("2. Đang tiền xử lý dữ liệu...")
             features, metadata = preprocess_student_data(transformed_data, db)
+            print("   ✓ Đã tiền xử lý dữ liệu thành công")
+            
+            print("3. Đang thực hiện dự đoán...")
             recommendations = predict_recommended_majors(model, scaler, features, metadata, top_k=5)
+            print("   ✓ Đã dự đoán thành công")
+            print("=================================================\n")
+            
+            # Kiểm tra cấu trúc kết quả
+            if not recommendations or not isinstance(recommendations, list) or len(recommendations) == 0:
+                print("CẢNH BÁO: Không có kết quả dự đoán!")
+                # Trả về lỗi nếu không có kết quả
+                return jsonify({
+                    'success': False,
+                    'message': 'Không có kết quả dự đoán từ mô hình',
+                    'error': 'NO_RESULTS'
+                }), 500
+            
+            # In mẫu kết quả ra log
+            print("\n========== MẪU KẾT QUẢ DỰ ĐOÁN ==========")
+            print(f"Số lượng ngành được gợi ý: {len(recommendations)}")
+            if len(recommendations) > 0:
+                print(f"Ngành đầu tiên: {recommendations[0]['major_name']}")
+                print(f"Độ phù hợp: {recommendations[0]['confidence']}")
+                print(f"Số trường đại học gợi ý: {len(recommendations[0].get('suitable_universities', []))}")
+            print("===========================================\n")
             
             # Chuẩn bị dữ liệu để lưu log
             user_id = data.get('userId', None)

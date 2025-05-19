@@ -29,9 +29,7 @@ const UserManagement = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Fetching users...');
       const data = await getAllUsers();
-      console.log('Users data:', data);
       setUsers(data.users || []);
     } catch (err) {
       console.error('Error in UserManagement:', err);
@@ -112,12 +110,9 @@ const UserManagement = () => {
     
     // Xử lý số điện thoại để hiển thị đúng định dạng cho người dùng
     setUserName(user.userName);
-    setPhone(formatPhoneForDisplay(user.phone));
-    setPassword('');
     setRole(user.role);
     
     // Reset errors
-    setPhoneError('');
     setPasswordError('');
     
     // Hiện modal
@@ -184,14 +179,8 @@ const UserManagement = () => {
       // Form data
       const userData = {
         userName,
-        phone, // Số điện thoại sẽ được chuẩn hóa trong service
         role
       };
-      
-      // Thêm mật khẩu nếu được nhập
-      if (password) {
-        userData.password = password;
-      }
       
       // Cập nhật người dùng
       await updateUser(currentUser._id, userData);
@@ -490,46 +479,6 @@ const UserManagement = () => {
                     onChange={(e) => setUserName(e.target.value)}
                     required
                   />
-                </div>
-              </div>
-              
-              <div className="form-row">
-                <div>
-                  <label htmlFor="edit-phone">Số điện thoại:</label>
-                  <input
-                    id="edit-phone"
-                    type="text"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
-                  />
-                  {phoneError && (
-                    <div className="error-message">
-                      {phoneError}
-                    </div>
-                  )}
-                  <div className="hint-text">
-                    Định dạng: 0xxxxxxxxx hoặc 84xxxxxxxxx (x là chữ số)
-                  </div>
-                </div>
-              </div>
-              
-              <div className="form-row">
-                <div>
-                  <label htmlFor="edit-password">
-                    Mật khẩu mới (để trống nếu không đổi):
-                  </label>
-                  <input
-                    id="edit-password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  {passwordError && (
-                    <div className="error-message">
-                      {passwordError}
-                    </div>
-                  )}
                 </div>
               </div>
               

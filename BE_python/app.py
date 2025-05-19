@@ -21,10 +21,18 @@ print(f"- PYTHON_API_PORT: {os.environ.get('PYTHON_API_PORT')}")
 try:
     from ai_models.dudoanxacxuat.initialize_model import initialize_model
     model_initialized = initialize_model()
-    print(f"Khởi tạo mô hình thành công: {model_initialized}")
+    print(f"Khởi tạo mô hình dự đoán xác suất thành công: {model_initialized}")
 except Exception as e:
-    print(f"Lỗi khi khởi tạo mô hình: {e}")
+    print(f"Lỗi khi khởi tạo mô hình dự đoán xác suất: {e}")
     model_initialized = False
+
+# Kiểm tra và khởi tạo mô hình gợi ý ngành học nếu cần
+try:
+    from ai_models.goiynganhhoc.initialize_model import initialize_model
+    initialize_model()
+    print("Đã kiểm tra và khởi tạo mô hình gợi ý ngành học")
+except Exception as e:
+    print(f"Lỗi khi khởi tạo mô hình gợi ý ngành học: {e}")
 
 # Import API modules
 try:
@@ -35,9 +43,9 @@ except ImportError as e:
     print(f"CẢNH BÁO: Không thể import module dự đoán xác suất đậu đại học: {e}")
     ADMISSION_PREDICTION_AVAILABLE = False
 
-# Import module gợi ý ngành học
+# Import module gợi ý ngành học mới
 try:
-    from ai_models.goiynganhhoc.api_integration import major_recommendation_blueprint
+    from ai_models.goiynganhhoc.major_recommendation_api import major_recommendation_blueprint
     MAJOR_RECOMMENDATION_AVAILABLE = True
     print("API gợi ý ngành học đã được tải thành công")
 except ImportError as e:
@@ -107,8 +115,10 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', os.environ.get('PYTHON_API_PORT', 8080)))
     print(f"Starting Python API server on port {port}")
     print(f"Admission prediction API available: {ADMISSION_PREDICTION_AVAILABLE}")
+    print(f"Major recommendation API available: {MAJOR_RECOMMENDATION_AVAILABLE}")
     print(f"Host: {os.environ.get('API_HOST', '0.0.0.0')}")
     print(f"URL Endpoint for prediction: /api/data/admission/predict-ai")
+    print(f"URL Endpoint for major recommendation: /api/recommendation/recommend")
     
     # In các routes đã đăng ký
     print("Các routes đã đăng ký:")

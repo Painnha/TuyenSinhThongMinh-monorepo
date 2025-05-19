@@ -164,8 +164,6 @@ const PredictionLogManagement = () => {
         }
       });
       
-      // Log dữ liệu thống kê để debug
-      console.log('Dữ liệu thống kê nhận được:', response.data.data);
       
       setStatistics(response.data.data);
     } catch (err) {

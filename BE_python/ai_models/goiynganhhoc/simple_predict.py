@@ -14,6 +14,21 @@ sys.path.append(parent_dir)
 # Import DataPreprocessor từ data_preprocessing.py
 from ai_models.goiynganhhoc.data_preprocessing import DataPreprocessor
 
+# Định nghĩa hàm loss tùy chỉnh giống như trong train_model_balanced.py
+def weighted_binary_crossentropy(class_weight):
+    def loss(y_true, y_pred):
+        # Apply class weight to the binary crossentropy
+        weight_vector = y_true * class_weight[1] + (1 - y_true) * class_weight[0]
+        base_loss = tf.keras.losses.binary_crossentropy(y_true, y_pred)
+        weighted_loss = base_loss * weight_vector
+        return tf.reduce_mean(weighted_loss)
+    return loss
+
+# Định nghĩa hàm loss mặc định cho custom_objects
+def loss(y_true, y_pred):
+    # Phiên bản đơn giản
+    return tf.keras.losses.binary_crossentropy(y_true, y_pred)
+
 def load_model_and_scaler():
     """
     Tải mô hình dự đoán và bộ scaler
@@ -35,8 +50,56 @@ def load_model_and_scaler():
     if not os.path.exists(scaler_mean_path) or not os.path.exists(scaler_scale_path):
         raise FileNotFoundError(f"Không tìm thấy file scaler")
     
-    # Tải mô hình
-    model = load_model(model_path)
+    # Tạo một bản sao của mô hình không chứa loss function
+    try:
+        # Sử dụng custom_object_scope để load model
+        with tf.keras.utils.custom_object_scope({
+            'weighted_binary_crossentropy': weighted_binary_crossentropy,
+            'loss': loss
+        }):
+            model = load_model(model_path)
+    except Exception as e:
+        print(f"Lỗi khi load model: {e}")
+        
+        # Thử phương án thay thế: tải model mà không compile
+        try:
+            print("Thử tải model mà không compile...")
+            model = load_model(model_path, compile=False)
+            print("Load model thành công!")
+        except Exception as e2:
+            print(f"Lỗi khi load model không compile: {e2}")
+            raise e2
+    
+    # Thêm phương thức predict_combined vào model
+    def predict_combined(X):
+        try:
+            # Thử dùng predict trực tiếp với nhiều đầu ra
+            raw_preds = model.predict(X, verbose=0)
+            if isinstance(raw_preds, list):
+                # Mô hình có nhiều đầu ra
+                preds = np.zeros((X.shape[0], len(raw_preds)))
+                for i, pred in enumerate(raw_preds):
+                    preds[:, i] = pred.reshape(-1)
+                return preds
+            else:
+                # Mô hình có một đầu ra
+                return raw_preds
+        except Exception as e:
+            print(f"Lỗi dự đoán: {e}, thử phương pháp khác...")
+            # Thử cách khác nếu cách trên không hoạt động
+            num_outputs = len(model.outputs)
+            preds = np.zeros((X.shape[0], num_outputs))
+            
+            # Lấy kết quả từng đầu ra
+            for i in range(num_outputs):
+                output_layer = model.get_layer(f'output_{i}')
+                temp_model = tf.keras.Model(inputs=model.inputs, outputs=output_layer.output)
+                preds[:, i] = temp_model.predict(X, verbose=0).reshape(-1)
+            
+            return preds
+    
+    # Gắn phương thức vào model
+    model.predict_combined = predict_combined
     
     # Tải scaler
     scaler_mean = np.load(scaler_mean_path)
@@ -66,8 +129,8 @@ def predict_majors(model, scaler, preprocessor, student_data, top_k=5):
     scaler_mean, scaler_scale = scaler
     features_scaled = (features.reshape(1, -1) - scaler_mean) / scaler_scale
     
-    # Dự đoán
-    predictions = model.predict(features_scaled, verbose=0)[0]
+    # Dự đoán bằng phương thức predict_combined
+    predictions = model.predict_combined(features_scaled)[0]
     
     # Lấy top-k ngành có xác suất cao nhất
     top_indices = np.argsort(predictions)[::-1][:top_k]
@@ -157,15 +220,15 @@ def predict_with_sample_data(sample_number=1):
             "scores": {
                 "Toan": 9.0,
                 "NguVan": 7.5,
-                "VatLy": 8.5,
-                "HoaHoc": 8.0,
+                "VatLy": 9.0,
+                "HoaHoc": 9.0,
                 "SinhHoc": 7.0,
                 "LichSu": 0.0,
                 "DiaLy": 0.0,
                 "GDCD": 0.0,
                 "NgoaiNgu": 8.5
             },
-            "interests": ["Lập trình", "Máy tính", "Công nghệ", "Phân tích dữ liệu"],
+            "interests": ["Toán học", "Công nghệ","Nghiên cứu"],
             "subject_groups": ["A00", "A01"],
             "tohopthi": "TN",
             "priorityScore": 0.5
@@ -176,17 +239,17 @@ def predict_with_sample_data(sample_number=1):
             "scores": {
                 "Toan": 7.0,
                 "NguVan": 8.5,
-                "VatLy": 0.0,
-                "HoaHoc": 0.0,
+                "VatLy": 9.0,
+                "HoaHoc": 8.0,
                 "SinhHoc": 0.0,
-                "LichSu": 8.0,
-                "DiaLy": 8.5,
+                "LichSu": 0.0,
+                "DiaLy": 0.0,
                 "GDCD": 9.0,
-                "NgoaiNgu": 8.0
+                "NgoaiNgu": 9.0
             },
-            "interests": ["Nghiên cứu xã hội", "Truyền thông", "Kinh doanh", "Quản lý"],
-            "subject_groups": ["C00", "D01"],
-            "tohopthi": "XH",
+            "interests": ["Dạy học", "Ngoại ngữ","Giáo dục","Văn học"],
+            "subject_groups": ["A01", "D01"],
+            "tohopthi": "TN",
             "priorityScore": 0.0
         },
         

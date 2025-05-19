@@ -37,7 +37,17 @@ class NpEncoder(json.JSONEncoder):
         return super(NpEncoder, self).default(obj)
 
 def balance_dataset(X, y, threshold=0.5):
-    """Cân bằng dataset để tránh overfitting do dữ liệu không cân bằng"""
+    """
+    Cân bằng dataset để tránh overfitting do dữ liệu không cân bằng
+    
+    Args:
+        X: Ma trận đặc trưng
+        y: Ma trận nhãn
+        threshold: Ngưỡng để lọc bỏ mẫu không có nhãn
+        
+    Returns:
+        X, y đã được cân bằng
+    """
     print("Đang cân bằng dataset...")
     
     # Tìm các mẫu có ít nhất một nhãn > 0
@@ -70,7 +80,16 @@ def balance_dataset(X, y, threshold=0.5):
     return X, y
 
 def create_synthetic_data(X, y):
-    """Tạo dữ liệu huấn luyện giả khi không có dữ liệu thực"""
+    """
+    Tạo dữ liệu huấn luyện giả khi không có dữ liệu thực
+    
+    Args:
+        X: Ma trận đặc trưng gốc
+        y: Ma trận nhãn gốc
+        
+    Returns:
+        X_synthetic, y_synthetic: Dữ liệu giả
+    """
     print("Tạo dữ liệu tổng hợp để huấn luyện mô hình...")
     
     num_samples = 1000  # Số lượng mẫu giả
@@ -88,7 +107,7 @@ def create_synthetic_data(X, y):
     X_synthetic[:, 9:11] = khoi_thi
     
     # Tạo sở thích ngẫu nhiên (mỗi mẫu có 1-3 sở thích)
-    num_interests = num_features - 11 - (y.shape[1] - num_majors)
+    num_interests = num_features - 11 - (num_features - num_interests)
     for i in range(num_samples):
         num_interests_per_sample = np.random.randint(1, 4)  # Mỗi học sinh có 1-3 sở thích
         interest_indices = np.random.choice(num_interests, size=num_interests_per_sample, replace=False)
@@ -114,28 +133,86 @@ def create_synthetic_data(X, y):
     
     return X_synthetic, y_synthetic
 
-def plot_training_history(history, save_path=None):
-    """Vẽ biểu đồ lịch sử huấn luyện"""
-    plt.figure(figsize=(12, 4))
+def calculate_class_weights(y_train):
+    """
+    Tính toán class weights cho từng ngành dựa trên tỷ lệ mất cân bằng
     
-    # Vẽ loss
-    plt.subplot(1, 2, 1)
+    Args:
+        y_train: Ma trận nhãn
+        
+    Returns:
+        Dictionary chứa class weights cho mỗi ngành
+    """
+    print("Tính toán class weights cho từng ngành học...")
+    class_weights = {}
+    
+    for i in range(y_train.shape[1]):
+        # Đếm số mẫu dương/âm cho ngành này
+        pos_count = np.sum(y_train[:, i] > 0)
+        neg_count = len(y_train) - pos_count
+        
+        if pos_count > 0:
+            # Tính trọng số: càng ít mẫu dương, trọng số càng cao
+            weight = neg_count / pos_count
+            # Giới hạn weight để tránh quá cao
+            weight = min(weight, 50.0)  # Giới hạn tối đa là 50
+            
+            # Áp dụng trọng số cho binary crossentropy
+            class_weights[f'output_{i}'] = {0: 1.0, 1: weight}
+        else:
+            # Nếu không có mẫu dương, sử dụng trọng số mặc định
+            class_weights[f'output_{i}'] = {0: 1.0, 1: 1.0}
+    
+    # In vài trọng số để kiểm tra - chỉ in ra 5 ngành đầu tiên để tránh spam đầu ra
+    sample_weights = {key: class_weights[key] for key in list(class_weights.keys())[:5]}
+    print(f"Class weights cho 5 ngành đầu tiên: {sample_weights}")
+    print(f"Tổng số ngành có class weight > 1: {sum(1 for k, v in class_weights.items() if v[1] > 1)}")
+    print(f"Tổng số ngành có class weight = 50 (max): {sum(1 for k, v in class_weights.items() if v[1] == 50)}")
+    
+    return class_weights
+
+def prepare_multi_output_data(y_train, y_test):
+    """
+    Chuẩn bị dữ liệu đầu ra cho mô hình đa đầu ra
+    
+    Args:
+        y_train: Ma trận nhãn tập huấn luyện
+        y_test: Ma trận nhãn tập kiểm tra
+        
+    Returns:
+        y_train_dict, y_test_dict: Dictionary chứa dữ liệu đầu ra cho mô hình đa đầu ra
+    """
+    print("Chuẩn bị dữ liệu cho mô hình đa đầu ra...")
+    
+    # Chuẩn bị dữ liệu huấn luyện đầu ra
+    y_train_dict = {}
+    for i in range(y_train.shape[1]):
+        y_train_dict[f'output_{i}'] = (y_train[:, i] > 0).astype(float).reshape(-1, 1)
+    
+    # Tương tự cho tập kiểm tra
+    y_test_dict = {}
+    for i in range(y_test.shape[1]):
+        y_test_dict[f'output_{i}'] = (y_test[:, i] > 0).astype(float).reshape(-1, 1)
+    
+    return y_train_dict, y_test_dict
+
+def plot_training_history(history, save_path=None):
+    """
+    Vẽ biểu đồ lịch sử huấn luyện
+    
+    Args:
+        history: Đối tượng History từ model.fit()
+        save_path: Đường dẫn để lưu biểu đồ (nếu có)
+    """
+    plt.figure(figsize=(10, 6))
+    
+    # Chỉ vẽ loss
     plt.plot(history.history['loss'], label='Training Loss')
     if 'val_loss' in history.history:
         plt.plot(history.history['val_loss'], label='Validation Loss')
     plt.title('Loss Over Epochs')
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
-    plt.legend()
-    
-    # Vẽ metrics
-    plt.subplot(1, 2, 2)
-    plt.plot(history.history['mae'], label='Training MAE')
-    if 'val_mae' in history.history:
-        plt.plot(history.history['val_mae'], label='Validation MAE')
-    plt.title('Mean Absolute Error Over Epochs')
-    plt.xlabel('Epoch')
-    plt.ylabel('MAE')
     plt.legend()
     
     plt.tight_layout()
@@ -146,8 +223,20 @@ def plot_training_history(history, save_path=None):
     else:
         plt.show()
 
-def train_model():
-    """Huấn luyện mô hình gợi ý ngành học với MajorRecommendationModel từ neural_network.py"""
+def train_model(use_multi_output=True):
+    """
+    Huấn luyện mô hình gợi ý ngành học
+    
+    Args:
+        use_multi_output: Có sử dụng kiến trúc đa đầu ra hay không
+        
+    Returns:
+        model: Mô hình đã được huấn luyện
+        history: Lịch sử huấn luyện
+        preprocessor: DataPreprocessor đã sử dụng
+        X_test_scaled: Dữ liệu kiểm tra đã được chuẩn hóa
+        y_test: Nhãn kiểm tra
+    """
     # Khởi tạo preprocessor
     print("Đang tải dữ liệu từ MongoDB...")
     preprocessor = DataPreprocessor()
@@ -160,60 +249,135 @@ def train_model():
     # Tiền xử lý dữ liệu
     print("Đang tiền xử lý dữ liệu huấn luyện...")
     X, y = preprocessor.preprocess_training_data()
+    print(f"Kích thước dữ liệu: {len(X)} mẫu")
+    
+    # Giới hạn số lượng mẫu nếu cần
+    max_samples = 10000  # Số lượng mẫu tối đa
+    if len(X) > max_samples:
+        print(f"Giới hạn số lượng mẫu xuống {max_samples}...")
+        indices = np.arange(len(X))
+        np.random.seed(42)
+        np.random.shuffle(indices)
+        indices = indices[:max_samples]
+        X = X[indices]
+        y = y[indices]
     
     # Cân bằng dataset để tránh overfitting
     X, y = balance_dataset(X, y)
+    print(f"Kích thước sau khi cân bằng: {X.shape}")
     
-    # In thông tin về kích thước dữ liệu
-    print(f"Kích thước X: {X.shape}")
-    print(f"Kích thước y: {y.shape}")
-    
-    # Chia dữ liệu thành tập huấn luyện và tập kiểm tra với tỷ lệ 20% cho tập kiểm tra
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Chia tập train/test
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+    print(f"Kích thước tập train: {len(X_train)}")
+    print(f"Kích thước tập test: {len(X_test)}")
     
     # Chuẩn hóa dữ liệu
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
     
-    # Lưu thông số chuẩn hóa
-    scaler_mean = scaler.mean_
-    scaler_scale = scaler.scale_
+    # Tạo mô hình
+    input_dim = X_train.shape[1]
+    output_dim = y_train.shape[1]
+    print(f"Đang khởi tạo mô hình với {input_dim} đặc trưng và {output_dim} ngành học")
     
-    # Tạo mô hình sử dụng MajorRecommendationModel từ neural_network.py
-    model = MajorRecommendationModel(input_dim=X_train.shape[1], output_dim=y_train.shape[1])
-    
-    # Huấn luyện
-    print("Đang huấn luyện mô hình...")
-    history = model.train(
-        X_train_scaled, y_train,
-        X_val=X_test_scaled, y_val=y_test,
-        epochs=50,
-        batch_size=32
+    model = MajorRecommendationModel(
+        input_dim=input_dim,
+        output_dim=output_dim,
+        use_multi_output=use_multi_output
     )
     
+    # Callbacks cho huấn luyện
+    early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True,
+        verbose=1
+    )
+    
+    reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
+        monitor='val_loss',
+        factor=0.5,
+        patience=3,
+        min_lr=0.00001,
+        verbose=1
+    )
+    
+    callbacks = [early_stopping, reduce_lr]
+    
+    # Huấn luyện mô hình - phương pháp khác nhau tùy theo kiến trúc
+    if use_multi_output:
+        print("Sử dụng kiến trúc đa đầu ra với trọng số tùy chỉnh cho từng ngành")
+        
+        # Tính class weights cho từng ngành
+        class_weights = calculate_class_weights(y_train)
+        
+        # Chuẩn bị dữ liệu cho mô hình đa đầu ra
+        y_train_dict, y_test_dict = prepare_multi_output_data(y_train, y_test)
+        
+        # Compile mô hình với class weights
+        model.compile_model(class_weights=class_weights)
+        
+        # Huấn luyện mô hình
+        history = model.train(
+            X_train_scaled,
+            y_train_dict,
+            X_val=X_test_scaled,
+            y_val=y_test_dict,
+            epochs=50,
+            batch_size=32,
+            callbacks=callbacks,
+            verbose=2
+        )
+    else:
+        print("Sử dụng kiến trúc đơn đầu ra truyền thống")
+        
+        # Compile mô hình
+        model.compile_model()
+        
+        # Huấn luyện mô hình
+        history = model.train(
+            X_train_scaled,
+            y_train,
+            X_val=X_test_scaled,
+            y_val=y_test,
+            epochs=50,
+            batch_size=32,
+            callbacks=callbacks,
+            verbose=2
+        )
+    
     # Vẽ và lưu biểu đồ lịch sử huấn luyện
-    history_path = os.path.join(MODEL_DIR, 'training_history.png')
+    history_path = os.path.join(MODEL_PATH, 'training_history.png')
     plot_training_history(history, save_path=history_path)
     
-    # Lưu mô hình và scaler
-    if not os.path.exists(MODEL_PATH):
-        os.makedirs(MODEL_PATH)
+    # Lưu mô hình
+    model_path = os.path.join(MODEL_PATH, 'major_recommendation_model.h5')
+    print(f"Đang lưu mô hình tại: {model_path}")
+    model.save(model_path)
     
-    model.save(os.path.join(MODEL_PATH, "major_recommendation_model.h5"))
-    np.save(os.path.join(MODEL_PATH, "scaler_mean.npy"), scaler_mean)
-    np.save(os.path.join(MODEL_PATH, "scaler_scale.npy"), scaler_scale)
+    # Lưu scaler
+    np.save(os.path.join(MODEL_PATH, 'scaler_mean.npy'), scaler.mean_)
+    np.save(os.path.join(MODEL_PATH, 'scaler_scale.npy'), scaler.scale_)
     
-    # Cập nhật thông tin cấu hình mô hình vào MongoDB
+    # Lưu dictionary ánh xạ id -> major
+    id_to_major_path = os.path.join(MODEL_PATH, 'id_to_major.json')
+    with open(id_to_major_path, 'w', encoding='utf-8') as f:
+        json.dump(preprocessor.id_to_major, f, ensure_ascii=False, indent=2)
+    
+    # Cập nhật cấu hình mô hình trong MongoDB
     model_config = {
         "modelName": "major_recommendation",
-        "version": "1.2.0",  # Cập nhật phiên bản
+        "version": "1.0.0",
         "parameters": {
-            "input_dim": X_train.shape[1],
-            "output_dim": y_train.shape[1],
+            "input_dim": input_dim,
+            "output_dim": output_dim,
             "num_interests": len(preprocessor.interest_to_id),
             "training_samples": len(X_train),
-            "training_date": datetime.datetime.now().isoformat()
+            "training_date": datetime.datetime.now().isoformat(),
+            "architecture_type": "multi_output" if use_multi_output else "single_output"
         },
         "featureMapping": {
             "subjects": preprocessor.subjects,
@@ -225,7 +389,7 @@ def train_model():
         "updatedAt": datetime.datetime.now()
     }
     
-    # Kiểm tra xem đã có cấu hình cho mô hình major_recommendation chưa
+    # Kiểm tra xem đã có cấu hình cho mô hình chưa
     existing_config = db_client.fetch_data(
         'model_configs', 
         query={"modelName": "major_recommendation", "active": True}
@@ -248,7 +412,7 @@ def train_model():
         db_client.insert_one('model_configs', model_config)
         print("Đã tạo cấu hình mô hình mới trong MongoDB")
     
-    print("Huấn luyện mô hình hoàn tất!")
+    print("Hoàn tất huấn luyện mô hình!")
     return model, history, preprocessor, X_test_scaled, y_test
 
 def test_major_recommendation(model, preprocessor, student_data=None):
@@ -288,8 +452,5 @@ def test_major_recommendation(model, preprocessor, student_data=None):
     return recommendations
 
 if __name__ == "__main__":
-    # Huấn luyện mô hình 
-    model, history, preprocessor, X_test, y_test = train_model()
-    
-    # Test mô hình với dữ liệu mẫu
-    test_major_recommendation(model, preprocessor)
+    # Sử dụng mô hình đa đầu ra theo mặc định
+    train_model(use_multi_output=True)

@@ -124,6 +124,7 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
   const [predictionResults, setPredictionResults] = useState({});
   
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState({}); // Track which predictions have been rated
   
   // Cập nhật khi nhận initialRecommendations mới
   useEffect(() => {
@@ -312,13 +313,13 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
       const combination = university.combination || '';
       
       // In chi tiết thông tin điểm học sinh được truyền vào (chỉ hiển thị trong console)
-      console.log("===== KIỂM TRA ĐIỂM HỌC SINH =====");
-      console.log("studentScores prop:", studentScores); 
-      console.log("formData.scores:", formData.scores);
-      console.log("Keys trong studentScores:", studentScores ? Object.keys(studentScores) : "null");
-      console.log("Giá trị Toán:", studentScores?.Toan);
-      console.log("Giá trị Văn:", studentScores?.NguVan);
-      console.log("Giá trị Ngoại ngữ:", studentScores?.NgoaiNgu);
+      // console.log("===== KIỂM TRA ĐIỂM HỌC SINH =====");
+      // console.log("studentScores prop:", studentScores); 
+      // console.log("formData.scores:", formData.scores);
+      // console.log("Keys trong studentScores:", studentScores ? Object.keys(studentScores) : "null");
+      // console.log("Giá trị Toán:", studentScores?.Toan);
+      // console.log("Giá trị Văn:", studentScores?.NguVan);
+      // console.log("Giá trị Ngoại ngữ:", studentScores?.NgoaiNgu);
       
       // Tạo điểm các môn theo tổ hợp - sử dụng điểm gốc từ studentScores
       const scores = {};
@@ -358,7 +359,7 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
           }
         }
         
-        console.log("Chi tiết điểm theo tổ hợp:", combination);
+        // console.log("Chi tiết điểm theo tổ hợp:", combination);
         Object.entries(scores).forEach(([subject, score]) => {
           console.log(`  - ${subject}: ${score} (từ ${Object.entries(subjectMapping).find(([_, v]) => v === subject)?.[0]})`);
         });
@@ -380,7 +381,7 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
         try {
           const user = JSON.parse(userStr);
           userId = user.phone || user.email || user._id;
-          console.log('Đã lấy được userId cho dự đoán xác suất:', userId);
+          // console.log('Đã lấy được userId cho dự đoán xác suất:', userId);
         } catch (e) {
           console.error('Lỗi khi parse thông tin user từ localStorage:', e);
         }
@@ -407,13 +408,13 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
       console.log('Tổ hợp môn:', combination);
       console.log('Điểm của học sinh:', calculatedStudentScore); // Log điểm đã tính
       console.log('Chi tiết điểm các môn:', JSON.stringify(scores, null, 2));
-      console.log('Dữ liệu gửi đi:', JSON.stringify(predictionData, null, 2));
-      console.log('=====================================');
+      // console.log('Dữ liệu gửi đi:', JSON.stringify(predictionData, null, 2));
+      // console.log('=====================================');
       
       // Gọi API dự đoán
       const response = await aiService.predictAdmissionProbability(predictionData);
       
-      console.log('Kết quả dự đoán xác suất:', response);
+      // console.log('Kết quả dự đoán xác suất:', response);
       
       if (response && response.success && response.prediction) {
         // Lưu kết quả dự đoán vào state kết quả dự đoán
@@ -455,8 +456,16 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
         feedback: isPositive ? 'Kết quả dự đoán hữu ích' : 'Kết quả dự đoán chưa chính xác'
       }).then(response => {
         console.log('Đã gửi feedback cho mô hình dự đoán xác suất:', response);
+        // Mark this prediction as rated
+        setFeedbackSubmitted(prev => ({
+          ...prev,
+          [predictionKey]: true
+        }));
+        // Show success message
+        alert(isPositive ? 'Cảm ơn bạn đã đánh giá tích cực!' : 'Cảm ơn bạn đã đánh giá!');
       }).catch(err => {
         console.error('Lỗi khi gửi feedback cho mô hình dự đoán xác suất:', err);
+        alert('Có lỗi xảy ra khi gửi đánh giá. Vui lòng thử lại sau.');
       });
     }
   };
@@ -468,14 +477,14 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
     
     // Gửi feedback cho mô hình gợi ý ngành học
     if (predictionId) {
-      console.log('Gửi feedback cho mô hình gợi ý ngành học với ID:', predictionId);
+      // console.log('Gửi feedback cho mô hình gợi ý ngành học với ID:', predictionId);
     } else {
       console.warn('Không có predictionId cho mô hình gợi ý ngành học');
     }
     
     // Nếu người dùng đã xem xác suất trúng tuyển, lưu feedback cả cho mô hình xác suất
     if (admissionPredictionId) {
-      console.log('Gửi feedback cho mô hình dự đoán xác suất với ID:', admissionPredictionId);
+      // console.log('Gửi feedback cho mô hình dự đoán xác suất với ID:', admissionPredictionId);
     }
   };
   
@@ -746,12 +755,16 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
                               </div>
                               
                               <div className="prediction-feedback">
-                                <button className="feedback-button positive" onClick={() => handlePredictionFeedback(predictionKey, true)}>
-                                  <span className="feedback-icon">👍</span>
-                                </button>
-                                <button className="feedback-button negative" onClick={() => handlePredictionFeedback(predictionKey, false)}>
-                                  <span className="feedback-icon">👎</span>
-                                </button>
+                                {!feedbackSubmitted[predictionKey] && (
+                                  <>
+                                    <button className="feedback-button positive" onClick={() => handlePredictionFeedback(predictionKey, true)}>
+                                      <span className="feedback-icon">👍</span>
+                                    </button>
+                                    <button className="feedback-button negative" onClick={() => handlePredictionFeedback(predictionKey, false)}>
+                                      <span className="feedback-icon">👎</span>
+                                    </button>
+                                  </>
+                                )}
                               </div>
                             </div>
                           )}
@@ -785,14 +798,14 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
         </div>
         
         {recommendations && predictionId && showFeedbackForm && (
-          <div className="feedback-modal">
-            <div className="feedback-modal-content">
-              <button className="close-button" onClick={() => setShowFeedbackForm(false)}>×</button>
+          <div className="feedback-modal-overlay">
+            <div className="feedback-modal">
               <FeedbackForm 
                 predictionId={predictionId}
                 modelType="major_recommendation" 
                 onClose={() => setShowFeedbackForm(false)}
                 onSubmitted={handleFeedbackSubmitted}
+                standalone={false}
               />
             </div>
           </div>

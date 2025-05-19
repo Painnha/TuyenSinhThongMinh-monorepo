@@ -134,6 +134,12 @@ const LoginScreen = () => {
       
       const { token, user } = response.data;
       
+      // Kiểm tra tài khoản có bị khóa không
+      if (user.isActive === false) {
+        setError('Tài khoản của bạn đã bị khóa.');
+        return;
+      }
+      
       // Lưu token và thông tin user vào localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));

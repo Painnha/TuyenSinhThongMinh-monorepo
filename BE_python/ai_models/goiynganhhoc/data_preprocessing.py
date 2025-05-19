@@ -251,8 +251,28 @@ class DataPreprocessor:
         return trend_weights
     
     def get_major_by_id(self, major_id):
-        """Lấy tên ngành theo ID"""
-        return self.id_to_major.get(major_id)
+        """
+        Lấy tên ngành theo ID
+        
+        Args:
+            major_id: ID của ngành (có thể là int hoặc str)
+            
+        Returns:
+            Tên ngành tương ứng hoặc giá trị mặc định nếu không tìm thấy
+        """
+        # Chuyển đổi ID thành string nếu cần thiết
+        major_id_str = str(major_id)
+        
+        # Thử tìm theo ID dạng string
+        if major_id_str in self.id_to_major:
+            return self.id_to_major[major_id_str]
+        
+        # Thử tìm theo ID dạng int
+        if isinstance(major_id, int) and major_id in self.id_to_major:
+            return self.id_to_major[major_id]
+        
+        # Trả về giá trị mặc định nếu không tìm thấy
+        return f"Ngành {major_id}"
     
     def get_major_info(self, major_name):
         """Lấy thông tin ngành"""

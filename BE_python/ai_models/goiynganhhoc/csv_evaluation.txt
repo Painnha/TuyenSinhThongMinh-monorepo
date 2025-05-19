@@ -1,0 +1,19 @@
+====== ĐÁNH GIÁ MÔ HÌNH GỢI Ý NGÀNH HỌC TRÊN TẬP CSV ======
+
+Thời gian đánh giá: 2025-05-19 22:38:18
+Tệp test: D:\hk2_2025-2026\KLTN\Project\project10\TuyenSinhThongMinh-monorepo\BE_python\ai_models\goiynganhhoc\test_data_6000.csv
+Số lượng mẫu: 6000
+
+=== ĐỘ CHÍNH XÁC TOP-K TRUYỀN THỐNG ===
+Top-1 Accuracy: 55.73%
+Top-3 Accuracy: 78.78%
+Top-5 Accuracy: 57.07%
+Top-10 Accuracy: 34.64%
+
+
+
+=== CÁC ĐỘ ĐO TRUYỀN THỐNG CHO TOP-1 ===
+Precision: 59.15%
+Recall: 54.08%
+F1 Score: 52.84%
+

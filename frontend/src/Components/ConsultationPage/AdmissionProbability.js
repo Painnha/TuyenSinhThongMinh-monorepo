@@ -305,7 +305,7 @@ const AdmissionProbability = () => {
         userId: userId
       };
       
-      console.log('Gửi dữ liệu dự đoán:', requestData);
+      // console.log('Gửi dữ liệu dự đoán:', requestData);
       
       // Gọi API dự đoán
       const response = await aiService.predictAdmissionProbability(requestData);

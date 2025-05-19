@@ -87,16 +87,24 @@ const BenchmarkScoreManagement = () => {
     fetchData();
   }, [currentPage]); // Fetch lại khi thay đổi trang
 
-  const fetchData = async () => {
+  const fetchData = async (customFilters = null) => {
     setLoading(true);
     try {
       // Fetch benchmark scores với phân trang
       try {
+        const requestFilters = customFilters || filters;
+        
+        // Đảm bảo year là số nếu có giá trị
+        const finalFilters = {
+          ...requestFilters,
+          year: requestFilters.year ? Number(requestFilters.year) : undefined
+        };
+        
         const scoresResponse = await axios.get(
           `${API_BASE_URL}/api/benchmark-scores`, 
           {
             params: {
-              ...filters,
+              ...finalFilters,
               page: currentPage,
               limit: ITEMS_PER_PAGE
             },
@@ -104,7 +112,7 @@ const BenchmarkScoreManagement = () => {
           }
         );
         
-        console.log('Benchmark scores response:', scoresResponse.data);
+
         
         if (scoresResponse.data && typeof scoresResponse.data === 'object') {
           // Nếu API trả về cấu trúc phân trang
@@ -137,7 +145,7 @@ const BenchmarkScoreManagement = () => {
           `${API_BASE_URL}/api/benchmark-scores/universities`,
           getAuthHeaders()
         );
-        console.log('Universities response:', universitiesResponse.data);
+       
         if (Array.isArray(universitiesResponse.data)) {
           setUniversities(universitiesResponse.data);
         } else {
@@ -154,7 +162,7 @@ const BenchmarkScoreManagement = () => {
           `${API_BASE_URL}/api/benchmark-scores/majors`,
           getAuthHeaders()
         );
-        console.log('Majors response:', majorsResponse.data);
+      
         if (Array.isArray(majorsResponse.data)) {
           setMajors(majorsResponse.data);
         } else {
@@ -171,7 +179,7 @@ const BenchmarkScoreManagement = () => {
           `${API_BASE_URL}/api/benchmark-scores/subject-combinations`,
           getAuthHeaders()
         );
-        console.log('Subject combinations response:', combinationsResponse.data);
+       
         if (Array.isArray(combinationsResponse.data)) {
           setSubjectCombinations(combinationsResponse.data);
         } else {
@@ -447,8 +455,16 @@ const BenchmarkScoreManagement = () => {
 
   const applyFilters = (e) => {
     e.preventDefault();
-    setCurrentPage(1); // Reset về trang 1 khi áp dụng bộ lọc mới
-    fetchData();
+    
+    // Chuyển đổi filters trước khi gửi request
+    const apiFilters = {
+      ...filters,
+      year: filters.year ? Number(filters.year) : undefined // Đảm bảo chuyển thành number
+    };
+    
+    console.log('Applying filters:', apiFilters);
+    setCurrentPage(1);
+    fetchData(apiFilters);
   };
 
   const resetFilters = () => {
@@ -459,7 +475,7 @@ const BenchmarkScoreManagement = () => {
       year: '',
     });
     setCurrentPage(1); // Reset về trang 1 khi xóa bộ lọc
-    fetchData();
+    fetchData({});
   };
 
   // Thêm hàm để tạo dữ liệu mẫu
@@ -609,11 +625,11 @@ const BenchmarkScoreManagement = () => {
                     type="text"
                     id="year"
                     name="year"
-                    placeholder="Nhập năm (ví dụ: 2024)"
+                    placeholder="Nhập năm (VD: 2024)"
                     value={formData.year}
                     onChange={handleInputChange}
-                    pattern="[0-9]{4}"
-                    title="Năm phải có 4 chữ số"
+                    pattern="20[0-9]{2}"
+                    title="Năm phải có 4 chữ số và nằm trong khoảng 2000-2099"
                     required
                   />
                 </div>
@@ -711,14 +727,28 @@ const BenchmarkScoreManagement = () => {
               <input 
                 type="text" 
                 name="year" 
-                placeholder="Nhập năm" 
                 value={filters.year} 
-                onChange={handleFiltersChange}
+                onChange={(e) => {
+                  // Chỉ cho phép nhập số và giới hạn độ dài
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 4);
+                  handleFiltersChange({
+                    target: {
+                      name: 'year',
+                      value: value
+                    }
+                  });
+                }}
+                maxLength="4"
               />
             </div>
 
             <div className="form-actions">
-              <button type="submit" className="btn-primary">Lọc</button>
+              <button 
+                type="submit" 
+                className="btn-primary"
+              >
+                Lọc
+              </button>
               <button type="button" className="btn-secondary" onClick={resetFilters}>Đặt lại</button>
             </div>
           </form>
@@ -901,11 +931,11 @@ const BenchmarkScoreManagement = () => {
                     type="text"
                     id="edit-year"
                     name="year"
-                    placeholder="Nhập năm (ví dụ: 2024)"
+                    placeholder="Nhập năm (VD: 2024)"
                     value={formData.year}
                     onChange={handleInputChange}
-                    pattern="[0-9]{4}"
-                    title="Năm phải có 4 chữ số"
+                    pattern="20[0-9]{2}"
+                    title="Năm phải có 4 chữ số và nằm trong khoảng 2000-2099"
                     required
                   />
                 </div>

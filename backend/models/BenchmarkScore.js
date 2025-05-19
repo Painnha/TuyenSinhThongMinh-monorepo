@@ -23,9 +23,10 @@ const benchmarkScoreSchema = new mongoose.Schema({
     min: 0,
   },
   year: {
-    type: String,
+    type: Number,
     required: true,
-    match: /^\d{4}$/,
+    min: 2000,
+    max: 2099,
   },
   notes: {
     type: String,

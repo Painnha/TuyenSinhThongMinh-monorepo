@@ -206,7 +206,8 @@ exports.login = async (req, res) => {
         id: user._id,
         phone: user.phone,
         userName: user.userName,
-        role: user.role
+        role: user.role,
+        isActive: user.isActive
       },
     });
   } catch (error) {

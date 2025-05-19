@@ -24,9 +24,9 @@ const ProtectedRoute = ({ children, allowedRoles = [], requireAdminLogin = false
         const userStr = localStorage.getItem('user');
         const adminLoginFlag = localStorage.getItem('isAdminLogin');
         
-        console.log('Token:', token);
-        console.log('User string:', userStr);
-        console.log('Admin login flag:', adminLoginFlag);
+  
+     
+      
         
         if (!token || !userStr) {
           setError('Không tìm thấy thông tin đăng nhập');
@@ -36,13 +36,12 @@ const ProtectedRoute = ({ children, allowedRoles = [], requireAdminLogin = false
         }
         
         const user = JSON.parse(userStr);
-        console.log('User object:', user);
+    
         
         setIsAuthenticated(true);
         setUserRole(user.role || 'user');
         setIsAdminLogin(adminLoginFlag === 'true');
-        console.log('User role:', user.role || 'user');
-        console.log('Is admin login:', adminLoginFlag === 'true');
+
       } catch (err) {
         console.error('Error checking auth:', err);
         setError('Lỗi khi kiểm tra xác thực: ' + err.message);

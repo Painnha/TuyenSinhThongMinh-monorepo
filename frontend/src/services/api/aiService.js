@@ -2,6 +2,7 @@ import axios from 'axios';
 import { API_URL } from '../config/apiConfig';
 import mockInterests from '../../mockData/interests';
 import mockSubjectCombinations from '../../mockData/subjectCombinations';
+import { log, logError } from '../../utils/logger';
 
 // Dữ liệu giả cho recommendMajors
 const mockRecommendations = {
@@ -69,8 +70,8 @@ export const aiService = {
     // Gợi ý ngành học dựa trên điểm số, sở thích và tổ hợp môn
     recommendMajors: async (studentData) => {
         try {
-            console.log('API URL:', `${API_URL}/api/recommendation/recommend`);
-            console.log('Sending data to API:', JSON.stringify(studentData, null, 2));
+            log('API URL:', `${API_URL}/api/recommendation/recommend`, 'API_CALLS');
+            log('Sending data to API:', JSON.stringify(studentData, null, 2), 'API_CALLS');
             
             // Lấy thông tin người dùng từ localStorage và trích xuất userId
             let userId = null;
@@ -80,12 +81,12 @@ export const aiService = {
                     const user = JSON.parse(userStr);
                     // Sử dụng cả email, phone hoặc _id, ưu tiên theo thứ tự
                     userId = user.phone || user.email || user._id;
-                    console.log('Đã lấy được userId từ localStorage:', userId);
+                    log('Đã lấy được userId từ localStorage:', userId, 'API_CALLS');
                 } catch (e) {
-                    console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+                    logError('Lỗi khi parse thông tin user từ localStorage:', e);
                 }
             } else {
-                console.log('Không tìm thấy thông tin user trong localStorage');
+                log('Không tìm thấy thông tin user trong localStorage', null, 'API_CALLS');
             }
             
             // Chuẩn bị dữ liệu gửi đi với userId đúng
@@ -94,7 +95,7 @@ export const aiService = {
                 userId: userId
             };
             
-            console.log('Dữ liệu gửi đi cuối cùng:', JSON.stringify(requestData, null, 2));
+            log('Dữ liệu gửi đi cuối cùng:', JSON.stringify(requestData, null, 2), 'API_CALLS');
             
             const response = await axios.post(`${API_URL}/api/recommendation/recommend`, requestData, {
                 headers: {
@@ -102,8 +103,8 @@ export const aiService = {
                 },
             });
             
-            console.log('API Response status:', response.status);
-            console.log('API Response data:', response.data);
+            log('API Response status:', response.status, 'API_RESPONSES');
+            log('API Response data:', response.data, 'API_RESPONSES');
             
             if (response.status !== 200) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -111,7 +112,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.error('Error recommending majors:', error);
+            logError('Error recommending majors:', error);
             throw error;
         }
     },
@@ -128,8 +129,8 @@ export const aiService = {
      */
     predictAdmissionProbability: async (data) => {
         try {
-            console.log('API URL:', `${API_URL}/api/data/admission/predict-ai`);
-            console.log('Sending data to API:', JSON.stringify(data, null, 2));
+            log('API URL:', `${API_URL}/api/data/admission/predict-ai`, 'API_CALLS');
+            log('Sending data to API:', JSON.stringify(data, null, 2), 'API_CALLS');
             
             // Lấy thông tin người dùng từ localStorage nếu không có trong data
             if (!data.userId) {
@@ -139,9 +140,9 @@ export const aiService = {
                         const user = JSON.parse(userStr);
                         // Sử dụng cả email, phone hoặc _id, ưu tiên theo thứ tự
                         data.userId = user.phone || user.email || user._id;
-                        console.log('Đã lấy được userId từ localStorage:', data.userId);
+                        log('Đã lấy được userId từ localStorage:', data.userId, 'API_CALLS');
                     } catch (e) {
-                        console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+                        logError('Lỗi khi parse thông tin user từ localStorage:', e);
                     }
                 }
             }
@@ -152,8 +153,8 @@ export const aiService = {
                 },
             });
             
-            console.log('API Response status:', response.status);
-            console.log('API Response data:', response.data);
+            log('API Response status:', response.status, 'API_RESPONSES');
+            log('API Response data:', response.data, 'API_RESPONSES');
             
             if (response.status !== 200) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -161,7 +162,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.error('Error predicting admission probability:', error);
+            logError('Error predicting admission probability:', error);
             throw error;
         }
     },
@@ -188,14 +189,14 @@ export const aiService = {
                 try {
                     const user = JSON.parse(userStr);
                     userId = user.phone || user._id; // Sử dụng số điện thoại hoặc _id
-                    console.log('Đã lấy được userId từ localStorage:', userId);
+                    log('Đã lấy được userId từ localStorage:', userId, 'API_CALLS');
                     // Thêm userId vào feedbackData
                     feedbackData.userId = userId;
                 } catch (e) {
-                    console.error('Lỗi khi parse thông tin user từ localStorage:', e);
+                    logError('Lỗi khi parse thông tin user từ localStorage:', e);
                 }
             } else {
-                console.log('Không tìm thấy thông tin user trong localStorage');
+                log('Không tìm thấy thông tin user trong localStorage', null, 'API_CALLS');
             }
             
             // Sửa đổi: Kiểm tra và xử lý endpoint
@@ -206,8 +207,8 @@ export const aiService = {
             if (endpoint === 'recommendation/feedback') {
                 try {
                     fullEndpoint = `${API_URL}/api/${endpoint}`;
-                    console.log(`Thử gửi feedback đến API: ${fullEndpoint}`);
-                    console.log('Feedback data:', JSON.stringify(feedbackData, null, 2));
+                    log(`Thử gửi feedback đến API: ${fullEndpoint}`, null, 'API_CALLS');
+                    log('Feedback data:', JSON.stringify(feedbackData, null, 2), 'API_CALLS');
                     
                     const response = await axios.post(fullEndpoint, feedbackData, {
                         headers: {
@@ -215,11 +216,11 @@ export const aiService = {
                         }
                     });
                     
-                    console.log('Kết quả gửi feedback:', response.data);
+                    log('Kết quả gửi feedback:', response.data, 'API_RESPONSES');
                     return response.data;
                 } catch (error) {
                     if (error.response && error.response.status === 404) {
-                        console.log('API recommendation/feedback không tồn tại, thử dùng data/admission/feedback');
+                        log('API recommendation/feedback không tồn tại, thử dùng data/admission/feedback', null, 'API_CALLS');
                         // Thử dùng endpoint thay thế
                         endpoint = 'data/admission/feedback';
                     } else {
@@ -229,8 +230,8 @@ export const aiService = {
             }
             
             fullEndpoint = `${API_URL}/api/${endpoint}`;
-            console.log(`Gửi feedback đến API: ${fullEndpoint}`);
-            console.log('Feedback data:', JSON.stringify(feedbackData, null, 2));
+            log(`Gửi feedback đến API: ${fullEndpoint}`, null, 'API_CALLS');
+            log('Feedback data:', JSON.stringify(feedbackData, null, 2), 'API_CALLS');
             
             const response = await axios.post(fullEndpoint, feedbackData, {
                 headers: {
@@ -238,21 +239,16 @@ export const aiService = {
                 }
             });
             
-            console.log('Kết quả gửi feedback:', response.data);
+            log('Kết quả gửi feedback:', response.data, 'API_RESPONSES');
             
             return response.data;
         } catch (error) {
-            console.error('Lỗi khi gửi feedback:', error);
+            logError('Lỗi khi gửi feedback:', error);
             
             // Thêm thông tin lỗi cụ thể
             if (error.response) {
-                console.error('Error response status:', error.response.status);
-                console.error('Error response data:', error.response.data);
-                
-                // Nếu API trả về thông báo lỗi cụ thể
-                if (error.response.data && error.response.data.message) {
-                    throw new Error(error.response.data.message);
-                }
+                logError('Error response status:', error.response.status);
+                logError('Error response data:', error.response.data);
             }
             
             throw error;
@@ -270,7 +266,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn('Không thể kết nối đến API subject-combinations, sử dụng dữ liệu giả thay thế:', error);
+            logError('Không thể kết nối đến API subject-combinations, sử dụng dữ liệu giả thay thế:', error);
             // Trả về dữ liệu giả khi API không hoạt động
             return {
                 success: true,
@@ -290,7 +286,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn('Không thể kết nối đến API interests, sử dụng dữ liệu giả thay thế:', error);
+            logError('Không thể kết nối đến API interests, sử dụng dữ liệu giả thay thế:', error);
             // Trả về dữ liệu giả khi API không hoạt động
             return mockInterests;
         }
@@ -307,7 +303,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn('Không thể kết nối đến API universities:', error);
+            logError('Không thể kết nối đến API universities:', error);
             return {
                 success: false,
                 message: 'Không thể lấy danh sách trường đại học',
@@ -327,7 +323,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn('Không thể kết nối đến API majors:', error);
+            logError('Không thể kết nối đến API majors:', error);
             return {
                 success: false,
                 message: 'Không thể lấy danh sách ngành học',
@@ -347,7 +343,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn(`Không thể kết nối đến API majors by university (${universityCode}):`, error);
+            logError(`Không thể kết nối đến API majors by university (${universityCode}):`, error);
             return {
                 success: false,
                 message: 'Không thể lấy danh sách ngành học của trường',
@@ -367,7 +363,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn(`Không thể kết nối đến API universities by major (${majorName}):`, error);
+            logError(`Không thể kết nối đến API universities by major (${majorName}):`, error);
             return {
                 success: false,
                 message: 'Không thể lấy danh sách trường đại học có ngành học',
@@ -387,7 +383,7 @@ export const aiService = {
             
             return response.data;
         } catch (error) {
-            console.warn('Không thể kết nối đến API subjects:', error);
+            logError('Không thể kết nối đến API subjects:', error);
             return {
                 success: false,
                 message: 'Không thể lấy danh sách môn học',

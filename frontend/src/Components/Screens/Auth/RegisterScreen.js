@@ -201,7 +201,10 @@ const RegisterScreen = () => {
       }
 
       console.log('Đăng ký thành công');
-      window.location.href = '/login';
+      alert('Đăng ký tài khoản thành công! Vui lòng đăng nhập để tiếp tục.');
+      setTimeout(() => {
+        window.location.href = '/login';
+      }, 500); // Đợi 0.5 giây sau khi hiển thị thông báo
     } catch (error) {
       console.error('Register error:', error);
       if (error.response) {

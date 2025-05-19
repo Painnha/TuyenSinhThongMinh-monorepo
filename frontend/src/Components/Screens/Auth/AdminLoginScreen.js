@@ -74,12 +74,12 @@ const AdminLoginScreen = () => {
     setLoading(true);
 
     try {
-      console.log('Đang gửi request đến:', `${API_URL}/api/auth/login`);
+ 
       
       // Chuyển đổi định dạng số điện thoại trước khi gửi
       const formattedPhone = formatPhoneNumber(phone);
       
-      console.log('Dữ liệu gửi đi:', { phone: formattedPhone, password });
+
       
       const response = await axios.post(`${API_URL}/api/auth/login`, { 
         phone: formattedPhone, 
@@ -90,10 +90,15 @@ const AdminLoginScreen = () => {
           'Content-Type': 'application/json'
         }
       });
-      
-      console.log('Response từ server:', response.data);
+
       
       const { token, user } = response.data;
+      
+      // Kiểm tra tài khoản có bị khóa không
+      if (user.isActive === false) {
+        setError('Tài khoản của bạn đã bị khóa.');
+        return;
+      }
       
       // Kiểm tra xem người dùng có quyền admin không
       if (user.role !== 'admin') {
@@ -112,8 +117,7 @@ const AdminLoginScreen = () => {
       
       // Giải mã token để lấy thông tin người dùng
       const decodedToken = jwtDecode(token);
-      console.log('Đăng nhập thành công, user:', user);
-      console.log('Token decoded:', decodedToken);
+
 
       // Chuyển hướng đến trang admin
       navigate('/admin');

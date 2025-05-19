@@ -42,7 +42,7 @@ const normalizePhoneNumber = (phoneNumber) => {
 export const getAllUsers = async () => {
   try {
     const response = await authAxios().get('/api/users');
-    console.log('API URL used:', (API_URL.endsWith('/api') ? API_URL.slice(0, -4) : API_URL) + '/api/users');
+   
     return response.data;
   } catch (error) {
     console.error('Error fetching users:', error);

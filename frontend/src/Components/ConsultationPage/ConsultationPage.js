@@ -7,6 +7,7 @@ import axios from 'axios';
 import TabPanel from './TabPanel';
 import MajorRecommendation from './MajorRecommendation';
 import AdmissionProbability from './AdmissionProbability';
+import { log, logError } from '../../utils/logger';
 
 // Component Tab tùy chỉnh thay thế Tab của MUI
 const CustomTab = ({ label, active, onClick }) => {
@@ -402,13 +403,9 @@ const ConsultationPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form data:", formData);
-        
-        // Reset trạng thái
         setAiLoading(true);
         setAiError(null);
-        setRecommendations(null);
-        
+
         try {
             // Chuẩn bị dữ liệu gửi đi theo cấu trúc gốc
             const requestData = {
@@ -440,12 +437,14 @@ const ConsultationPage = () => {
                 GDCD: parseFloat(formData.scores.thpt.civics) || 0
             };
             
-            console.log("Đang gọi API với dữ liệu:", requestData);
-            console.log("Điểm đã được xử lý để sử dụng sau:", processedScores);
+            log("Form data:", formData, 'PREDICTIONS');
+            
+            log("Đang gọi API với dữ liệu:", requestData, 'API_CALLS');
+            log("Điểm đã được xử lý để sử dụng sau:", processedScores, 'API_CALLS');
             
             // Gọi API gợi ý ngành học 
             const response = await aiService.recommendMajors(requestData);
-            console.log("AI response:", response);
+            log("AI response:", response, 'API_RESPONSES');
             
             if (response && response.recommendations) {
                 setRecommendations({
@@ -457,8 +456,8 @@ const ConsultationPage = () => {
                 throw new Error("Không nhận được kết quả gợi ý từ hệ thống AI");
             }
         } catch (error) {
-            console.error("Error calling AI:", error);
-            setAiError(error.message || "Có lỗi xảy ra khi gợi ý ngành học. Vui lòng thử lại sau.");
+            logError('Lỗi khi gửi dữ liệu:', error);
+            setAiError('Đã xảy ra lỗi khi xử lý yêu cầu. Vui lòng thử lại sau.');
         } finally {
             setAiLoading(false);
         }
@@ -500,8 +499,8 @@ const ConsultationPage = () => {
                             >
                                 <option value="">Chọn phương thức xét tuyển</option>
                                 <option value="thpt">Xét điểm thi THPT</option>
-                                <option value="hocba">Xét điểm học bạ</option>
-                                <option value="dgnl">Xét điểm đánh giá năng lực</option>
+                                {/* <option value="hocba">Xét điểm học bạ</option>
+                                <option value="dgnl">Xét điểm đánh giá năng lực</option> */}
                             </select>
 
                             {formData.admissionMethod === 'hocba' && (
@@ -762,7 +761,7 @@ const ConsultationPage = () => {
                             )}
                         </div>
 
-                        <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
+                        {/* <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
                             <h3>Bước 7. Nhập trường, ngành hoặc tỉnh/thành mong muốn (nếu có)</h3>
                             <div className="location-inputs" style={{ position: 'relative', overflow: 'visible' }}>
                                 {provinces && provinces.length > 0 ? (
@@ -874,10 +873,10 @@ const ConsultationPage = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="form-step">
-                            <h3>Bước 8. Nhấn nút để gợi ý ngành học</h3>
+                            <h3>Bước 7. Nhấn nút để gợi ý ngành học</h3>
                             <button 
                                 type="submit" 
                                 className="submit-button"
@@ -895,8 +894,6 @@ const ConsultationPage = () => {
                     </form>
                 ) : (
                     <div className="ai-results-container">
-                        {console.log("=== ĐIỂM HỌC SINH TRƯỚC KHI TRUYỀN ===", recommendations.scores)}
-                        
                         <MajorRecommendation 
                             initialRecommendations={recommendations.data} 
                             studentScores={recommendations.scores}
