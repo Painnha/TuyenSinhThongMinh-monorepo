@@ -1,19 +1,32 @@
 ====== ĐÁNH GIÁ MÔ HÌNH GỢI Ý NGÀNH HỌC TRÊN TẬP CSV ======
 
-Thời gian đánh giá: 2025-05-19 22:38:18
-Tệp test: D:\hk2_2025-2026\KLTN\Project\project10\TuyenSinhThongMinh-monorepo\BE_python\ai_models\goiynganhhoc\test_data_6000.csv
+Thời gian đánh giá: 2025-05-25 17:50:55
+Tệp test: D:\hk2_2025-2026\KLTN\Project\project12\TuyenSinhThongMinh-monorepo\BE_python\ai_models\goiynganhhoc\test_data_6000.csv
 Số lượng mẫu: 6000
+Phiên bản mapping: 1.0.0_20250525_172545
 
 === ĐỘ CHÍNH XÁC TOP-K TRUYỀN THỐNG ===
-Top-1 Accuracy: 55.73%
-Top-3 Accuracy: 78.78%
-Top-5 Accuracy: 57.07%
-Top-10 Accuracy: 34.64%
+Top-1 Accuracy: 52.12%
+Top-3 Accuracy: 78.44%
+Top-5 Accuracy: 56.37%
+Top-10 Accuracy: 36.84%
 
-
+=== ĐỘ CHÍNH XÁC OVERLAP GIỮA TOP-3 THỰC TẾ VÀ TOP-K DỰ ĐOÁN ===
+Overlap Top-3 với Top-1: 30.23%
+Overlap Top-3 với Top-3: 78.44%
+Overlap Top-3 với Top-5: 90.98%
+Overlap Top-3 với Top-10: 96.92%
 
 === CÁC ĐỘ ĐO TRUYỀN THỐNG CHO TOP-1 ===
-Precision: 59.15%
-Recall: 54.08%
-F1 Score: 52.84%
+Precision: 58.08%
+Recall: 53.38%
+F1 Score: 52.17%
 
+=== GHI CHÚ VỀ PHƯƠNG PHÁP TÍNH ===
+1. Độ chính xác Top-K theo yêu cầu:
+   - Với Top-1: Kiểm tra xem ngành thực tế có điểm cao nhất có trùng với ngành dự đoán có điểm cao nhất không
+   - Với Top-K (k>1): Tính tỉ lệ trung bình của các ngành thực tế top-k nằm trong top-k dự đoán
+2. Các độ đo truyền thống:
+   - Precision: Tỉ lệ các dự đoán đúng trên tổng số dự đoán
+   - Recall: Tỉ lệ các ngành thực tế được dự đoán đúng
+   - F1 Score: Trung bình điều hòa của Precision và Recall

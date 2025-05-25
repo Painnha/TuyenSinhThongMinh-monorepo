@@ -223,6 +223,64 @@ def plot_training_history(history, save_path=None):
     else:
         plt.show()
 
+def save_model_mappings(preprocessor, version):
+    """
+    Lưu các mapping đã sử dụng khi train vào collection model_mappings
+    
+    Args:
+        preprocessor: DataPreprocessor đã sử dụng
+        version: Phiên bản của mô hình
+    """
+    # Chuyển đổi các key số nguyên thành string
+    id_to_major_str = {str(k): v for k, v in preprocessor.id_to_major.items()}
+    
+    # Tạo dictionary với các mapping
+    mappings = {
+        "model_name": "major_recommendation",
+        "version": version,
+        "mappings": {
+            "version": version,
+            "id_to_major": id_to_major_str,
+            "interest_to_id": preprocessor.interest_to_id,
+            "subject_comb_to_id": preprocessor.subject_comb_to_id,
+            "scores_order": preprocessor.subjects,
+            "created_at": datetime.datetime.now().isoformat()
+        },
+        "active": True,
+        "created_at": datetime.datetime.now()
+    }
+    
+    # Kiểm tra xem đã có mapping cho mô hình chưa
+    existing_mapping = db_client.fetch_data(
+        'model_mappings', 
+        query={"model_name": "major_recommendation", "active": True}
+    )
+    
+    if existing_mapping:
+        # Cập nhật mapping hiện có - đặt active=False cho các phiên bản cũ
+        db_client.update_many(
+            'model_mappings',
+            {"model_name": "major_recommendation"},
+            {"$set": {"active": False}}
+        )
+        
+        # Thêm mapping mới
+        db_client.insert_one('model_mappings', mappings)
+        print(f"Đã cập nhật mapping và đặt phiên bản cũ thành không hoạt động")
+    else:
+        # Tạo mapping mới
+        db_client.insert_one('model_mappings', mappings)
+        print(f"Đã tạo mapping mới trong collection model_mappings")
+    
+    # Lưu mapping vào file JSON trong thư mục model
+    mappings_path = os.path.join(MODEL_PATH, 'mappings.json')
+    with open(mappings_path, 'w', encoding='utf-8') as f:
+        json.dump(mappings['mappings'], f, ensure_ascii=False, indent=2, cls=NpEncoder)
+    
+    print(f"Đã lưu mapping vào file {mappings_path}")
+    
+    return mappings
+
 def train_model(use_multi_output=True):
     """
     Huấn luyện mô hình gợi ý ngành học
@@ -237,6 +295,10 @@ def train_model(use_multi_output=True):
         X_test_scaled: Dữ liệu kiểm tra đã được chuẩn hóa
         y_test: Nhãn kiểm tra
     """
+    # Tạo version với timestamp
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    model_version = f"1.0.0_{timestamp}"
+    
     # Khởi tạo preprocessor
     print("Đang tải dữ liệu từ MongoDB...")
     preprocessor = DataPreprocessor()
@@ -354,23 +416,23 @@ def train_model(use_multi_output=True):
     plot_training_history(history, save_path=history_path)
     
     # Lưu mô hình
-    model_path = os.path.join(MODEL_PATH, 'major_recommendation_model.h5')
+    
+    model_path = os.path.join(MODEL_PATH, f'major_recommendation_model.h5')
     print(f"Đang lưu mô hình tại: {model_path}")
     model.save(model_path)
-    
+    model_path = os.path.join(MODEL_PATH, f'major_recommendation_model_{timestamp}.h5')
+    model.save(model_path)
     # Lưu scaler
     np.save(os.path.join(MODEL_PATH, 'scaler_mean.npy'), scaler.mean_)
     np.save(os.path.join(MODEL_PATH, 'scaler_scale.npy'), scaler.scale_)
     
-    # Lưu dictionary ánh xạ id -> major
-    id_to_major_path = os.path.join(MODEL_PATH, 'id_to_major.json')
-    with open(id_to_major_path, 'w', encoding='utf-8') as f:
-        json.dump(preprocessor.id_to_major, f, ensure_ascii=False, indent=2)
+    # Lưu mapping dictionary và lưu vào MongoDB
+    save_model_mappings(preprocessor, model_version)
     
     # Cập nhật cấu hình mô hình trong MongoDB
     model_config = {
         "modelName": "major_recommendation",
-        "version": "1.0.0",
+        "version": model_version,
         "parameters": {
             "input_dim": input_dim,
             "output_dim": output_dim,
@@ -396,17 +458,16 @@ def train_model(use_multi_output=True):
     )
     
     if existing_config:
-        # Cập nhật cấu hình hiện có
-        db_client.update_one(
+        # Đặt tất cả các cấu hình hiện có thành không hoạt động
+        db_client.update_many(
             'model_configs',
-            {"modelName": "major_recommendation", "active": True},
-            {"$set": {
-                "parameters": model_config["parameters"],
-                "version": model_config["version"],
-                "updatedAt": model_config["updatedAt"]
-            }}
+            {"modelName": "major_recommendation"},
+            {"$set": {"active": False}}
         )
-        print("Đã cập nhật cấu hình mô hình trong MongoDB")
+        
+        # Tạo cấu hình mới
+        db_client.insert_one('model_configs', model_config)
+        print("Đã tạo cấu hình mô hình mới và đặt phiên bản cũ thành không hoạt động")
     else:
         # Tạo cấu hình mới
         db_client.insert_one('model_configs', model_config)

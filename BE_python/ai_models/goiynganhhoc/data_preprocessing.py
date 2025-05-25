@@ -282,4 +282,59 @@ class DataPreprocessor:
                 major_info = major
                 break
                 
-        return major_info or {} 
+        return major_info or {}
+
+    @staticmethod
+    def preprocess_with_mappings(student_data, mappings):
+        """
+        Tiền xử lý dữ liệu học sinh sử dụng mapping từ model_mappings
+        
+        Args:
+            student_data: Dictionary chứa thông tin học sinh
+            mappings: Dictionary chứa các mapping từ bên ngoài
+                
+        Returns:
+            Mảng numpy chứa đặc trưng đã tiền xử lý
+        """
+        # Lấy thông tin từ mappings
+        interest_to_id = mappings.get('interest_to_id', {})
+        subject_comb_to_id = mappings.get('subject_comb_to_id', {})
+        scores_order = mappings.get('scores_order', [
+            'Toan', 'NguVan', 'VatLy', 'HoaHoc', 'SinhHoc', 'LichSu', 'DiaLy', 'GDCD', 'NgoaiNgu'
+        ])
+        
+        # Xử lý điểm số (9 môn)
+        scores = np.zeros(len(scores_order))
+        for i, subject in enumerate(scores_order):
+            if subject in student_data.get('scores', {}):
+                scores[i] = student_data['scores'][subject] / 10.0  # Chuẩn hóa về [0,1]
+                
+        # Xử lý khối thi (TN, XH)
+        tohopthi = np.zeros(2)  # TN, XH
+        if 'tohopthi' in student_data:
+            if student_data['tohopthi'] == 'TN':
+                tohopthi[0] = 1.0
+            elif student_data['tohopthi'] == 'XH':
+                tohopthi[1] = 1.0
+                
+        # Xử lý sở thích (one-hot encoding)
+        interests = np.zeros(len(interest_to_id))
+        for interest in student_data.get('interests', []):
+            if interest in interest_to_id:
+                interests[interest_to_id[interest]] = 1.0
+                
+        # Xử lý tổ hợp môn (one-hot encoding)
+        subject_groups = np.zeros(len(subject_comb_to_id))
+        for group in student_data.get('subject_groups', []):
+            if group in subject_comb_to_id:
+                subject_groups[subject_comb_to_id[group]] = 1.0
+                
+        # Gộp tất cả đặc trưng
+        features = np.concatenate([
+            scores,  # 9 đặc trưng
+            tohopthi,  # 2 đặc trưng
+            interests,  # n đặc trưng (số lượng sở thích)
+            subject_groups  # m đặc trưng (số lượng tổ hợp môn)
+        ])
+        
+        return features 

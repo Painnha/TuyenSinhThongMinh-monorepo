@@ -40,6 +40,44 @@ class NpEncoder(json.JSONEncoder):
 # Blueprint cho API gợi ý ngành học
 major_recommendation_blueprint = Blueprint('major_recommendation', __name__)
 
+# Cache cho model mappings để tránh truy vấn DB nhiều lần
+_cached_model_mappings = None
+_cached_timestamp = None
+
+def get_active_model_mappings():
+    """
+    Lấy mapping đang active từ collection model_mappings
+    
+    Returns:
+        Dictionary chứa các mapping đang active
+    """
+    global _cached_model_mappings, _cached_timestamp
+    
+    # Kiểm tra xem đã cache mapping chưa hoặc đã cache quá 1 giờ
+    current_time = datetime.now()
+    if _cached_model_mappings is None or _cached_timestamp is None or \
+       (current_time - _cached_timestamp).total_seconds() > 3600:  # 1 giờ
+        
+        try:
+            # Lấy mapping active từ MongoDB
+            mapping_record = db.model_mappings.find_one(
+                {"model_name": "major_recommendation", "active": True}
+            )
+            
+            if mapping_record and 'mappings' in mapping_record:
+                _cached_model_mappings = mapping_record['mappings']
+                _cached_timestamp = current_time
+                print(f"Đã tải mapping phiên bản {_cached_model_mappings.get('version', 'unknown')}")
+            else:
+                print("Không tìm thấy mapping active trong DB, sử dụng preprocessor mặc định")
+                _cached_model_mappings = None
+                
+        except Exception as e:
+            print(f"Lỗi khi lấy model mapping: {e}")
+            _cached_model_mappings = None
+            
+    return _cached_model_mappings
+
 def load_model():
     """
     Tải mô hình mới nhất đã lưu
@@ -134,6 +172,29 @@ def preprocess_data(data):
             transformed_data['scores'][subject] = 0.0
     
     return transformed_data
+
+def preprocess_student_data_with_mappings(student_data, mappings=None):
+    """
+    Tiền xử lý dữ liệu học sinh sử dụng mapping từ model_mappings
+    
+    Args:
+        student_data: Dictionary chứa thông tin học sinh
+        mappings: Dictionary chứa các mapping, nếu None thì sử dụng mappings từ DB
+        
+    Returns:
+        features: numpy array chứa đặc trưng đã tiền xử lý
+    """
+    # Nếu không có mappings, lấy từ DB
+    if mappings is None:
+        mappings = get_active_model_mappings()
+    
+    # Nếu vẫn không tìm thấy mapping, sử dụng DataPreprocessor mặc định
+    if mappings is None:
+        preprocessor = DataPreprocessor()
+        return preprocessor.preprocess_student_data(student_data)
+    
+    # Sử dụng phương thức tĩnh preprocess_with_mappings từ DataPreprocessor
+    return DataPreprocessor.preprocess_with_mappings(student_data, mappings)
 
 def find_best_combination_score(student_data):
     """Tìm tổ hợp môn và điểm cao nhất của học sinh"""
@@ -474,8 +535,8 @@ def predict_recommended_majors(student_data, top_k=3):
         List các ngành phù hợp nhất với thông tin chi tiết
     """
     try:
-        # Khởi tạo DataPreprocessor
-        preprocessor = DataPreprocessor()
+        # Lấy mapping từ model_mappings collection
+        mappings = get_active_model_mappings()
         
         # Tải mô hình và scaler
         model = load_model()
@@ -484,8 +545,17 @@ def predict_recommended_majors(student_data, top_k=3):
         if model is None or scaler is None:
             raise ValueError("Không thể tải mô hình hoặc scaler")
         
-        # Tiền xử lý dữ liệu học sinh
-        features = preprocessor.preprocess_student_data(student_data)
+        # Tiền xử lý dữ liệu học sinh sử dụng mapping
+        if mappings:
+            print("Sử dụng mappings từ model_mappings collection")
+            features = preprocess_student_data_with_mappings(student_data, mappings)
+            id_to_major = {int(k): v for k, v in mappings.get('id_to_major', {}).items()}
+        else:
+            # Fallback: Sử dụng preprocessor mặc định nếu không tìm thấy mappings
+            print("Không tìm thấy mappings, sử dụng preprocessor mặc định")
+            preprocessor = DataPreprocessor()
+            features = preprocessor.preprocess_student_data(student_data)
+            id_to_major = preprocessor.id_to_major
         
         # Chuẩn hóa đặc trưng
         scaler_mean, scaler_scale = scaler
@@ -519,28 +589,25 @@ def predict_recommended_majors(student_data, top_k=3):
         # Tạo danh sách kết quả
         recommendations = []
         
-        # In ra danh sách map ID và tên ngành
-        print(f"Mapping ngành học từ preprocessor:")
-        print(f"Số lượng ngành học: {len(preprocessor.id_to_major)}")
-        print(f"Một số ví dụ: {list(preprocessor.id_to_major.items())[:5]}")
+        # Khởi tạo preprocessor để lấy thông tin ngành học
+        preprocessor = DataPreprocessor()
         
         for idx in top_indices:
-            # Lấy tên ngành từ preprocessor
-            # Chuyển về số nguyên để dùng làm index
+            # Lấy tên ngành
             idx_int = int(idx)
             print(f"Đang xử lý ngành ID: {idx_int}")
             
-            # Tìm tên ngành từ id_to_major trong preprocessor
-            if idx_int in preprocessor.id_to_major:
-                major_name = preprocessor.id_to_major[idx_int]
+            # Tìm tên ngành từ id_to_major trong mappings
+            if idx_int in id_to_major:
+                major_name = id_to_major[idx_int]
                 print(f"Tìm thấy tên ngành trong id_to_major: {major_name}")
             else:
-                # Fallback: Nếu không tìm thấy trong id_to_major, thử lấy từ get_major_by_id
+                # Fallback: Thử lấy từ get_major_by_id
                 major_name = preprocessor.get_major_by_id(idx_int)
                 print(f"Lấy tên ngành từ get_major_by_id: {major_name}")
             
             # Lấy điểm phù hợp trực tiếp từ output sigmoid của mô hình
-            confidence = float(predictions[idx]) # Chuyển thành phần trăm
+            confidence = float(predictions[idx])  # Chuyển thành phần trăm
             
             # Lấy thông tin ngành học từ DB
             print(f"Tìm thông tin ngành học từ DB cho: {major_name}")

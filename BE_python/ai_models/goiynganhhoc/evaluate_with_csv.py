@@ -4,21 +4,50 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
+import json
 from sklearn.metrics import precision_score, recall_score, f1_score
+from pymongo import MongoClient
 
 # Thêm thư mục cha vào sys.path để import các module
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from ai_models.goiynganhhoc.data_preprocessing import DataPreprocessor
 from ai_models.goiynganhhoc.simple_predict import load_model_and_scaler
+from utils.db_utils import db_client
 
-def load_test_data_from_csv(csv_file, preprocessor=None):
+def get_active_model_mappings():
+    """
+    Lấy mapping đang active từ collection model_mappings
+    
+    Returns:
+        Dictionary chứa các mapping đang active
+    """
+    try:
+        # Lấy mapping active từ MongoDB
+        mapping_record = db_client.fetch_data(
+            'model_mappings', 
+            query={"model_name": "major_recommendation", "active": True}
+        )
+        
+        if mapping_record and len(mapping_record) > 0 and 'mappings' in mapping_record[0]:
+            print(f"Đã tải mapping phiên bản {mapping_record[0]['mappings'].get('version', 'unknown')}")
+            return mapping_record[0]['mappings']
+        else:
+            print("Không tìm thấy mapping active trong DB, sử dụng preprocessor mặc định")
+            return None
+                
+    except Exception as e:
+        print(f"Lỗi khi lấy model mapping: {e}")
+        return None
+
+def load_test_data_from_csv(csv_file, preprocessor=None, mappings=None):
     """
     Đọc và xử lý dữ liệu test từ file CSV
     
     Args:
         csv_file: Đường dẫn đến file CSV chứa dữ liệu test
         preprocessor: DataPreprocessor đã được khởi tạo, nếu None sẽ tạo mới
+        mappings: Dictionary chứa mapping từ model_mappings collection
         
     Returns:
         X_test: Ma trận đặc trưng đầu vào
@@ -39,11 +68,30 @@ def load_test_data_from_csv(csv_file, preprocessor=None):
     X = []
     y = []
     
+    # Sử dụng mapping nếu có, nếu không sử dụng từ preprocessor
+    interest_to_id = mappings.get('interest_to_id', {}) if mappings else preprocessor.interest_to_id
+    subject_comb_to_id = mappings.get('subject_comb_to_id', {}) if mappings else preprocessor.subject_comb_to_id
+    
+    # Xử lý mapping ngành học
+    if mappings and 'id_to_major' in mappings:
+        # Tạo major_to_id từ id_to_major (đảo ngược key/value)
+        id_to_major = {int(k): v for k, v in mappings['id_to_major'].items()}
+        major_to_id = {}
+        for id_num, major_name in id_to_major.items():
+            major_to_id[major_name.lower()] = id_num
+    else:
+        # Sử dụng mapping từ preprocessor
+        major_to_id = preprocessor.major_to_id
+        id_to_major = preprocessor.id_to_major
+    
+    # Danh sách môn học
+    subjects = mappings.get('scores_order', preprocessor.subjects) if mappings else preprocessor.subjects
+    
     # Xử lý từng dòng trong DataFrame
     for _, row in df.iterrows():
         # Xử lý điểm số
-        scores = np.zeros(9)
-        for i, subject in enumerate(preprocessor.subjects):
+        scores = np.zeros(len(subjects))
+        for i, subject in enumerate(subjects):
             if subject in row and pd.notna(row[subject]):
                 scores[i] = float(row[subject]) / 10.0  # Chuẩn hóa về [0,1]
         
@@ -56,24 +104,24 @@ def load_test_data_from_csv(csv_file, preprocessor=None):
                 tohopthi[1] = 1.0
         
         # Xử lý sở thích
-        interests = np.zeros(len(preprocessor.interest_to_id))
+        interests = np.zeros(len(interest_to_id))
         if 'Interests' in row and pd.notna(row['Interests']):
             if isinstance(row['Interests'], str):
                 # Xử lý trường hợp Interests là chuỗi
                 student_interests = row['Interests'].split(',')
                 for interest in student_interests:
                     interest = interest.strip()
-                    if interest in preprocessor.interest_to_id:
-                        interests[preprocessor.interest_to_id[interest]] = 1.0
+                    if interest in interest_to_id:
+                        interests[interest_to_id[interest]] = 1.0
         
         # Xử lý tổ hợp môn
-        subject_groups = np.zeros(len(preprocessor.subject_comb_to_id))
+        subject_groups = np.zeros(len(subject_comb_to_id))
         for i in range(1, 4):  # Kiểm tra tất cả 3 lựa chọn ngành tiềm năng
             subject_group_col = f'Subject_Group_{i}'
             if subject_group_col in row and pd.notna(row[subject_group_col]):
                 group = row[subject_group_col]
-                if group in preprocessor.subject_comb_to_id:
-                    subject_groups[preprocessor.subject_comb_to_id[group]] = 1.0
+                if group in subject_comb_to_id:
+                    subject_groups[subject_comb_to_id[group]] = 1.0
         
         # Gộp đặc trưng
         features = np.concatenate([
@@ -86,7 +134,8 @@ def load_test_data_from_csv(csv_file, preprocessor=None):
         X.append(features)
         
         # Xử lý mục tiêu - ngành học ưu tiên và điểm số
-        major_scores = np.zeros(len(preprocessor.major_to_id))
+        num_majors = len(id_to_major)
+        major_scores = np.zeros(num_majors)
         
         # Xử lý từ định dạng mới (Major_1, Score_1, Major_2, Score_2, Major_3, Score_3)
         for i in range(1, 4):
@@ -94,14 +143,15 @@ def load_test_data_from_csv(csv_file, preprocessor=None):
             score_col = f'Score_{i}'
             if major_col in row and score_col in row and pd.notna(row[major_col]) and pd.notna(row[score_col]):
                 major = str(row[major_col]).lower().strip()
-                if major in preprocessor.major_to_id:
-                    major_scores[preprocessor.major_to_id[major]] = float(row[score_col])
+                if major in major_to_id:
+                    major_id = major_to_id[major]
+                    major_scores[major_id] = float(row[score_col])
                 else:
                     # Thử tìm kiếm khớp gần đúng
                     found = False
-                    for key in preprocessor.major_to_id.keys():
+                    for key in major_to_id.keys():
                         if major in key or key in major:
-                            major_scores[preprocessor.major_to_id[key]] = float(row[score_col])
+                            major_scores[major_to_id[key]] = float(row[score_col])
                             found = True
                             break
                     
@@ -109,6 +159,11 @@ def load_test_data_from_csv(csv_file, preprocessor=None):
                         print(f"Không tìm thấy ngành '{major}' trong mapping")
         
         y.append(major_scores)
+    
+    # In ra một số thông tin mapping để debug
+    print(f"Số lượng ngành học trong mapping: {len(id_to_major)}")
+    print(f"Số lượng sở thích trong mapping: {len(interest_to_id)}")
+    print(f"Số lượng tổ hợp môn trong mapping: {len(subject_comb_to_id)}")
     
     # Chuyển sang numpy array
     X_array = np.array(X)
@@ -131,6 +186,10 @@ def evaluate_with_csv(csv_file=None, output_file=None):
     if csv_file is None:
         csv_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test_data_2000.csv')
     
+    # Lấy mapping từ model_mappings collection
+    print("Đang lấy mapping từ model_mappings collection...")
+    mappings = get_active_model_mappings()
+    
     # Tạo preprocessor
     print("Đang khởi tạo DataPreprocessor...")
     preprocessor = DataPreprocessor()
@@ -139,8 +198,13 @@ def evaluate_with_csv(csv_file=None, output_file=None):
     print("Đang tải mô hình và scaler...")
     model, scaler = load_model_and_scaler()
     
-    # Đọc dữ liệu test từ CSV
-    X_test, y_test, preprocessor = load_test_data_from_csv(csv_file, preprocessor)
+    # Đọc dữ liệu test từ CSV, sử dụng mapping nếu có
+    if mappings:
+        print("Sử dụng mapping từ model_mappings collection để xử lý dữ liệu test")
+        X_test, y_test, preprocessor = load_test_data_from_csv(csv_file, preprocessor, mappings)
+    else:
+        print("Sử dụng preprocessor mặc định để xử lý dữ liệu test")
+        X_test, y_test, preprocessor = load_test_data_from_csv(csv_file, preprocessor)
     
     # Chuẩn hóa dữ liệu nếu cần
     if scaler is not None:
@@ -241,10 +305,16 @@ def evaluate_with_csv(csv_file=None, output_file=None):
         overlap_accuracy = overlap_correct / total
         overlap_top3_accuracies.append(overlap_accuracy)
     
+    # Lấy thông tin về phiên bản mapping
+    mapping_version = "default"
+    if mappings and 'version' in mappings:
+        mapping_version = mappings['version']
+    
     # In kết quả
     print("\n==== KẾT QUẢ ĐÁNH GIÁ MÔ HÌNH TRÊN TẬP TEST CSV ====")
     print(f"Tệp test: {csv_file}")
     print(f"Số lượng mẫu: {len(X_test)}")
+    print(f"Phiên bản mapping: {mapping_version}")
     print("\n=== ĐỘ CHÍNH XÁC TOP-K TRUYỀN THỐNG ===")
     for k, acc in zip(top_k_values, top_k_accuracies):
         print(f"Top-{k} Accuracy: {acc:.2f}%")
@@ -262,7 +332,7 @@ def evaluate_with_csv(csv_file=None, output_file=None):
     plt.figure(figsize=(10, 6))
     plt.bar([f'Top-{k}' for k in top_k_values], top_k_accuracies, color=['blue', 'green', 'orange', 'red'])
     plt.ylabel('Accuracy (%)')
-    plt.title('Top-K Accuracy on CSV Test Data')
+    plt.title(f'Top-K Accuracy on CSV Test Data (Mapping: {mapping_version})')
     
     # Thêm giá trị lên mỗi cột
     for i, v in enumerate(top_k_accuracies):
@@ -280,7 +350,8 @@ def evaluate_with_csv(csv_file=None, output_file=None):
         f.write("====== ĐÁNH GIÁ MÔ HÌNH GỢI Ý NGÀNH HỌC TRÊN TẬP CSV ======\n\n")
         f.write(f"Thời gian đánh giá: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"Tệp test: {csv_file}\n")
-        f.write(f"Số lượng mẫu: {len(X_test)}\n\n")
+        f.write(f"Số lượng mẫu: {len(X_test)}\n")
+        f.write(f"Phiên bản mapping: {mapping_version}\n\n")
         
         # Thông tin Top-K Accuracy truyền thống
         f.write("=== ĐỘ CHÍNH XÁC TOP-K TRUYỀN THỐNG ===\n")

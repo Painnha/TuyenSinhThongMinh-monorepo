@@ -27,5 +27,7 @@ COLLECTIONS = {
     'student_data': 'student_data',
     'model_configs': 'model_configs',
     'training_data': 'training_data',
-    'benchmark_scores': 'benchmark_scores'
+    'benchmark_scores': 'benchmark_scores',
+    'prediction_logs': 'prediction_logs',
+    'model_mappings': 'model_mappings'
 } 
