@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { aiService } from '../../services/api/aiService';
 import './MajorRecommendation.css'; // Thêm một file CSS riêng cho component này
 import FeedbackForm from '../PredictionLogs/FeedbackForm';
@@ -125,6 +125,14 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
   
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState({}); // Track which predictions have been rated
+  
+  // Thêm state để theo dõi tab hiện tại (tab ngành học hoặc tab xác suất đậu)
+  const [activeTab, setActiveTab] = useState(0);
+  const [selectedProbability, setSelectedProbability] = useState({
+    universityName: '',
+    majorName: '',
+    studentScore: 0
+  });
   
   // Cập nhật khi nhận initialRecommendations mới
   useEffect(() => {
@@ -488,10 +496,63 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
     }
   };
   
+  // Hàm xử lý khi người dùng click vào cột "Mức độ an toàn"
+  const handleViewProbability = (university, majorName, studentScore) => {
+    const universityName = university.university_name || '';
+    const combination = university.combination || '';
+    
+    // Đảm bảo studentScore là một số hợp lệ
+    const validStudentScore = typeof studentScore === 'number' && !isNaN(studentScore) ? 
+      studentScore : 0;
+    
+    // Hiển thị hộp xác nhận
+    const confirmed = window.confirm(
+      `Bạn có muốn xem xác suất ngành "${majorName}" của trường "${universityName}" không?`
+    );
+    
+    if (confirmed) {
+      // Lưu thông tin ngành và trường đã chọn
+      setSelectedProbability({
+        universityName,
+        majorName,
+        studentScore: validStudentScore,
+        combination
+      });
+      
+      // Chuyển sang tab xác suất đậu
+      setActiveTab(1);
+      
+      // Thông báo lên component cha để chuyển tab
+      if (typeof window.switchConsultationTab === 'function') {
+        // Chuẩn bị dữ liệu đầy đủ để gửi sang AdmissionProbability
+        const dataForAdmission = {
+          universityName,
+          majorName,
+          studentScore: validStudentScore,
+          combination,
+          scores: studentScores || {},
+          // Thêm các thông tin khác nếu cần
+          priorityScore: formData.priority ? (
+            (formData.priority.area === 'KV1' ? 0.75 : 
+             formData.priority.area === 'KV2' ? 0.5 : 
+             formData.priority.area === 'KV3' ? 0.25 : 0) + 
+            (formData.priority.subject !== '00' ? 1 : 0)
+          ) : 0
+        };
+        
+        console.log("Chuyển sang tab xác suất với dữ liệu:", dataForAdmission);
+        window.switchConsultationTab(1, dataForAdmission);
+      } else {
+        console.log("Hàm switchConsultationTab chưa được định nghĩa ở component cha");
+        alert(`Đã chọn xem xác suất ngành "${majorName}" của trường "${universityName}"`);
+      }
+    }
+  };
+  
   // Nếu có recommendations ban đầu, hiển thị chúng
   if (recommendations) {
     // Chỉ lấy 3 ngành hàng đầu theo độ phù hợp
-    const topRecommendations = recommendations.slice(0, 3);
+    const topRecommendations = recommendations;
     
     return (
       <div className="major-recommendation">
@@ -500,17 +561,42 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
         <div className="results-container">
           {topRecommendations.map((recommendation, index) => (
             <div className="result-card" key={index}>
-              <div className="result-card-header">
+              <div className="result-card-header" style={{
+                background: recommendation.confidence >= 0.8 
+                  ? 'rgba(40, 167, 69, 0.2)' 
+                  : recommendation.confidence >= 0.5 
+                    ? 'rgba(255, 193, 7, 0.2)' 
+                    : 'rgba(220, 53, 69, 0.2)'
+              }}>
                 <div className="result-card-badge">{index + 1}</div>
-                <h3 className="result-card-title">{recommendation.major_name ? recommendation.major_name.toUpperCase() : 'CHƯA XÁC ĐỊNH'}</h3>
+                <h3 className="result-card-title" style={{
+                  color: recommendation.confidence >= 0.8 
+                    ? '#155724' 
+                    : recommendation.confidence >= 0.5 
+                      ? '#856404' 
+                      : '#721c24'
+                }}>{recommendation.major_name ? recommendation.major_name.toUpperCase() : 'CHƯA XÁC ĐỊNH'}</h3>
                 <div className="result-card-confidence">
                   <div className="confidence-meter">
                     <div 
                       className="confidence-fill" 
-                      style={{width: `${recommendation.confidence ? recommendation.confidence * 100 : 0}%`}}
+                      style={{
+                        width: `${recommendation.confidence ? recommendation.confidence * 100 : 0}%`,
+                        backgroundColor: recommendation.confidence >= 0.8 
+                          ? '#28a745' 
+                          : recommendation.confidence >= 0.5 
+                            ? '#ffc107' 
+                            : '#dc3545'
+                      }}
                     ></div>
                   </div>
-                  <span className="confidence-text">
+                  <span className="confidence-text" style={{
+                    color: recommendation.confidence >= 0.8 
+                      ? '#155724' 
+                      : recommendation.confidence >= 0.5 
+                        ? '#856404' 
+                        : '#721c24'
+                  }}>
                     {recommendation.confidence ? (recommendation.confidence * 100).toFixed(1) : 0}% phù hợp
                   </span>
                 </div>
@@ -519,69 +605,68 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
               <div className="result-card-body">
                 <div className="result-card-section">
                   <div className="result-card-info">
-                    <div className="info-item">
-                      <span className="info-label">Ngành:</span>
-                      <span className="info-value">{recommendation.category || 'Chưa phân loại'}</span>
-                    </div>
-                    
-                    {recommendation.best_combination && (
-                      <div className="info-item">
-                        <span className="info-label">Tổ hợp tốt nhất:</span>
-                        <span className="info-value highlight">{recommendation.best_combination}</span>
-                      </div>
-                    )}
-                    
-                    {(() => {
-                      // Tính tổng điểm dựa trên tổ hợp môn
-                      const combinationMap = {
-                        'A00': ['TOAN', 'LY', 'HOA'],
-                        'A01': ['TOAN', 'LY', 'ANH'],
-                        'B00': ['TOAN', 'HOA', 'SINH'],
-                        'C00': ['VAN', 'SU', 'DIA'],
-                        'D01': ['TOAN', 'VAN', 'ANH']
-                      };
+                    <div className="info-row">
+                      {recommendation.best_combination && (
+                        <div className="info-item">
+                          <span className="info-label">Tổ hợp tốt nhất:</span>
+                          <span className="info-value highlight">{recommendation.best_combination}</span>
+                        </div>
+                      )}
                       
-                      const subjectMapping = {
-                        'Toan': 'TOAN',
-                        'NguVan': 'VAN',
-                        'VatLy': 'LY',
-                        'HoaHoc': 'HOA',
-                        'SinhHoc': 'SINH',
-                        'LichSu': 'SU',
-                        'DiaLy': 'DIA',
-                        'GDCD': 'GDCD',
-                        'NgoaiNgu': 'ANH'
-                      };
-                      
-                      // Tính điểm tổng của tổ hợp tối ưu
-                      let calculatedScore = 0;
-                      
-                      if (recommendation.best_combination && combinationMap[recommendation.best_combination] && studentScores) {
-                        const subjectsInCombination = combinationMap[recommendation.best_combination];
-                        let totalSubjectScore = 0;
+                      {(() => {
+                        // Tính tổng điểm dựa trên tổ hợp môn
+                        const combinationMap = {
+                          'A00': ['TOAN', 'LY', 'HOA'],
+                          'A01': ['TOAN', 'LY', 'ANH'],
+                          'B00': ['TOAN', 'HOA', 'SINH'],
+                          'C00': ['VAN', 'SU', 'DIA'],
+                          'D01': ['TOAN', 'VAN', 'ANH']
+                        };
                         
-                        // Chuyển đổi điểm từ tiếng Việt sang tiếng Anh và tính tổng
-                        for (const [viKey, enKey] of Object.entries(subjectMapping)) {
-                          if (subjectsInCombination.includes(enKey)) {
-                            const subjectScore = studentScores[viKey] !== undefined ? parseFloat(studentScores[viKey]) : 0;
-                            totalSubjectScore += subjectScore;
+                        const subjectMapping = {
+                          'Toan': 'TOAN',
+                          'NguVan': 'VAN',
+                          'VatLy': 'LY',
+                          'HoaHoc': 'HOA',
+                          'SinhHoc': 'SINH',
+                          'LichSu': 'SU',
+                          'DiaLy': 'DIA',
+                          'GDCD': 'GDCD',
+                          'NgoaiNgu': 'ANH'
+                        };
+                        
+                        // Tính điểm tổng của tổ hợp tối ưu
+                        let calculatedScore = 0;
+                        
+                        if (recommendation.best_combination && combinationMap[recommendation.best_combination] && studentScores) {
+                          const subjectsInCombination = combinationMap[recommendation.best_combination];
+                          let totalSubjectScore = 0;
+                          
+                          // Chuyển đổi điểm từ tiếng Việt sang tiếng Anh và tính tổng
+                          for (const [viKey, enKey] of Object.entries(subjectMapping)) {
+                            if (subjectsInCombination.includes(enKey)) {
+                              const subjectScore = studentScores[viKey] !== undefined ? parseFloat(studentScores[viKey]) : 0;
+                              totalSubjectScore += subjectScore;
+                            }
                           }
+                          
+                          calculatedScore = totalSubjectScore;
+                        } else {
+                          calculatedScore = recommendation.student_score || 0;
                         }
                         
-                        calculatedScore = totalSubjectScore;
-                      } else {
-                        calculatedScore = recommendation.student_score || 0;
-                      }
-                      
-                      return (
-                        <div className="info-item">
-                          <span className="info-label">Điểm của bạn:</span>
-                          <span className="info-value highlight">{calculatedScore.toFixed(1)}</span>
-                        </div>
-                      );
-                    })()}
+                        return (
+                          <div className="info-item">
+                            <span className="info-label">Điểm của bạn:</span>
+                            <span className="info-value highlight">{calculatedScore.toFixed(1)}</span>
+                          </div>
+                        );
+                      })()}
+                    </div>
                   </div>
-                  
+                </div>
+                
+                <div className="result-card-details">
                   {recommendation.matching_interests && recommendation.matching_interests.length > 0 && (
                     <div className="interests-section">
                       <h4 className="section-subtitle">Sở thích phù hợp</h4>
@@ -592,198 +677,95 @@ const MajorRecommendation = ({ initialRecommendations, studentScores, prediction
                       </div>
                     </div>
                   )}
+                  
+                  {recommendation.description && (
+                    <div className="description-section">
+                      <h4 className="section-subtitle">Mô tả ngành học</h4>
+                      <p className="description-text">
+                        {recommendation.description.length > 200 
+                          ? `${recommendation.description.substring(0, 200)}...` 
+                          : recommendation.description}
+                      </p>
+                    </div>
+                  )}
                 </div>
-                
-                {recommendation.description && (
-                  <div className="description-section">
-                    <h4 className="section-subtitle">Mô tả ngành học</h4>
-                    <p className="description-text">
-                      {recommendation.description.length > 200 
-                        ? `${recommendation.description.substring(0, 200)}...` 
-                        : recommendation.description}
-                    </p>
-                  </div>
-                )}
               </div>
               
               {recommendation.suitable_universities && recommendation.suitable_universities.length > 0 && (
                 <div className="universities-section">
                   <h4 className="section-subtitle">Trường đại học phù hợp</h4>
                   
-                  <div className="universities-tabs">
-                    {recommendation.suitable_universities.slice(0, 3).map((university, i) => {
-                      // Tạo key cho kết quả dự đoán
-                      const predictionKey = `${index}-${i}`;
-                      
-                      // Đảm bảo điểm sinh viên đang là số hợp lệ
-                      const studentScoreValue = university.student_score ? 
-                        parseFloat(university.student_score) : 
-                        // Nếu không có điểm sinh viên, tính lại dựa trên điểm của các môn trong tổ hợp
-                        (() => {
-                          const combinationMap = {
-                            'A00': ['TOAN', 'LY', 'HOA'],
-                            'A01': ['TOAN', 'LY', 'ANH'],
-                            'B00': ['TOAN', 'HOA', 'SINH'],
-                            'C00': ['VAN', 'SU', 'DIA'],
-                            'D01': ['TOAN', 'VAN', 'ANH']
-                          };
+                  <div className="universities-table-container">
+                    <table className="universities-table">
+                      <thead>
+                        <tr>
+                          <th>STT</th>
+                          <th>Tên trường</th>
+                          <th>Tên ngành</th>
+                          <th>Khối</th>
+                          <th>Điểm của em</th>
+                          <th>Điểm chuẩn 2024</th>
+                          <th>Chênh lệch</th>
+                          <th>Mức độ an toàn</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {recommendation.suitable_universities.map((university, i) => {
+                          // Đảm bảo điểm sinh viên đang là số hợp lệ
+                          const studentScoreValue = university.student_score ? 
+                            parseFloat(university.student_score) : 0;
 
-                          const subjectMapping = {
-                            'Toan': 'TOAN',
-                            'NguVan': 'VAN',
-                            'VatLy': 'LY',
-                            'HoaHoc': 'HOA',
-                            'SinhHoc': 'SINH',
-                            'LichSu': 'SU',
-                            'DiaLy': 'DIA',
-                            'GDCD': 'GDCD',
-                            'NgoaiNgu': 'ANH'
-                          };
-
-                          let totalScore = 0;
-                          
-                          if (university.combination && combinationMap[university.combination] && studentScores) {
-                            const subjectsInCombination = combinationMap[university.combination];
+                          // Đảm bảo điểm benchmark là số hợp lệ
+                          const benchmarkValue = university.benchmark_score ? 
+                            parseFloat(university.benchmark_score) : 0;
                             
-                            for (const [viKey, enKey] of Object.entries(subjectMapping)) {
-                              if (subjectsInCombination.includes(enKey)) {
-                                const score = studentScores[viKey] !== undefined ? parseFloat(studentScores[viKey]) : 0;
-                                totalScore += score;
-                              }
+                          // Tính chênh lệch điểm
+                          const scoreDifference = studentScoreValue - benchmarkValue;
+                          
+                          // Xác định màu cho mức độ an toàn
+                          const getSafetyColor = (safety) => {
+                            switch(safety) {
+                              case "An toàn": return "safe-text";
+                              case "Cân nhắc": return "consider-text";
+                              default: return "difficult-text";
                             }
-                          }
+                          };
                           
-                          return totalScore;
-                        })();
-
-                      // Đảm bảo điểm benchmark là số hợp lệ
-                      const benchmarkValue = university.benchmark_score ? 
-                        parseFloat(university.benchmark_score) : null;
-                        
-                      // Tính chênh lệch điểm
-                      const scoreDifference = 
-                        (studentScoreValue !== null && benchmarkValue !== null) ? 
-                        (studentScoreValue - benchmarkValue) : null;
-                      
-                      return (
-                        <div className={`university-tab ${predictionResults[predictionKey]?.result ? 'has-prediction' : ''}`} key={i}>
-                          <div className="university-header">
-                            <h5 className="university-name">{university.university_name}</h5>
-                            <div className={`safety-badge ${
-                              university.safety_level === "An toàn" 
-                                ? "safe" 
-                                : university.safety_level === "Cân nhắc" 
-                                  ? "consider" 
-                                  : "difficult"
-                            }`}>
-                              {university.safety_level || 'Chưa đánh giá'}
-                            </div>
-                          </div>
+                          // Xác định màu nền cho mức độ phù hợp - giữ lại để dùng sau nếu cần
+                          const confidenceValue = recommendation.confidence ? recommendation.confidence * 100 : 0;
+                          const getConfidenceClass = (value) => {
+                            if (value >= 80) return "high-confidence";
+                            if (value >= 50) return "medium-confidence";
+                            return "low-confidence";
+                          };
                           
-                          <div className="university-details">
-                            <div className="detail-row">
-                              <div className="detail-item">
-                                <span className="detail-label">Điểm chuẩn:</span>
-                                <span className="detail-value">{benchmarkValue !== null ? benchmarkValue.toFixed(1) : 'N/A'}</span>
-                              </div>
-                              <div className="detail-item">
-                                <span className="detail-label">Tổ hợp:</span>
-                                <span className="detail-value">{university.combination || 'N/A'}</span>
-                              </div>
-                            </div>
-                            
-                            <div className="detail-row">
-                              <div className="detail-item">
-                                <span className="detail-label">Điểm của bạn:</span>
-                                <span className="detail-value">{studentScoreValue !== null ? studentScoreValue.toFixed(1) : 'N/A'}</span>
-                              </div>
-                              <div className="detail-item">
-                                <span className="detail-label">Chênh lệch:</span>
-                                <span className={`detail-value ${scoreDifference !== null ? (scoreDifference >= 0 ? "positive" : "negative") : ""}`}>
-                                  {scoreDifference !== null 
-                                    ? `${scoreDifference >= 0 ? "+" : ""}${scoreDifference.toFixed(1)}` 
-                                    : 'N/A'}
-                                </span>
-                              </div>
-                            </div>
-                            
-                            <button 
-                              type="button"
-                              className="prediction-button"
-                              onClick={() => handlePredictAdmission(university, recommendation.major_name, index, i)}
-                              disabled={predictionResults[predictionKey]?.loading}
-                            >
-                              {predictionResults[predictionKey]?.loading
-                                ? "Đang tính..." 
-                                : predictionResults[predictionKey]?.result
-                                  ? "Xem lại xác suất" 
-                                  : "Xem xác suất trúng tuyển"}
-                            </button>
-                          </div>
-                          
-                          {/* Hiển thị kết quả dự đoán */}
-                          {predictionResults[predictionKey]?.result && (
-                            <div className="prediction-results">
-                              <div className="prediction-probability">
-                                <div className="probability-circle">
-                                  <div className="probability-number">
-                                    {(predictionResults[predictionKey].result.admissionProbability * 100).toFixed(0)}%
-                                  </div>
-                                </div>
-                                <div className="probability-label">Xác suất trúng tuyển</div>
-                              </div>
-                              
-                              <div className="prediction-details">
-                                <div className="prediction-item">
-                                  <span className="prediction-label">Điểm của bạn:</span>
-                                  <span className="prediction-value">{predictionResults[predictionKey].result.totalScore}</span>
-                                </div>
-                                <div className="prediction-item">
-                                  <span className="prediction-label">Điểm chuẩn dự kiến:</span>
-                                  <span className="prediction-value">{predictionResults[predictionKey].result.expectedScore}</span>
-                                </div>
-                                <div className="prediction-item">
-                                  <span className="prediction-label">Chênh lệch:</span>
-                                  <span className={`prediction-value ${predictionResults[predictionKey].result.scoreDiff >= 0 ? 'positive' : 'negative'}`}>
-                                    {predictionResults[predictionKey].result.scoreDiff.toFixed(2)}
-                                  </span>
-                                </div>
-                              </div>
-                              
-                              <div className="prediction-assessment">
-                                <strong>Đánh giá:</strong> {predictionResults[predictionKey].result.assessment}
-                              </div>
-                              
-                              <div className="prediction-feedback">
-                                {!feedbackSubmitted[predictionKey] && (
-                                  <>
-                                    <button className="feedback-button positive" onClick={() => handlePredictionFeedback(predictionKey, true)}>
-                                      <span className="feedback-icon">👍</span>
-                                    </button>
-                                    <button className="feedback-button negative" onClick={() => handlePredictionFeedback(predictionKey, false)}>
-                                      <span className="feedback-icon">👎</span>
-                                    </button>
-                                  </>
+                          return (
+                            <tr key={i}>
+                              <td>{i + 1}</td>
+                              <td>{university.university_name}</td>
+                              <td>{university.major_name || recommendation.major_name}</td>
+                              <td>{university.combination || recommendation.best_combination || 'N/A'}</td>
+                              <td>{studentScoreValue.toFixed(2)}</td>
+                              <td>{benchmarkValue.toFixed(2)}</td>
+                              <td className={scoreDifference >= 0 ? "positive-diff" : "negative-diff"}>
+                                {scoreDifference >= 0 ? '+' : ''}{scoreDifference.toFixed(2)}
+                              </td>
+                              <td 
+                                className={`${getSafetyColor(university.safety_level)} probability-link`}
+                                title="Click để xem xác suất trúng tuyển"
+                                onClick={() => handleViewProbability(
+                                  university, 
+                                  university.major_name || recommendation.major_name, 
+                                  studentScoreValue
                                 )}
-                              </div>
-                            </div>
-                          )}
-                          
-                          {predictionResults[predictionKey]?.loading && (
-                            <div className="prediction-loading">
-                              <div className="loading-spinner"></div>
-                              <p>Đang tính toán xác suất...</p>
-                            </div>
-                          )}
-                          
-                          {predictionResults[predictionKey]?.error && (
-                            <div className="prediction-error">
-                              <p>{predictionResults[predictionKey].error}</p>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
+                              >
+                                {university.safety_level || 'Chưa đánh giá'}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               )}

@@ -7,7 +7,8 @@ import { jwtDecode } from 'jwt-decode';
 import { API_URL } from '../../../services/config/apiConfig';
 
 const AdminLoginScreen = () => {
-  const [phone, setPhone] = useState('');
+  // const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,6 +25,7 @@ const AdminLoginScreen = () => {
   }, [location]);
 
   // Hàm chuyển đổi định dạng số điện thoại thành 84xxxxxxxxx
+  /*
   const formatPhoneNumber = (phoneNumber) => {
     if (!phoneNumber) return phoneNumber;
     
@@ -54,14 +56,21 @@ const AdminLoginScreen = () => {
     const phoneRegex = /^(0|84)[3|5|7|8|9][0-9]{8}$/;
     return phoneRegex.test(phone);
   };
+  */
+
+  // Kiểm tra định dạng email hợp lệ
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     
-    // Kiểm tra định dạng số điện thoại
-    if (!isValidPhone(phone)) {
-      setError('Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (VD: 0912345678 hoặc 84912345678)');
+    // Kiểm tra định dạng email
+    if (!isValidEmail(email)) {
+      setError('Email không hợp lệ. Vui lòng nhập đúng định dạng email');
       return;
     }
     
@@ -74,15 +83,8 @@ const AdminLoginScreen = () => {
     setLoading(true);
 
     try {
- 
-      
-      // Chuyển đổi định dạng số điện thoại trước khi gửi
-      const formattedPhone = formatPhoneNumber(phone);
-      
-
-      
-      const response = await axios.post(`${API_URL}/api/auth/login`, { 
-        phone: formattedPhone, 
+      const response = await axios.post(`${API_URL}/api/auth/login-with-email`, { 
+        email, 
         password 
       }, {
         timeout: 5000, // Timeout sau 5 giây
@@ -91,7 +93,6 @@ const AdminLoginScreen = () => {
         }
       });
 
-      
       const { token, user } = response.data;
       
       // Kiểm tra tài khoản có bị khóa không
@@ -118,7 +119,6 @@ const AdminLoginScreen = () => {
       // Giải mã token để lấy thông tin người dùng
       const decodedToken = jwtDecode(token);
 
-
       // Chuyển hướng đến trang admin
       navigate('/admin');
     } catch (error) {
@@ -126,7 +126,7 @@ const AdminLoginScreen = () => {
       if (error.response) {
         // Lỗi từ server với response
         console.error('Error response data:', error.response.data);
-        setError(error.response.data.message || 'Số điện thoại hoặc mật khẩu không đúng');
+        setError(error.response.data.message || 'Email hoặc mật khẩu không đúng');
       } else if (error.request) {
         // Lỗi không nhận được response
         setError('Không thể kết nối đến server. Vui lòng thử lại sau.');
@@ -158,10 +158,10 @@ const AdminLoginScreen = () => {
 
         <form onSubmit={handleSubmit}>
           <input
-            type="text"
-            placeholder="Số điện thoại"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
        

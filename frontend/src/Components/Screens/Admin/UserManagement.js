@@ -14,12 +14,14 @@ const UserManagement = () => {
   
   // Form data
   const [userName, setUserName] = useState('');
-  const [phone, setPhone] = useState('');
+  // const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('user');
   
   // Form errors
-  const [phoneError, setPhoneError] = useState('');
+  // const [phoneError, setPhoneError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   
   const [addLoading, setAddLoading] = useState(false);
@@ -44,6 +46,7 @@ const UserManagement = () => {
   }, []);
 
   // Hiển thị số điện thoại cho người dùng (thêm số 0 ở đầu)
+  /*
   const formatPhoneForDisplay = (phoneNumber) => {
     if (!phoneNumber) return phoneNumber;
     
@@ -58,15 +61,17 @@ const UserManagement = () => {
     
     return phoneNumber;
   };
+  */
 
   // Hiển thị tên tài khoản (email hoặc số điện thoại)
   const displayIdentifier = (user) => {
     if (user.email) return user.email;
-    if (user.phone) return formatPhoneForDisplay(user.phone);
+    // if (user.phone) return formatPhoneForDisplay(user.phone);
     return 'N/A';
   };
 
   // Kiểm tra định dạng số điện thoại hợp lệ
+  /*
   const isValidPhone = (phoneNumber) => {
     // Loại bỏ các ký tự không phải số
     let cleaned = phoneNumber.replace(/\D/g, '');
@@ -84,6 +89,13 @@ const UserManagement = () => {
     
     return false;
   };
+  */
+
+  // Kiểm tra định dạng email hợp lệ
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   // Hiển thị/ẩn form thêm người dùng
   const toggleAddForm = () => {
@@ -97,10 +109,12 @@ const UserManagement = () => {
   // Reset form thêm người dùng
   const resetAddForm = () => {
     setUserName('');
-    setPhone('');
+    // setPhone('');
+    setEmail('');
     setPassword('');
     setRole('user');
-    setPhoneError('');
+    // setPhoneError('');
+    setEmailError('');
     setPasswordError('');
   };
 
@@ -113,6 +127,7 @@ const UserManagement = () => {
     setRole(user.role);
     
     // Reset errors
+    setEmailError('');
     setPasswordError('');
     
     // Hiện modal
@@ -124,12 +139,13 @@ const UserManagement = () => {
     e.preventDefault();
     
     // Reset errors
-    setPhoneError('');
+    // setPhoneError('');
+    setEmailError('');
     setPasswordError('');
     
     // Validate
-    if (!isValidPhone(phone)) {
-      setPhoneError('Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (VD: 0912345678 hoặc 84912345678)');
+    if (!isValidEmail(email)) {
+      setEmailError('Email không hợp lệ. Vui lòng nhập đúng định dạng email');
       return;
     }
     
@@ -139,10 +155,13 @@ const UserManagement = () => {
       // Form data
       const userData = {
         userName,
-        phone, // Số điện thoại sẽ được chuẩn hóa trong service
+     
+        email,
         password,
         role
       };
+      
+      console.log('Sending user data:', userData);
       
       // Thêm người dùng mới
       await createUser(userData);
@@ -164,14 +183,8 @@ const UserManagement = () => {
     e.preventDefault();
     
     // Reset errors
-    setPhoneError('');
+    // setPhoneError('');
     setPasswordError('');
-    
-    // Validate
-    if (!isValidPhone(phone)) {
-      setPhoneError('Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (VD: 0912345678 hoặc 84912345678)');
-      return;
-    }
     
     try {
       setLoading(true);
@@ -308,22 +321,19 @@ const UserManagement = () => {
               </div>
               
               <div>
-                <label htmlFor="add-phone">Số điện thoại:</label>
+                <label htmlFor="add-email">Email:</label>
                 <input
-                  id="add-phone"
-                  type="text"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  id="add-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                {phoneError && (
+                {emailError && (
                   <div className="error-message">
-                    {phoneError}
+                    {emailError}
                   </div>
                 )}
-                <div className="hint-text">
-                  Định dạng: 0xxxxxxxxx hoặc 84xxxxxxxxx (x là chữ số)
-                </div>
               </div>
             </div>
             
@@ -385,7 +395,7 @@ const UserManagement = () => {
           <thead>
             <tr>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Tên người dùng</th>
-              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Tên tài khoản</th>
+              <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Email</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Vai trò</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Trạng thái</th>
               <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Thao tác</th>

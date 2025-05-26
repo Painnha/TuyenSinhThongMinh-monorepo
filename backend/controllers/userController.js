@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const { formatPhoneNumber, isValidPhone, isValidPassword } = require('shared');
+const { formatPhoneNumber, isValidPhone, isValidPassword, isValidEmail } = require('shared');
 
 /**
  * Lấy danh sách tất cả người dùng
@@ -35,15 +35,15 @@ exports.getUserById = async (req, res) => {
  * Tạo người dùng mới (chỉ admin)
  */
 exports.createUser = async (req, res) => {
-  const { phone, userName, password, role } = req.body;
+  const { email, userName, password, role, phone } = req.body;
 
-  if (!phone || !userName || !password) {
+  if (!email || !userName || !password) {
     return res.status(400).json({ message: 'Vui lòng cung cấp đầy đủ thông tin' });
   }
 
-  // Kiểm tra định dạng số điện thoại
-  if (!isValidPhone(phone)) {
-    return res.status(400).json({ message: 'Số điện thoại không hợp lệ' });
+  // Kiểm tra định dạng email
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ message: 'Email không hợp lệ' });
   }
 
   // Kiểm tra mật khẩu
@@ -54,12 +54,22 @@ exports.createUser = async (req, res) => {
   }
 
   try {
-    const formattedPhone = formatPhoneNumber(phone);
-    
-    // Kiểm tra số điện thoại đã tồn tại
-    const existingUser = await User.findOne({ phone: formattedPhone });
-    if (existingUser) {
-      return res.status(400).json({ message: 'Số điện thoại này đã được đăng ký' });
+    // Kiểm tra email đã tồn tại chưa
+    const existingEmailUser = await User.findOne({ email });
+    if (existingEmailUser) {
+      return res.status(400).json({ message: 'Email này đã được đăng ký' });
+    }
+
+    // Xử lý số điện thoại nếu có
+    let formattedPhone = null;
+    if (phone && phone !== 'not_provided') {
+      formattedPhone = formatPhoneNumber(phone);
+      
+      // Kiểm tra số điện thoại đã tồn tại
+      const existingPhoneUser = await User.findOne({ phone: formattedPhone });
+      if (existingPhoneUser) {
+        return res.status(400).json({ message: 'Số điện thoại này đã được đăng ký' });
+      }
     }
 
     // Mã hóa mật khẩu
@@ -67,7 +77,8 @@ exports.createUser = async (req, res) => {
 
     // Tạo người dùng mới
     const newUser = new User({
-      phone: formattedPhone,
+      email,
+      phone: formattedPhone || 'not_provided',
       userName,
       password: hashedPassword,
       role: role || 'user',
@@ -94,7 +105,7 @@ exports.createUser = async (req, res) => {
  * Cập nhật thông tin người dùng
  */
 exports.updateUser = async (req, res) => {
-  const { userName, phone, role, isActive } = req.body;
+  const { userName, phone, email, role, isActive } = req.body;
   const userId = req.params.id;
 
   try {
@@ -111,13 +122,29 @@ exports.updateUser = async (req, res) => {
     if (role) updateData.role = role;
     if (isActive !== undefined) updateData.isActive = isActive;
     
+    // Nếu có cập nhật email
+    if (email) {
+      if (!isValidEmail(email)) {
+        return res.status(400).json({ message: 'Email không hợp lệ' });
+      }
+      
+      // Kiểm tra email đã tồn tại (nếu khác email hiện tại)
+      if (email !== user.email) {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+          return res.status(400).json({ message: 'Email này đã được đăng ký' });
+        }
+        updateData.email = email;
+      }
+    }
+    
     // Nếu có cập nhật số điện thoại
     if (phone) {
-      if (!isValidPhone(phone)) {
+      if (phone !== 'not_provided' && !isValidPhone(phone)) {
         return res.status(400).json({ message: 'Số điện thoại không hợp lệ' });
       }
       
-      const formattedPhone = formatPhoneNumber(phone);
+      const formattedPhone = phone === 'not_provided' ? phone : formatPhoneNumber(phone);
       
       // Kiểm tra số điện thoại đã tồn tại (nếu khác số hiện tại)
       if (formattedPhone !== user.phone) {

@@ -156,17 +156,18 @@
 .result-card-header {
   background: linear-gradient(135deg, #1a237e, #283593);
   color: white;
-  padding: 20px 25px;
+  padding: 15px 20px;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .result-card-badge {
   position: absolute;
   top: 20px;
-  right: 20px;
+  left: 20px;
   background-color: #FFC107;
   color: #212121;
   width: 36px;
@@ -216,15 +217,21 @@
 
 /* Body của card */
 .result-card-body {
-  padding: 25px;
+  padding: 15px 20px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
   gap: 25px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .result-card-body {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .result-card-section,
+  .result-card-details {
+    width: 100%;
   }
 }
 
@@ -232,44 +239,57 @@
 .result-card-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  min-width: 0;
 }
 
 .result-card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background-color: #f5f5f5;
   padding: 15px;
+  background-color: #f8f9fa;
   border-radius: 8px;
+  margin-bottom: 15px;
 }
 
-.info-item {
+.info-row {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.info-row .info-item {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  margin-bottom: 0;
+  flex: 1;
 }
 
-.info-label {
-  font-weight: 500;
-  color: #757575;
+.info-row .info-label {
+  margin-right: 8px;
+  white-space: nowrap;
 }
 
-.info-value {
+.info-row .info-value {
   font-weight: 600;
-  color: #424242;
 }
 
-.info-value.highlight {
-  color: #1a237e;
+.info-row .info-value.highlight {
+  color: #007bff;
   padding: 3px 8px;
-  background-color: rgba(26, 35, 126, 0.1);
+  background-color: rgba(0, 123, 255, 0.1);
   border-radius: 4px;
+  font-weight: 700;
 }
 
 /* Phần sở thích */
 .interests-section {
-  margin-top: 10px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .section-subtitle {
@@ -278,6 +298,7 @@
   margin-bottom: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid #e0e0e0;
+  font-weight: 600;
 }
 
 .interests-tags {
@@ -294,22 +315,25 @@
   font-size: 14px;
   display: inline-block;
   font-weight: 500;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 /* Phần mô tả */
 .description-section {
-  margin-top: 10px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .description-text {
-  font-size: 15px;
-  line-height: 1.5;
-  color: #616161;
-  text-align: justify;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  border-left: 3px solid #1a237e;
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+  font-size: 14px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 /* Phần trường đại học */
@@ -699,4 +723,485 @@
   .universities-section {
     padding: 0 15px 15px;
   }
+}
+
+/* Add these new styles for the university table */
+
+.universities-table-container {
+  margin-top: 15px;
+  overflow-x: auto;
+}
+
+.universities-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.universities-table th,
+.universities-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.universities-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.universities-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Safety level text colors */
+.safe-text {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.consider-text {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.difficult-text {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Confidence level colors */
+.high-confidence {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #155724;
+  font-weight: bold;
+  text-align: center;
+}
+
+.medium-confidence {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #856404;
+  font-weight: bold;
+  text-align: center;
+}
+
+.low-confidence {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #721c24;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Score difference colors */
+.positive-diff {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.negative-diff {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Ghi đè style dấu * đỏ từ ConsultationPage */
+.major-recommendation h3:after {
+  content: none !important;
+}
+
+.major-recommendation .section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.major-recommendation .section-description {
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.major-recommendation .form-section-title {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 1rem;
+  color: #2c3e50;
+}
+
+/* Styles cho form */
+.major-recommendation .form-container {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.major-recommendation .subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.major-recommendation .subject-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.major-recommendation .subject-input label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.major-recommendation .subject-input input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Styles cho kết quả */
+.major-recommendation .results-header {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.major-recommendation .results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.major-recommendation .result-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.major-recommendation .result-card-header {
+  padding: 1rem;
+  position: relative;
+}
+
+.major-recommendation .result-card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.major-recommendation .result-card-title {
+  text-align: center;
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.major-recommendation .result-card-confidence {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.major-recommendation .confidence-meter {
+  width: 100%;
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.major-recommendation .confidence-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.major-recommendation .confidence-text {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.major-recommendation .result-card-body {
+  padding: 1rem;
+}
+
+.major-recommendation .result-card-section {
+  margin-bottom: 1rem;
+}
+
+.major-recommendation .result-card-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.major-recommendation .info-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.major-recommendation .info-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.major-recommendation .info-value {
+  font-weight: 600;
+}
+
+.major-recommendation .info-value.highlight {
+  color: #007bff;
+}
+
+.major-recommendation .section-subtitle {
+  font-size: 1.1rem;
+  margin: 1rem 0 0.5rem;
+  color: #2c3e50;
+}
+
+.major-recommendation .interests-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.major-recommendation .interest-tag {
+  background-color: #e9ecef;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
+}
+
+.major-recommendation .description-text {
+  color: #555;
+  line-height: 1.5;
+}
+
+.major-recommendation .universities-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0 0 8px 8px;
+}
+
+.major-recommendation .universities-table-container {
+  overflow-x: auto;
+}
+
+.major-recommendation .universities-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.major-recommendation .universities-table th,
+.major-recommendation .universities-table td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  text-align: left;
+}
+
+.major-recommendation .universities-table th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+.major-recommendation .positive-diff {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.major-recommendation .negative-diff {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.major-recommendation .safe-text {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.major-recommendation .consider-text {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.major-recommendation .difficult-text {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.major-recommendation .high-confidence {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.major-recommendation .medium-confidence {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.major-recommendation .low-confidence {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.major-recommendation .form-submit {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.major-recommendation .submit-button {
+  padding: 0.75rem 2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.major-recommendation .submit-button:hover {
+  background-color: #0069d9;
+}
+
+.major-recommendation .submit-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.major-recommendation .error-message {
+  color: #dc3545;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.major-recommendation .feedback-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.major-recommendation .global-feedback-button {
+  padding: 0.75rem 2rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.major-recommendation .global-feedback-button:hover {
+  background-color: #5a6268;
+}
+
+.major-recommendation .feedback-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.major-recommendation .feedback-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Style cho info-item */
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style cho info-label */
+.info-label {
+  font-weight: 500;
+  color: #757575;
+}
+
+/* Style cho info-value */
+.info-value {
+  font-weight: 600;
+  color: #424242;
+}
+
+.info-value.highlight {
+  color: #1a237e;
+  padding: 3px 8px;
+  background-color: rgba(26, 35, 126, 0.1);
+  border-radius: 4px;
+}
+
+/* Style cho result-card-details */
+.result-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* Style cho probability-link */
+.probability-link {
+  text-decoration: underline;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.probability-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.probability-link::after {
+  content: "🔍";
+  font-size: 14px;
+  margin-left: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.probability-link:hover::after {
+  opacity: 1;
+}
+
+/* Vẫn giữ màu cho các loại mức độ an toàn */
+.safe-text.probability-link {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.consider-text.probability-link {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.difficult-text.probability-link {
+  color: #dc3545;
+  font-weight: 600;
 } 

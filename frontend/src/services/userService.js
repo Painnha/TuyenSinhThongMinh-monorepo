@@ -14,6 +14,7 @@ const authAxios = () => {
 };
 
 // Hàm chuẩn hóa số điện thoại
+/*
 const normalizePhoneNumber = (phoneNumber) => {
   if (!phoneNumber) return phoneNumber;
   
@@ -37,6 +38,7 @@ const normalizePhoneNumber = (phoneNumber) => {
   // Trả về số sau khi đã làm sạch
   return cleaned;
 };
+*/
 
 // Lấy danh sách tất cả người dùng
 export const getAllUsers = async () => {
@@ -65,9 +67,11 @@ export const getUserById = async (userId) => {
 export const createUser = async (userData) => {
   try {
     // Đảm bảo định dạng số điện thoại đúng
+    /*
     if (userData.phone) {
       userData.phone = normalizePhoneNumber(userData.phone);
     }
+    */
 
     const response = await authAxios().post('/api/users', userData);
     return response.data;
@@ -81,9 +85,11 @@ export const createUser = async (userData) => {
 export const updateUser = async (userId, userData) => {
   try {
     // Đảm bảo định dạng số điện thoại đúng
+    /*
     if (userData.phone) {
       userData.phone = normalizePhoneNumber(userData.phone);
     }
+    */
 
     const response = await authAxios().put(`/api/users/${userId}`, userData);
     return response.data;

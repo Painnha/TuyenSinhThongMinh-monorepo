@@ -510,4 +510,166 @@ exports.loginWithEmail = async (req, res) => {
     console.error('Lỗi đăng nhập với email:', error);
     res.status(500).json({ message: 'Lỗi server' });
   }
+};
+
+/**
+ * Quên mật khẩu qua Email - Kiểm tra email và gửi OTP
+ */
+exports.forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ message: 'Vui lòng cung cấp email' });
+  }
+
+  // Kiểm tra định dạng email
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ message: 'Email không hợp lệ' });
+  }
+
+  try {
+    // Kiểm tra email có tồn tại trong hệ thống không
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: 'Email không tồn tại trong hệ thống' });
+    }
+
+    // Tạo OTP mới
+    const otp = generateOtp();
+    
+    // Lưu OTP vào cơ sở dữ liệu
+    await saveOtp({ email, otp });
+
+    // Gửi OTP qua email
+    try {
+      await sendOtpViaEmail(email, otp);
+    } catch (error) {
+      console.error('Lỗi gửi OTP quên mật khẩu qua email:', error);
+      return res.status(500).json({ message: 'Không thể gửi OTP qua email' });
+    }
+
+    res.status(200).json({ message: 'OTP đã được gửi qua email để đặt lại mật khẩu', email });
+  } catch (error) {
+    console.error('Lỗi quên mật khẩu qua email:', error);
+    res.status(500).json({ message: 'Lỗi server' });
+  }
+};
+
+/**
+ * Gửi lại OTP quên mật khẩu qua email
+ */
+exports.forgotPasswordResendOtp = async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ message: 'Vui lòng cung cấp email' });
+  }
+
+  // Kiểm tra định dạng email
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ message: 'Email không hợp lệ' });
+  }
+
+  try {
+    // Kiểm tra email có tồn tại trong hệ thống không
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: 'Email không tồn tại trong hệ thống' });
+    }
+
+    // Tạo OTP mới
+    const otp = generateOtp();
+    
+    // Lưu OTP vào cơ sở dữ liệu
+    await saveOtp({ email, otp });
+
+    // Gửi OTP qua email
+    try {
+      await sendOtpViaEmail(email, otp);
+    } catch (error) {
+      console.error('Lỗi gửi lại OTP quên mật khẩu qua email:', error);
+      return res.status(500).json({ message: 'Không thể gửi OTP qua email' });
+    }
+
+    res.status(200).json({ message: 'OTP đã được gửi lại qua email' });
+  } catch (error) {
+    console.error('Lỗi gửi lại OTP quên mật khẩu qua email:', error);
+    res.status(500).json({ message: 'Lỗi server' });
+  }
+};
+
+/**
+ * Xác thực OTP quên mật khẩu qua email
+ */
+exports.forgotPasswordVerifyOtp = async (req, res) => {
+  const { email, otp } = req.body;
+  if (!email || !otp) {
+    return res.status(400).json({ message: 'Vui lòng cung cấp đầy đủ thông tin' });
+  }
+
+  try {
+    // Xác thực OTP
+    await verifyOtp({ email, otp });
+    
+    // OTP hợp lệ
+    res.status(200).json({ message: 'Xác thực OTP thành công' });
+  } catch (error) {
+    console.error('Lỗi xác thực OTP quên mật khẩu:', error.message);
+    res.status(400).json({ message: error.message });
+  }
+};
+
+/**
+ * Đặt lại mật khẩu sau khi xác thực OTP qua email
+ */
+exports.resetPassword = async (req, res) => {
+  const { email, newPassword } = req.body;
+  
+  if (!email || !newPassword) {
+    return res.status(400).json({ message: 'Vui lòng cung cấp đầy đủ thông tin' });
+  }
+
+  // Kiểm tra độ mạnh mật khẩu
+  if (!isValidPassword(newPassword)) {
+    return res.status(400).json({ 
+      message: 'Mật khẩu phải có ít nhất 6 ký tự, bao gồm chữ hoa, chữ thường và số' 
+    });
+  }
+
+  try {
+    // Kiểm tra xem email có tồn tại không
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: 'Email không tồn tại' });
+    }
+
+    // Mã hóa mật khẩu mới
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    
+    // Cập nhật mật khẩu
+    user.password = hashedPassword;
+    await user.save();
+
+    res.status(200).json({ message: 'Đặt lại mật khẩu thành công' });
+  } catch (error) {
+    console.error('Lỗi đặt lại mật khẩu:', error);
+    res.status(500).json({ message: 'Lỗi server' });
+  }
+};
+
+/**
+ * Lấy thông tin người dùng đăng nhập
+ */
+exports.getUserProfile = async (req, res) => {
+  try {
+    // req.user được set bởi middleware protect
+    const user = await User.findById(req.user.id).select('-password');
+    
+    if (!user) {
+      return res.status(404).json({ message: 'Không tìm thấy người dùng' });
+    }
+    
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error('Lỗi lấy thông tin người dùng:', error);
+    res.status(500).json({ message: 'Lỗi server' });
+  }
 }; 

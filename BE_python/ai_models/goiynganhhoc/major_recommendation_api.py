@@ -17,6 +17,8 @@ sys.path.append(parent_dir)
 # Import modules từ các file khác
 from ai_models.goiynganhhoc.neural_network import MajorRecommendationModel
 from ai_models.goiynganhhoc.data_preprocessing import DataPreprocessor
+# Import module gợi ý trường đại học
+from ai_models.goiynganhhoc.university_recommendation import recommend_universities_for_top_majors
 
 # Kết nối MongoDB
 MONGODB_URI = os.getenv('MONGO_URI')
@@ -243,286 +245,6 @@ def normalize_scores(raw_scores):
     # Đảm bảo tổng các giá trị vẫn = 1
     return enhanced_normalized
 
-def find_universities_with_major(major_name):
-    """
-    Tìm các trường đại học có đào tạo ngành học cụ thể
-    
-    Args:
-        major_name: Tên ngành học
-        
-    Returns:
-        Danh sách các trường đại học có đào tạo ngành này
-    """
-    try:
-        print(f"Tìm kiếm trường cho ngành: '{major_name}'")
-        
-        # Tìm ngành trong MongoDB sử dụng collection benchmark_scores
-        benchmark_collection = db.benchmark_scores
-        
-        # Tìm kiếm không phân biệt chữ hoa thường
-        benchmark_records = list(benchmark_collection.find(
-            {'major': {'$regex': f"^{major_name}$", '$options': 'i'}}
-        ))
-        
-        # Nếu không tìm thấy, thử tìm kiếm dựa trên việc ngành có chứa tên ngành đầu vào
-        if not benchmark_records:
-            print(f"Không tìm thấy ngành '{major_name}' chính xác, thử tìm gần đúng...")
-            benchmark_records = list(benchmark_collection.find(
-                {'major': {'$regex': major_name, '$options': 'i'}}
-            ))
-        
-        if not benchmark_records:
-            print(f"Không tìm thấy thông tin về ngành {major_name} trong benchmark_scores")
-            
-            # Thử in ra một số ngành có trong DB để debug
-            sample_majors = list(benchmark_collection.find({}, {"major": 1}).limit(5).distinct("major"))
-            print(f"Một số ngành có trong DB: {sample_majors}")
-            
-            return []
-        
-        print(f"Đã tìm thấy {len(benchmark_records)} bản ghi cho ngành '{major_name}'")
-        
-        # Gom nhóm các bản ghi theo trường đại học
-        university_map = {}
-        
-        for record in benchmark_records:
-            uni_name = record.get('university', '')
-            uni_code = record.get('university_code', '')
-            subject_group_code = record.get('subject_combination', '')
-            benchmark_score = float(record.get('benchmark_score', 0))
-            
-            # Tạo key cho trường đại học
-            uni_key = f"{uni_name}_{uni_code}"
-            
-            if uni_key not in university_map:
-                university_map[uni_key] = {
-                    'name': uni_name,
-                    'code': uni_code,
-                    'subject_groups': []
-                }
-            
-            # Thêm tổ hợp môn vào danh sách nếu chưa tồn tại
-            subject_group_exists = False
-            for sg in university_map[uni_key]['subject_groups']:
-                if sg['code'] == subject_group_code:
-                    subject_group_exists = True
-                    break
-            
-            if not subject_group_exists and subject_group_code:
-                university_map[uni_key]['subject_groups'].append({
-                    'code': subject_group_code,
-                    'benchmark_score': benchmark_score
-                })
-        
-        # Chuyển map thành danh sách
-        universities = list(university_map.values())
-        
-        # Đảm bảo mọi trường đều có ít nhất một tổ hợp môn
-        for university in universities:
-            if not university['subject_groups']:
-                default_groups = [
-                    {'code': 'A00', 'benchmark_score': 25.0},
-                    {'code': 'A01', 'benchmark_score': 24.5},
-                    {'code': 'D01', 'benchmark_score': 24.0}
-                ]
-                university['subject_groups'] = default_groups
-        
-        return universities
-    
-    except Exception as e:
-        print(f"Lỗi khi tìm trường ĐH cho ngành {major_name}: {e}")
-        import traceback
-        traceback.print_exc()
-        return []
-
-def calculate_student_score_for_subject_group(student_data, subject_group_code):
-    """
-    Tính tổng điểm của học sinh cho một tổ hợp môn
-    
-    Args:
-        student_data: Dictionary chứa điểm của học sinh
-        subject_group_code: Mã tổ hợp môn (A00, A01, ...)
-        
-    Returns:
-        Tổng điểm của học sinh cho tổ hợp môn
-    """
-    # Mapping từ mã tổ hợp môn sang các môn học
-    subject_combinations = {
-        'A00': ['Toan', 'VatLy', 'HoaHoc'],
-        'A01': ['Toan', 'VatLy', 'NgoaiNgu'],
-        'B00': ['Toan', 'HoaHoc', 'SinhHoc'],
-        'C00': ['NguVan', 'LichSu', 'DiaLy'],
-        'D01': ['Toan', 'NguVan', 'NgoaiNgu'],
-        'C01': ['NguVan', 'Toan', 'VatLy'],
-        'D07': ['Toan', 'HoaHoc', 'NgoaiNgu']
-    }
-    
-    # Nếu không tìm thấy tổ hợp môn, trả về 0
-    if subject_group_code not in subject_combinations:
-        print(f"Không tìm thấy tổ hợp môn {subject_group_code}")
-        return 0
-    
-    # Lấy danh sách môn học trong tổ hợp
-    subjects = subject_combinations[subject_group_code]
-    
-    # Tính tổng điểm
-    total_score = 0
-    scores = student_data.get('scores', {})
-    
-    for subject in subjects:
-        if subject in scores:
-            total_score += float(scores[subject])
-    
-    # Thêm điểm ưu tiên nếu có
-    priority_score = float(student_data.get('priorityScore', 0))
-    
-    return total_score + priority_score
-
-def find_best_combination_for_student(subject_groups, student_data):
-    """
-    Tìm tổ hợp môn tốt nhất cho học sinh dựa trên điểm
-    
-    Args:
-        subject_groups: Danh sách các tổ hợp môn của trường
-        student_data: Dictionary chứa điểm của học sinh
-        
-    Returns:
-        Tổ hợp môn tốt nhất cho học sinh
-    """
-    best_combination = None
-    best_score_diff = -100  # Chênh lệch tốt nhất (điểm học sinh - điểm chuẩn)
-    
-    for group in subject_groups:
-        # Tính điểm của học sinh cho tổ hợp môn này
-        student_score = calculate_student_score_for_subject_group(student_data, group['code'])
-        benchmark_score = group['benchmark_score']
-        score_diff = student_score - benchmark_score
-        
-        # Cập nhật nếu tìm thấy tổ hợp tốt hơn
-        if score_diff > best_score_diff:
-            best_score_diff = score_diff
-            
-            # Xác định mức độ an toàn
-            safety_level = "Khó đậu"
-            if student_score >= benchmark_score + 1:
-                safety_level = "An toàn"
-            elif student_score >= benchmark_score:
-                safety_level = "Cân nhắc"
-            
-            best_combination = {
-                'code': group['code'],
-                'benchmark_score': benchmark_score,
-                'student_score': student_score,
-                'safety_level': safety_level
-            }
-    
-    # Trả về tổ hợp mặc định nếu không tìm thấy tổ hợp nào phù hợp
-    if not best_combination:
-        return {
-            'code': 'A00',
-            'benchmark_score': 0,
-            'student_score': 0,
-            'safety_level': 'Khó đậu'
-        }
-    
-    return best_combination
-
-def find_suitable_universities(major_name, student_data):
-    """
-    Tìm các trường đại học phù hợp với ngành học và điểm của học sinh
-    
-    Args:
-        major_name: Tên ngành học
-        student_data: Dictionary chứa thông tin học sinh
-        
-    Returns:
-        Danh sách các trường đại học phù hợp
-    """
-    # Tìm các trường có đào tạo ngành học này
-    universities = find_universities_with_major(major_name)
-    
-    if not universities:
-        print(f"Không tìm thấy trường đào tạo ngành {major_name}")
-        # Trả về một số trường mặc định
-        return default_university_fallback(student_data)
-    
-    suitable_universities = []
-    for university in universities:
-        # Tính điểm của học sinh cho từng tổ hợp môn của trường
-        for subject_group in university['subject_groups']:
-            student_score = calculate_student_score_for_subject_group(
-                student_data, subject_group['code'])
-            
-            # Tính toán mức độ an toàn khi xét tuyển
-            safety_level = "Khó đậu"
-            if student_score >= subject_group['benchmark_score'] + 1:
-                safety_level = "An toàn"
-            elif student_score >= subject_group['benchmark_score']:
-                safety_level = "Cân nhắc"
-            
-            # Thêm điểm học sinh và mức độ an toàn vào thông tin tổ hợp môn
-            subject_group['student_score'] = student_score
-            subject_group['safety_level'] = safety_level
-        
-        # Tìm tổ hợp môn tốt nhất cho học sinh
-        best_combination = find_best_combination_for_student(
-            university['subject_groups'], student_data)
-            
-        # Thêm vào danh sách trường phù hợp với thông tin xét tuyển
-        suitable_universities.append({
-            'university_name': university['name'],
-            'benchmark_score': best_combination['benchmark_score'],
-            'student_score': best_combination['student_score'],
-            'combination': best_combination['code'],
-            'safety_level': best_combination['safety_level']
-        })
-    
-    # Sắp xếp theo mức độ an toàn và chênh lệch điểm
-    suitable_universities.sort(key=lambda x: (
-        0 if x['safety_level'] == "An toàn" else 
-        (1 if x['safety_level'] == "Cân nhắc" else 2),
-        x['benchmark_score']
-    ))
-    
-    return suitable_universities
-
-def default_university_fallback(student_data):
-    """
-    Trả về danh sách trường đại học mặc định khi không tìm thấy thông tin
-    
-    Args:
-        student_data: Dictionary chứa thông tin học sinh
-        
-    Returns:
-        Danh sách các trường đại học mặc định
-    """
-    # Tìm tổ hợp môn tốt nhất
-    best_combination, total_score = find_best_combination_score(student_data)
-    
-    default_universities = [
-        {"name": "Đại học Quốc gia Hà Nội", "score": 25},
-        {"name": "Đại học Bách Khoa Hà Nội", "score": 26}, 
-        {"name": "Đại học Ngoại thương", "score": 25.5}
-    ]
-    
-    result = []
-    for uni in default_universities:
-        safety_level = "Khó đậu"
-        if total_score >= uni["score"] + 1:
-            safety_level = "An toàn"
-        elif total_score >= uni["score"]:
-            safety_level = "Cân nhắc"
-        
-        result.append({
-            'university_name': uni["name"],
-            'benchmark_score': uni["score"],
-            'student_score': total_score,
-            'combination': best_combination,
-            'safety_level': safety_level
-        })
-    
-    return result
-
 def predict_recommended_majors(student_data, top_k=3):
     """
     Dự đoán ngành học phù hợp với học sinh
@@ -586,6 +308,9 @@ def predict_recommended_majors(student_data, top_k=3):
             "Kỹ thuật điện tử": "Kỹ thuật"
         }
         
+        # Tạo danh sách top ngành để sử dụng trong gợi ý trường
+        top_majors = []
+        
         # Tạo danh sách kết quả
         recommendations = []
         
@@ -608,6 +333,12 @@ def predict_recommended_majors(student_data, top_k=3):
             
             # Lấy điểm phù hợp trực tiếp từ output sigmoid của mô hình
             confidence = float(predictions[idx])  # Chuyển thành phần trăm
+            
+            # Thêm vào danh sách top ngành để gợi ý trường
+            top_majors.append({
+                'major_name': major_name,
+                'confidence': confidence
+            })
             
             # Lấy thông tin ngành học từ DB
             print(f"Tìm thông tin ngành học từ DB cho: {major_name}")
@@ -634,10 +365,7 @@ def predict_recommended_majors(student_data, top_k=3):
             else:
                 category = "Chưa phân loại"
             
-            # Tìm các trường đại học phù hợp sử dụng phương pháp từ dự án cũ
-            suitable_universities = find_suitable_universities(major_name, student_data)
-            
-            # Tạo đối tượng recommendation
+            # Tạo đối tượng recommendation (không gồm thông tin trường ĐH)
             recommendation = {
                 'major_name': major_name,
                 'major': major_name,  # Thêm trường này để tương thích với API cũ
@@ -648,11 +376,22 @@ def predict_recommended_majors(student_data, top_k=3):
                 'matching_interests': matching_interests,
                 'description': description,
                 'best_combination': best_combination,
-                'student_score': total_score,
-                'suitable_universities': suitable_universities
+                'student_score': total_score
             }
             
             recommendations.append(recommendation)
+        
+        # Gọi hàm gợi ý trường từ module university_recommendation
+        university_recommendations = recommend_universities_for_top_majors(top_majors, student_data, max_unis_per_major=10)
+        
+        # Thêm thông tin trường vào từng ngành gợi ý
+        for recommendation in recommendations:
+            major_name = recommendation['major_name']
+            if major_name in university_recommendations:
+                recommendation['suitable_universities'] = university_recommendations[major_name]
+            else:
+                # Nếu không tìm được, tạo danh sách trống
+                recommendation['suitable_universities'] = []
         
         return recommendations
     

@@ -35,10 +35,14 @@ const CustomTabs = ({ value, onChange, children }) => {
   );
 };
 
-const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
+const MultiSelect = ({ options, value, onChange, placeholder, loading, maxSelections }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedValues, setSelectedValues] = useState(value || []);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredOptions, setFilteredOptions] = useState(options || []);
+    const [error, setError] = useState('');
     const dropdownRef = useRef(null);
+    const inputRef = useRef(null);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -57,12 +61,43 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
         setSelectedValues(value || []);
     }, [value]);
 
+    useEffect(() => {
+        // Lọc options dựa trên searchTerm
+        if (searchTerm) {
+            const filtered = options.filter(option => 
+                option.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                option.value.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredOptions(filtered);
+        } else {
+            setFilteredOptions(options);
+        }
+    }, [searchTerm, options]);
+
     const handleSelect = (optionValue) => {
-        const newValues = selectedValues.includes(optionValue)
-            ? selectedValues.filter(v => v !== optionValue)
-            : [...selectedValues, optionValue];
-        setSelectedValues(newValues);
-        onChange(newValues);
+        // Nếu đã chọn, bỏ chọn
+        if (selectedValues.includes(optionValue)) {
+            const newValues = selectedValues.filter(v => v !== optionValue);
+            setSelectedValues(newValues);
+            onChange(newValues);
+            setError('');
+        } 
+        // Nếu chưa chọn và chưa đạt giới hạn, thêm vào
+        else if (!maxSelections || selectedValues.length < maxSelections) {
+            const newValues = [...selectedValues, optionValue];
+            setSelectedValues(newValues);
+            onChange(newValues);
+            setError('');
+        } 
+        // Nếu đã đạt giới hạn, hiển thị thông báo lỗi
+        else {
+            setError(`Bạn chỉ được chọn tối đa ${maxSelections} mục`);
+        }
+        
+        // Giữ focus trên input sau khi chọn
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
     };
 
     const removeTag = (tagValue, e) => {
@@ -70,41 +105,66 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
         const newValues = selectedValues.filter(v => v !== tagValue);
         setSelectedValues(newValues);
         onChange(newValues);
+        setError('');
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+        if (!isOpen) {
+            setIsOpen(true);
+        }
+    };
+
+    const handleContainerClick = () => {
+        if (!loading) {
+            if (inputRef.current) {
+                inputRef.current.focus();
+            }
+            setIsOpen(true);
+        }
     };
 
     return (
-        <div className="multi-select-container" ref={dropdownRef}>
-            <div 
-                className="multi-select-input" 
-                onClick={() => !loading && setIsOpen(!isOpen)}
-            >
+        <div className="multi-select-container" ref={dropdownRef} onClick={handleContainerClick}>
+            <div className="multi-select-input">
                 {loading ? (
                     <div className="loading-message">Đang tải...</div>
-                ) : selectedValues.length === 0 ? (
-                    <div className="placeholder">{placeholder}</div>
                 ) : (
-                    <div className="tags-container">
-                        {selectedValues.map(value => {
-                            const option = options.find(opt => opt.value === value);
-                            return (
-                                <div key={value} className="tag">
-                                    {option?.label || value}
-                                    <span 
-                                        className="tag-remove"
-                                        onClick={(e) => removeTag(value, e)}
-                                    >
-                                        ×
-                                    </span>
-                                </div>
-                            );
-                        })}
-                    </div>
+                    <>
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            placeholder={selectedValues.length === 0 ? placeholder : "Tìm kiếm..."}
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            onFocus={() => setIsOpen(true)}
+                            className="search-input"
+                        />
+                        <div className="tags-container">
+                            {selectedValues.map(value => {
+                                const option = options.find(opt => opt.value === value);
+                                return (
+                                    <div key={value} className="tag">
+                                        {option?.label || value}
+                                        <span 
+                                            className="tag-remove"
+                                            onClick={(e) => removeTag(value, e)}
+                                        >
+                                            ×
+                                        </span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </>
                 )}
             </div>
             
+            {error && <div className="selection-error">{error}</div>}
+            
             {isOpen && (
                 <div className="options-container">
-                    {options.length > 0 ? options.map(option => (
+                    {filteredOptions.length > 0 ? filteredOptions.map(option => (
                         <div
                             key={option.value}
                             className={`option ${selectedValues.includes(option.value) ? 'selected' : ''}`}
@@ -114,7 +174,7 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
                         </div>
                     )) : (
                         <div className="option no-options">
-                            Không có dữ liệu
+                            Không có dữ liệu phù hợp
                         </div>
                     )}
                 </div>
@@ -126,8 +186,7 @@ const MultiSelect = ({ options, value, onChange, placeholder, loading }) => {
 const ConsultationPage = () => {
     const [formData, setFormData] = useState({
         admissionMethod: '',
-        priorityObject: '',
-        priorityArea: '',
+        tohopthi: 'TN', // Mặc định là khối Tự nhiên
         scores: {
             thpt: {  // điểm thi THPT
                 math: 0,
@@ -138,9 +197,7 @@ const ConsultationPage = () => {
                 biology: 0,
                 history: 0,
                 geography: 0,
-                civics: 0,
-                informatics: 0,
-                technology: 0
+                civics: 0
             },
             hocba: {  // điểm học bạ
                 grade10: {
@@ -180,9 +237,7 @@ const ConsultationPage = () => {
             biology: 0,
             history: 0,
             geography: 0,
-            civics: 0,
-            informatics: 0,
-            technology: 0
+            civics: 0
         };
     }
 
@@ -196,10 +251,11 @@ const ConsultationPage = () => {
         biology: 'Sinh',
         history: 'Sử',
         geography: 'Địa',
-        civics: 'GDKT & PL',
-        informatics: 'Tin học',
-        technology: 'Công nghệ'
+        civics: 'GDCD'
     };
+
+    // Thêm state để lưu các lỗi validation
+    const [validationErrors, setValidationErrors] = useState({});
 
     const [provinces, setProvinces] = useState([]);
     const [examBlockOptions, setExamBlockOptions] = useState([]);
@@ -217,6 +273,9 @@ const ConsultationPage = () => {
     const [recommendations, setRecommendations] = useState(null);
     const [aiLoading, setAiLoading] = useState(false);
     const [aiError, setAiError] = useState(null);
+
+    // Thêm biến để lưu thông tin từ MajorRecommendation
+    const [probabilityData, setProbabilityData] = useState(null);
 
     // Fetch provinces
     const fetchProvinces = async () => {
@@ -353,6 +412,11 @@ const ConsultationPage = () => {
     };
 
     const handleScoreChange = (type, grade, period, subject, value) => {
+        // Giới hạn giá trị từ 0 đến 10
+        let validValue = value;
+        if (value > 10) validValue = 10;
+        if (value < 0) validValue = 0;
+
         if (type === 'thpt') {
             setFormData(prev => ({
                 ...prev,
@@ -360,7 +424,7 @@ const ConsultationPage = () => {
                     ...prev.scores,
                     thpt: {
                         ...prev.scores.thpt,
-                        [subject]: parseFloat(value) || 0
+                        [subject]: parseFloat(validValue) || 0
                     }
                 }
             }));
@@ -375,7 +439,7 @@ const ConsultationPage = () => {
                             ...prev.scores.hocba[grade],
                             [period]: {
                                 ...prev.scores.hocba[grade][period],
-                                [subject]: parseFloat(value) || 0
+                                [subject]: parseFloat(validValue) || 0
                             }
                         }
                     }
@@ -386,7 +450,7 @@ const ConsultationPage = () => {
                 ...prev,
                 scores: {
                     ...prev.scores,
-                    dgnl: parseFloat(value) || 0
+                    dgnl: parseFloat(validValue) || 0
                 }
             }));
         }
@@ -401,8 +465,65 @@ const ConsultationPage = () => {
 
     const scoreFields = getScoreFields();
 
+    // Hàm kiểm tra điều kiện nhập điểm
+    const validateScores = () => {
+        const errors = {};
+        const thptScores = formData.scores.thpt;
+        
+        // Kiểm tra điểm Toán và Văn (bắt buộc)
+        if (!thptScores.math || thptScores.math <= 0) {
+            errors.math = 'Điểm Toán là bắt buộc';
+        }
+        
+        if (!thptScores.literature || thptScores.literature <= 0) {
+            errors.literature = 'Điểm Văn là bắt buộc';
+        }
+        
+        // Đếm số môn đã nhập (có điểm > 0)
+        const filledSubjects = Object.values(thptScores).filter(score => score > 0).length;
+        
+        if (filledSubjects < 3) {
+            errors.general = 'Vui lòng nhập điểm ít nhất 3 môn (Toán và Văn là bắt buộc)';
+        }
+        
+        return errors;
+    };
+
+    const validateSelections = () => {
+        const errors = {};
+        
+        // Kiểm tra tổ hợp môn
+        if (!formData.examBlocks || formData.examBlocks.length === 0) {
+            errors.examBlocks = 'Vui lòng chọn ít nhất 1 tổ hợp môn';
+        } else if (formData.examBlocks.length > 2) {
+            errors.examBlocks = 'Vui lòng chọn tối đa 2 tổ hợp môn';
+        }
+        
+        // Kiểm tra sở thích
+        if (!formData.interests || formData.interests.length === 0) {
+            errors.interests = 'Vui lòng chọn ít nhất 1 sở thích';
+        } else if (formData.interests.length > 3) {
+            errors.interests = 'Vui lòng chọn tối đa 3 sở thích';
+        }
+        
+        return errors;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Kiểm tra điều kiện nhập điểm
+        const scoreErrors = validateScores();
+        const selectionErrors = validateSelections();
+        
+        const allErrors = { ...scoreErrors, ...selectionErrors };
+        
+        if (Object.keys(allErrors).length > 0) {
+            setValidationErrors(allErrors);
+            return;
+        }
+        
+        setValidationErrors({});
         setAiLoading(true);
         setAiError(null);
 
@@ -421,7 +542,8 @@ const ConsultationPage = () => {
                     GDCD: formData.scores.thpt.civics || 0
                 },
                 interests: formData.interests,
-                subject_groups: formData.examBlocks || []
+                subject_groups: formData.examBlocks || [],
+                tohopthi: formData.tohopthi // Thêm khối thi vào request
             };
             
             // Tạo một bản sao của điểm đã xử lý để sử dụng sau
@@ -468,6 +590,25 @@ const ConsultationPage = () => {
     const handleTabChange = (newValue) => {
         setTabValue(newValue);
     };
+
+    // Hàm để chuyển tab và truyền dữ liệu từ MajorRecommendation
+    const switchConsultationTab = (tabIndex, data = null) => {
+        setTabValue(tabIndex);
+        
+        if (tabIndex === 1 && data) {
+            setProbabilityData(data);
+        }
+    };
+    
+    // Gắn hàm này vào window để component con có thể truy cập
+    useEffect(() => {
+        window.switchConsultationTab = switchConsultationTab;
+        
+        // Cleanup khi component unmount
+        return () => {
+            delete window.switchConsultationTab;
+        };
+    }, []);
 
     return (
         <div className="consultation-container">
@@ -523,37 +664,18 @@ const ConsultationPage = () => {
                         </div>
 
                         <div className="form-step">
-                            <h3>Bước 2. Em chọn đối tượng ưu tiên</h3>
+                            <h3>Bước 2. Chọn khối thi</h3>
                             <select 
-                                value={formData.priorityObject}
-                                onChange={(e) => handleMultiSelectChange('priorityObject', e.target.value)}
+                                value={formData.tohopthi}
+                                onChange={(e) => handleMultiSelectChange('tohopthi', e.target.value)}
                             >
-                                <option value="">Chọn đối tượng ưu tiên</option>
-                                <option value="01">01 - Con liệt sĩ, con thương binh mất sức lao động 81% trở lên</option>
-                                <option value="02">02 - Con của người hoạt động kháng chiến bị nhiễm chất độc hóa học</option>
-                                <option value="03">03 - Con thương binh, con bệnh binh, con của người được hưởng chính sách như thương binh mất sức lao động dưới 81%</option>
-                                <option value="04">04 - Con của người hoạt động cách mạng trước ngày 01/01/1945</option>
-                                <option value="05">05 - Con của người hoạt động cách mạng từ 01/01/1945 đến ngày khởi nghĩa tháng Tám năm 1945</option>
-                                <option value="07">07 - Người dân tộc thiểu số</option>
+                                <option value="TN">Khối Tự nhiên</option>
+                                <option value="XH">Khối Xã hội</option>
                             </select>
                         </div>
 
                         <div className="form-step">
-                            <h3>Bước 3. Em chọn khu vực ưu tiên</h3>
-                            <select 
-                                value={formData.priorityArea}
-                                onChange={(e) => handleMultiSelectChange('priorityArea', e.target.value)}
-                            >
-                                <option value="">Chọn khu vực</option>
-                                <option value="KV1">KV1 - Khu vực 1</option>
-                                <option value="KV2">KV2 - Khu vực 2</option>
-                                <option value="KV2-NT">KV2-NT - Khu vực 2 nông thôn</option>
-                                <option value="KV3">KV3 - Khu vực 3</option>
-                            </select>
-                        </div>
-
-                        <div className="form-step">
-                            <h3>Bước 4. Nhập điểm số</h3>
+                            <h3>Bước 3. Nhập điểm số (Tối thiểu 3 môn, Toán và Văn bắt buộc)</h3>
                             {formData.admissionMethod === 'thpt' && (
                                 <div className="scores-table">
                                     <table>
@@ -565,7 +687,7 @@ const ConsultationPage = () => {
                                         </thead>
                                         <tbody>
                                             {Object.entries(subjectNames).map(([subject, vietnameseName]) => (
-                                                <tr key={subject}>
+                                                <tr key={subject} className={validationErrors[subject] ? 'error-row' : ''}>
                                                     <td>{vietnameseName}</td>
                                                     <td>
                                                         <input
@@ -575,12 +697,15 @@ const ConsultationPage = () => {
                                                             step="0.1"
                                                             value={formData.scores.thpt[subject]}
                                                             onChange={(e) => handleScoreChange('thpt', null, null, subject, e.target.value)}
+                                                            onClick={(e) => e.target.select()}
+                                                            className={validationErrors[subject] ? 'error' : ''}
                                                         />
                                                     </td>
                                                 </tr>
                                             ))}
                                         </tbody>
                                     </table>
+
                                 </div>
                             )}
 
@@ -608,6 +733,7 @@ const ConsultationPage = () => {
                                                                 step="0.1"
                                                                 value={formData.scores.hocba[field.grade][field.period][subject]}
                                                                 onChange={(e) => handleScoreChange('hocba', field.grade, field.period, subject, e.target.value)}
+                                                                onClick={(e) => e.target.select()}
                                                             />
                                                         </td>
                                                     ))}
@@ -638,6 +764,7 @@ const ConsultationPage = () => {
                                                         step="1"
                                                         value={formData.scores.dgnl}
                                                         onChange={(e) => handleScoreChange('dgnl', null, null, null, e.target.value)}
+                                                        onClick={(e) => e.target.select()}
                                                     />
                                                 </td>
                                             </tr>
@@ -645,10 +772,14 @@ const ConsultationPage = () => {
                                     </table>
                                 </div>
                             )}
+                          {validationErrors.general && (
+                                        <div className="error-message">{validationErrors.general}</div>
+                                    )}
                         </div>
 
                         <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
-                            <h3>Bước 5. Chọn tổ hợp thi bạn mong muốn</h3>
+                            <h3>Bước 4. Chọn tổ hợp thi bạn mong muốn</h3>
+                            <div className="selection-hint">Chọn từ 1-2 tổ hợp môn</div>
                             {loading.examBlocks ? (
                                 <div className="loading-message">Đang tải danh sách tổ hợp thi...</div>
                             ) : error.examBlocks ? (
@@ -697,7 +828,11 @@ const ConsultationPage = () => {
                                                 onChange={(values) => handleMultiSelectChange('examBlocks', values)}
                                                 placeholder="Chọn tổ hợp môn"
                                                 loading={loading.examBlocks}
+                                                maxSelections={2}
                                             />
+                                            {validationErrors.examBlocks && (
+                                                <div className="selection-error">{validationErrors.examBlocks}</div>
+                                            )}
                                         </div>
                                     )}
                                 </>
@@ -705,7 +840,8 @@ const ConsultationPage = () => {
                         </div>
 
                         <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
-                            <h3>Bước 6. Chọn sở thích</h3>
+                            <h3>Bước 5. Chọn sở thích</h3>
+                            <div className="selection-hint">Chọn từ 1-3 sở thích</div>
                             {loading.interests ? (
                                 <div className="loading-message">Đang tải danh sách sở thích...</div>
                             ) : error.interests ? (
@@ -754,129 +890,19 @@ const ConsultationPage = () => {
                                                 onChange={(values) => handleMultiSelectChange('interests', values)}
                                                 placeholder="Chọn lĩnh vực bạn yêu thích"
                                                 loading={loading.interests}
+                                                maxSelections={3}
                                             />
+                                            {validationErrors.interests && (
+                                                <div className="selection-error">{validationErrors.interests}</div>
+                                            )}
                                         </div>
                                     )}
                                 </>
                             )}
                         </div>
 
-                        {/* <div className="form-step" style={{ overflow: 'visible', position: 'relative' }}>
-                            <h3>Bước 7. Nhập trường, ngành hoặc tỉnh/thành mong muốn (nếu có)</h3>
-                            <div className="location-inputs" style={{ position: 'relative', overflow: 'visible' }}>
-                                {provinces && provinces.length > 0 ? (
-                                    <div style={{ position: 'relative', overflow: 'visible' }}>
-                                        <MultiSelect
-                                            options={provinces.map(p => ({ value: p.name, label: p.name }))}
-                                            value={formData.locations}
-                                            onChange={(values) => handleMultiSelectChange('locations', values)}
-                                            placeholder="Chọn Tỉnh/Thành phố"
-                                        />
-                                    </div>
-                                ) : (
-                                    <div className="custom-input-tags" style={{ position: 'relative', zIndex: 1 }}>
-                                        <input
-                                            type="text"
-                                            placeholder="Nhập tên tỉnh/thành phố và nhấn Enter"
-                                            onKeyDown={(e) => {
-                                                if (e.key === 'Enter' && e.target.value.trim()) {
-                                                    e.preventDefault();
-                                                    handleMultiSelectChange('locations', [
-                                                        ...formData.locations,
-                                                        e.target.value.trim()
-                                                    ]);
-                                                    e.target.value = '';
-                                                }
-                                            }}
-                                        />
-                                        <div className="tags-container">
-                                            {formData.locations.map((location, index) => (
-                                                <div key={index} className="tag">
-                                                    {location}
-                                                    <span 
-                                                        className="tag-remove"
-                                                        onClick={() => {
-                                                            const newLocations = formData.locations.filter((_, i) => i !== index);
-                                                            handleMultiSelectChange('locations', newLocations);
-                                                        }}
-                                                    >
-                                                        ×
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                <div className="custom-input-tags">
-                                    <input
-                                        type="text"
-                                        placeholder="Nhập tên trường/mã trường và nhấn Enter"
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter' && e.target.value.trim()) {
-                                                e.preventDefault();
-                                                handleMultiSelectChange('universities', [
-                                                    ...formData.universities,
-                                                    e.target.value.trim()
-                                                ]);
-                                                e.target.value = '';
-                                            }
-                                        }}
-                                    />
-                                    <div className="tags-container">
-                                        {formData.universities.map((uni, index) => (
-                                            <div key={index} className="tag">
-                                                {uni}
-                                                <span 
-                                                    className="tag-remove"
-                                                    onClick={(e) => {
-                                                        const newUnis = formData.universities.filter((_, i) => i !== index);
-                                                        handleMultiSelectChange('universities', newUnis);
-                                                    }}
-                                                >
-                                                    ×
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="custom-input-tags">
-                                    <input
-                                        type="text"
-                                        placeholder="Nhập ngành/nhóm ngành và nhấn Enter"
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter' && e.target.value.trim()) {
-                                                e.preventDefault();
-                                                handleMultiSelectChange('majors', [
-                                                    ...formData.majors,
-                                                    e.target.value.trim()
-                                                ]);
-                                                e.target.value = '';
-                                            }
-                                        }}
-                                    />
-                                    <div className="tags-container">
-                                        {formData.majors.map((major, index) => (
-                                            <div key={index} className="tag">
-                                                {major}
-                                                <span 
-                                                    className="tag-remove"
-                                                    onClick={(e) => {
-                                                        const newMajors = formData.majors.filter((_, i) => i !== index);
-                                                        handleMultiSelectChange('majors', newMajors);
-                                                    }}
-                                                >
-                                                    ×
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-
                         <div className="form-step">
-                            <h3>Bước 7. Nhấn nút để gợi ý ngành học</h3>
+                            <h3>Bước 6. Nhấn nút để gợi ý ngành học</h3>
                             <button 
                                 type="submit" 
                                 className="submit-button"
@@ -909,10 +935,64 @@ const ConsultationPage = () => {
                 )}
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
-                <AdmissionProbability />
+                <AdmissionProbability initialData={probabilityData} />
             </TabPanel>
         </div>
     );
 };
 
 export default ConsultationPage;
+
+// Thêm CSS mới cho giao diện nhập điểm
+const styles = document.createElement('style');
+styles.textContent = `
+.scores-table {
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.scores-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.scores-table th, .scores-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.scores-table th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+}
+
+.scores-table input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.scores-table input.error {
+    border-color: #f44336;
+}
+
+.error-row td {
+    color: #f44336;
+}
+
+.error-message {
+    color: #f44336;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Khôi phục dấu * màu đỏ cho các tiêu đề trong form */
+.consultation-form h3:after {
+    content: " *";
+    color: #f44336;
+}
+`;
+document.head.appendChild(styles);

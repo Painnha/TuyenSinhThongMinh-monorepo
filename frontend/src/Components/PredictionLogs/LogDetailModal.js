@@ -265,10 +265,10 @@ const LogDetailModal = ({ logId, onClose, isUserLog = false }) => {
               </div>
               
               <div className="recommendation-details">
-                <div className="recommendation-category">
+                {/* <div className="recommendation-category">
                   <span className="detail-label">Nhóm ngành:</span>
                   <span>{recommendation.category || '---'}</span>
-                </div>
+                </div> */}
                 
                 {recommendation.description && (
                   <div className="recommendation-description">

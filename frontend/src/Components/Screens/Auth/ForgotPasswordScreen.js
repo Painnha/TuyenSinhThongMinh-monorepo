@@ -6,8 +6,9 @@ import axios from 'axios';
 import { API_URL } from '../../../services/config/apiConfig';
 
 const ForgotPasswordScreen = () => {
-  const [step, setStep] = useState(1); // 1: số điện thoại, 2: OTP, 3: mật khẩu mới
-  const [phone, setPhone] = useState('');
+  const [step, setStep] = useState(1); // 1: email, 2: OTP, 3: mật khẩu mới
+  // const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -29,18 +30,18 @@ const ForgotPasswordScreen = () => {
     return () => clearInterval(interval); // Dọn dẹp interval khi component unmount
   }, [step, timer]);
 
-  const handleCheckPhone = async (e) => {
+  const handleCheckEmail = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/forgot-password/check-phone`, { phone });
+      await axios.post(`${API_URL}/api/auth/forgot-password`, { email });
       setStep(2); // Chuyển sang bước nhập OTP
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại ban đầu
     } catch (error) {
-      setError(error.response?.data?.message || 'Lỗi khi kiểm tra số điện thoại');
+      setError(error.response?.data?.message || 'Lỗi khi kiểm tra email');
     } finally {
       setLoading(false);
     }
@@ -49,7 +50,7 @@ const ForgotPasswordScreen = () => {
   const handleResendOtp = async () => {
     setLoading(true);
     try {
-      await axios.post(`${API_URL}/forgot-password/resend-otp`, { phone });
+      await axios.post(`${API_URL}/api/auth/forgot-password/resend-otp`, { email });
       setTimer(90); // Đặt lại timer về 90 giây
       setCanResend(false); // Vô hiệu hóa gửi lại
       setError(''); // Xóa thông báo lỗi nếu có
@@ -66,7 +67,7 @@ const ForgotPasswordScreen = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/forgot-password/verify-otp`, { phone, otp });
+      await axios.post(`${API_URL}/api/auth/forgot-password/verify-otp`, { email, otp });
       setStep(3); // Chuyển sang bước nhập mật khẩu mới
     } catch (error) {
       setError(error.response?.data?.message || 'Lỗi khi xác thực OTP');
@@ -87,7 +88,7 @@ const ForgotPasswordScreen = () => {
     }
 
     try {
-      await axios.post(`${API_URL}/forgot-password/reset-password`, { phone, newPassword, confirmPassword });
+      await axios.post(`${API_URL}/api/auth/reset-password`, { email, newPassword });
       alert('Đổi mật khẩu thành công!');
       window.location.href = '/login'; // Chuyển hướng về trang đăng nhập
     } catch (error) {
@@ -107,14 +108,14 @@ const ForgotPasswordScreen = () => {
         {error && <p className="error-message">{error}</p>}
         {loading && <p>Đang xử lý...</p>}
 
-        {/* Bước 1: Nhập số điện thoại */}
+        {/* Bước 1: Nhập email */}
         {step === 1 && (
-          <form onSubmit={handleCheckPhone}>
+          <form onSubmit={handleCheckEmail}>
             <input
-              type="text"
-              placeholder="Số điện thoại"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <button type="submit" className="login-button" disabled={loading}>

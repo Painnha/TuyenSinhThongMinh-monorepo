@@ -81,9 +81,12 @@ def predict_admission():
         combinations = {
             'A00': {'subjects': ['TOAN', 'LY', 'HOA']},
             'A01': {'subjects': ['TOAN', 'LY', 'ANH']},
+            'A02': {'subjects': ['TOAN', 'LY', 'SINH']},
             'B00': {'subjects': ['TOAN', 'HOA', 'SINH']},
+            'B08': {'subjects': ['TOAN', 'SINH', 'ANH']},
             'C00': {'subjects': ['VAN', 'SU', 'DIA']},
-            'D01': {'subjects': ['TOAN', 'VAN', 'ANH']}
+            'C01': {'subjects': ['VAN', 'TOAN', 'LY']},
+            'D01': {'subjects': ['TOAN', 'VAN', 'ANH']},
         }
         
         best_combination = None
@@ -508,7 +511,7 @@ def batch_predict_admission():
                         if field not in item:
                             raise ValueError(f'Thiếu trường {field}')
                     
-                    # Tính toán tổ hợp môn tối ưu
+                    # Tính điểm cho các tổ hợp môn và chọn tổ hợp tốt nhất
                     university_code = item.get('universityCode')
                     major_name = item.get('majorName')
                     subject_scores = item.get('scores', {})
@@ -517,9 +520,12 @@ def batch_predict_admission():
                     combinations = {
                         'A00': {'subjects': ['TOAN', 'LY', 'HOA']},
                         'A01': {'subjects': ['TOAN', 'LY', 'ANH']},
+                        'A02': {'subjects': ['TOAN', 'LY', 'SINH']},
                         'B00': {'subjects': ['TOAN', 'HOA', 'SINH']},
+                        'B08': {'subjects': ['TOAN', 'SINH', 'ANH']},
                         'C00': {'subjects': ['VAN', 'SU', 'DIA']},
-                        'D01': {'subjects': ['TOAN', 'VAN', 'ANH']}
+                        'C01': {'subjects': ['VAN', 'TOAN', 'LY']},
+                        'D01': {'subjects': ['TOAN', 'VAN', 'ANH']},
                     }
                     
                     best_combination = None

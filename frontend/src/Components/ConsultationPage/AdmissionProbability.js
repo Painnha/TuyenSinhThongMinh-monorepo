@@ -93,18 +93,30 @@ const CustomAutocomplete = ({ label, options, value, onChange }) => {
   );
 };
 
-const AdmissionProbability = () => {
+const AdmissionProbability = ({ initialData }) => {
   const [formData, setFormData] = useState({
     universityCode: '',
     universityName: '',
     majorName: '',
-    scores: {},
-    priorityScore: 0
+    studentScore: '',
+    combination: 'A00',
+    priorityScore: 0,
+    scores: {
+      TOAN: '',
+      LY: '',
+      HOA: '',
+      SINH: '',
+      VAN: '',
+      ANH: '',
+      SU: '',
+      DIA: '',
+      GDCD: ''
+    }
   });
   
   const [loading, setLoading] = useState(false);
-  const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
+  const [result, setResult] = useState(null);
   const [universities, setUniversities] = useState([]);
   const [majors, setMajors] = useState([]);
   const [subjects, setSubjects] = useState([]);
@@ -112,6 +124,90 @@ const AdmissionProbability = () => {
   const [filteredUniversities, setFilteredUniversities] = useState([]);
   const [predictionId, setPredictionId] = useState(null);
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+  
+  // Ánh xạ tên môn tiếng Việt sang mã tiếng Anh
+  const subjectMapping = {
+    'Toan': 'TOAN',
+    'NguVan': 'VAN',
+    'VatLy': 'LY',
+    'HoaHoc': 'HOA',
+    'SinhHoc': 'SINH',
+    'LichSu': 'SU',
+    'DiaLy': 'DIA',
+    'GDCD': 'GDCD',
+    'NgoaiNgu': 'ANH'
+  };
+  
+  // Ánh xạ tổ hợp môn sang danh sách các môn học
+  const combinationMap = {
+    'A00': ['TOAN', 'LY', 'HOA'],
+    'A01': ['TOAN', 'LY', 'ANH'],
+    'B00': ['TOAN', 'HOA', 'SINH'],
+    'C00': ['VAN', 'SU', 'DIA'],
+    'D01': ['TOAN', 'VAN', 'ANH']
+  };
+  
+  // Cập nhật form data khi nhận initialData từ component cha
+  useEffect(() => {
+    if (initialData) {
+      console.log("Nhận dữ liệu từ tab gợi ý ngành:", initialData);
+      
+      // Khởi tạo scores từ điểm học sinh
+      const scores = {};
+      if (initialData.scores) {
+        // Chuyển đổi điểm từ tiếng Việt sang tiếng Anh
+        for (const [viKey, enKey] of Object.entries(subjectMapping)) {
+          if (initialData.scores[viKey] !== undefined) {
+            scores[enKey] = parseFloat(initialData.scores[viKey]) || 0;
+          }
+        }
+      }
+      
+      // Cập nhật formData với tất cả dữ liệu đã nhận
+      setFormData({
+        universityCode: '', // Sẽ tìm và cập nhật sau
+        universityName: initialData.universityName || '',
+        majorName: initialData.majorName || '',
+        studentScore: parseFloat(initialData.studentScore) || 0,
+        combination: initialData.combination || 'A00',
+        priorityScore: initialData.priorityScore || 0,
+        scores: scores
+      });
+      
+      // Tự động tìm trường nếu có tên trường
+      if (initialData.universityName && universities.length > 0) {
+        // Tìm trường theo tên
+        const foundUniversity = universities.find(uni => 
+          uni.name.toLowerCase() === initialData.universityName.toLowerCase() ||
+          initialData.universityName.toLowerCase().includes(uni.name.toLowerCase()) ||
+          uni.name.toLowerCase().includes(initialData.universityName.toLowerCase())
+        );
+        
+        if (foundUniversity) {
+          console.log("Đã tìm thấy trường:", foundUniversity.name);
+          
+          // Cập nhật universityCode
+          setFormData(prev => ({
+            ...prev,
+            universityCode: foundUniversity.code
+          }));
+          
+          // Cập nhật danh sách ngành theo trường
+          handleUniversityChange(foundUniversity);
+        }
+      }
+    }
+  }, [initialData, universities]);
+  
+  // Thêm useEffect để tự động chọn ngành học sau khi trường đã được chọn
+  useEffect(() => {
+    // Nếu có initialData và formData đã có universityCode (trường đã được chọn)
+    if (initialData && initialData.majorName && formData.universityCode && filteredMajors.length > 0) {
+      console.log("Đang tìm ngành học:", initialData.majorName);
+      // Không cần tìm ngành học trong danh sách, chỉ cần gán giá trị
+      handleMajorChange(initialData.majorName);
+    }
+  }, [initialData, formData.universityCode, filteredMajors]);
   
   // Lấy dữ liệu từ API khi component mount
   useEffect(() => {
@@ -184,56 +280,44 @@ const AdmissionProbability = () => {
         setFilteredMajors(majorsResponse.data);
       }
     } catch (error) {
-      console.error('Error handling university change:', error);
+      console.error('Lỗi khi chọn trường đại học:', error);
     }
   };
   
   // Xử lý khi chọn ngành học
-  const handleMajorChange = async (majorName) => {
-    try {
-      // Cập nhật formData
-      setFormData({
-        ...formData,
-        majorName
-      });
-      
-      if (!majorName) {
-        setFilteredUniversities(universities);
-        return;
-      }
-      
-      // Lấy danh sách trường có ngành đã chọn
-      const universitiesResponse = await aiService.getUniversitiesByMajor(majorName);
-      if (universitiesResponse && universitiesResponse.success && universitiesResponse.data) {
-        setFilteredUniversities(universitiesResponse.data);
-      }
-    } catch (error) {
-      console.error('Error handling major change:', error);
-    }
-  };
-  
-  // Xử lý khi nhập điểm môn học
-  const handleScoreChange = (subjectCode, value) => {
-    const scores = { ...formData.scores };
-    
-    if (value === '') {
-      scores[subjectCode] = '';
-    } else {
-      const score = parseFloat(value);
-      if (!isNaN(score) && score >= 0 && score <= 10) {
-        scores[subjectCode] = score;
-      } else {
-        return; // Không cập nhật giá trị không hợp lệ
-      }
-    }
-    
+  const handleMajorChange = (majorName) => {
+    // Cập nhật formData
     setFormData({
       ...formData,
-      scores
+      majorName
     });
   };
   
-  // Xử lý khi nhập điểm ưu tiên
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+  
+  const handleScoreChange = (subject, value) => {
+    setFormData({
+      ...formData,
+      scores: {
+        ...formData.scores,
+        [subject]: value
+      }
+    });
+  };
+  
+  const handleCombinationChange = (e) => {
+    setFormData({
+      ...formData,
+      combination: e.target.value
+    });
+  };
+  
   const handlePriorityScoreChange = (event) => {
     const value = event.target.value;
     if (value === '' || (parseFloat(value) >= 0 && parseFloat(value) <= 4)) {
@@ -244,41 +328,24 @@ const AdmissionProbability = () => {
     }
   };
   
-  // Xử lý khi submit form
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handlePredict = async (data = null) => {
     setLoading(true);
     setError(null);
     
     try {
-      // Kiểm tra dữ liệu đầu vào
-      if (!formData.universityCode) throw new Error('Vui lòng chọn trường đại học');
-      if (!formData.majorName) throw new Error('Vui lòng chọn ngành học');
-      
-      // Kiểm tra xem đã nhập đủ điểm các môn chưa
-      let hasEnoughScores = false;
-      const subjectCombinations = {
-        'A00': ['TOAN', 'LY', 'HOA'],
-        'A01': ['TOAN', 'LY', 'ANH'],
-        'B00': ['TOAN', 'HOA', 'SINH'],
-        'C00': ['VAN', 'SU', 'DIA'],
-        'D01': ['TOAN', 'VAN', 'ANH']
+      // Sử dụng dữ liệu được truyền vào hoặc lấy từ formData
+      const requestData = data || {
+        universityCode: formData.universityCode,
+        majorName: formData.majorName ? formData.majorName.toLowerCase() : '',
+        combination: formData.combination || 'A00',
+        studentScore: typeof formData.studentScore === 'number' ? formData.studentScore : (parseFloat(formData.studentScore) || 0),
+        priorityScore: formData.priorityScore || 0,
+        scores: formData.scores || {}
       };
       
-      for (const combination of Object.values(subjectCombinations)) {
-        const hasAllSubjects = combination.every(subject => 
-          formData.scores[subject] !== undefined && 
-          formData.scores[subject] !== null && 
-          formData.scores[subject] !== ''
-        );
-        if (hasAllSubjects) {
-          hasEnoughScores = true;
-          break;
-        }
-      }
-      
-      if (!hasEnoughScores) {
-        throw new Error('Vui lòng nhập đủ điểm các môn học cho ít nhất một tổ hợp');
+      // Kiểm tra dữ liệu đầu vào
+      if (!requestData.universityCode || !requestData.majorName) {
+        throw new Error('Vui lòng chọn trường đại học và ngành học');
       }
       
       // Lấy thông tin người dùng từ localStorage
@@ -287,43 +354,51 @@ const AdmissionProbability = () => {
       if (userStr) {
         try {
           const user = JSON.parse(userStr);
-          // Ưu tiên lấy userID theo thứ tự: phone > email > _id
           userId = user.phone || user.email || user._id;
-          console.log('AdmissionProbability - Đã lấy được userId:', userId);
         } catch (e) {
           console.error('Lỗi khi parse thông tin user từ localStorage:', e);
         }
       }
       
-      // Chuẩn bị dữ liệu gửi đi - đảm bảo tên ngành được giữ nguyên cách viết hoa/thường từ danh sách
-      const requestData = {
-        universityCode: formData.universityCode,
-        majorName: formData.majorName, // Đã được chọn từ danh sách options nên đảm bảo đúng format
-        scores: formData.scores,
-        priorityScore: formData.priorityScore,
-        // Thêm userId từ localStorage nếu đã đăng nhập
-        userId: userId
-      };
+      // Thêm userId vào request data
+      if (userId) {
+        requestData.userId = userId;
+      }
       
-      // console.log('Gửi dữ liệu dự đoán:', requestData);
+      console.log("Sending prediction request with data:", requestData);
       
-      // Gọi API dự đoán
       const response = await aiService.predictAdmissionProbability(requestData);
+      console.log("Received prediction response:", response);
       
       if (response && response.success && response.prediction) {
-        setPrediction(response.prediction);
+        // Đảm bảo kết quả có đầy đủ các trường cần thiết
+        const safeResult = {
+          expectedScore: response.prediction.expectedScore || 0,
+          scoreDiff: response.prediction.scoreDiff || 0,
+          quota: response.prediction.quota || 0,
+          admissionProbability: response.prediction.admissionProbability || 0,
+          assessment: response.prediction.assessment || 'Chưa có đánh giá',
+          ...response.prediction
+        };
+        
+        setResult(safeResult);
         if (response._id) {
           setPredictionId(response._id);
         }
       } else {
-        throw new Error(response.message || 'Không thể dự đoán xác suất đậu đại học');
+        throw new Error(response?.message || 'Không nhận được kết quả dự đoán hợp lệ');
       }
     } catch (err) {
-      console.error('Error submitting form:', err);
-      setError(err.message || 'Có lỗi xảy ra khi dự đoán. Vui lòng thử lại sau.');
+      console.error('Lỗi khi dự đoán xác suất:', err);
+      setError(err.message || 'Có lỗi xảy ra khi dự đoán xác suất trúng tuyển');
     } finally {
       setLoading(false);
     }
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handlePredict();
   };
   
   // Xác định màu cho thanh tiến trình
@@ -399,7 +474,18 @@ const AdmissionProbability = () => {
             <div className="form-grid-item full-width">
               <label className="input-label">Điểm các môn học</label>
               <div className="subjects-grid">
-                {subjects.map((subject) => (
+                {/* Danh sách các môn học cố định */}
+                {[
+                  { code: 'TOAN', name: 'Toán' },
+                  { code: 'VAN', name: 'Văn' },
+                  { code: 'LY', name: 'Vật lý' },
+                  { code: 'HOA', name: 'Hóa học' },
+                  { code: 'SINH', name: 'Sinh học' },
+                  { code: 'SU', name: 'Lịch sử' },
+                  { code: 'DIA', name: 'Địa lý' },
+                  { code: 'GDCD', name: 'GDCD' },
+                  { code: 'ANH', name: 'Tiếng Anh' }
+                ].map((subject) => (
                   <div key={subject.code} className="subject-item">
                     <label>{subject.name}</label>
                     <input
@@ -407,7 +493,7 @@ const AdmissionProbability = () => {
                       min="0"
                       max="10"
                       step="0.1"
-                      value={formData.scores[subject.code] === undefined || formData.scores[subject.code] === null ? '' : formData.scores[subject.code]}
+                      value={formData.scores[subject.code] || ''}
                       onChange={(e) => handleScoreChange(subject.code, e.target.value)}
                       placeholder="0.0 - 10.0"
                     />
@@ -457,57 +543,57 @@ const AdmissionProbability = () => {
       )}
       
       {/* Hiển thị kết quả dự đoán */}
-      {prediction && (
+      {result && (
         <div className="prediction-card">
           <div className="prediction-content">
             <h3 className="prediction-title">Kết quả dự đoán</h3>
             
             <div className="prediction-grid">
               <div className="prediction-item">
-                <strong>Trường đại học:</strong> {prediction.universityName}
+                <strong>Trường đại học:</strong> {formData.universityName || formData.universityCode}
               </div>
               
               <div className="prediction-item">
-                <strong>Ngành học:</strong> {prediction.majorName}
+                <strong>Ngành học:</strong> {formData.majorName}
               </div>
               
               <div className="prediction-item">
-                <strong>Tổ hợp môn tối ưu:</strong> {prediction.selectedCombination}
+                <strong>Tổ hợp môn tối ưu:</strong> {formData.combination}
               </div>
               
               <div className="prediction-item">
-                <strong>Điểm của bạn:</strong> {prediction.totalScore.toFixed(1)}
+                <strong>Điểm của bạn:</strong> {typeof formData.studentScore === 'number' ? formData.studentScore.toFixed(1) : (parseFloat(formData.studentScore) || 0).toFixed(1)}
               </div>
               
               <div className="prediction-item">
-                <strong>Điểm chuẩn dự kiến:</strong> {prediction.expectedScore.toFixed(1)}
+                <strong>Điểm chuẩn dự kiến:</strong> {result.expectedScore.toFixed(1)}
               </div>
               
               <div className="prediction-item">
-                <strong>Chênh lệch điểm:</strong> {prediction.scoreDiff.toFixed(1)}
+                <strong>Chênh lệch điểm:</strong> {result.scoreDiff.toFixed(1)}
               </div>
               
               <div className="prediction-item">
-                <strong>Chỉ tiêu:</strong> {prediction.quota}
+                <strong>Chỉ tiêu:</strong> {result.quota || 'Chưa có thông tin'}
               </div>
               
               <div className="prediction-item full-width">
                 <h3 className="probability-title">
-                  Xác suất đậu đại học: {(prediction.admissionProbability * 100).toFixed(1)}%
+                  Xác suất đậu đại học: {(result.admissionProbability * 100).toFixed(1)}%
                 </h3>
                 
                 <div className="progress-container">
                   <div 
                     className="progress-bar" 
                     style={{ 
-                      width: `${prediction.admissionProbability * 100}%`,
-                      backgroundColor: getProbabilityColor(prediction.admissionProbability)
+                      width: `${result.admissionProbability * 100}%`,
+                      backgroundColor: getProbabilityColor(result.admissionProbability)
                     }}
                   ></div>
                 </div>
                 
                 <p className="assessment">
-                  Đánh giá: <strong>{prediction.assessment}</strong>
+                  Đánh giá: <strong>{result.assessment}</strong>
                 </p>
                 
                 {/* Thêm nút gửi đánh giá */}
@@ -524,7 +610,7 @@ const AdmissionProbability = () => {
       )}
       
       {/* Hiển thị form feedback khi người dùng click vào nút */}
-      {prediction && predictionId && showFeedbackForm && (
+      {result && predictionId && showFeedbackForm && (
         <FeedbackForm 
           predictionId={predictionId}
           modelType="admission_prediction"

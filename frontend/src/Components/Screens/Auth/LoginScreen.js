@@ -9,7 +9,8 @@ import { jwtDecode } from 'jwt-decode';
 import { API_URL } from '../../../services/config/apiConfig';
 
 const LoginScreen = () => {
-  const [identifier, setIdentifier] = useState(''); // Dùng cho cả email hoặc số điện thoại
+  // const [identifier, setIdentifier] = useState(''); // Dùng cho cả email hoặc số điện thoại
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,7 @@ const LoginScreen = () => {
   }, [location]);
 
   // Hàm chuyển đổi định dạng số điện thoại thành 84xxxxxxxxx
+  /*
   const formatPhoneNumber = (phoneNumber) => {
     if (!phoneNumber) return phoneNumber;
     
@@ -56,6 +58,7 @@ const LoginScreen = () => {
     const phoneRegex = /^(0|84)[3|5|7|8|9][0-9]{8}$/;
     return phoneRegex.test(phone);
   };
+  */
 
   // Kiểm tra định dạng email hợp lệ
   const isValidEmail = (email) => {
@@ -64,6 +67,7 @@ const LoginScreen = () => {
   };
 
   // Xác định loại định danh (email hoặc số điện thoại)
+  /*
   const identifyInputType = (value) => {
     if (isValidEmail(value)) {
       return 'email';
@@ -72,20 +76,26 @@ const LoginScreen = () => {
     }
     return null;
   };
+  */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     
-    if (!identifier.trim()) {
-      setError('Vui lòng nhập email hoặc số điện thoại');
+    if (!email.trim()) {
+      setError('Vui lòng nhập email');
       return;
     }
     
-    const inputType = identifyInputType(identifier);
+    // const inputType = identifyInputType(identifier);
     
-    if (!inputType) {
-      setError('Email hoặc số điện thoại không hợp lệ. Vui lòng kiểm tra lại.');
+    // if (!inputType) {
+    //   setError('Email hoặc số điện thoại không hợp lệ. Vui lòng kiểm tra lại.');
+    //   return;
+    // }
+    
+    if (!isValidEmail(email)) {
+      setError('Email không hợp lệ. Vui lòng kiểm tra lại.');
       return;
     }
     
@@ -98,37 +108,39 @@ const LoginScreen = () => {
     setLoading(true);
 
     try {
-      console.log('Đang gửi request đến:', inputType === 'phone' ? 
-        `${API_URL}/api/auth/login` : 
-        `${API_URL}/api/auth/login-with-email`);
+      // console.log('Đang gửi request đến:', inputType === 'phone' ? 
+      //   `${API_URL}/api/auth/login` : 
+      //   `${API_URL}/api/auth/login-with-email`);
+      console.log('Đang gửi request đến:', `${API_URL}/api/auth/login-with-email`);
       
-      let response;
+      // let response;
       
-      if (inputType === 'phone') {
-        // Chuyển đổi định dạng số điện thoại trước khi gửi
-        const formattedPhone = formatPhoneNumber(identifier);
-        console.log('Dữ liệu gửi đi:', { phone: formattedPhone, password });
-        response = await axios.post(`${API_URL}/api/auth/login`, { 
-          phone: formattedPhone, 
-          password 
-        }, {
-          timeout: 5000,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-      } else {
-        console.log('Dữ liệu gửi đi:', { email: identifier, password });
-        response = await axios.post(`${API_URL}/api/auth/login-with-email`, { 
-          email: identifier, 
-          password 
-        }, {
-          timeout: 5000,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-      }
+      // if (inputType === 'phone') {
+      //   // Chuyển đổi định dạng số điện thoại trước khi gửi
+      //   const formattedPhone = formatPhoneNumber(identifier);
+      //   console.log('Dữ liệu gửi đi:', { phone: formattedPhone, password });
+      //   response = await axios.post(`${API_URL}/api/auth/login`, { 
+      //     phone: formattedPhone, 
+      //     password 
+      //   }, {
+      //     timeout: 5000,
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     }
+      //   });
+      // } else {
+      //   console.log('Dữ liệu gửi đi:', { email: identifier, password });
+      console.log('Dữ liệu gửi đi:', { email, password });
+      const response = await axios.post(`${API_URL}/api/auth/login-with-email`, { 
+        email, 
+        password 
+      }, {
+        timeout: 5000,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      // }
       
       console.log('Response từ server:', response.data);
       
@@ -199,10 +211,10 @@ const LoginScreen = () => {
 
         <form onSubmit={handleSubmit}>
           <input
-            type="text"
-            placeholder="Email hoặc số điện thoại"
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
        
