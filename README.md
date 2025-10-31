@@ -173,40 +173,20 @@ TuyenSinhThongMinh-monorepo/
 
 ## 📸 Screenshots
 
-> **💡 Lưu ý:** Hãy thêm các screenshots thực tế của ứng dụng vào phần này để nhà tuyển dụng có thể xem được giao diện và tính năng của hệ thống.
-
 ### Trang chủ / Dashboard
 ![Homepage](docs/images/homepage.png)
-*Mô tả: Giao diện trang chủ với các tính năng chính của hệ thống*
 
 ### Dự đoán xác suất đậu đại học
 ![Prediction](docs/images/prediction.png)
-*Mô tả: Tính năng dự đoán khả năng trúng tuyển vào trường/ngành cụ thể với AI*
 
 ### Gợi ý ngành học
 ![Recommendation](docs/images/recommendation.png)
-*Mô tả: Hệ thống gợi ý ngành học phù hợp dựa trên điểm số, sở thích và tổ hợp môn*
 
 ### Tra cứu trường đại học
 ![University Search](docs/images/university-search.png)
-*Mô tả: Tìm kiếm và xem chi tiết thông tin trường đại học, điểm chuẩn các năm*
 
-### Trang quản trị (nếu có)
+### Trang quản trị
 ![Admin Panel](docs/images/admin.png)
-*Mô tả: Giao diện quản trị hệ thống cho admin*
-
----
-
-**📝 Hướng dẫn thêm screenshots:**
-1. Chụp màn hình các trang quan trọng của ứng dụng
-2. Lưu ảnh vào thư mục `docs/images/` với tên file tương ứng:
-   - `homepage.png` - Trang chủ
-   - `prediction.png` - Trang dự đoán
-   - `recommendation.png` - Trang gợi ý ngành học
-   - `university-search.png` - Trang tra cứu trường
-   - `admin.png` - Trang quản trị (nếu có)
-3. Commit và push các ảnh lên GitHub
-4. README sẽ tự động hiển thị các ảnh này
 
 ## 📡 API Endpoints
 
