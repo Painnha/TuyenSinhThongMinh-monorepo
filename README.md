@@ -176,17 +176,44 @@ TuyenSinhThongMinh-monorepo/
 ### Trang chủ / Dashboard
 ![Homepage](docs/images/homepage.png)
 
+### Đăng nhập / Đăng ký
+![Login](docs/images/login.png)
+
 ### Dự đoán xác suất đậu đại học
 ![Prediction](docs/images/prediction.png)
 
-### Gợi ý ngành học
+### Kết quả dự đoán
+![Prediction Result](docs/images/prediction-result.png)
+
+### Gợi ý ngành học - Nhập thông tin
+![Recommendation Input](docs/images/recommendation-input.png)
+
+### Gợi ý ngành học - Mở rộng
+![Recommendation Input 2](docs/images/recommendation-input2.png)
+
+### Kết quả gợi ý ngành học
 ![Recommendation](docs/images/recommendation.png)
 
 ### Tra cứu trường đại học
 ![University Search](docs/images/university-search.png)
 
-### Trang quản trị
+### Kết quả tra cứu trường
+![University Search Result](docs/images/university-search-result.png)
+
+### Lịch sử dự đoán
+![History Log](docs/images/historyLogUser.png)
+
+### Gửi phản hồi
+![Send Feedback](docs/images/sendFeedback.png)
+
+### Quản lý log, thu thập dữ liệu retrain
 ![Admin Panel](docs/images/admin.png)
+
+### Quản lý người dùng
+![User Manager](docs/images/userManagerAdmin.png)
+
+### Quản lý trường đại học
+![University Manager](docs/images/university-manager.png)
 
 ## 📡 API Endpoints
 
