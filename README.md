@@ -1,54 +1,59 @@
-# Tuyển Sinh Thông Minh
+# 🎓 Tuyển Sinh Thông Minh
 
-Hệ thống tư vấn tuyển sinh thông minh giúp học sinh lớp 12 chọn ngành học và trường đại học phù hợp.
+> Hệ thống tư vấn tuyển sinh thông minh giúp học sinh lớp 12 chọn ngành học và trường đại học phù hợp dựa trên AI
 
-## Tính năng chính
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node.js](https://img.shields.io/badge/Node.js-14.x-green.svg)
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![React](https://img.shields.io/badge/React-18.3-61DAFB.svg)
 
-- Tìm kiếm trường đại học và ngành học
-- Tra cứu điểm chuẩn các năm
-- **Gợi ý ngành học** dựa trên điểm số, sở thích và tổ hợp môn (AI)
-- **Dự đoán xác suất đậu đại học** khi chọn ngành/trường cụ thể (AI)
-- Tính toán điểm xét tuyển theo tổ hợp môn
-- Tư vấn chọn trường và ngành học
+## 📋 Mục lục
 
-## Cấu trúc dự án
+- [Tính năng chính](#-tính-năng-chính)
+- [Công nghệ sử dụng](#-công-nghệ-sử-dụng)
+- [Mô hình AI](#-mô-hình-ai)
+- [Cài đặt](#-cài-đặt)
+- [Chạy ứng dụng](#-chạy-ứng-dụng)
+- [Cấu trúc dự án](#-cấu-trúc-dự-án)
+- [Screenshots](#-screenshots)
+- [API Endpoints](#-api-endpoints)
+- [Xử lý lỗi](#-xử-lý-lỗi)
+- [Contributing](#-contributing)
 
-Dự án được tổ chức theo cấu trúc monorepo với các package:
+## ✨ Tính năng chính
 
-```
-TuyenSinhThongMinh-monorepo/
-├── backend/           # Backend API server (Node.js/Express)
-├── frontend/          # Frontend React application
-├── BE_python/         # Python backend cho AI models
-└── shared/            # Shared utilities and types
-```
+- 🔍 **Tìm kiếm trường đại học và ngành học** - Tra cứu thông tin chi tiết các trường đại học và ngành học tại Việt Nam
+- 📊 **Tra cứu điểm chuẩn** - Xem điểm chuẩn các năm gần đây của từng trường/ngành
+- 🤖 **Gợi ý ngành học bằng AI** - Hệ thống sử dụng mạng neural network để gợi ý ngành học phù hợp dựa trên:
+  - Điểm số học tập/thi cử
+  - Sở thích cá nhân
+  - Tổ hợp môn thi (KHTN/KHXH)
+- 🎯 **Dự đoán xác suất đậu đại học** - Dự đoán khả năng trúng tuyển vào trường/ngành cụ thể với độ chính xác cao
+- 🧮 **Tính toán điểm xét tuyển** - Tự động tính điểm theo từng tổ hợp môn
+- 💬 **Tư vấn chọn trường và ngành** - Gợi ý các lựa chọn phù hợp với năng lực và sở thích
 
-## Công nghệ sử dụng
+## 🛠 Công nghệ sử dụng
 
-- **Backend Node.js:**
-  - Node.js & Express
-  - MongoDB với Mongoose
-  - JWT Authentication
-  - RESTful API
+### Backend Node.js
+- **Node.js & Express** - RESTful API server
+- **MongoDB với Mongoose** - Database và ODM
+- **JWT Authentication** - Xác thực và phân quyền
 
-- **Backend Python (AI):**
-  - Flask API
-  - TensorFlow/Keras
-  - Scikit-learn
-  - NumPy/Pandas
+### Backend Python (AI)
+- **Flask** - API framework
+- **TensorFlow/Keras** - Deep learning models
+- **Scikit-learn** - Machine learning utilities
+- **NumPy/Pandas** - Xử lý dữ liệu
 
-- **Frontend:**
-  - React
-  - TypeScript
-  - Material-UI
-  - React Query
+### Frontend
+- **React 18** - UI framework
+- **Material-UI (MUI)** - Component library
+- **Ant Design** - Additional UI components
+- **React Query** - Data fetching và caching
+- **React Router** - Routing
+- **Chart.js** - Data visualization
 
-- **Shared:**
-  - TypeScript
-  - Utility functions
-  - Type definitions
-
-## Mô hình AI
+## 🤖 Mô hình AI
 
 ### 1. Mô hình gợi ý ngành học
 
@@ -57,6 +62,8 @@ Sử dụng mạng neural network để gợi ý ngành học phù hợp dựa t
 - Tổ hợp thi (KHTN/KHXH)
 - Sở thích cá nhân
 - Xu hướng thị trường lao động
+
+**Vị trí:** `BE_python/ai_models/goiynganhhoc/`
 
 ### 2. Mô hình dự đoán xác suất đậu đại học
 
@@ -67,7 +74,9 @@ Dự đoán xác suất trúng tuyển vào trường/ngành cụ thể dựa tr
 - Xu hướng điểm chuẩn qua các năm
 - Độ phổ biến của ngành
 
-## Cài đặt
+**Vị trí:** `BE_python/ai_models/dudoanxacxuat/`
+
+## 💻 Cài đặt
 
 ### Yêu cầu hệ thống
 - Node.js (>= 14.x)
@@ -78,96 +87,130 @@ Dự đoán xác suất trúng tuyển vào trường/ngành cụ thể dựa tr
 
 #### 1. Thư viện Node.js
 ```bash
-# Trong thư mục backend
+# Backend
 cd backend
 npm install
 
-# Trong thư mục frontend
+# Frontend
 cd frontend
 npm install
 ```
 
 #### 2. Thư viện Python
 ```bash
-pip install flask flask-cors python-dotenv pymongo tensorflow numpy scikit-learn
+cd BE_python
+pip install -r requirements.txt
 ```
 
-## Chạy ứng dụng
+## 🚀 Chạy ứng dụng
 
-### Cách 1: Sử dụng script tự động
+### Cách 1: Sử dụng script tự động (Windows)
 
-Để chạy tất cả các thành phần cùng lúc, sử dụng file script:
-
+Để chạy tất cả các thành phần cùng lúc:
 ```bash
 start-servers.bat
 ```
 
 Script này sẽ:
-1. Cài đặt các thư viện Python cần thiết
-2. Khởi động Python API server
-3. Khởi động Node.js API server
-4. Khởi động React frontend
+1. ✅ Cài đặt các thư viện Python cần thiết
+2. ✅ Khởi động Python API server (port 5000)
+3. ✅ Khởi động Node.js API server (port 5001)
+4. ✅ Khởi động React frontend (port 3000)
 
 ### Cách 2: Khởi động thủ công
 
-Nếu muốn khởi động các server riêng biệt, mở 3 cửa sổ terminal riêng:
+Mở 3 cửa sổ terminal riêng:
 
 #### Terminal 1: Python API
 ```bash
 cd BE_python
 python app.py
 ```
+Server chạy tại: `http://localhost:5000`
 
 #### Terminal 2: Node.js API
 ```bash
 cd backend
 npm start
 ```
+Server chạy tại: `http://localhost:5001`
 
 #### Terminal 3: Frontend
 ```bash
 cd frontend
 npm start
 ```
+Ứng dụng chạy tại: `http://localhost:3000`
 
-## Cấu trúc dự án
+## 📁 Cấu trúc dự án
 
-- **BE_python**: Chứa mã nguồn Python cho mô hình dự đoán AI
-  - **ai_models/dudoanxacxuat**: Mô hình dự đoán xác suất đậu đại học
-  - **models**: Thư mục chứa các mô hình đã huấn luyện
-
-- **backend**: API Node.js
-  - **routes**: Các endpoint API
-  - **controllers**: Xử lý logic
-  - **models**: Định nghĩa schema MongoDB
-
-- **frontend**: UI React
-  - **src/Components**: Các component React
-  - **src/services**: Các service gọi API
-
-## Sử dụng
-
-1. Mở trình duyệt tại địa chỉ: http://localhost:3000
-2. Truy cập chức năng "Dự đoán xác suất đậu đại học"
-3. Nhập thông tin trường, ngành và điểm thi
-4. Nhận kết quả dự đoán
-
-## Xử lý lỗi
-
-Nếu gặp lỗi "Không thể tải mô hình dự đoán", hãy thực hiện:
-```bash
-cd BE_python
-python -m ai_models.dudoanxacxuat.initialize_model
+```
+TuyenSinhThongMinh-monorepo/
+├── backend/                    # Backend API server (Node.js/Express)
+│   ├── controllers/           # Business logic
+│   ├── models/                # MongoDB schemas
+│   ├── routes/                # API routes
+│   ├── middleware/            # Authentication & validation
+│   └── utils/                 # Utility functions
+│
+├── frontend/                   # Frontend React application
+│   ├── src/
+│   │   ├── Components/        # React components
+│   │   ├── services/          # API services
+│   │   └── hooks/             # Custom React hooks
+│   └── public/                # Static assets
+│
+├── BE_python/                  # Python backend cho AI models
+│   ├── ai_models/
+│   │   ├── goiynganhhoc/      # Mô hình gợi ý ngành học
+│   │   └── dudoanxacxuat/     # Mô hình dự đoán xác suất
+│   ├── api/                   # Flask API endpoints
+│   └── utils/                 # Python utilities
+│
+└── shared/                     # Shared utilities
+    └── src/                    # Shared source code
 ```
 
-Nếu vẫn gặp lỗi, kiểm tra:
-1. MongoDB đã được khởi động
-2. Kết nối mạng hoạt động tốt
-3. Các port 5000, 5001 và 3000 không bị chiếm bởi ứng dụng khác
+## 📸 Screenshots
 
-## API Endpoints
+> **💡 Lưu ý:** Hãy thêm các screenshots thực tế của ứng dụng vào phần này để nhà tuyển dụng có thể xem được giao diện và tính năng của hệ thống.
 
-### Backend Node.js
+### Trang chủ / Dashboard
+![Homepage](docs/images/homepage.png)
+*Mô tả: Giao diện trang chủ với các tính năng chính của hệ thống*
+
+### Dự đoán xác suất đậu đại học
+![Prediction](docs/images/prediction.png)
+*Mô tả: Tính năng dự đoán khả năng trúng tuyển vào trường/ngành cụ thể với AI*
+
+### Gợi ý ngành học
+![Recommendation](docs/images/recommendation.png)
+*Mô tả: Hệ thống gợi ý ngành học phù hợp dựa trên điểm số, sở thích và tổ hợp môn*
+
+### Tra cứu trường đại học
+![University Search](docs/images/university-search.png)
+*Mô tả: Tìm kiếm và xem chi tiết thông tin trường đại học, điểm chuẩn các năm*
+
+### Trang quản trị (nếu có)
+![Admin Panel](docs/images/admin.png)
+*Mô tả: Giao diện quản trị hệ thống cho admin*
+
+---
+
+**📝 Hướng dẫn thêm screenshots:**
+1. Chụp màn hình các trang quan trọng của ứng dụng
+2. Lưu ảnh vào thư mục `docs/images/` với tên file tương ứng:
+   - `homepage.png` - Trang chủ
+   - `prediction.png` - Trang dự đoán
+   - `recommendation.png` - Trang gợi ý ngành học
+   - `university-search.png` - Trang tra cứu trường
+   - `admin.png` - Trang quản trị (nếu có)
+3. Commit và push các ảnh lên GitHub
+4. README sẽ tự động hiển thị các ảnh này
+
+## 📡 API Endpoints
+
+### Backend Node.js (Port 5001)
 
 #### Authentication
 - `POST /api/auth/check-phone` - Kiểm tra số điện thoại và gửi OTP
@@ -180,20 +223,20 @@ Nếu vẫn gặp lỗi, kiểm tra:
 #### Universities
 - `GET /api/universities` - Lấy danh sách trường
 - `GET /api/universities/:code` - Lấy thông tin chi tiết trường
-- `POST /api/universities` - Tạo trường mới (Auth)
-- `PUT /api/universities/:code` - Cập nhật thông tin trường (Auth)
-- `DELETE /api/universities/:code` - Xóa trường (Auth)
-- `POST /api/universities/import` - Import danh sách trường (Auth)
+- `POST /api/universities` - Tạo trường mới (Auth required)
+- `PUT /api/universities/:code` - Cập nhật thông tin trường (Auth required)
+- `DELETE /api/universities/:code` - Xóa trường (Auth required)
+- `POST /api/universities/import` - Import danh sách trường (Auth required)
 
 #### Subject Combinations
 - `GET /api/subject-combinations` - Lấy danh sách tổ hợp môn
 - `GET /api/subject-combinations/:code` - Lấy chi tiết tổ hợp môn
-- `POST /api/subject-combinations` - Tạo tổ hợp môn mới (Auth)
-- `PUT /api/subject-combinations/:code` - Cập nhật tổ hợp môn (Auth)
-- `DELETE /api/subject-combinations/:code` - Xóa tổ hợp môn (Auth)
-- `POST /api/subject-combinations/import` - Import danh sách tổ hợp môn (Auth)
+- `POST /api/subject-combinations` - Tạo tổ hợp môn mới (Auth required)
+- `PUT /api/subject-combinations/:code` - Cập nhật tổ hợp môn (Auth required)
+- `DELETE /api/subject-combinations/:code` - Xóa tổ hợp môn (Auth required)
+- `POST /api/subject-combinations/import` - Import danh sách tổ hợp môn (Auth required)
 
-### Backend Python (AI)
+### Backend Python (Port 5000)
 
 #### Gợi ý ngành học
 - `POST /api/recommendation/recommend` - Gợi ý ngành học
@@ -212,7 +255,25 @@ Nếu vẫn gặp lỗi, kiểm tra:
 - `GET /api/data/student-data/:id` - Lấy dữ liệu học sinh theo ID
 - `GET /api/data/stats` - Lấy thống kê dữ liệu
 
-## Contributing
+## 🔧 Xử lý lỗi
+
+### Lỗi "Không thể tải mô hình dự đoán"
+Khởi tạo lại mô hình:
+```bash
+cd BE_python
+python -m ai_models.dudoanxacxuat.initialize_model
+```
+
+### Các lỗi thường gặp khác
+1. ✅ Kiểm tra MongoDB đã được khởi động
+2. ✅ Kiểm tra kết nối mạng
+3. ✅ Kiểm tra các port 5000, 5001 và 3000 không bị chiếm bởi ứng dụng khác
+4. ✅ Kiểm tra các biến môi trường (nếu có file `.env`)
+5. ✅ Kiểm tra đã cài đặt đầy đủ dependencies cho cả Node.js và Python
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork repository
 2. Tạo branch mới (`git checkout -b feature/AmazingFeature`)
@@ -220,6 +281,10 @@ Nếu vẫn gặp lỗi, kiểm tra:
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Tạo Pull Request
 
-## License
+## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+⭐ **Nếu dự án này hữu ích, hãy cho một star!**
